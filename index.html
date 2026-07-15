@@ -276,10 +276,33 @@
 
   footer{
     text-align:center;
-    padding:26px 20px 0;
+    padding:30px 24px 20px;
     font-size:0.75rem;
     color:var(--kraft-2);
     font-family:'JetBrains Mono',monospace;
+    border-top:1px solid var(--line);
+    margin-top:8px;
+  }
+  .footer-story{
+    font-family:'Inter',sans-serif;
+    font-size:0.85rem;
+    line-height:1.55;
+    max-width:440px;
+    margin:0 auto 12px;
+    color:var(--kraft);
+  }
+  .footer-links{
+    justify-content:center;
+    margin:14px auto 18px;
+  }
+  .footer-links a{
+    background:var(--marigold);
+    color:var(--chalk-bg);
+  }
+  .footer-tag{
+    font-size:0.72rem;
+    color:var(--kraft-2);
+    margin-top:6px;
   }
 </style>
 </head>
@@ -301,7 +324,7 @@
   <button class="tab-btn active" data-tab="blog">📖 Blog</button>
   <button class="tab-btn" data-tab="videos">🎬 Shorts</button>
   <button class="tab-btn" data-tab="stickers">👦 Stickers</button>
-  <button class="tab-btn" data-tab="about">✍️ About</button>
+  <button class="tab-btn" data-tab="about">🎮 Apps</button>
 </nav>
 
 <div class="wrap">
@@ -395,20 +418,32 @@
 
   <section class="panel" id="about">
     <div class="panel-head">
-      <h2>About the creator</h2>
+      <h2>Tools &amp; apps</h2>
     </div>
-    <p class="about-txt">Ganga Ponnu is the solo founder behind Lokesh &amp; Varsha — original AI-animated Tamil sibling characters. One mom, one phone: every script, visual and edit is built independently, no studio or team.</p>
-    <p class="about-txt">🏆 State Level 2nd Prize, MeitY ISEA National Competition 2025 (Cybersecurity Cartoon Storyboards) · Featured in The Hindu's Education Plus.</p>
-    <div class="link-row">
-      <a href="https://about.me/randomtyms" target="_blank" rel="noopener">Press kit ↗</a>
-      <a href="https://lokeshvarsha.blogspot.com/p/created-by-ganga-ponnu.html" target="_blank" rel="noopener">Creator story ↗</a>
-      <a href="mailto:randomtyms@gmail.com">Email ↗</a>
-    </div>
+    <p class="sticker-note">Free interactive tools built for teachers and kids — no login, no download, just open and use.</p>
+
+    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/06/wheel-of-names.html" target="_blank" rel="noopener">
+      <div class="s-title">🎡 Spinner Wheel</div>
+      <div class="s-meta">Random name/prize picker — built for classroom use</div>
+    </a>
+    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html" target="_blank" rel="noopener">
+      <div class="s-title">✖️ Multiplication Practice</div>
+      <div class="s-meta">Easy, Medium and Pro levels for Grades 2–5</div>
+    </a>
   </section>
 
 </div>
 
-<footer>RandomTyms · Lokesh &amp; Varsha · built one phone at a time</footer>
+<footer>
+  <p class="footer-story">Ganga Ponnu is the solo founder behind Lokesh &amp; Varsha — original AI-animated Tamil sibling characters. One mom, one phone: every script, visual and edit is built independently, no studio or team.</p>
+  <p class="footer-story">🏆 State Level 2nd Prize, MeitY ISEA National Competition 2025 (Cybersecurity Cartoon Storyboards) · Featured in The Hindu's Education Plus.</p>
+  <div class="link-row footer-links">
+    <a href="https://about.me/randomtyms" target="_blank" rel="noopener">Press kit ↗</a>
+    <a href="https://lokeshvarsha.blogspot.com/p/created-by-ganga-ponnu.html" target="_blank" rel="noopener">Creator story ↗</a>
+    <a href="mailto:randomtyms@gmail.com">Email ↗</a>
+  </div>
+  <p class="footer-tag">RandomTyms · Lokesh &amp; Varsha · built one phone at a time</p>
+</footer>
 
 <script>
   // Live blog feed — pulls latest posts from Blogger via JSONP (no CORS issues)
@@ -513,4 +548,5 @@
 
 </body>
 </html>
+
 
