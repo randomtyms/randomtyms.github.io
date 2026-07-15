@@ -182,7 +182,14 @@
     white-space:nowrap;
   }
 
-  /* Blog list */
+  .feed-status{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    color:#5c6f68;
+    margin:0 0 12px;
+  }
+  .feed-status.live::before{content:"● "; color:#2e7d4f;}
+  .feed-status.offline::before{content:"● "; color:var(--redox);}
   .post{
     display:block;
     text-decoration:none;
@@ -304,7 +311,9 @@
       <h2>Latest on the blog</h2>
       <a class="open-all" href="https://lokeshvarsha.blogspot.com/" target="_blank" rel="noopener">All posts →</a>
     </div>
+    <p id="blogStatus" class="feed-status">Loading latest posts…</p>
 
+    <div id="blogList">
     <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/little-scientists-dosa-batter-randomtyms.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 14, 2026 · Little Scientists</div>
       <div class="post-title">Why Does Dosa Batter Rise? The Real Science Behind Fermentation</div>
@@ -340,6 +349,7 @@
       <div class="post-title">How to Make a Stilt House Model Structure: Step-by-Step</div>
       <div class="post-excerpt">When physics hits back — why the model kept tipping, and how to fix it.</div>
     </a>
+    </div>
   </section>
 
   <section class="panel" id="videos">
@@ -401,6 +411,66 @@
 <footer>RandomTyms · Lokesh &amp; Varsha · built one phone at a time</footer>
 
 <script>
+  // Live blog feed — pulls latest posts from Blogger via JSONP (no CORS issues)
+  function escapeHtml(str){
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+  function stripAndTrim(html, max){
+    const d = document.createElement('div');
+    d.innerHTML = html;
+    const text = (d.textContent || '').replace(/\s+/g,' ').trim();
+    return text.length > max ? text.slice(0, max).trim() + '…' : text;
+  }
+  function formatDate(iso){
+    const dt = new Date(iso);
+    return dt.toLocaleDateString('en-US', { month:'short', day:'2-digit', year:'numeric' });
+  }
+  window.handleBloggerFeed = function(data){
+    const status = document.getElementById('blogStatus');
+    const list = document.getElementById('blogList');
+    try{
+      const entries = (data.feed && data.feed.entry) || [];
+      if(!entries.length) throw new Error('empty feed');
+      const html = entries.map(entry => {
+        const title = entry.title.$t;
+        const published = formatDate(entry.published.$t);
+        const cat = (entry.category && entry.category[0] && entry.category[0].term) || 'RandomTyms';
+        const link = (entry.link.find(l => l.rel === 'alternate') || {}).href || 'https://lokeshvarsha.blogspot.com/';
+        const raw = (entry.summary && entry.summary.$t) || (entry.content && entry.content.$t) || '';
+        const excerpt = stripAndTrim(raw, 130);
+        return `<a class="post" href="${link}" target="_blank" rel="noopener">
+          <div class="post-date">${published} · ${escapeHtml(cat)}</div>
+          <div class="post-title">${escapeHtml(title)}</div>
+          <div class="post-excerpt">${escapeHtml(excerpt)}</div>
+        </a>`;
+      }).join('');
+      list.innerHTML = html;
+      status.textContent = 'Live from the blog';
+      status.className = 'feed-status live';
+    }catch(e){
+      status.textContent = 'Showing saved posts (offline or feed unavailable)';
+      status.className = 'feed-status offline';
+    }
+  };
+  (function loadBloggerFeed(){
+    const status = document.getElementById('blogStatus');
+    const script = document.createElement('script');
+    script.src = 'https://lokeshvarsha.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=handleBloggerFeed';
+    script.onerror = function(){
+      status.textContent = 'Showing saved posts (offline or feed unavailable)';
+      status.className = 'feed-status offline';
+    };
+    setTimeout(function(){
+      if(status.textContent === 'Loading latest posts…'){
+        status.textContent = 'Showing saved posts (offline or feed unavailable)';
+        status.className = 'feed-status offline';
+      }
+    }, 6000);
+    document.body.appendChild(script);
+  })();
+
   // Tab switching
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -440,4 +510,3 @@
 
 </body>
 </html>
-
