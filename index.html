@@ -420,6 +420,7 @@
   function stripAndTrim(html, max){
     const d = document.createElement('div');
     d.innerHTML = html;
+    d.querySelectorAll('style, script').forEach(el => el.remove());
     const text = (d.textContent || '').replace(/\s+/g,' ').trim();
     return text.length > max ? text.slice(0, max).trim() + '…' : text;
   }
@@ -433,10 +434,12 @@
     try{
       const entries = (data.feed && data.feed.entry) || [];
       if(!entries.length) throw new Error('empty feed');
+      const seriesPriority = ['Little Scientists','Space Secrets','Smart English','Digital Dharma','Tamil Stories','Grand Tours','Maths Worksheet','RandomTyms'];
       const html = entries.map(entry => {
         const title = entry.title.$t;
         const published = formatDate(entry.published.$t);
-        const cat = (entry.category && entry.category[0] && entry.category[0].term) || 'RandomTyms';
+        const cats = (entry.category || []).map(c => c.term);
+        const cat = seriesPriority.find(s => cats.includes(s)) || cats[0] || 'RandomTyms';
         const link = (entry.link.find(l => l.rel === 'alternate') || {}).href || 'https://lokeshvarsha.blogspot.com/';
         const raw = (entry.summary && entry.summary.$t) || (entry.content && entry.content.$t) || '';
         const excerpt = stripAndTrim(raw, 130);
@@ -510,3 +513,4 @@
 
 </body>
 </html>
+
