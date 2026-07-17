@@ -220,6 +220,41 @@
   }
 
   /* Video/series cards */
+  .video-strip{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:6px;
+    margin-bottom:6px;
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  .video-strip::-webkit-scrollbar{display:none;}
+  .video-card{
+    flex:0 0 auto;
+    width:170px;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--cream);
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(21,36,32,0.12);
+  }
+  .video-card img{
+    width:100%;
+    height:96px;
+    object-fit:cover;
+    display:block;
+    background:#d8cdb4;
+  }
+  .video-card .v-title{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:0.78rem;
+    line-height:1.3;
+    padding:8px 9px 10px;
+  }
+  /* Series cards */
   .series-card{
     display:block;
     text-decoration:none;
@@ -377,8 +412,14 @@
 
   <section class="panel" id="videos">
     <div class="panel-head">
-      <h2>Watch the series</h2>
+      <h2>Latest uploads</h2>
       <a class="open-all" href="https://youtube.com/@randomtyms" target="_blank" rel="noopener">Channel →</a>
+    </div>
+    <p id="videoStatus" class="feed-status">Loading latest videos…</p>
+    <div id="videoList" class="video-strip"></div>
+
+    <div class="panel-head" style="margin-top:22px;">
+      <h2>Browse by series</h2>
     </div>
 
     <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGfyFZvGJ4ToIXozvY3eggub" target="_blank" rel="noopener">
@@ -429,6 +470,10 @@
     <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html" target="_blank" rel="noopener">
       <div class="s-title">✖️ Multiplication Practice</div>
       <div class="s-meta">Easy, Medium and Pro levels for Grades 2–5</div>
+    </a>
+    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/little-scientists-lines-of-symmetry.html" target="_blank" rel="noopener">
+      <div class="s-title">🔍 Symmetry Detective</div>
+      <div class="s-meta">Spot the lines of symmetry — interactive practice</div>
     </a>
   </section>
 
@@ -509,6 +554,37 @@
     document.body.appendChild(script);
   })();
 
+  // Latest YouTube videos — via RSS (no API key), converted to JSON by a public proxy
+  (function loadLatestVideos(){
+    const CHANNEL_ID = 'UC09e-cTjvm5uefrsQwUs_8w';
+    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+    const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+    const status = document.getElementById('videoStatus');
+    const list = document.getElementById('videoList');
+
+    fetch(proxyUrl)
+      .then(r => r.json())
+      .then(data => {
+        if(data.status !== 'ok' || !data.items || !data.items.length) throw new Error('bad feed');
+        const items = data.items.slice(0, 5);
+        list.innerHTML = items.map(item => {
+          const vidId = (item.link.match(/watch\?v=([^&]+)/) || [])[1] || '';
+          const thumb = vidId ? `https://i.ytimg.com/vi/${vidId}/mqdefault.jpg` : '';
+          const title = item.title.length > 60 ? item.title.slice(0,58) + '…' : item.title;
+          return `<a class="video-card" href="${item.link}" target="_blank" rel="noopener">
+            <img src="${thumb}" alt="" loading="lazy">
+            <div class="v-title">${title.replace(/</g,'&lt;')}</div>
+          </a>`;
+        }).join('');
+        status.textContent = 'Live from YouTube';
+        status.className = 'feed-status live';
+      })
+      .catch(() => {
+        status.textContent = 'Couldn\'t load latest videos — visit the channel directly';
+        status.className = 'feed-status offline';
+      });
+  })();
+
   // Tab switching
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -548,5 +624,3 @@
 
 </body>
 </html>
-
-
