@@ -475,6 +475,10 @@
       <div class="s-title">🔍 Symmetry Detective</div>
       <div class="s-meta">Spot the lines of symmetry — interactive practice</div>
     </a>
+    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html" target="_blank" rel="noopener">
+      <div class="s-title">🧠 AI Textbook Quiz Generator</div>
+      <div class="s-meta">Turn any textbook page into an instant quiz</div>
+    </a>
   </section>
 
 </div>
@@ -568,11 +572,15 @@
         if(data.status !== 'ok' || !data.items || !data.items.length) throw new Error('bad feed');
         const items = data.items.slice(0, 5);
         list.innerHTML = items.map(item => {
-          const vidId = (item.link.match(/watch\?v=([^&]+)/) || [])[1] || '';
-          const thumb = vidId ? `https://i.ytimg.com/vi/${vidId}/mqdefault.jpg` : '';
+          const vidId =
+            (item.link && item.link.match(/(?:[?&]v=|\/shorts\/)([a-zA-Z0-9_-]{6,})/) || [])[1] ||
+            (item.guid && item.guid.match(/video:([a-zA-Z0-9_-]{6,})/) || [])[1] ||
+            '';
+          const maxThumb = vidId ? `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg` : '';
+          const fallbackThumb = vidId ? `https://img.youtube.com/vi/${vidId}/hqdefault.jpg` : '';
           const title = item.title.length > 60 ? item.title.slice(0,58) + '…' : item.title;
           return `<a class="video-card" href="${item.link}" target="_blank" rel="noopener">
-            <img src="${thumb}" alt="" loading="lazy">
+            <img src="${maxThumb}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${fallbackThumb}';">
             <div class="v-title">${title.replace(/</g,'&lt;')}</div>
           </a>`;
         }).join('');
