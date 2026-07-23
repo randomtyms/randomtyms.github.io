@@ -1,6 +1,3 @@
-# randomtyms.github.io
-Official app hub for RandomTyms — Lokesh &amp; Varsha Stories, Blog, Shorts, stickers and press, all in one place.
-
 # 📱 RandomTyms Apps
 
 **Smart Apps. Happy Learning. Endless Curiosity.**
@@ -10,20 +7,35 @@ Free, AI-powered learning tools for kids — built independently, entirely on a 
 🔗 **Live App Hub:** [randomtyms.github.io](https://randomtyms.github.io/)
 📖 **Blog:** [lokeshvarsha.blogspot.com](https://lokeshvarsha.blogspot.com/)
 
+![RandomTyms Apps](Assets/randomtyms-apps.png)
+
 ---
 
 ## 🚀 What's Inside
 
 A lightweight Progressive Web App (PWA) hub bringing together RandomTyms' learning tools in one place:
 
-| App | Description |
-|---|---|
-| 🧠 AI Textbook Quiz Generator | Generates quizzes from textbook content, with OMR-style answer bubbles and score-tiered feedback |
-| 🎡 Spinner Wheel | Fun randomizer tool for classroom/learning activities |
-| ✖️ Multiplication Practice | Quick-fire multiplication drills for kids |
-| 🔷 Symmetry Detective | Interactive symmetry-recognition learning tool |
+### 🧠 AI Textbook Quiz Generator
+Generates quizzes from textbook content, with OMR-style answer bubbles and score-tiered feedback.
+
+![AI Textbook Quiz Generator](Assets/randomtyms-textbook-ai-quiz.png)
+
+### 🎡 Spinner Wheel
+Fun randomizer tool for classroom/learning activities.
+
+![Wheel of Names](Assets/randomtyms-wheel-of-names.jpg)
+
+### ✖️ Multiplication Practice
+Quick-fire multiplication drills for kids.
+
+### 🔷 Symmetry Detective
+Interactive symmetry-recognition learning tool.
+
+![Lines of Symmetry](Assets/randomtyms-line-of-symmetry.jpg)
 
 More apps are in active development — check the hub for the latest additions.
+
+![More Apps Coming Soon](Assets/randomtyms-more-apps-coming-soon.png)
 
 ## ✨ Features
 
