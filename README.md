@@ -48,7 +48,7 @@ RandomTyms creates educational content on science, English, technology, cyber sa
 
 ## 📄 License
 
-[Add your preferred license here — e.g. MIT]
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
