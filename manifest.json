@@ -6,10 +6,47 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "orientation": "portrait",
   "background_color": "#1E3A34",
   "theme_color": "#1E3A34",
   "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "kids", "entertainment"],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "auto"
+  },
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Latest posts from Lokesh & Varsha",
+      "url": "./index.html?tab=blog",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Shorts",
+      "short_name": "Shorts",
+      "description": "Latest video uploads",
+      "url": "./index.html?tab=videos",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Stickers",
+      "short_name": "Stickers",
+      "description": "Lokesh & Varsha GIFs and stickers",
+      "url": "./index.html?tab=stickers",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Apps",
+      "short_name": "Apps",
+      "description": "Free interactive tools",
+      "url": "./index.html?tab=about",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "icon-192.png",
