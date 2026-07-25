@@ -1,13 +1,14 @@
-const CACHE = "randomtyms-hub-v3"; // Bumped version to reset cache
+const CACHE = "randomtyms-hub-v3";
 
-// 1. Add all important local images here so they work offline immediately
+// Added local image paths so local static assets cache offline properly
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icon-192.png",
-  "./icon-512.png"
-  // Add paths to local banner/logo images if stored locally (e.g., "./images/logo.png")
+  "./icon-512.png",
+  "./logo.webp",
+  "./hero-characters.jpg"
 ];
 
 self.addEventListener("install", (event) => {
@@ -48,13 +49,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Stale-While-Revalidate for images, icons, and static assets (Local & External)
+  // Stale-while-revalidate for images, icons, and static assets
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)
         .then((response) => {
-          // FIX: Allow 'basic', 'cors', and 'opaque' (type === 0 / status === 0) 
-          // so cross-origin images (Tenor, YouTube, CDN) can be cached properly!
+          // Allow basic, cors, and opaque responses (status 200 or 0)
+          // so cross-origin media (Tenor, YouTube thumbs) can cache properly!
           const isValidResponse = response && (response.status === 200 || response.type === "opaque");
 
           if (isValidResponse) {
@@ -65,7 +66,6 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(() => cached);
 
-      // Return cached image immediately if available, otherwise wait for network
       return cached || fetchPromise;
     })
   );
