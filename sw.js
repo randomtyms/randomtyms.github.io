@@ -11,7 +11,15 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE).then((cache) => cache.addAll(ASSETS))
   );
-  self.skipWaiting();
+  // No self.skipWaiting() here — the new worker waits until the page
+  // explicitly tells it to take over (see the message listener below),
+  // so the "New version available" banner has time to show first.
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {
