@@ -43,7 +43,7 @@
 
   /* HERO */
   header.hero{
-    padding:28px 20px 26px;
+    padding:28px 20px 20px;
     text-align:center;
     border-bottom:1px solid var(--line);
     position:relative;
@@ -119,12 +119,55 @@
     cursor:pointer;
   }
 
+  /* SEARCH CONTAINER */
+  .search-wrap{
+    max-width:640px;
+    margin:20px auto 0;
+    padding:0 20px;
+  }
+  .search-box{
+    position:relative;
+    width:100%;
+  }
+  .search-box input{
+    width:100%;
+    padding:12px 16px;
+    font-family:'Inter',sans-serif;
+    font-size:0.92rem;
+    background:var(--chalk-bg-2);
+    color:var(--cream);
+    border:1px solid var(--line);
+    border-radius:12px;
+    outline:none;
+    box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
+    transition:border-color 0.2s;
+  }
+  .search-box input:focus{
+    border-color:var(--marigold);
+  }
+  .search-box input::placeholder{
+    color:var(--kraft-2);
+    opacity:0.7;
+  }
+  .search-count{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    color:var(--marigold);
+    margin-top:6px;
+    display:block;
+    text-align:right;
+    min-height:16px;
+  }
+  .search-hidden{
+    display:none !important;
+  }
+
   /* NOTEBOOK TABS */
   nav.tabs{
     display:flex;
     gap:6px;
     overflow-x:auto;
-    padding:18px 20px 0;
+    padding:14px 20px 0;
     max-width:640px;
     margin:0 auto;
     -ms-overflow-style:none;
@@ -306,7 +349,7 @@
     background:var(--ink);
     color:var(--kraft);
     padding:11px 20px;
-    border-radius:9px;
+    border-radius:99px;
     font-size:0.92rem;
   }
 
@@ -374,6 +417,14 @@
   <button id="installBtn">⬇ Add RandomTyms to Home Screen</button>
 </header>
 
+<!-- SEARCH BAR -->
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="search" id="appSearchInput" placeholder="🔍 Search posts, series, stickers, tools..." oninput="filterContent()" aria-label="Search site content">
+  </div>
+  <span id="searchResultsCount" class="search-count"></span>
+</div>
+
 <nav class="tabs">
   <button class="tab-btn active" data-tab="blog">📖 Blog</button>
   <button class="tab-btn" data-tab="videos">🎬 Shorts</button>
@@ -391,37 +442,37 @@
     <p id="blogStatus" class="feed-status">Loading latest posts…</p>
 
     <div id="blogList">
-    <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/little-scientists-dosa-batter-randomtyms.html" target="_blank" rel="noopener">
+    <a class="post searchable" href="https://lokeshvarsha.blogspot.com/2026/07/little-scientists-dosa-batter-randomtyms.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 14, 2026 · Little Scientists</div>
       <div class="post-title">Why Does Dosa Batter Rise? The Real Science Behind Fermentation</div>
       <div class="post-excerpt">Lokesh thought it was magic. Varsha knew better — the real science of overnight fermentation, explained the Tanglish way.</div>
     </a>
 
-    <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/why-weekly-oil-bath-is-good-for-you.html" target="_blank" rel="noopener">
+    <a class="post searchable" href="https://lokeshvarsha.blogspot.com/2026/07/why-weekly-oil-bath-is-good-for-you.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 12, 2026 · Little Scientists</div>
       <div class="post-title">What is the Purpose of an Oil Bath? Ennai Kuliyal Benefits</div>
       <div class="post-excerpt">The science behind Paati's wisdom — why coconut oil before a bath actually works.</div>
     </a>
 
-    <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/mental-maths-worksheet-for-class-3.html" target="_blank" rel="noopener">
+    <a class="post searchable" href="https://lokeshvarsha.blogspot.com/2026/07/mental-maths-worksheet-for-class-3.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 11, 2026 · Maths Worksheet</div>
       <div class="post-title">Free Mental Maths Worksheet for Class 3 (CBSE)</div>
       <div class="post-excerpt">Numbers, addition, shapes and tables — practice sheets with Lokesh &amp; Varsha.</div>
     </a>
 
-    <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html" target="_blank" rel="noopener">
+    <a class="post searchable" href="https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 11, 2026 · Little Scientists</div>
       <div class="post-title">Free Online Multiplication Table Test for Kids</div>
       <div class="post-excerpt">Easy, Medium and Pro levels — mobile-friendly practice for Grades 2–5.</div>
     </a>
 
-    <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/lokesh-varsha-featured-in-the-hindu.html" target="_blank" rel="noopener">
+    <a class="post searchable" href="https://lokeshvarsha.blogspot.com/2026/07/lokesh-varsha-featured-in-the-hindu.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 09, 2026 · RandomTyms</div>
       <div class="post-title">We Got Featured in The Hindu! Our Creator Story</div>
       <div class="post-excerpt">On how AI is helping independent creators build educational content in local languages.</div>
     </a>
 
-    <a class="post" href="https://lokeshvarsha.blogspot.com/2026/07/randomtyms.html" target="_blank" rel="noopener">
+    <a class="post searchable" href="https://lokeshvarsha.blogspot.com/2026/07/randomtyms.html" target="_blank" rel="noopener">
       <div class="post-date">Jul 08, 2026 · RandomTyms</div>
       <div class="post-title">How to Make a Stilt House Model Structure: Step-by-Step</div>
       <div class="post-excerpt">When physics hits back — why the model kept tipping, and how to fix it.</div>
@@ -441,27 +492,27 @@
       <h2>Browse by series</h2>
     </div>
 
-    <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGfyFZvGJ4ToIXozvY3eggub" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://youtube.com/playlist?list=PLpFHSi2lyAGfyFZvGJ4ToIXozvY3eggub" target="_blank" rel="noopener">
       <div class="s-title">🚀 Space Secrets</div>
       <div class="s-meta">Tamil kids' science series · 11 episodes</div>
     </a>
-    <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGfPh2ojvyobLzHMUVCIfJvI" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://youtube.com/playlist?list=PLpFHSi2lyAGfPh2ojvyobLzHMUVCIfJvI" target="_blank" rel="noopener">
       <div class="s-title">🔬 Little Scientists</div>
       <div class="s-meta">Tamil kids' science series · 24 episodes</div>
     </a>
-    <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGdW1qWFeQoFCno4BL58EcJC" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://youtube.com/playlist?list=PLpFHSi2lyAGdW1qWFeQoFCno4BL58EcJC" target="_blank" rel="noopener">
       <div class="s-title">🗣️ Smart English</div>
       <div class="s-meta">Tanglish spoken-English fixes, 60 seconds at a time</div>
     </a>
-    <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGezLOSrLHo__M0JdiZAY-hc" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://youtube.com/playlist?list=PLpFHSi2lyAGezLOSrLHo__M0JdiZAY-hc" target="_blank" rel="noopener">
       <div class="s-title">🛡️ Digital Dharma</div>
       <div class="s-meta">Krishna-themed digital safety stories</div>
     </a>
-    <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGc_6Yn5YxU0BqN6YcdP65TJ" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://youtube.com/playlist?list=PLpFHSi2lyAGc_6Yn5YxU0BqN6YcdP65TJ" target="_blank" rel="noopener">
       <div class="s-title">🇮🇳 Grand 4K Tours</div>
       <div class="s-meta">Incredible India, AI-animated travel episodes</div>
     </a>
-    <a class="series-card" href="https://youtube.com/playlist?list=PLpFHSi2lyAGeu7Lkrfv0m5-jE9iQernd9" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://youtube.com/playlist?list=PLpFHSi2lyAGeu7Lkrfv0m5-jE9iQernd9" target="_blank" rel="noopener">
       <div class="s-title">📖 Tamil Stories</div>
       <div class="s-meta">Chennai slice-of-life stories with Lokesh &amp; Varsha</div>
     </a>
@@ -475,21 +526,21 @@
     <p class="sticker-note">Lokesh &amp; Varsha are a verified Tenor Content Partner. Use their stickers straight from your keyboard in WhatsApp, Instagram DMs, or anywhere GIFs work.</p>
 
     <div class="gif-grid">
-      <a href="https://tenor.com/view/randomtyms-lokesh-scared-gif-8899052012302784118" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/e3_Ip-8IVnYAAAAd/randomtyms-lokesh.gif" alt="Lokesh scared" loading="lazy"></a>
-      <a href="https://tenor.com/view/randomtyms-lokesh-varsha-brilliant-test-gif-11167795334257215198" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/mvv6r96qht4AAAAd/randomtyms-lokesh.gif" alt="All correct test" loading="lazy"></a>
-      <a href="https://tenor.com/view/randomtyms-lokesh-varsha-fake-news-gif-9364477608654542989" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/gfVOxRr0GI0AAAAd/randomtyms-lokesh.gif" alt="Fake news" loading="lazy"></a>
-      <a href="https://tenor.com/view/so-what-randomtyms-varsha-gif-337618409701656369" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/BK92J6PmRzEAAAAd/so-what-randomtyms.gif" alt="So what" loading="lazy"></a>
-      <a href="https://tenor.com/view/siblings-crash-lokesh-varsha-lokesh-varsha-gif-10714361686803110430" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/lLEPL-D0Wh4AAAAd/siblings-crash.gif" alt="Siblings crash" loading="lazy"></a>
-      <a href="https://tenor.com/view/randomtyms-varsha-oops-sorry-gif-11847013070924658303" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/pGkLnq3ftn8AAAAd/randomtyms-varsha.gif" alt="Oops sorry" loading="lazy"></a>
-      <a href="https://tenor.com/view/randomtyms-lokesh-gif-9545814754821924748" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/hHmL8ZDX54wAAAAd/randomtyms-lokesh.gif" alt="Chennai" loading="lazy"></a>
-      <a href="https://tenor.com/view/power-strong-muscle-man-muscle-randomtyms-gif-15500931853888892351" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/1x5fZMaVrb8AAAAd/power-strong.gif" alt="Power strong" loading="lazy"></a>
-      <a href="https://tenor.com/view/i-love-you-i-love-you-so-much-wow-wow-nice-randomtyms-gif-1539769050066008729" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/FV5bywFTOpkAAAAd/i-love-you-i-love-you-so-much.gif" alt="I love you so much" loading="lazy"></a>
-      <a href="https://tenor.com/view/omg-omg-gif-omgg-shock-randomtyms-gif-13128763506171557547" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/tjK82YV3tqsAAAAd/omg-omg-gif.gif" alt="OMG shock" loading="lazy"></a>
-      <a href="https://tenor.com/view/randomtyms-lokesh-varsha-happy-birthday-wishes-happy-birthday-happy-birthday-images-gif-1679131917499450828" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/F015lSGTRcwAAAAd/randomtyms-lokesh-varsha.gif" alt="Happy birthday" loading="lazy"></a>
-      <a href="https://tenor.com/view/random-tyms-lokesh-varsha-happy-birthday-happy-birthday-wishes-happy-birthday-funny-gif-10444592795013794580" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/kPKlzypmyxQAAAAd/random-tyms-lokesh-varsha.gif" alt="Happy birthday cake" loading="lazy"></a>
-      <a href="https://tenor.com/view/lokesh-randomtyms-varsha-ai-education-gif-200990261243495092" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/AsoPk-S7QrQAAAAd/lokesh-randomtyms.gif" alt="AI quiz" loading="lazy"></a>
-      <a href="https://tenor.com/view/randomtyms-lokesh-varsha-krishna-gif-2180203967992377043" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/HkGj9SoVLtMAAAAd/randomtyms-lokesh.gif" alt="Krishna flute" loading="lazy"></a>
-      <a href="https://tenor.com/view/success-win-all-the-best-all-the-best-for-exam-best-of-luck-gif-7490515944884224541" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/Z_OokL85Qh0AAAAd/success-win.gif" alt="Success thumbs up" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-lokesh-scared-gif-8899052012302784118" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/e3_Ip-8IVnYAAAAd/randomtyms-lokesh.gif" alt="Lokesh scared" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-lokesh-varsha-brilliant-test-gif-11167795334257215198" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/mvv6r96qht4AAAAd/randomtyms-lokesh.gif" alt="All correct test" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-lokesh-varsha-fake-news-gif-9364477608654542989" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/gfVOxRr0GI0AAAAd/randomtyms-lokesh.gif" alt="Fake news" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/so-what-randomtyms-varsha-gif-337618409701656369" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/BK92J6PmRzEAAAAd/so-what-randomtyms.gif" alt="So what" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/siblings-crash-lokesh-varsha-lokesh-varsha-gif-10714361686803110430" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/lLEPL-D0Wh4AAAAd/siblings-crash.gif" alt="Siblings crash" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-varsha-oops-sorry-gif-11847013070924658303" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/pGkLnq3ftn8AAAAd/randomtyms-varsha.gif" alt="Oops sorry" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-lokesh-gif-9545814754821924748" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/hHmL8ZDX54wAAAAd/randomtyms-lokesh.gif" alt="Chennai" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/power-strong-muscle-man-muscle-randomtyms-gif-15500931853888892351" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/1x5fZMaVrb8AAAAd/power-strong.gif" alt="Power strong" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/i-love-you-i-love-you-so-much-wow-wow-nice-randomtyms-gif-1539769050066008729" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/FV5bywFTOpkAAAAd/i-love-you-i-love-you-so-much.gif" alt="I love you so much" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/omg-omg-gif-omgg-shock-randomtyms-gif-13128763506171557547" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/tjK82YV3tqsAAAAd/omg-omg-gif.gif" alt="OMG shock" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-lokesh-varsha-happy-birthday-wishes-happy-birthday-happy-birthday-images-gif-1679131917499450828" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/F015lSGTRcwAAAAd/randomtyms-lokesh-varsha.gif" alt="Happy birthday" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/random-tyms-lokesh-varsha-happy-birthday-happy-birthday-wishes-happy-birthday-funny-gif-10444592795013794580" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/kPKlzypmyxQAAAAd/random-tyms-lokesh-varsha.gif" alt="Happy birthday cake" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/lokesh-randomtyms-varsha-ai-education-gif-200990261243495092" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/AsoPk-S7QrQAAAAd/lokesh-randomtyms.gif" alt="AI quiz" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/randomtyms-lokesh-varsha-krishna-gif-2180203967992377043" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/HkGj9SoVLtMAAAAd/randomtyms-lokesh.gif" alt="Krishna flute" loading="lazy"></a>
+      <a class="searchable" href="https://tenor.com/view/success-win-all-the-best-all-the-best-for-exam-best-of-luck-gif-7490515944884224541" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/Z_OokL85Qh0AAAAd/success-win.gif" alt="Success thumbs up" loading="lazy"></a>
     </div>
 
     <a class="cta-btn" href="https://tenor.com/official/randomtyms" target="_blank" rel="noopener">Open Tenor Profile →</a>
@@ -501,19 +552,19 @@
     </div>
     <p class="sticker-note">Free interactive tools built for teachers and kids — no login, no download, just open and use.</p>
 
-    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/06/wheel-of-names.html" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://lokeshvarsha.blogspot.com/2026/06/wheel-of-names.html" target="_blank" rel="noopener">
       <div class="s-title">🎡 Spinner Wheel</div>
       <div class="s-meta">Random name/prize picker — built for classroom use</div>
     </a>
-    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html" target="_blank" rel="noopener">
       <div class="s-title">✖️ Multiplication Practice</div>
       <div class="s-meta">Easy, Medium and Pro levels for Grades 2–5</div>
     </a>
-    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/little-scientists-lines-of-symmetry.html" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://lokeshvarsha.blogspot.com/2026/07/little-scientists-lines-of-symmetry.html" target="_blank" rel="noopener">
       <div class="s-title">🔍 Symmetry Detective</div>
       <div class="s-meta">Spot the lines of symmetry — interactive practice</div>
     </a>
-    <a class="series-card" href="https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html" target="_blank" rel="noopener">
+    <a class="series-card searchable" href="https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html" target="_blank" rel="noopener">
       <div class="s-title">🧠 AI Textbook Quiz Generator</div>
       <div class="s-meta">Turn any textbook page into an instant quiz</div>
     </a>
@@ -533,6 +584,34 @@
 </footer>
 
 <script>
+  // Search Functionality
+  function filterContent() {
+    const query = document.getElementById('appSearchInput').value.toLowerCase().trim();
+    // Searches through blogs, video cards, series, stickers, and app links
+    const items = document.querySelectorAll('.searchable, .video-card');
+    let matches = 0;
+
+    items.forEach(item => {
+      // Searches both text and image alt attributes (great for stickers/GIFs)
+      const textContent = item.textContent.toLowerCase();
+      const altText = item.querySelector('img') ? item.querySelector('img').alt.toLowerCase() : '';
+      
+      if (query === "" || textContent.includes(query) || altText.includes(query)) {
+        item.classList.remove('search-hidden');
+        matches++;
+      } else {
+        item.classList.add('search-hidden');
+      }
+    });
+
+    const countEl = document.getElementById('searchResultsCount');
+    if (query.length > 0) {
+      countEl.textContent = `${matches} item(s) found`;
+    } else {
+      countEl.textContent = "";
+    }
+  }
+
   // Live blog feed — pulls latest posts from Blogger via JSONP (no CORS issues)
   function escapeHtml(str){
     const d = document.createElement('div');
@@ -565,7 +644,7 @@
         const link = (entry.link.find(l => l.rel === 'alternate') || {}).href || 'https://lokeshvarsha.blogspot.com/';
         const raw = (entry.summary && entry.summary.$t) || (entry.content && entry.content.$t) || '';
         const excerpt = stripAndTrim(raw, 130);
-        return `<a class="post" href="${link}" target="_blank" rel="noopener">
+        return `<a class="post searchable" href="${link}" target="_blank" rel="noopener">
           <div class="post-date">${published} · ${escapeHtml(cat)}</div>
           <div class="post-title">${escapeHtml(title)}</div>
           <div class="post-excerpt">${escapeHtml(excerpt)}</div>
@@ -574,6 +653,8 @@
       list.innerHTML = html;
       status.textContent = 'Live from the blog';
       status.className = 'feed-status live';
+      // Re-apply search filter if user is actively searching during feed load
+      filterContent();
     }catch(e){
       status.textContent = 'Showing saved posts (offline or feed unavailable)';
       status.className = 'feed-status offline';
@@ -617,13 +698,15 @@
           const maxThumb = vidId ? `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg` : '';
           const fallbackThumb = vidId ? `https://img.youtube.com/vi/${vidId}/hqdefault.jpg` : '';
           const title = item.title.length > 60 ? item.title.slice(0,58) + '…' : item.title;
-          return `<a class="video-card" href="${item.link}" target="_blank" rel="noopener">
-            <img src="${maxThumb}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${fallbackThumb}';">
+          return `<a class="video-card searchable" href="${item.link}" target="_blank" rel="noopener">
+            <img src="${maxThumb}" alt="${title.replace(/"/g, '&quot;')}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackThumb}';">
             <div class="v-title">${title.replace(/</g,'&lt;')}</div>
           </a>`;
         }).join('');
         status.textContent = 'Live from YouTube';
         status.className = 'feed-status live';
+        // Re-apply search filter if user is actively searching during feed load
+        filterContent();
       })
       .catch(() => {
         status.textContent = 'Couldn\'t load latest videos — visit the channel directly';
@@ -645,12 +728,9 @@
   if('serviceWorker' in navigator){
     window.addEventListener('load',()=>{
       navigator.serviceWorker.register('sw.js').then((reg)=>{
-        // Covers the case where an update finished installing before this
-        // page even attached its listeners.
         if(reg.waiting){
           showUpdateBanner(reg.waiting);
         }
-        // Fires when a new sw.js is found on the server and starts installing.
         reg.addEventListener('updatefound', ()=>{
           const newWorker = reg.installing;
           newWorker.addEventListener('statechange', ()=>{
@@ -661,8 +741,6 @@
         });
       }).catch(()=>{});
 
-      // Once the new worker takes control (right after the banner is
-      // tapped), reload once to load the fresh assets.
       let refreshing = false;
       navigator.serviceWorker.addEventListener('controllerchange', ()=>{
         if(refreshing) return;
