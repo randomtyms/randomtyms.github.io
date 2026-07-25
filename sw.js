@@ -1,19 +1,19 @@
-const CACHE = "randomtyms-hub-v2";
+const CACHE = "randomtyms-hub-v3"; // Bumped version to reset cache
+
+// 1. Add all important local images here so they work offline immediately
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png"
+  // Add paths to local banner/logo images if stored locally (e.g., "./images/logo.png")
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE).then((cache) => cache.addAll(ASSETS))
   );
-  // No self.skipWaiting() here — the new worker waits until the page
-  // explicitly tells it to take over (see the message listener below),
-  // so the "New version available" banner has time to show first.
 });
 
 self.addEventListener("message", (event) => {
@@ -34,8 +34,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  // Network-first for page navigations (the HTML shell) — always try to get
-  // the latest version first, only falling back to cache if offline.
+  // Network-first for page navigations (the HTML shell)
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)
@@ -49,19 +48,24 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache-first (stale-while-revalidate) for everything else — icons,
-  // manifest, static assets that rarely change.
+  // Stale-While-Revalidate for images, icons, and static assets (Local & External)
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)
         .then((response) => {
-          if (response && response.status === 200 && response.type === "basic") {
+          // FIX: Allow 'basic', 'cors', and 'opaque' (type === 0 / status === 0) 
+          // so cross-origin images (Tenor, YouTube, CDN) can be cached properly!
+          const isValidResponse = response && (response.status === 200 || response.type === "opaque");
+
+          if (isValidResponse) {
             const clone = response.clone();
             caches.open(CACHE).then((cache) => cache.put(event.request, clone));
           }
           return response;
         })
         .catch(() => cached);
+
+      // Return cached image immediately if available, otherwise wait for network
       return cached || fetchPromise;
     })
   );
