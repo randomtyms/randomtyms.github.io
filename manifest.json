@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "RandomTyms — Lokesh & Varsha",
   "short_name": "RandomTyms",
   "description": "Tanglish stories, science, English and digital safety with Lokesh & Varsha.",
@@ -27,6 +28,29 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home screen with Lokesh & Varsha"
+    },
+    {
+      "src": "Screenshots/apps.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Free tools and apps"
+    },
+    {
+      "src": "Screenshots/stickers.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Lokesh & Varsha stickers"
     }
   ]
 }
