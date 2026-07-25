@@ -1,4 +1,4 @@
-const CACHE = "randomtyms-hub-v1";
+const CACHE = "randomtyms-hub-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -25,6 +25,24 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+
+  // Network-first for page navigations (the HTML shell) — always try to get
+  // the latest version first, only falling back to cache if offline.
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
+    );
+    return;
+  }
+
+  // Cache-first (stale-while-revalidate) for everything else — icons,
+  // manifest, static assets that rarely change.
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)
