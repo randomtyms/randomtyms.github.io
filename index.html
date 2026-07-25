@@ -644,8 +644,50 @@
   // Service worker
   if('serviceWorker' in navigator){
     window.addEventListener('load',()=>{
-      navigator.serviceWorker.register('sw.js').catch(()=>{});
+      navigator.serviceWorker.register('sw.js').then((reg)=>{
+        // Covers the case where an update finished installing before this
+        // page even attached its listeners.
+        if(reg.waiting){
+          showUpdateBanner(reg.waiting);
+        }
+        // Fires when a new sw.js is found on the server and starts installing.
+        reg.addEventListener('updatefound', ()=>{
+          const newWorker = reg.installing;
+          newWorker.addEventListener('statechange', ()=>{
+            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
+              showUpdateBanner(newWorker);
+            }
+          });
+        });
+      }).catch(()=>{});
+
+      // Once the new worker takes control (right after the banner is
+      // tapped), reload once to load the fresh assets.
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', ()=>{
+        if(refreshing) return;
+        refreshing = true;
+        window.location.reload();
+      });
     });
+  }
+
+  function showUpdateBanner(waitingWorker){
+    if(document.getElementById('updateBanner')) return;
+    const banner = document.createElement('div');
+    banner.id = 'updateBanner';
+    banner.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;'
+      + 'background:var(--ink);color:var(--kraft);padding:14px 18px;'
+      + 'display:flex;align-items:center;justify-content:space-between;gap:12px;'
+      + 'font-family:\'Baloo 2\',sans-serif;font-size:0.92rem;'
+      + 'box-shadow:0 -2px 10px rgba(0,0,0,0.25);';
+    banner.innerHTML = '<span>New version available</span>'
+      + '<button style="background:var(--kraft);color:var(--ink);border:none;'
+      + 'padding:8px 14px;border-radius:8px;font-weight:700;font-family:inherit;">Refresh</button>';
+    banner.querySelector('button').addEventListener('click', ()=>{
+      waitingWorker.postMessage('SKIP_WAITING');
+    });
+    document.body.appendChild(banner);
   }
 
   // Install prompt
@@ -670,4 +712,3 @@
 
 </body>
 </html>
-
