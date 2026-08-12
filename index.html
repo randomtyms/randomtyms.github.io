@@ -726,11 +726,14 @@
   (function loadLatestVideos(){
     const CHANNEL_ID = 'UC09e-cTjvm5uefrsQwUs_8w';
     const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
-    // api.rss2json.com's free tier now rejects all unauthenticated requests
-    // (not just rate-limited — confirmed it fails on unrelated feeds too),
-    // so we fetch YouTube's raw XML feed through a plain CORS relay instead
-    // and parse it ourselves — no third-party JSON-conversion API involved.
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`;
+    // Free CORS relays go down/change policy without warning (rss2json's
+    // free tier died outright; single-proxy setups break silently). Try
+    // a short list in order — first one that returns usable XML wins.
+    const PROXIES = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`,
+      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rssUrl)}`,
+      `https://api.cors.lol/url=${rssUrl}`
+    ];
     const status = document.getElementById('videoStatus');
     const list = document.getElementById('videoList');
     const STORAGE_KEY = 'rt_last_videos_html';
@@ -765,13 +768,19 @@
       });
     }
 
-    fetch(proxyUrl)
-      .then(r => {
-        if(!r.ok) throw new Error('bad response');
-        return r.text();
-      })
-      .then(xmlText => {
-        const items = parseYouTubeFeed(xmlText);
+    function tryProxy(index){
+      if(index >= PROXIES.length) return Promise.reject(new Error('all proxies failed'));
+      return fetch(PROXIES[index], { signal: AbortSignal.timeout(8000) })
+        .then(r => {
+          if(!r.ok) throw new Error('bad response');
+          return r.text();
+        })
+        .then(xmlText => parseYouTubeFeed(xmlText))
+        .catch(() => tryProxy(index + 1));
+    }
+
+    tryProxy(0)
+      .then(items => {
         const html = renderItems(items);
         list.innerHTML = html;
         status.textContent = 'Live from YouTube';
@@ -781,7 +790,7 @@
         filterContent();
       })
       .catch(() => {
-        // Live fetch failed — fall back to the last successfully loaded
+        // All proxies failed — fall back to the last successfully loaded
         // list instead of a bare error, so visitors still see something.
         let saved = null;
         try{ saved = localStorage.getItem(STORAGE_KEY); }catch(e){}
