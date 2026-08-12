@@ -51,12 +51,12 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Always fetch fresh from network for data feeds — the RSS-to-JSON proxy
-  // (video list) and Blogger's JSONP post feed. Caching these is what made
-  // new videos/posts only show up one visit late — these must never be
-  // served stale.
+  // Always fetch fresh from network for data feeds — the CORS relay used
+  // for the YouTube video list and Blogger's JSONP post feed. Caching
+  // these is what made new videos/posts only show up one visit late —
+  // these must never be served stale.
   const isDataFeed =
-    url.hostname === "api.rss2json.com" ||
+    url.hostname === "api.allorigins.win" ||
     (url.hostname.endsWith("blogspot.com") && url.pathname.startsWith("/feeds/"));
   if (isDataFeed) {
     event.respondWith(fetch(event.request));
