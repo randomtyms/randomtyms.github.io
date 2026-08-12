@@ -1,0 +1,58 @@
+name: Update Latest Videos
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'   # every 3 hours
+  workflow_dispatch:         # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-videos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch and parse YouTube feed
+        run: |
+          python3 - <<'EOF'
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          import json
+
+          CHANNEL_ID = "UC09e-cTjvm5uefrsQwUs_8w"
+          url = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
+          req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+          with urllib.request.urlopen(req, timeout=20) as resp:
+              xml_data = resp.read()
+
+          ns = {
+              "atom": "http://www.w3.org/2005/Atom",
+              "yt": "http://www.youtube.com/xml/schemas/2015"
+          }
+          root = ET.fromstring(xml_data)
+          entries = root.findall("atom:entry", ns)[:5]
+
+          videos = []
+          for entry in entries:
+              title_el = entry.find("atom:title", ns)
+              link_el = entry.find("atom:link[@rel='alternate']", ns)
+              vid_id_el = entry.find("yt:videoId", ns)
+              videos.append({
+                  "title": title_el.text if title_el is not None else "Untitled",
+                  "link": link_el.get("href") if link_el is not None else "",
+                  "videoId": vid_id_el.text if vid_id_el is not None else ""
+              })
+
+          with open("videos.json", "w") as f:
+              json.dump(videos, f, indent=2)
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add videos.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update latest videos"
+          git push
