@@ -59,6 +59,7 @@ self.addEventListener("fetch", (event) => {
     url.hostname === "api.allorigins.win" ||
     url.hostname === "api.codetabs.com" ||
     url.hostname === "api.cors.lol" ||
+    (url.hostname === self.location.hostname && url.pathname.endsWith("/videos.json")) ||
     (url.hostname.endsWith("blogspot.com") && url.pathname.startsWith("/feeds/"));
   if (isDataFeed) {
     event.respondWith(fetch(event.request));
