@@ -57,6 +57,8 @@ self.addEventListener("fetch", (event) => {
   // these must never be served stale.
   const isDataFeed =
     url.hostname === "api.allorigins.win" ||
+    url.hostname === "api.codetabs.com" ||
+    url.hostname === "api.cors.lol" ||
     (url.hostname.endsWith("blogspot.com") && url.pathname.startsWith("/feeds/"));
   if (isDataFeed) {
     event.respondWith(fetch(event.request));
