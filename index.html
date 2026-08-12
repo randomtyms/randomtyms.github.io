@@ -729,33 +729,52 @@
     const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
     const status = document.getElementById('videoStatus');
     const list = document.getElementById('videoList');
+    const STORAGE_KEY = 'rt_last_videos_html';
+
+    function renderItems(items){
+      return items.map(item => {
+        const vidId =
+          (item.link && item.link.match(/(?:[?&]v=|\/shorts\/)([a-zA-Z0-9_-]{6,})/) || [])[1] ||
+          (item.guid && item.guid.match(/video:([a-zA-Z0-9_-]{6,})/) || [])[1] ||
+          '';
+        const maxThumb = vidId ? `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg` : '';
+        const fallbackThumb = vidId ? `https://img.youtube.com/vi/${vidId}/hqdefault.jpg` : '';
+        const title = item.title.length > 60 ? item.title.slice(0,58) + '…' : item.title;
+        return `<a class="video-card searchable" href="${item.link}" target="_blank" rel="noopener">
+          <img src="${maxThumb}" alt="${title.replace(/"/g, '&quot;')}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackThumb}';">
+          <div class="v-title">${title.replace(/</g,'&lt;')}</div>
+        </a>`;
+      }).join('');
+    }
 
     fetch(proxyUrl)
       .then(r => r.json())
       .then(data => {
         if(data.status !== 'ok' || !data.items || !data.items.length) throw new Error('bad feed');
         const items = data.items.slice(0, 5);
-        list.innerHTML = items.map(item => {
-          const vidId =
-            (item.link && item.link.match(/(?:[?&]v=|\/shorts\/)([a-zA-Z0-9_-]{6,})/) || [])[1] ||
-            (item.guid && item.guid.match(/video:([a-zA-Z0-9_-]{6,})/) || [])[1] ||
-            '';
-          const maxThumb = vidId ? `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg` : '';
-          const fallbackThumb = vidId ? `https://img.youtube.com/vi/${vidId}/hqdefault.jpg` : '';
-          const title = item.title.length > 60 ? item.title.slice(0,58) + '…' : item.title;
-          return `<a class="video-card searchable" href="${item.link}" target="_blank" rel="noopener">
-            <img src="${maxThumb}" alt="${title.replace(/"/g, '&quot;')}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackThumb}';">
-            <div class="v-title">${title.replace(/</g,'&lt;')}</div>
-          </a>`;
-        }).join('');
+        const html = renderItems(items);
+        list.innerHTML = html;
         status.textContent = 'Live from YouTube';
         status.className = 'feed-status live';
+        try{ localStorage.setItem(STORAGE_KEY, html); }catch(e){}
         // Re-apply search filter if user is actively searching during feed load
         filterContent();
       })
       .catch(() => {
-        status.textContent = 'Couldn\'t load latest videos — visit the channel directly';
-        status.className = 'feed-status offline';
+        // Live fetch failed (e.g. the free RSS proxy is rate-limited) —
+        // fall back to the last successfully loaded list instead of a
+        // bare error, so visitors still see something useful.
+        let saved = null;
+        try{ saved = localStorage.getItem(STORAGE_KEY); }catch(e){}
+        if(saved){
+          list.innerHTML = saved;
+          status.textContent = 'Showing last loaded videos — refresh for the newest';
+          status.className = 'feed-status offline';
+          filterContent();
+        } else {
+          status.textContent = 'Couldn\'t load latest videos — visit the channel directly';
+          status.className = 'feed-status offline';
+        }
       });
   })();
 
