@@ -35,6 +35,8 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
+  const url = new URL(event.request.url);
+
   // Network-first for page navigations (the HTML shell)
   if (event.request.mode === "navigate") {
     event.respondWith(
@@ -46,6 +48,18 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
     );
+    return;
+  }
+
+  // Always fetch fresh from network for data feeds — the RSS-to-JSON proxy
+  // (video list) and Blogger's JSONP post feed. Caching these is what made
+  // new videos/posts only show up one visit late — these must never be
+  // served stale.
+  const isDataFeed =
+    url.hostname === "api.rss2json.com" ||
+    (url.hostname.endsWith("blogspot.com") && url.pathname.startsWith("/feeds/"));
+  if (isDataFeed) {
+    event.respondWith(fetch(event.request));
     return;
   }
 
