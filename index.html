@@ -14,49 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://randomtyms.github.io/#webpage",
-      "url": "https://randomtyms.github.io/",
-      "name": "RandomTyms — Lokesh & Varsha",
-      "description": "Tanglish stories, science, English and digital safety with Lokesh & Varsha. One mom, one phone.",
-      "inLanguage": "en",
-      "isPartOf": { "@id": "https://randomtyms.github.io/#hubsite" },
-      "about": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-      "mainEntity": { "@id": "https://lokeshvarsha.blogspot.com/#lokeshvarshaseries" },
-      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
-      "primaryImageOfPage": { "@id": "https://lokeshvarsha.blogspot.com/#logo" },
-      "subjectOf": { "@id": "https://lokeshvarsha.blogspot.com/#hindu-article" }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://randomtyms.github.io/#hubsite",
-      "url": "https://randomtyms.github.io/",
-      "name": "RandomTyms Hub",
-      "alternateName": "RandomTyms: Home of Lokesh & Varsha",
-      "sameAs": "https://lokeshvarsha.blogspot.com/",
-      "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://randomtyms.github.io/#pwa",
-      "name": "RandomTyms Hub",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Any (Progressive Web App)",
-      "url": "https://randomtyms.github.io/",
-      "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
-    }
-  ]
-}
-</script>
-  <style>
+<style>
   :root{
     --chalk-bg:#1E3A34;
     --chalk-bg-2:#16302B;
@@ -455,6 +413,50 @@
     margin-top:6px;
   }
 </style>
+<script data-goatcounter="https://randomtyms.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://randomtyms.github.io/#webpage",
+      "url": "https://randomtyms.github.io/",
+      "name": "RandomTyms — Lokesh & Varsha",
+      "description": "Tanglish stories, science, English and digital safety with Lokesh & Varsha. One mom, one phone.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://randomtyms.github.io/#hubsite" },
+      "about": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
+      "mainEntity": { "@id": "https://lokeshvarsha.blogspot.com/#lokeshvarshaseries" },
+      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
+      "primaryImageOfPage": { "@id": "https://lokeshvarsha.blogspot.com/#logo" },
+      "subjectOf": { "@id": "https://lokeshvarsha.blogspot.com/#hindu-article" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://randomtyms.github.io/#hubsite",
+      "url": "https://randomtyms.github.io/",
+      "name": "RandomTyms Hub",
+      "alternateName": "RandomTyms: Home of Lokesh & Varsha",
+      "sameAs": "https://lokeshvarsha.blogspot.com/",
+      "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
+      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://randomtyms.github.io/#pwa",
+      "name": "RandomTyms Hub",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any (Progressive Web App)",
+      "url": "https://randomtyms.github.io/",
+      "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
+      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -942,6 +944,7 @@
     e.preventDefault();
     deferredPrompt = e;
     installBtn.style.display='inline-block';
+    if(window.goatcounter) window.goatcounter.count({ path: '/pwa/install-prompt-shown', event: true });
   });
   installBtn.addEventListener('click', async ()=>{
     if(!deferredPrompt) return;
@@ -952,6 +955,7 @@
   });
   window.addEventListener('appinstalled',()=>{
     installBtn.style.display='none';
+    if(window.goatcounter) window.goatcounter.count({ path: '/pwa/installed', event: true });
   });
 </script>
 
