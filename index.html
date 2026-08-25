@@ -105,6 +105,49 @@
     margin-left:auto;
     margin-right:auto;
   }
+
+  /* WELCOME / LINK-HUB BANNER */
+  .welcome-banner{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    max-width:600px;
+    margin:22px auto 0;
+    padding:14px 16px;
+    background:linear-gradient(135deg, var(--marigold) 0%, #ffcf4d 100%);
+    border-radius:16px;
+    text-decoration:none;
+    box-shadow:0 10px 26px rgba(244,163,0,0.28);
+  }
+  .welcome-banner img{
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    object-fit:cover;
+    flex:0 0 auto;
+    box-shadow:0 0 0 2px rgba(21,36,32,0.15);
+  }
+  .welcome-banner .wb-text{flex:1 1 auto; text-align:left;}
+  .welcome-banner .wb-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--chalk-bg);
+    opacity:0.75;
+  }
+  .welcome-banner .wb-title{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:1.02rem;
+    color:var(--ink);
+    line-height:1.25;
+  }
+  .welcome-banner .wb-arrow{
+    font-size:1.4rem;
+    color:var(--ink);
+    flex:0 0 auto;
+  }
   #installBtn{
     display:none;
     margin:18px auto 0;
@@ -469,6 +512,16 @@
   <p class="hero-caption">Our own graphic, celebrating our feature in The Hindu's Education Plus</p>
 
   <p class="press-line">"They are not translations of existing characters. They belong here." — The Hindu, Education Plus</p>
+
+  <a class="welcome-banner" href="welcome/">
+    <img src="welcome/images/footer-wave.png" alt="Lokesh and Varsha waving">
+    <div class="wb-text">
+      <span class="wb-eyebrow">New · Full Site Tour</span>
+      <div class="wb-title">Meet the whole RandomTyms Universe →</div>
+    </div>
+    <span class="wb-arrow">✨</span>
+  </a>
+
   <button id="installBtn">⬇ Add RandomTyms to Home Screen</button>
 </header>
 
