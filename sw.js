@@ -1,6 +1,5 @@
 const CACHE = "randomtyms-hub-v3";
 
-// Added local image paths so local static assets cache offline properly
 const ASSETS = [
   "./",
   "./index.html",
@@ -25,11 +24,17 @@ self.addEventListener("message", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
-    )
+    (async () => {
+      // Enable navigation preload if supported — speeds up the first
+      // navigation response while the SW is still starting up.
+      if (self.registration.navigationPreload) {
+        await self.registration.navigationPreload.enable();
+      }
+      const keys = await caches.keys();
+      await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
+      await self.clients.claim();
+    })()
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
@@ -40,13 +45,25 @@ self.addEventListener("fetch", (event) => {
   // Network-first for page navigations (the HTML shell)
   if (event.request.mode === "navigate") {
     event.respondWith(
-      fetch(event.request)
-        .then((response) => {
+      (async () => {
+        try {
+          // Use the preloaded response if the browser already started
+          // fetching it, instead of firing a second network request.
+          const preloadResp = await event.preloadResponse;
+          if (preloadResp) {
+            const clone = preloadResp.clone();
+            caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+            return preloadResp;
+          }
+          const response = await fetch(event.request);
           const clone = response.clone();
           caches.open(CACHE).then((cache) => cache.put(event.request, clone));
           return response;
-        })
-        .catch(() => caches.match(event.request).then((cached) => cached || caches.match("./index.html")))
+        } catch (e) {
+          const cached = await caches.match(event.request);
+          return cached || caches.match("./index.html");
+        }
+      })()
     );
     return;
   }
@@ -71,10 +88,7 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((cached) => {
       const fetchPromise = fetch(event.request)
         .then((response) => {
-          // Allow basic, cors, and opaque responses (status 200 or 0)
-          // so cross-origin media (Tenor, YouTube thumbs) can cache properly!
           const isValidResponse = response && (response.status === 200 || response.type === "opaque");
-
           if (isValidResponse) {
             const clone = response.clone();
             caches.open(CACHE).then((cache) => cache.put(event.request, clone));
