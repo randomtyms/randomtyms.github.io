@@ -1,67 +1,70 @@
-# 📱 RandomTyms Apps
+# 📱 RandomTyms Apps — Free Tamil & English Learning Apps for Kids (Class 1-8)
 
 **Smart Apps. Happy Learning. Endless Curiosity.**
 
-Free, AI-powered learning tools for kids — built independently, entirely on a smartphone, by [Ganga Ponnu](https://lokeshvarsha.blogspot.com/), creator of the AI-animated Tamil sibling characters **Lokesh & Varsha**.
+Free, AI-powered learning tools for kids — bilingual Tamil + English, for CBSE & Samacheer Kalvi — built independently on a smartphone by [Ganga Ponnu](https://lokeshvarsha.blogspot.com/), creator of AI-animated siblings **Lokesh & Varsha (8 & 13)**.
 
-🔗 **Live App Hub:** [randomtyms.github.io](https://randomtyms.github.io/)
-📖 **Blog:** [lokeshvarsha.blogspot.com](https://lokeshvarsha.blogspot.com/)
+🔗 **Live App Hub (Installs like an app, no Play Store needed):** https://randomtyms.github.io/
+📖 **Blog & Stories:** https://lokeshvarsha.blogspot.com/
+🏆 ISEA State Level Award Winner | Official Tenor GIF Partner | Chennai
 
 ![RandomTyms Apps](Assets/randomtyms-apps.png)
+
+> For children who wear glasses to see themselves as HEROES, not side characters. Built solo, on one phone, with no studio or team.
 
 ---
 
 ## 🚀 What's Inside
 
-A lightweight Progressive Web App (PWA) hub bringing together RandomTyms' learning tools in one place:
+Lightweight PWA that works offline after first install.
 
-### 🧠 AI Textbook Quiz Generator
-Generates quizzes from textbook content, with OMR-style answer bubbles and score-tiered feedback.
-
+### 🧠 AI Textbook Quiz Generator [Class 5-10 | All Subjects]
+Upload/scan textbook page → Instant MCQs with OMR bubbles + score feedback. Best for exam revision.
 ![AI Textbook Quiz Generator](Assets/randomtyms-textbook-ai-quiz.png)
 
-### 🎡 Spinner Wheel
-Fun randomizer tool for classroom/learning activities.
-
+### 🎡 Spinner Wheel [Classroom Tool]
+Random name picker & group maker for teachers.
 ![Wheel of Names](Assets/randomtyms-wheel-of-names.jpg)
 
-### ✖️ Multiplication Practice
-Quick-fire multiplication drills for kids.
+### ✖️ Multiplication Practice [Class 2-5 | Maths]
+Quick-fire table drills.
 
-### 🔷 Symmetry Detective
-Interactive symmetry-recognition learning tool.
-
+### 🔷 Symmetry Detective [Class 3-6 | Maths]
+Learn lines of symmetry interactively.
 ![Lines of Symmetry](Assets/randomtyms-line-of-symmetry.jpg)
 
-More apps are in active development — check the hub for the latest additions.
-
+More free tools coming — check hub weekly.
 ![More Apps Coming Soon](Assets/randomtyms-more-apps-coming-soon.png)
 
 ## ✨ Features
 
-- 📦 Installable PWA (manifest + service worker) — works offline after first load
-- 📰 Live Blogger feed integration for the **Blog** tab
-- 🎬 RSS-to-JSON proxy powering the **Shorts** tab
-- 🎨 Simple, kid-friendly UI — no sign-up, no ads, no tracking
+- 📦 Installable PWA — works offline, no Play Store
+- 🔒 No sign-up, no ads, no tracking — 100% safe for kids
+- 📝 Free worksheets library: [randomtyms-worksheets repo](https://github.com/randomtyms/randomtyms-worksheets)
+- 📰 Live Blog + 🎬 Shorts inside the app
+- 🎨 Built for low-end Android phones
 
-## 🛠️ Built With
+## 👩‍🏫 For Teachers & Parents (10-min use)
 
-- HTML / CSS / JavaScript
-- GitHub Pages for hosting
-- Google Gemini for quiz content generation
+**Teachers:** Open hub on smartboard → Use Spinner for groups → AI Quiz for 5-min recap → Print worksheets free.
+
+**Parents:** Add to Home Screen → Kids practice offline. All Tamil + English.
+
+## 🛠️ Built With — 100% Free Stack
+
+HTML / CSS / JavaScript | GitHub Pages | Google Gemini API
 
 ## 🙋 About RandomTyms
 
-RandomTyms creates educational content on science, English, technology, cyber safety, and digital literacy for children — centered on original AI-animated Tamil siblings **Lokesh & Varsha**. The whole universe — from animation to these apps — is built solo, on one phone, with no studio or team.
+Educational universe on Science, English, Tech, Cyber Safety (Digital Dharma), Space Secrets — centered on Lokesh & Varsha.
 
 - 🏡 [Home](https://lokeshvarsha.blogspot.com/p/home.html)
-- 🚀 [Space Secrets Series](https://lokeshvarsha.blogspot.com/p/space-secrets-series-lokesh-varsha.html)
-- 🛡️ [Digital Dharma Series](https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html)
+- 🚀 [Space Secrets](https://lokeshvarsha.blogspot.com/p/space-secrets-series-lokesh-varsha.html)
+- 🛡️ [Digital Dharma](https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html)
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+MIT — Free for schools & families. Credit to RandomTyms.
 
 ---
-
-⭐ If you find these apps useful for your kids or classroom, consider starring this repo — it helps other parents and teachers discover it!
+⭐ Star this repo
