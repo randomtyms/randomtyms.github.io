@@ -24,7 +24,7 @@ Class 3–8 science. Works on a phone, tablet, or classroom projector.
 
 | File | What it does |
 |---|---|
-| `index.html` | The page (rename `solar-system.html` to this) |
+| `index.html` | The page |
 | `solar-system.js` | The 3D scene — planets, orbits, camera |
 | `README.md` | This file |
 
@@ -45,12 +45,3 @@ Sun, Mercury, Venus, Earth, Moon, Mars, Jupiter, Saturn (with rings), Uranus, Ne
 Distances and sizes are compressed so everything fits on one screen.
 
 ---
-
-## Add it to the hub Apps tab
-
-In the root `index.html`, first card in the Apps panel:
-
-```html
-<a class="series-card searchable" href="solar/">
-  <div class="s-title">🪐 3D Solar System</div>
-  <div class="s-meta">Fly to the
