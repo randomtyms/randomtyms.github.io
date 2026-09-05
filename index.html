@@ -151,17 +151,26 @@
     flex:0 0 auto;
   }
   #installBtn{
-    display:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
     margin:18px auto 0;
     font-family:'Baloo 2',sans-serif;
     font-weight:700;
-    font-size:0.95rem;
+    font-size:0.98rem;
     background:var(--redox);
     color:var(--cream);
     border:none;
-    padding:12px 24px;
+    padding:13px 26px;
     border-radius:10px;
     cursor:pointer;
+    box-shadow:0 8px 22px rgba(178,58,46,0.4);
+    animation:installPulse 2.6s ease-in-out infinite;
+  }
+  #installBtn:active{ animation:none; transform:scale(0.97); }
+  @keyframes installPulse{
+    0%,100%{ box-shadow:0 8px 22px rgba(178,58,46,0.4); }
+    50%{ box-shadow:0 8px 26px rgba(178,58,46,0.7); }
   }
 
   /* SEARCH CONTAINER */
@@ -524,7 +533,9 @@
     <span class="wb-arrow">✨</span>
   </a>
 
-  <button id="installBtn">⬇ Add RandomTyms to Home Screen</button>
+  <button id="installBtn" aria-label="Install or share the RandomTyms app">
+    <span id="installBtnIcon">⬇</span><span id="installBtnText">Add RandomTyms to Home Screen</span>
+  </button>
 </header>
 
 <!-- SEARCH BAR -->
@@ -1001,26 +1012,94 @@
     document.body.appendChild(banner);
   }
 
-  // Install prompt
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-  window.addEventListener('beforeinstallprompt',(e)=>{
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display='inline-block';
-    if(window.goatcounter) window.goatcounter.count({ path: '/pwa/install-prompt-shown', event: true });
-  });
-  installBtn.addEventListener('click', async ()=>{
-    if(!deferredPrompt) return;
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
-    installBtn.style.display='none';
-  });
-  window.addEventListener('appinstalled',()=>{
-    installBtn.style.display='none';
-    if(window.goatcounter) window.goatcounter.count({ path: '/pwa/installed', event: true });
-  });
+  // Install / Share button — visible from first load, not gated on
+  // beforeinstallprompt (which fires late on some browsers and never on
+  // iOS Safari). Auto-switches to "Share" once the app is installed.
+  (function(){
+    const installBtn = document.getElementById('installBtn');
+    const btnIcon = document.getElementById('installBtnIcon');
+    const btnText = document.getElementById('installBtnText');
+    const SITE_URL = 'https://randomtyms.github.io/';
+    let deferredPrompt = null;
+
+    function isStandalone(){
+      return window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true; // iOS "Add to Home Screen"
+    }
+    function isIOS(){
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+
+    function setShareMode(){
+      installBtn.dataset.mode = 'share';
+      btnIcon.textContent = '📤';
+      btnText.textContent = 'Share RandomTyms';
+    }
+    function setInstallMode(){
+      installBtn.dataset.mode = 'install';
+      btnIcon.textContent = '⬇';
+      btnText.textContent = 'Add RandomTyms to Home Screen';
+    }
+
+    // Decide the button's starting state immediately — no waiting on
+    // any async browser event, so it's correct on first paint.
+    if(isStandalone()) setShareMode(); else setInstallMode();
+
+    window.addEventListener('beforeinstallprompt',(e)=>{
+      e.preventDefault();
+      deferredPrompt = e;
+      if(window.goatcounter) window.goatcounter.count({ path: '/pwa/install-prompt-shown', event: true });
+    });
+
+    window.addEventListener('appinstalled',()=>{
+      deferredPrompt = null;
+      setShareMode();
+      if(window.goatcounter) window.goatcounter.count({ path: '/pwa/installed', event: true });
+    });
+
+    async function shareApp(){
+      const shareData = {
+        title: 'RandomTyms',
+        text: 'Free bilingual Tamil-English learning for kids — no ads, no login.',
+        url: SITE_URL
+      };
+      if(navigator.share){
+        try{
+          await navigator.share(shareData);
+          if(window.goatcounter) window.goatcounter.count({ path: '/pwa/shared', event: true });
+        }catch(e){ /* user cancelled — no-op */ }
+        return;
+      }
+      try{
+        await navigator.clipboard.writeText(SITE_URL);
+        alert('Link copied! Share it with friends 💛');
+      }catch(e){
+        window.prompt('Copy this link to share RandomTyms:', SITE_URL);
+      }
+    }
+
+    function showInstallHelp(){
+      if(isIOS()){
+        alert('To install RandomTyms:\n\n1. Tap the Share icon in Safari (square with an arrow)\n2. Choose "Add to Home Screen"');
+      } else {
+        alert('To install RandomTyms:\n\nLook for an install icon in your browser\'s address bar, or open the browser menu and choose "Install app" / "Add to Home Screen".');
+      }
+    }
+
+    installBtn.addEventListener('click', async ()=>{
+      if(installBtn.dataset.mode === 'share'){
+        shareApp();
+        return;
+      }
+      if(deferredPrompt){
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      } else {
+        showInstallHelp();
+      }
+    });
+  })();
 </script>
 
 </body>
