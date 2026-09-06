@@ -184,7 +184,6 @@ function boot() {
   const factBlurb = document.getElementById("fact-blurb");
   const chips = document.getElementById("chips");
   const toggle = document.getElementById("toggle");
-
   const factWatch = document.getElementById("fact-watch");
 
   function youtubeWatchUrl(id) {
@@ -257,6 +256,8 @@ function boot() {
     chips.appendChild(btn);
   }
 
+  setFact("sun");
+
   function pauseSky() {
     playing = false;
     toggle.textContent = "Play";
@@ -269,13 +270,13 @@ function boot() {
   });
   if (factWatch) {
     factWatch.addEventListener("click", (event) => {
-      const id = factWatch.dataset.short;
-      if (!id) {
+      const id = factWatch.dataset.short || byId.sun.short;
+      if (!id && !factWatch.getAttribute("href")) {
         event.preventDefault();
         return;
       }
       pauseSky();
-      factWatch.href = youtubeWatchUrl(id);
+      if (id) factWatch.href = youtubeWatchUrl(id);
     });
   }
   const song = document.getElementById("song") || document.querySelector('a.watch[href*="g-VeaFSHwZk"]');
