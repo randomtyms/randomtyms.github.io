@@ -210,10 +210,65 @@
       color: var(--accent-fg);
       box-shadow: none;
     }
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
+    .bar .quiz-feat {
+      background: var(--accent);
+      color: var(--accent-fg);
+      box-shadow: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
+    .bar .quiz-feat img {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1a1a22;
+    }
+    .who-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 8px 0 0;
+    }
+    .who-line img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex: none;
+      background: #1a1a22;
+    }
+    .who-line .faces {
+      display: flex;
+      flex: none;
+    }
+    .who-line .faces img {
+      width: 32px;
+      height: 32px;
+    }
+    .who-line .faces img + img {
+      margin-left: -8px;
+    }
+    .who-line span {
+      min-width: 0;
+    }
+    .who-line b {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .card .who-line .meta,
+    .card .who-line .status,
+    .card .who-line .say {
+      margin: 2px 0 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--fg);
+    }
+    .card .who-line .say { color: var(--muted); font-weight: 600; }
     @media (max-width: 640px) {
       .hint { display: none; }
       .bar { justify-content: center; }
@@ -244,7 +299,11 @@
         <button type="button" class="spd" data-speed="3" aria-pressed="true">Medium</button>
         <button type="button" class="spd" data-speed="10" aria-pressed="false">Fast</button>
         <button type="button" id="home">See all</button>
-        <button type="button" id="quiz" aria-pressed="false">Capitals</button>
+        <button type="button" id="quiz" class="quiz-feat" aria-pressed="false">
+          <img src="./lokesh.png" width="22" height="22" alt="">
+          <img src="./varsha.png" width="22" height="22" alt="">
+          L & V Quiz
+        </button>
         <button type="button" id="lang">தமிழ்</button>
       </div>
     </div>
@@ -259,6 +318,6 @@
     }
   }
   </script>
-  <script type="module" src="./world.js?v=1"></script>
+  <script type="module" src="./world.js?v=2"></script>
 </body>
 </html>

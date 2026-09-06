@@ -23,17 +23,21 @@ const COPY = {
     medium: "Medium",
     fast: "Fast",
     seeAll: "See all",
-    quiz: "Capitals",
+    quiz: "L & V Quiz",
     explore: "Explore",
     langSwitch: "தமிழ்",
     capital: "Capital",
     language: "Language",
+    lokesh: "Lokesh",
+    varsha: "Varsha",
+    both: "Lokesh & Varsha",
     correct: "Yes! That's right.",
     wrong: "Not that one. Try again.",
     reveal: (capital, country) => `The capital ${capital} belongs to ${country}.`,
     score: "Score",
     again: "Play again",
-    done: (score, total) => `You got ${score} of ${total}.`,
+    done: (score, total) => `You got ${score} of ${total}!`,
+    doneCheer: "Want another round?",
     question: (capital) => `Which country has the capital ${capital}?`,
     next: "Next",
     loading: "Spinning the globe…",
@@ -48,17 +52,21 @@ const COPY = {
     medium: "நடுத்தரம்",
     fast: "வேகமாக",
     seeAll: "முழு உலகம்",
-    quiz: "தலைநகரங்கள்",
+    quiz: "லோகேஷ் வினா",
     explore: "உலா",
     langSwitch: "English",
     capital: "தலைநகர்",
     language: "மொழி",
+    lokesh: "லோகேஷ்",
+    varsha: "வர்ஷா",
+    both: "லோகேஷ் & வர்ஷா",
     correct: "சரி! அருமை.",
     wrong: "அது அல்ல. மீண்டும் முயல்க.",
     reveal: (capital, country) => `${capital} என்பது ${country} நாட்டின் தலைநகர்.`,
     score: "மதிப்பெண்",
     again: "மீண்டும் விளையாடு",
-    done: (score, total) => `${total}ல் ${score} சரி.`,
+    done: (score, total) => `${total}ல் ${score} சரி!`,
+    doneCheer: "இன்னொரு சுற்று வேண்டுமா?",
     question: (capital) => `${capital} எந்த நாட்டின் தலைநகர்?`,
     next: "அடுத்து",
     loading: "உலகம் சுழல்கிறது…",
@@ -432,7 +440,13 @@ function boot() {
     toggle.textContent = playing ? copy.pause : copy.spin;
     toggle.setAttribute("aria-pressed", playing ? "false" : "true");
     home.textContent = copy.seeAll;
-    quizBtn.textContent = mode === "quiz" ? copy.explore : copy.quiz;
+    if (mode === "quiz") {
+      quizBtn.classList.remove("quiz-feat");
+      quizBtn.textContent = copy.explore;
+    } else {
+      quizBtn.classList.add("quiz-feat");
+      quizBtn.innerHTML = `<img src="./lokesh.png" width="22" height="22" alt=""><img src="./varsha.png" width="22" height="22" alt="">${copy.quiz}`;
+    }
     quizBtn.setAttribute("aria-pressed", mode === "quiz" ? "true" : "false");
     langBtn.textContent = copy.langSwitch;
     document.getElementById("view").setAttribute("aria-label", lang === "ta" ? "முப்பரிமாண உலக உருண்டை" : "3D world globe");
@@ -445,17 +459,40 @@ function boot() {
 
     if (mode === "quiz" && quiz) {
       if (quiz.status === "done") {
-        card.innerHTML = `<h2>${copy.quiz}</h2><p class="meta">${copy.done(quiz.score, quiz.queue.length)}</p>
+        card.innerHTML = `<div class="who-line">
+            <span class="faces">
+              <img src="./lokesh.png" width="32" height="32" alt="">
+              <img src="./varsha.png" width="32" height="32" alt="">
+            </span>
+            <span>
+              <b>${copy.both}</b>
+              <p class="meta">${copy.done(quiz.score, quiz.queue.length)}</p>
+              <p class="say">${copy.doneCheer}</p>
+            </span>
+          </div>
           <button type="button" class="next" id="again">${copy.again}</button>`;
         document.getElementById("again")?.addEventListener("click", startQuiz);
         return;
       }
       const current = quiz.queue[quiz.index];
-      let extra = `<p>${copy.score} ${quiz.score} / ${quiz.queue.length}</p>`;
-      if (quiz.status === "correct") extra += `<p class="status ok">${copy.correct}</p><button type="button" class="next" id="next">${copy.next}</button>`;
-      if (quiz.status === "wrong") extra += `<p class="status bad">${copy.wrong}</p>`;
-      if (quiz.status === "reveal") extra += `<p class="status ok">${copy.reveal(capitalOf(current), nameOf(current))}</p><button type="button" class="next" id="next">${copy.next}</button>`;
-      card.innerHTML = `<h2>${copy.quiz}</h2><p class="meta">${copy.question(capitalOf(current))}</p>${extra}`;
+      let extra = "";
+      if (quiz.status === "correct") {
+        extra = `<div class="who-line"><img src="./varsha.png" width="36" height="36" alt=""><span><b>${copy.varsha}</b><p class="status ok">${copy.correct}</p></span></div>
+          <button type="button" class="next" id="next">${copy.next}</button>`;
+      } else if (quiz.status === "wrong") {
+        extra = `<div class="who-line"><img src="./varsha.png" width="36" height="36" alt=""><span><b>${copy.varsha}</b><p class="status bad">${copy.wrong}</p></span></div>`;
+      } else if (quiz.status === "reveal") {
+        extra = `<div class="who-line"><img src="./varsha.png" width="36" height="36" alt=""><span><b>${copy.varsha}</b><p class="status ok">${copy.reveal(capitalOf(current), nameOf(current))}</p></span></div>
+          <button type="button" class="next" id="next">${copy.next}</button>`;
+      }
+      card.innerHTML = `<div class="who-line">
+          <img src="./lokesh.png" width="36" height="36" alt="">
+          <span>
+            <b>${copy.lokesh}</b>
+            <p class="meta">${copy.question(capitalOf(current))}</p>
+            <p class="say">${copy.score} ${quiz.score} / ${quiz.queue.length}</p>
+          </span>
+        </div>${extra}`;
       document.getElementById("next")?.addEventListener("click", advanceQuiz);
       return;
     }

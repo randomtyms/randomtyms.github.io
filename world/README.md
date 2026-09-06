@@ -16,7 +16,7 @@ Sister app to the [3D Solar System](https://randomtyms.github.io/solar/).
 
 * **3D Globe Core:** Three.js country meshes on a spinning Earth, with drag-to-orbit and fly-to camera tweening.
 * **Classroom facts:** Capitals, languages, and one kid-safe fact per country. No Wikipedia, no ads.
-* **Capitals quiz:** Eight-question tap-the-country challenge with two tries.
+* **L & V Quiz:** Eight-question tap-the-country challenge with two tries. Lokesh asks, Varsha marks right or wrong, both give the final score.
 * **Tamil + English:** Full UI toggle, remembered on the same device.
 * **Co-Created via Mobile Prompts:** Architected with AI assistance (@grok), matching the solar viewer’s tiny file layout so it can be edited from a phone.
 
@@ -37,8 +37,23 @@ Sister app to the [3D Solar System](https://randomtyms.github.io/solar/).
 * **Pause / Spin:** Freeze or resume auto-rotate.
 * **Speed (Slow / Medium / Fast):** How fast Earth turns.
 * **See all:** Pull back to a wide view.
-* **Capitals:** Eight-question quiz. Tap the country that matches the capital.
+* **L & V Quiz:** Eight-question quiz. Tap the country that matches the capital.
 * **தமிழ் / English:** Switch the whole overlay.
+
+*(Country shapes are simplified so the globe stays light on a phone.)*
+
+---
+
+### 🗺️ Map note
+
+This globe is a **classroom learning tool**, not an official map.
+
+* Borders and names come from a simplified world dataset ([Natural Earth](https://www.naturalearthdata.com/) via world-atlas). Small islands and exact lines are missing on purpose.
+* Some places on Earth have **disputed boundaries or more than one name**. What you see here is a common school-atlas view, not a political claim.
+* Capitals follow everyday textbook use (for example, Pretoria for South Africa’s administrative capital).
+* Facts are written for Class 3–8. They are short and kid-safe, not a full geography syllabus.
+
+If a teacher or parent spots a name that should change for their classroom, tell RandomTyms — we can update the list.
 
 ---
 
@@ -50,6 +65,7 @@ Same shape as `solar/`. Drop this folder next to it.
 | :--- | :--- |
 | `index.html` | Viewport, HUD, and overlay styles |
 | `world.js` | Three.js globe, country data, quiz, Tamil copy |
+| `lokesh.png` / `varsha.png` | Quiz faces (cropped from hub art) |
 | `world-preview.jpg` | Share image for WhatsApp / X |
 | `README.md` | Documentation |
 
