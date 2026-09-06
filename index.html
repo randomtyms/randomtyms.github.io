@@ -261,6 +261,11 @@
   }
 
   /* Genie */
+  .tabs-genie-wrap{
+    position:relative;
+    max-width:640px;
+    margin:0 auto;
+  }
   .genie{
     position:absolute;
     right:22px;
@@ -649,14 +654,16 @@
   <span id="searchResultsCount" class="search-count"></span>
 </div>
 
+<div class="tabs-genie-wrap">
 <nav class="tabs">
   <button class="tab-btn" data-tab="videos">🎬 Shorts</button>
   <button class="tab-btn active" data-tab="blog">📖 Blog</button>
   <button class="tab-btn" data-tab="stickers">👦 Stickers</button>
   <button class="tab-btn" data-tab="about">🎮 Apps</button>
-  <div id="genie" class="genie" aria-hidden="true">🧞</div>
-  <div id="genieBubble" class="genie-bubble"></div>
 </nav>
+<div id="genie" class="genie" aria-hidden="true">🧞</div>
+<div id="genieBubble" class="genie-bubble"></div>
+</div>
 
 <div class="wrap">
 
