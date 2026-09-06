@@ -260,6 +260,95 @@
     border-color:var(--kraft);
   }
 
+  /* Genie */
+  .genie{
+    position:absolute;
+    right:22px;
+    top:-34px;
+    font-size:26px;
+    line-height:1;
+    z-index:30;
+    cursor:default;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+    animation:genie-float 2.6s ease-in-out infinite;
+    user-select:none;
+  }
+  @keyframes genie-float{
+    0%,100%{ transform:translateY(0) rotate(-5deg); }
+    50%{ transform:translateY(-7px) rotate(5deg); }
+  }
+  .genie.buzz{
+    animation:genie-buzz 0.55s ease;
+  }
+  @keyframes genie-buzz{
+    0%,100%{ transform:translate(0,0) rotate(0deg); }
+    20%{ transform:translate(-5px,-2px) rotate(-10deg); }
+    40%{ transform:translate(5px,-4px) rotate(10deg); }
+    60%{ transform:translate(-4px,-1px) rotate(-7deg); }
+    80%{ transform:translate(4px,-3px) rotate(7deg); }
+  }
+  .genie-bubble{
+    position:absolute;
+    right:0;
+    top:-38px;
+    background:var(--kraft);
+    color:var(--ink);
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    line-height:1.3;
+    padding:8px 12px;
+    border-radius:10px;
+    max-width:200px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3);
+    opacity:0;
+    transform:translateY(-6px);
+    pointer-events:none;
+    transition:opacity 0.22s ease, transform 0.22s ease;
+    z-index:31;
+    white-space:normal;
+  }
+  .genie-bubble::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    right:18px;
+    width:11px;
+    height:11px;
+    background:var(--kraft);
+    transform:rotate(45deg);
+  }
+  .genie-bubble.show{
+    opacity:1;
+    transform:translateY(-16px);
+  }
+
+  /* Genie anchored to the Tenor CTA button (Stickers tab only) */
+  .tenor-cta-wrap{
+    position:relative;
+    display:inline-block;
+  }
+  .genie-tenor{
+    right:auto;
+    left:calc(100% - 6px);
+    top:-30px;
+    font-size:22px;
+    display:none;
+  }
+  .genie-bubble-tenor{
+    right:auto;
+    left:calc(100% - 6px);
+    top:-34px;
+    transform:translateY(-6px) translateX(0);
+  }
+  .genie-bubble-tenor::after{
+    right:auto;
+    left:14px;
+  }
+  .genie-bubble-tenor.show{
+    transform:translateY(-16px);
+  }
+
   section.panel{
     display:none;
     background:var(--kraft);
@@ -565,6 +654,8 @@
   <button class="tab-btn active" data-tab="blog">📖 Blog</button>
   <button class="tab-btn" data-tab="stickers">👦 Stickers</button>
   <button class="tab-btn" data-tab="about">🎮 Apps</button>
+  <div id="genie" class="genie" aria-hidden="true">🧞</div>
+  <div id="genieBubble" class="genie-bubble"></div>
 </nav>
 
 <div class="wrap">
@@ -696,7 +787,11 @@
       <a class="searchable" href="https://tenor.com/view/success-win-all-the-best-all-the-best-for-exam-best-of-luck-gif-7490515944884224541" target="_blank" rel="noopener"><img src="https://media1.tenor.com/m/Z_OokL85Qh0AAAAd/success-win.gif" alt="Success thumbs up" loading="lazy"></a>
     </div>
 
-    <a class="cta-btn" href="https://tenor.com/official/randomtyms" target="_blank" rel="noopener">Open Tenor Profile →</a>
+    <div class="tenor-cta-wrap">
+      <a class="cta-btn" href="https://tenor.com/official/randomtyms" target="_blank" rel="noopener">Open Tenor Profile →</a>
+      <div id="genieTenor" class="genie genie-tenor" aria-hidden="true">🧞</div>
+      <div id="genieTenorBubble" class="genie-bubble genie-bubble-tenor"></div>
+    </div>
   </section>
 
   <section class="panel" id="about">
@@ -957,6 +1052,65 @@
       });
   })();
 
+  // Genie — buzzes near the tabs and announces the latest item whenever a
+  // tab is switched. For Stickers specifically, it hops down to the Tenor
+  // profile button instead and points people there.
+  const GENIE_LATEST = {
+    blog: () => {
+      const el = document.querySelector('#blogList .post-title');
+      return el ? `New post: ${el.textContent}` : 'Fresh posts waiting for you!';
+    },
+    videos: () => {
+      const el = document.querySelector('#videoList .v-title');
+      return el ? `New video: ${el.textContent}` : 'New videos are up!';
+    },
+    about: () => {
+      const el = document.querySelector('#about .s-title');
+      return el ? `Try: ${el.textContent}` : 'New tools to explore!';
+    }
+  };
+  let genieBubbleTimer, genieTenorBubbleTimer;
+
+  function buzzGenie(tabId){
+    const genie = document.getElementById('genie');
+    const bubble = document.getElementById('genieBubble');
+    const tenorGenie = document.getElementById('genieTenor');
+    const tenorBubble = document.getElementById('genieTenorBubble');
+
+    if(tabId === 'stickers'){
+      // Hide the tab-bar genie, buzz the one parked by the Tenor button instead.
+      if(bubble) bubble.classList.remove('show');
+      if(genie) genie.style.display = 'none';
+      if(!tenorGenie || !tenorBubble) return;
+      tenorGenie.style.display = '';
+      tenorGenie.classList.remove('buzz');
+      void tenorGenie.offsetWidth;
+      tenorGenie.classList.add('buzz');
+      tenorBubble.textContent = 'Check out the latest sticker @ Tenor!';
+      tenorBubble.classList.add('show');
+      clearTimeout(genieTenorBubbleTimer);
+      genieTenorBubbleTimer = setTimeout(()=> tenorBubble.classList.remove('show'), 3200);
+      return;
+    }
+
+    // Any other tab — hide the Tenor genie, buzz the tab-bar one.
+    if(tenorBubble) tenorBubble.classList.remove('show');
+    if(tenorGenie) tenorGenie.style.display = 'none';
+    if(!genie || !bubble) return;
+    genie.style.display = '';
+    genie.classList.remove('buzz');
+    void genie.offsetWidth;
+    genie.classList.add('buzz');
+
+    const getMsg = GENIE_LATEST[tabId];
+    const msg = getMsg ? getMsg() : '';
+    if(!msg) return;
+    bubble.textContent = msg;
+    bubble.classList.add('show');
+    clearTimeout(genieBubbleTimer);
+    genieBubbleTimer = setTimeout(()=> bubble.classList.remove('show'), 3200);
+  }
+
   // Tab switching
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
@@ -964,6 +1118,7 @@
       document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).classList.add('active');
+      buzzGenie(btn.dataset.tab);
     });
   });
 
