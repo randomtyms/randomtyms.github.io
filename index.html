@@ -320,13 +320,14 @@
   .genie-bubble::after{
     content:"";
     position:absolute;
-    bottom:-6px;
-    left:var(--tail-x, 50%);
+    top:calc(50% - 5.5px);
     width:11px;
     height:11px;
     background:var(--kraft);
-    transform:translateX(-50%) rotate(45deg);
+    transform:rotate(45deg);
   }
+  .genie-bubble.point-left::after{ left:-5px; }
+  .genie-bubble.point-right::after{ right:-5px; }
   .genie-bubble.show{
     opacity:1;
     transform:translateY(-16px);
@@ -1107,18 +1108,18 @@
     // Keep the bubble on whichever side has more room, and clamp it so it
     // never runs off either edge of the card.
     const bubbleWidth = Math.min(180, bubble.offsetWidth || 160);
-    let bubbleLeft = genieLeft < wrapWidth / 2
+    const genieOnLeftHalf = genieLeft < wrapWidth / 2;
+    let bubbleLeft = genieOnLeftHalf
       ? genieLeft + genieWidth + 10
       : genieLeft - bubbleWidth - 10;
     bubbleLeft = Math.max(0, Math.min(bubbleLeft, wrapWidth - bubbleWidth));
     bubble.style.left = `${bubbleLeft}px`;
 
-    // Point the tail at wherever the genie actually ended up, instead of
-    // sitting at a fixed spot on the bubble regardless of layout.
-    const genieCenter = genieLeft + (genieWidth / 2);
-    let tailX = genieCenter - bubbleLeft;
-    tailX = Math.max(12, Math.min(tailX, bubbleWidth - 12));
-    bubble.style.setProperty('--tail-x', `${tailX}px`);
+    // Point the tail toward whichever side the genie actually landed on —
+    // genie and bubble sit side-by-side, not stacked, so the tail needs to
+    // point left or right, not down.
+    bubble.classList.remove('point-left', 'point-right');
+    bubble.classList.add(genieOnLeftHalf ? 'point-left' : 'point-right');
   }
 
   // Don't have the genie appear the instant the page paints — fade it in
