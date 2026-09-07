@@ -1115,14 +1115,19 @@
   }
 
   // Don't have the genie appear the instant the page paints — fade it in
-  // a little after everything else has settled, so it doesn't compete for
-  // attention during the initial load.
+  // a little after everything else has settled, with a little wiggle to
+  // announce itself. If the user taps a tab before this timer finishes,
+  // buzzGenie() below forces it visible immediately too, so a quick tap
+  // never leaves the genie invisible while its bubble already shows.
   window.addEventListener('load', ()=>{
     positionGenieOverTab('blog'); // start parked over the default active tab
     setTimeout(()=>{
       const genie = document.getElementById('genie');
-      if(genie) genie.classList.add('genie-visible');
-    }, 1200);
+      if(!genie) return;
+      genie.classList.add('genie-visible');
+      genie.classList.add('buzz');
+      setTimeout(()=> genie.classList.remove('buzz'), 600);
+    }, 700);
   });
 
   function buzzGenie(tabId){
@@ -1136,10 +1141,11 @@
       if(bubble) bubble.classList.remove('show');
       if(genie) genie.style.display = 'none';
       if(!tenorGenie || !tenorBubble) return;
-      tenorGenie.style.display = '';
+      tenorGenie.style.display = 'inline-block';
       tenorGenie.classList.remove('buzz');
       void tenorGenie.offsetWidth;
       tenorGenie.classList.add('buzz');
+      setTimeout(()=> tenorGenie.classList.remove('buzz'), 600);
       tenorBubble.textContent = 'Check out the latest sticker @ Tenor!';
       tenorBubble.classList.add('show');
       clearTimeout(genieTenorBubbleTimer);
@@ -1152,12 +1158,12 @@
     if(tenorGenie) tenorGenie.style.display = 'none';
     if(!genie || !bubble) return;
     genie.style.display = '';
+    genie.classList.add('genie-visible'); // force-show even if the ambient reveal timer hasn't fired yet
     positionGenieOverTab(tabId);
     genie.classList.remove('buzz');
     void genie.offsetWidth;
     genie.classList.add('buzz');
-
-    const getMsg = GENIE_LATEST[tabId];
+    setTimeout(()=> genie.classList.remove('buzz'), 600);
     const msg = getMsg ? getMsg() : '';
     if(!msg) return;
     bubble.textContent = msg;
