@@ -1142,6 +1142,7 @@
       if(genie) genie.style.display = 'none';
       if(!tenorGenie || !tenorBubble) return;
       tenorGenie.style.display = 'inline-block';
+      tenorGenie.classList.add('genie-visible');
       tenorGenie.classList.remove('buzz');
       void tenorGenie.offsetWidth;
       tenorGenie.classList.add('buzz');
@@ -1164,8 +1165,8 @@
     void genie.offsetWidth;
     genie.classList.add('buzz');
     setTimeout(()=> genie.classList.remove('buzz'), 600);
-    const msg = getMsg ? getMsg() : '';
-    if(!msg) return;
+    const getMsg = GENIE_LATEST[tabId];
+    const msg = getMsg ? getMsg() : 'Latest updates here!';
     bubble.textContent = msg;
     bubble.classList.add('show');
     clearTimeout(genieBubbleTimer);
