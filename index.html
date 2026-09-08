@@ -29,7 +29,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --chalk-bg:#1E3A34;
@@ -135,6 +137,8 @@
   .hero-characters{
     width:100%;
     max-width:360px;
+    aspect-ratio:16/10;
+    object-fit:cover;
     border-radius:16px;
     border:1px solid var(--line);
     margin:0 auto 18px;
@@ -1390,9 +1394,14 @@
   (function ddBadgeInit(){
     const badge = document.getElementById('ddBadge');
     if(!badge) return;
-    badge.addEventListener('click', ()=>{
+    const destination = badge.getAttribute('href');
+    badge.addEventListener('click', (e)=>{
+      e.preventDefault();
       badge.classList.add('pressed');
-      setTimeout(()=> badge.classList.remove('pressed'), 500);
+      setTimeout(()=>{
+        badge.classList.remove('pressed');
+        window.open(destination, '_blank', 'noopener');
+      }, 380);
     });
   })();
 </script>
