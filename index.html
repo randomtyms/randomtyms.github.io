@@ -1228,15 +1228,45 @@
   }
 
   // Tab switching
+  function activateTab(tabId){
+    const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+    const panel = document.getElementById(tabId);
+    if(!btn || !panel) return;
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    panel.classList.add('active');
+    buzzGenie(tabId);
+  }
   document.querySelectorAll('.tab-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-      buzzGenie(btn.dataset.tab);
-    });
+    btn.addEventListener('click',()=> activateTab(btn.dataset.tab));
   });
+
+  // Deep-link support — lets the manifest's "shortcuts" (long-press the
+  // home screen icon) jump straight to a tab via ?tab=videos etc. Also
+  // handles share_target: when another app shares a link/text into
+  // RandomTyms, show a brief banner acknowledging what came in rather
+  // than silently swallowing it.
+  (function handleIncomingParams(){
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
+    if(tab) activateTab(tab);
+
+    const sharedTitle = params.get('title');
+    const sharedText = params.get('text');
+    const sharedUrl = params.get('url');
+    if(sharedTitle || sharedText || sharedUrl){
+      const summary = sharedTitle || sharedText || sharedUrl;
+      const banner = document.createElement('div');
+      banner.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;'
+        + 'background:var(--kraft);color:var(--ink);padding:14px 16px;border-radius:12px;'
+        + 'font-family:\'Baloo 2\',sans-serif;font-size:0.85rem;line-height:1.4;'
+        + 'box-shadow:0 8px 20px rgba(0,0,0,0.3);';
+      banner.textContent = `Received: ${summary}`;
+      document.body.appendChild(banner);
+      setTimeout(()=> banner.remove(), 5000);
+    }
+  })();
 
   // Force Blogger's mobile-optimized layout for the Apps tab tools when
   // visited from a mobile device — appends ?m=1, which Blogger uses to
