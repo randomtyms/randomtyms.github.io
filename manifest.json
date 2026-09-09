@@ -1,5 +1,5 @@
 {
-  "id": "randomtyms-pwa",
+  "id": "/",
   "name": "RandomTyms — Lokesh & Varsha",
   "short_name": "RandomTyms",
   "description": "Tanglish stories, science, English and digital safety with Lokesh & Varsha.",
@@ -11,7 +11,7 @@
     "standalone",
     "minimal-ui"
   ],
-  "orientation": "any",
+  "orientation": "portrait",
   "background_color": "#1E3A34",
   "theme_color": "#1E3A34",
   "lang": "en",
