@@ -104,7 +104,7 @@
     },
     {
       "src": "Screenshots/desktop.png",
-      "sizes": "1920x1080",
+      "sizes": "1376x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "RandomTyms Interactive Hub on Desktop"
