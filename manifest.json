@@ -1,5 +1,5 @@
 {
-  "id": "/",
+  "id": "randomtyms-pwa",
   "name": "RandomTyms — Lokesh & Varsha",
   "short_name": "RandomTyms",
   "description": "Tanglish stories, science, English and digital safety with Lokesh & Varsha.",
@@ -23,28 +23,28 @@
       "short_name": "Blog",
       "description": "Latest posts from Lokesh & Varsha",
       "url": "./index.html?tab=blog",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Shorts",
       "short_name": "Shorts",
       "description": "Latest video uploads",
       "url": "./index.html?tab=videos",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Stickers",
       "short_name": "Stickers",
       "description": "Lokesh & Varsha GIFs and stickers",
       "url": "./index.html?tab=stickers",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Apps",
       "short_name": "Apps",
       "description": "Free interactive tools",
       "url": "./index.html?tab=about",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "icons": [
@@ -88,6 +88,13 @@
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Lokesh & Varsha stickers"
+    },
+    {
+      "src": "Screenshots/desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "RandomTyms Interactive Hub on Desktop"
     }
   ]
 }
