@@ -6,8 +6,12 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui", "browser"],
-  "orientation": "portrait",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
   "background_color": "#1E3A34",
   "theme_color": "#1E3A34",
   "lang": "en",
@@ -16,6 +20,15 @@
   "prefer_related_applications": false,
   "launch_handler": {
     "client_mode": "auto"
+  },
+  "share_target": {
+    "action": "./index.html",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
   },
   "shortcuts": [
     {
@@ -70,21 +83,21 @@
   "screenshots": [
     {
       "src": "Screenshots/home.png",
-      "sizes": "1080x1920",
+      "sizes": "1080x2400",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Home screen with Lokesh & Varsha"
     },
     {
       "src": "Screenshots/apps.png",
-      "sizes": "1080x1920",
+      "sizes": "1080x2400",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Free tools and apps"
     },
     {
       "src": "Screenshots/stickers.png",
-      "sizes": "1080x1920",
+      "sizes": "1080x2400",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Lokesh & Varsha stickers"
