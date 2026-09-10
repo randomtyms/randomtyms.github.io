@@ -8,6 +8,7 @@ const ASSETS = [
   "./icon-512.png",
   "./logo.webp",
   "./hero-characters.jpg",
+  "./Assets/krishna.webp",
   // Digital Dharma files in /dd/
   "./dd/",
   "./dd/index.html",
