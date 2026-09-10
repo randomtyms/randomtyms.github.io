@@ -1,0 +1,569 @@
+{
+  "version": "2.0",
+  "language": "ta",
+  "source": "en file translated via Bhashini en->ta (human reviewed)",
+  "bhashini": {
+    "enabled": true,
+    "languages": [
+      "en",
+      "ta"
+    ],
+    "notes": "DB stays en only, but this is pre-translated ta cache for offline use. Generated at presentation time and cached in IndexedDB"
+  },
+  "topics": [
+    {
+      "id": "DD01",
+      "title_en": "General Dharma",
+      "title_ta": "பொது தர்மம்",
+      "icon": "🪷",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html",
+      "questions": [
+        {
+          "id": "DD01-Q001",
+          "question_en": "Why should I tell the truth?",
+          "question_ta": "நான் ஏன் உண்மையைச் சொல்ல வேண்டும்?",
+          "answer_en": "Truth builds trust. When you speak honestly, people know they can depend on your words. Even when the truth is difficult, being honest gives you the courage to face things and make them right.",
+          "answer_ta": "உண்மை நம்பிக்கையை உருவாக்குகிறது. நீங்கள் நேர்மையாகப் பேசும்போது, உங்கள் வார்த்தைகளை மக்கள் நம்பலாம் என்று அறிவார்கள். உண்மை கடினமாக இருந்தாலும், நேர்மையாக இருப்பது விஷயங்களை எதிர்கொண்டு சரி செய்ய தைரியம் தரும்."
+        },
+        {
+          "id": "DD01-Q002",
+          "question_en": "Why should I help others?",
+          "question_ta": "நான் ஏன் மற்றவர்களுக்கு உதவ வேண்டும்?",
+          "answer_en": "Helping someone is a simple way to make the world a little better. You don't need to do something huge. A kind word, a helping hand, or sharing what you have can make someone's day brighter.",
+          "answer_ta": "மற்றவருக்கு உதவுவது உலகை கொஞ்சம் சிறப்பாக்க ஒரு எளிய வழி. நீங்கள் பெரியதாக ஏதாவது செய்ய வேண்டியதில்லை. ஒரு கனிவான வார்த்தை, ஒரு உதவிக் கரம், அல்லது உங்களிடம் உள்ளதைப் பகிர்வது ஒருவரின் நாளை பிரகாசமாக்கும்."
+        },
+        {
+          "id": "DD01-Q003",
+          "question_en": "What should I do when I am angry?",
+          "question_ta": "நான் கோபமாக இருக்கும்போது என்ன செய்ய வேண்டும்?",
+          "answer_en": "When anger rises, don't let it choose your actions. Pause, take a few slow breaths, and give yourself time to calm down. Then speak about what happened without hurting yourself or someone else.",
+          "answer_ta": "கோபம் வரும்போது, அது உங்கள் செயல்களை தீர்மானிக்க விடாதீர்கள். நிறுத்துங்கள், மெதுவாக சில முறை மூச்சு விடுங்கள், அமைதியாக நேரம் எடுத்துக்கொள்ளுங்கள். பின்னர் உங்களையோ மற்றவரையோ காயப்படுத்தாமல் என்ன நடந்தது என்று பேசுங்கள்."
+        },
+        {
+          "id": "DD01-Q004",
+          "question_en": "What should I do when I feel sad?",
+          "question_ta": "நான் சோகமாக உணரும்போது என்ன செய்ய வேண்டும்?",
+          "answer_en": "It is okay to feel sad. You don't have to hide every difficult feeling. Talk to someone you trust, give yourself time, and remember that feelings can change. You don't have to face them alone.",
+          "answer_ta": "சோகமாக உணர்வது பரவாயில்லை. ஒவ்வொரு கடினமான உணர்வையும் நீங்கள் மறைக்க வேண்டியதில்லை. நீங்கள் நம்பும் ஒருவரிடம் பேசுங்கள், உங்களுக்கு நேரம் கொடுங்கள், உணர்வுகள் மாறக்கூடும் என்பதை நினைவில் கொள்ளுங்கள். நீங்கள் தனியாக எதிர்கொள்ள வேண்டியதில்லை."
+        },
+        {
+          "id": "DD01-Q005",
+          "question_en": "How do I stop being afraid?",
+          "question_ta": "பயத்தை எப்படி நிறுத்துவது?",
+          "answer_en": "Being brave does not mean never feeling afraid. Courage means taking the right step even when you feel afraid. Take a breath, understand what is frightening you, and ask a trusted person for help when you need it.",
+          "answer_ta": "தைரியமாக இருப்பது என்பது ஒருபோதும் பயப்படாமல் இருப்பது அல்ல. பயமாக இருந்தாலும் சரியான அடியை எடுத்து வைப்பதே தைரியம். மூச்சு விடுங்கள், உங்களை எது பயமுறுத்துகிறது என்பதைப் புரிந்து கொள்ளுங்கள், தேவைப்படும்போது நம்பகமானவரிடம் உதவி கேளுங்கள்."
+        },
+        {
+          "id": "DD01-Q006",
+          "question_en": "What if my friend hurts me?",
+          "question_ta": "என் நண்பர் என்னை காயப்படுத்தினால் என்ன செய்வது?",
+          "answer_en": "First, don't rush to hurt them back. Tell your friend calmly that their words or actions hurt you. If the problem continues or you feel unsafe, talk to a trusted adult. A good friendship should have respect on both sides.",
+          "answer_ta": "முதலில், அவர்களைத் திரும்ப காயப்படுத்த அவசரப்படாதீர்கள். அவர்களின் வார்த்தைகள் அல்லது செயல்கள் உங்களை காயப்படுத்தியதாக அமைதியாகச் சொல்லுங்கள். பிரச்சனை தொடர்ந்தால் அல்லது நீங்கள் பாதுகாப்பற்றதாக உணர்ந்தால், நம்பகமான பெரியவரிடம் பேசுங்கள். நல்ல நட்பில் இருபுறமும் மரியாதை இருக்க வேண்டும்."
+        },
+        {
+          "id": "DD01-Q007",
+          "question_en": "Why shouldn't I be jealous?",
+          "question_ta": "நான் ஏன் பொறாமைப்படக்கூடாது?",
+          "answer_en": "Jealousy makes us stare at what someone else has and forget what we have. Instead, appreciate your own journey and learn from others when you can. Someone else's success does not make yours smaller.",
+          "answer_ta": "பொறாமை நம்மை மற்றவரிடம் என்ன இருக்கிறது என்று பார்க்க வைத்து, நம்மிடம் என்ன இருக்கிறது என்பதை மறக்கச் செய்கிறது. அதற்கு பதிலாக, உங்கள் சொந்த பயணத்தைப் பாராட்டுங்கள், முடிந்தால் மற்றவர்களிடமிருந்து கற்றுக்கொள்ளுங்கள். வேறொருவரின் வெற்றி உங்களுடையதை சிறியதாக்காது."
+        },
+        {
+          "id": "DD01-Q008",
+          "question_en": "What does it mean to be courageous?",
+          "question_ta": "தைரியமாக இருப்பது என்றால் என்ன?",
+          "answer_en": "Courage is doing what is right even when it feels difficult or frightening. Sometimes courage means speaking up, sometimes asking for help, and sometimes simply taking the next right step.",
+          "answer_ta": "சரியானதைச் செய்வது கடினமாகவோ பயமாகவோ இருந்தாலும் செய்வதே தைரியம். சில நேரங்களில் தைரியம் என்பது பேசுவது, சில நேரங்களில் உதவி கேட்பது, சில நேரங்களில் அடுத்த சரியான அடியை எடுத்து வைப்பது."
+        },
+        {
+          "id": "DD01-Q009",
+          "question_en": "Why should I be grateful?",
+          "question_ta": "நான் ஏன் நன்றியுள்ளவனாக இருக்க வேண்டும்?",
+          "answer_en": "Gratitude helps you notice the good things already around you. When you appreciate people, opportunities, and even small moments, your heart becomes less focused on what is missing.",
+          "answer_ta": "நன்றியுணர்வு உங்களைச் சுற்றி ஏற்கனவே இருக்கும் நல்ல விஷயங்களை கவனிக்க உதவுகிறது. நீங்கள் மனிதர்களையும், வாய்ப்புகளையும், சிறு தருணங்களையும் கூட பாராட்டும்போது, உங்கள் மனம் எது இல்லை என்பதில் குறைவாக கவனம் செலுத்தும்."
+        },
+        {
+          "id": "DD01-Q010",
+          "question_en": "What does responsibility mean?",
+          "question_ta": "பொறுப்பு என்றால் என்ன?",
+          "answer_en": "Responsibility means taking care of what has been trusted to you and accepting the results of your choices. It means doing your part, even when nobody is reminding you.",
+          "answer_ta": "பொறுப்பு என்பது உங்களிடம் ஒப்படைக்கப்பட்டதை கவனித்துக்கொள்வதும், உங்கள் தேர்வுகளின் விளைவுகளை ஏற்றுக்கொள்வதும் ஆகும். யாரும் நினைவூட்டாதபோதும் உங்கள் பங்கைச் செய்வது இதன் பொருள்."
+        },
+        {
+          "id": "DD01-Q011",
+          "question_en": "What should I do when I make a mistake?",
+          "question_ta": "தவறு செய்யும்போது என்ன செய்ய வேண்டும்?",
+          "answer_en": "Don't hide from a mistake. Admit it, understand what went wrong, fix what you can, and learn from it. A mistake can become a lesson when you have the courage to learn from it.",
+          "answer_ta": "தவறிலிருந்து மறைந்து விடாதீர்கள். அதை ஒப்புக்கொள்ளுங்கள், என்ன தவறு நடந்தது என்று புரிந்து கொள்ளுங்கள், முடிந்ததை சரி செய்யுங்கள், அதிலிருந்து கற்றுக்கொள்ளுங்கள். கற்றுக்கொள்ள தைரியம் இருக்கும்போது தவறு ஒரு பாடமாக மாறும்."
+        },
+        {
+          "id": "DD01-Q012",
+          "question_en": "Why should I be patient?",
+          "question_ta": "நான் ஏன் பொறுமையாக இருக்க வேண்டும்?",
+          "answer_en": "Not everything happens immediately. Patience gives you the space to think instead of reacting in a hurry. Good things often need time, practice, and steady effort.",
+          "answer_ta": "எல்லாம் உடனடியாக நடப்பதில்லை. பொறுமை அவசரமாக எதிர்வினையாற்றுவதற்கு பதிலாக சிந்திக்க இடம் தருகிறது. நல்ல விஷயங்களுக்கு பெரும்பாலும் நேரம், பயிற்சி மற்றும் நிலையான முயற்சி தேவை."
+        },
+        {
+          "id": "DD01-Q013",
+          "question_en": "Is it okay to say no when something feels wrong?",
+          "question_ta": "ஏதாவது தவறாக உணர்ந்தால் வேண்டாம் என்று சொல்வது சரியா?",
+          "answer_en": "Yes. You can say no when something feels unsafe, uncomfortable, or wrong. You do not have to obey a request just because someone asks. If you are unsure, move away and tell a trusted adult.",
+          "answer_ta": "ஆம். ஏதாவது பாதுகாப்பற்றதாகவோ, சங்கடமாகவோ அல்லது தவறாகவோ உணர்ந்தால் நீங்கள் வேண்டாம் என்று சொல்லலாம். யாரோ கேட்கிறார்கள் என்பதற்காக நீங்கள் ஒரு கோரிக்கைக்கு கீழ்ப்படிய வேண்டியதில்லை. உறுதியாக தெரியவில்லை என்றால், விலகிச் சென்று நம்பகமான பெரியவரிடம் சொல்லுங்கள்."
+        },
+        {
+          "id": "DD01-Q014",
+          "question_en": "How can I become a better person?",
+          "question_ta": "நான் எப்படி சிறந்த நபராக மாறுவது?",
+          "answer_en": "Start with small choices: speak truthfully, treat people kindly, take responsibility, control your anger, and help when you can. Becoming better is not about being perfect. It is about choosing wisely, again and again.",
+          "answer_ta": "சிறு தேர்வுகளில் இருந்து தொடங்குங்கள்: உண்மையாகப் பேசுங்கள், மக்களிடம் கனிவாக நடந்து கொள்ளுங்கள், பொறுப்பை ஏற்றுக்கொள்ளுங்கள், கோபத்தைக் கட்டுப்படுத்துங்கள், முடிந்தால் உதவுங்கள். சிறப்பாக மாறுவது சரியாக இருப்பது பற்றி அல்ல. மீண்டும் மீண்டும் புத்திசாலித்தனமாக தேர்வு செய்வது பற்றியது."
+        },
+        {
+          "id": "DD01-Q015",
+          "question_en": "What should I do when someone hurts my feelings?",
+          "question_ta": "யாராவது என் மனதை காயப்படுத்தும்போது என்ன செய்ய வேண்டும்?",
+          "answer_en": "Your feelings matter. Take a moment to calm down, then tell the person how their words or actions affected you. If they keep hurting you or you feel unsafe, talk to someone you trust.",
+          "answer_ta": "உங்கள் உணர்வுகள் முக்கியம். அமைதியாக ஒரு கணம் எடுத்துக்கொள்ளுங்கள், பின்னர் அவர்களின் வார்த்தைகள் அல்லது செயல்கள் உங்களை எவ்வாறு பாதித்தன என்று சொல்லுங்கள். அவர்கள் தொடர்ந்து உங்களை காயப்படுத்தினால் அல்லது நீங்கள் பாதுகாப்பற்றதாக உணர்ந்தால், நீங்கள் நம்பும் ஒருவரிடம் பேசுங்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD02",
+      "title_en": "The Golden Deer — Phishing & Fake Links",
+      "title_ta": "தங்க மான் — ஃபிஷிங் மற்றும் போலி லிங்குகள்",
+      "icon": "🦌",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-2-golden-deer-phishing-fake-links.html",
+      "questions": [
+        {
+          "id": "DD02-Q001",
+          "question_en": "How can I tell if a link is fake?",
+          "question_ta": "ஒரு லிங்க் போலியானதா என்று எப்படி தெரிந்து கொள்வது?",
+          "answer_en": "Don't trust a link just because it looks exciting. Check who sent it, look carefully at the web address, and be suspicious if the message creates panic or promises an unbelievable prize. When you're unsure, ask a trusted adult before clicking.",
+          "answer_ta": "ஒரு லிங்க் உற்சாகமாகத் தோன்றுகிறது என்பதற்காக அதை நம்பாதீர்கள். யார் அனுப்பினார்கள் என்று பாருங்கள், வெப் முகவரியை கவனமாகப் பாருங்கள், பீதியை உருவாக்கினால் அல்லது நம்ப முடியாத பரிசை வாக்களித்தால் சந்தேகப்படுங்கள். உறுதியாக தெரியவில்லை என்றால், கிளிக் செய்வதற்கு முன் நம்பகமான பெரியவரிடம் கேளுங்கள்."
+        },
+        {
+          "id": "DD02-Q002",
+          "question_en": "What should I check before clicking a link?",
+          "question_ta": "லிங்கை கிளிக் செய்வதற்கு முன் என்ன சரிபார்க்க வேண்டும்?",
+          "answer_en": "Pause first. Check the sender and the web address. Ask yourself why you received the link and whether the message is trying to make you act quickly. If you're not sure, don't click it—show it to a trusted adult.",
+          "answer_ta": "முதலில் நிறுத்துங்கள். அனுப்பியவரையும் வெப் முகவரியையும் சரிபாருங்கள். ஏன் இந்த லிங்க் உங்களுக்கு வந்தது, அந்த செய்தி உங்களை விரைவாக செயல்பட வைக்க முயற்சிக்கிறதா என்று யோசியுங்கள். உறுதியாக தெரியவில்லை என்றால், கிளிக் செய்யாதீர்கள்— நம்பகமான பெரியவரிடம் காட்டுங்கள்."
+        },
+        {
+          "id": "DD02-Q003",
+          "question_en": "What if someone sends me a message saying I won a prize?",
+          "question_ta": "யாராவது நான் பரிசு வென்றதாக செய்தி அனுப்பினால் என்ன?",
+          "answer_en": "A surprise prize can be tempting, but don't rush. It may be a trap. Check the sender and the link carefully, and never give away personal information just to claim a prize. When you're unsure, ask a trusted adult.",
+          "answer_ta": "திடீர் பரிசு ஆசையைத் தூண்டலாம், ஆனால் அவசரப்படாதீர்கள். அது ஒரு பொறியாக இருக்கலாம். அனுப்பியவரையும் லிங்கையும் கவனமாக சரிபாருங்கள், பரிசைப் பெறுவதற்காக தனிப்பட்ட தகவல்களை ஒருபோதும் கொடுக்காதீர்கள். உறுதியாக தெரியவில்லை என்றால், நம்பகமான பெரியவரிடம் கேளுங்கள்."
+        },
+        {
+          "id": "DD02-Q004",
+          "question_en": "Why do fake messages make me hurry?",
+          "question_ta": "போலி செய்திகள் ஏன் என்னை அவசரப்படுத்துகின்றன?",
+          "answer_en": "Scammers often create urgency because they don't want you to stop and think. A message saying 'act now' or 'you will lose this chance' should make you pause, not panic.",
+          "answer_ta": "மோசடி செய்பவர்கள் பெரும்பாலும் அவசரத்தை உருவாக்குகிறார்கள், ஏனென்றால் நீங்கள் நிறுத்தி சிந்திக்க வேண்டும் என்று அவர்கள் விரும்பவில்லை. 'இப்போதே செயல்படுங்கள்' அல்லது 'இந்த வாய்ப்பை இழப்பீர்கள்' என்ற செய்தி உங்களை பீதியடைய வைக்காமல், நிறுத்திச் சிந்திக்க வைக்க வேண்டும்."
+        },
+        {
+          "id": "DD02-Q005",
+          "question_en": "What should I do if I accidentally click a suspicious link?",
+          "question_ta": "தவறுதலாக சந்தேகமான லிங்கை கிளிக் செய்துவிட்டால் என்ன செய்வது?",
+          "answer_en": "Don't panic. Close the page and don't enter any information or download anything. Tell a trusted adult what happened so they can help you check the device and account.",
+          "answer_ta": "பீதியடையாதீர்கள். பக்கத்தை மூடிவிடுங்கள், எந்த தகவலையும் உள்ளிடாதீர்கள், எதையும் பதிவிறக்கம் செய்யாதீர்கள். என்ன நடந்தது என்று நம்பகமான பெரியவரிடம் சொல்லுங்கள், அவர்கள் சாதனத்தையும் கணக்கையும் சரிபார்க்க உதவுவார்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD03",
+      "title_en": "The Digital Lock — Passwords & Security",
+      "title_ta": "டிஜிட்டல் பூட்டு — கடவுச்சொற்கள் மற்றும் பாதுகாப்பு",
+      "icon": "🔐",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-3-digital-lock-passwords-security.html",
+      "questions": [
+        {
+          "id": "DD03-Q001",
+          "question_en": "Why do I need a strong password?",
+          "question_ta": "எனக்கு ஏன் வலுவான கடவுச்சொல் தேவை?",
+          "answer_en": "A strong password makes it harder for someone else to get into your account. Use a password that is difficult to guess and don't share it with friends. A trusted adult can help you manage important passwords safely.",
+          "answer_ta": "வலுவான கடவுச்சொல் வேறு ஒருவர் உங்கள் கணக்கில் நுழைவதை கடினமாக்குகிறது. யூகிக்க கடினமான கடவுச்சொல்லைப் பயன்படுத்துங்கள், நண்பர்களுடன் பகிராதீர்கள். முக்கியமான கடவுச்சொற்களை பாதுகாப்பாக நிர்வகிக்க நம்பகமான பெரியவர் உதவ முடியும்."
+        },
+        {
+          "id": "DD03-Q002",
+          "question_en": "Is my name and birth year a good password?",
+          "question_ta": "என் பெயர் மற்றும் பிறந்த வருடம் நல்ல கடவுச்சொல்லா?",
+          "answer_en": "No. Your name and birth year can be easy for someone to guess. A strong password should not contain obvious personal information and should be difficult for others to predict.",
+          "answer_ta": "இல்லை. உங்கள் பெயர் மற்றும் பிறந்த வருடத்தை ஒருவர் எளிதாக யூகிக்க முடியும். வலுவான கடவுச்சொல்லில் வெளிப்படையான தனிப்பட்ட தகவல்கள் இருக்கக்கூடாது, மற்றவர்கள் கணிக்க கடினமாக இருக்க வேண்டும்."
+        },
+        {
+          "id": "DD03-Q003",
+          "question_en": "Can I use the same password everywhere?",
+          "question_ta": "எல்லா இடங்களிலும் ஒரே கடவுச்சொல்லை பயன்படுத்தலாமா?",
+          "answer_en": "It's safer not to reuse the same password for every account. If one account is compromised, reused passwords can put your other accounts at risk.",
+          "answer_ta": "ஒவ்வொரு கணக்கிற்கும் ஒரே கடவுச்சொல்லை மீண்டும் பயன்படுத்தாமல் இருப்பது பாதுகாப்பானது. ஒரு கணக்கு பாதிக்கப்பட்டால், மீண்டும் பயன்படுத்தப்பட்ட கடவுச்சொற்கள் உங்கள் மற்ற கணக்குகளையும் ஆபத்தில் ஆழ்த்தும்."
+        },
+        {
+          "id": "DD03-Q004",
+          "question_en": "Should I write my password on a sticky note?",
+          "question_ta": "என் கடவுச்சொல்லை ஸ்டிக்கி நோட்டில் எழுத வேண்டுமா?",
+          "answer_en": "A password written where other people can easily see it is not safe. Keep passwords private and use a trusted password manager with adult guidance if you need help remembering them.",
+          "answer_ta": "மற்றவர்கள் எளிதாகப் பார்க்கக்கூடிய இடத்தில் எழுதப்பட்ட கடவுச்சொல் பாதுகாப்பானது அல்ல. கடவுச்சொற்களை ரகசியமாக வைத்திருங்கள், நினைவில் கொள்ள உதவி தேவைப்பட்டால் பெரியவர்களின் வழிகாட்டுதலுடன் நம்பகமான கடவுச்சொல் மேலாளரைப் பயன்படுத்துங்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD04",
+      "title_en": "The Permanent Path — Digital Footprints & Privacy",
+      "title_ta": "நிரந்தர பாதை — டிஜிட்டல் தடயங்கள் மற்றும் தனியுரிமை",
+      "icon": "👣",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-4-permanent-path-digital.html",
+      "questions": [
+        {
+          "id": "DD04-Q001",
+          "question_en": "Can something I delete from the internet really be gone?",
+          "question_ta": "இணையத்தில் இருந்து நீக்கியது உண்மையிலேயே போய்விடுமா?",
+          "answer_en": "Not always. Someone may have taken a screenshot, saved a copy, or shared it before you deleted it. That's why it is wise to think carefully before posting anything online.",
+          "answer_ta": "எப்போதும் இல்லை. நீங்கள் நீக்குவதற்கு முன்பே யாராவது ஸ்கிரீன்ஷாட் எடுத்திருக்கலாம், நகலை சேமித்திருக்கலாம் அல்லது பகிர்ந்திருக்கலாம். அதனால்தான் ஆன்லைனில் எதையும் பதிவிடும் முன் கவனமாக சிந்திப்பது புத்திசாலித்தனம்."
+        },
+        {
+          "id": "DD04-Q002",
+          "question_en": "Should I share my school or location online?",
+          "question_ta": "என் பள்ளி அல்லது இருப்பிடத்தை ஆன்லைனில் பகிரலாமா?",
+          "answer_en": "Be careful with information that can reveal where you live, study, or spend time. Don't share your school, home address, daily routine, or precise location publicly. When in doubt, ask a trusted adult.",
+          "answer_ta": "நீங்கள் எங்கு வசிக்கிறீர்கள், படிக்கிறீர்கள் அல்லது நேரத்தை செலவிடுகிறீர்கள் என்பதை வெளிப்படுத்தும் தகவல்களில் கவனமாக இருங்கள். உங்கள் பள்ளி, வீட்டு முகவரி, தினசரி வழக்கம் அல்லது துல்லியமான இருப்பிடத்தை பொதுவில் பகிராதீர்கள். சந்தேகம் இருந்தால், நம்பகமான பெரியவரிடம் கேளுங்கள்."
+        },
+        {
+          "id": "DD04-Q003",
+          "question_en": "Can I post my friend's photo without asking?",
+          "question_ta": "என் நண்பரின் புகைப்படத்தை கேட்காமல் பதிவிடலாமா?",
+          "answer_en": "It's better to ask your friend's permission first. Their photo belongs to their personal space too. Respecting someone's privacy is part of being a good digital citizen.",
+          "answer_ta": "முதலில் உங்கள் நண்பரின் அனுமதியைக் கேட்பது நல்லது. அவர்களின் புகைப்படமும் அவர்களின் தனிப்பட்ட இடத்தைச் சேர்ந்தது. ஒருவரின் தனியுரிமையை மதிப்பது ஒரு நல்ல டிஜிட்டல் குடிமகனாக இருப்பதன் ஒரு பகுதி."
+        },
+        {
+          "id": "DD04-Q004",
+          "question_en": "Should I give an app my real name and phone number?",
+          "question_ta": "ஒரு ஆப்பிற்கு என் உண்மையான பெயர் மற்றும் போன் நம்பரை கொடுக்க வேண்டுமா?",
+          "answer_en": "Don't share personal information automatically. First ask why the app needs it and whether the request is necessary. If you're a child, check with a parent or trusted adult before giving an app personal information.",
+          "answer_ta": "தனிப்பட்ட தகவல்களை தானாக பகிராதீர்கள். முதலில் ஆப் ஏன் அதை கேட்கிறது, அது அவசியமா என்று கேளுங்கள். நீங்கள் குழந்தையாக இருந்தால், தனிப்பட்ட தகவல்களை கொடுக்கும் முன் பெற்றோர் அல்லது நம்பகமான பெரியவரிடம் சரிபாருங்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD05",
+      "title_en": "The Power of Words — Cyberbullying",
+      "title_ta": "வார்த்தைகளின் சக்தி — சைபர் புல்லிங்",
+      "icon": "💬",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-5-power-of-words-cyberbullying.html",
+      "questions": [
+        {
+          "id": "DD05-Q001",
+          "question_en": "What should I do if someone is being bullied online?",
+          "question_ta": "யாராவது ஆன்லைனில் கொடுமைப்படுத்தப்பட்டால் என்ன செய்ய வேண்டும்?",
+          "answer_en": "Don't join in and don't encourage the bully. Support the person being hurt, save evidence if appropriate, report the harmful behavior, and tell a trusted adult.",
+          "answer_ta": "அதில் சேராதீர்கள், கொடுமைப்படுத்துபவரை ஊக்குவிக்காதீர்கள். காயப்படும் நபருக்கு ஆதரவளியுங்கள், தேவைப்பட்டால் ஆதாரத்தை சேமியுங்கள், தீங்கு விளைவிக்கும் நடத்தையைப் புகாரளியுங்கள், நம்பகமான பெரியவரிடம் சொல்லுங்கள்."
+        },
+        {
+          "id": "DD05-Q002",
+          "question_en": "Should I fight back if someone bullies me online?",
+          "question_ta": "யாராவது என்னை ஆன்லைனில் கொடுமைப்படுத்தினால் திருப்பி சண்டையிட வேண்டுமா?",
+          "answer_en": "No. Fighting back with more hurtful words can make the situation worse. Step away, block or report the person when appropriate, save evidence, and tell a trusted adult.",
+          "answer_ta": "வேண்டாம். அதிக காயப்படுத்தும் வார்த்தைகளுடன் திருப்பி சண்டையிடுவது நிலைமையை மோசமாக்கும். விலகிச் செல்லுங்கள், தேவைப்பட்டால் அந்த நபரை பிளாக் செய்யுங்கள் அல்லது புகாரளியுங்கள், ஆதாரத்தை சேமியுங்கள், நம்பகமான பெரியவரிடம் சொல்லுங்கள்."
+        },
+        {
+          "id": "DD05-Q003",
+          "question_en": "When does a joke become bullying?",
+          "question_ta": "ஒரு ஜோக் எப்போது கொடுமைப்படுத்துதலாக மாறுகிறது?",
+          "answer_en": "A joke stops being funny when it repeatedly hurts, humiliates, frightens, or targets someone—and the person being targeted isn't enjoying it. If someone says it hurts, listen and stop.",
+          "answer_ta": "ஒரு ஜோக் மீண்டும் மீண்டும் காயப்படுத்தும்போது, அவமானப்படுத்தும்போது, பயமுறுத்தும்போது அல்லது ஒருவரை குறிவைக்கும்போது— குறிவைக்கப்படும் நபர் அதை ரசிக்காதபோது— அது வேடிக்கையாக இருப்பதை நிறுத்துகிறது. யாராவது வலிக்கிறது என்று சொன்னால், கேட்டு நிறுத்துங்கள்."
+        },
+        {
+          "id": "DD05-Q004",
+          "question_en": "Why can words hurt people online?",
+          "question_ta": "வார்த்தைகள் ஏன் ஆன்லைனில் மக்களை காயப்படுத்துகின்றன?",
+          "answer_en": "A screen doesn't remove someone's feelings. Words can still make a person feel embarrassed, frightened, or lonely. Before you post, pause and ask: would I say this kindly if the person were standing in front of me?",
+          "answer_ta": "ஒரு திரை ஒருவரின் உணர்வுகளை நீக்காது. வார்த்தைகள் இன்னும் ஒருவரை சங்கடப்படுத்தும், பயமுறுத்தும் அல்லது தனிமையாக உணர வைக்கும். பதிவிடும் முன், நிறுத்தி யோசியுங்கள்: அந்த நபர் என் முன்னால் நின்றிருந்தால் இதை கனிவாக சொல்வேனா?"
+        },
+        {
+          "id": "DD05-Q005",
+          "question_en": "How can I make the internet a kinder place?",
+          "question_ta": "இணையத்தை எப்படி கனிவான இடமாக மாற்றுவது?",
+          "answer_en": "Use your words to encourage rather than hurt. Don't forward cruel messages, don't join bullying, and speak up when someone is being treated badly. Small acts of kindness can travel a long way online.",
+          "answer_ta": "உங்கள் வார்த்தைகளை காயப்படுத்துவதற்கு பதிலாக ஊக்குவிக்க பயன்படுத்துங்கள். கொடூரமான செய்திகளை ஃபார்வர்டு செய்யாதீர்கள், கொடுமைப்படுத்துதலில் சேராதீர்கள், யாராவது மோசமாக நடத்தப்படும்போது குரல் கொடுங்கள். சிறு கருணைச் செயல்கள் ஆன்லைனில் வெகு தூரம் பயணிக்கும்."
+        }
+      ]
+    },
+    {
+      "id": "DD06",
+      "title_en": "Finding Balance — Screen Time & Digital Well-being",
+      "title_ta": "சமநிலையைக் கண்டறிதல் — திரை நேரம் மற்றும் டிஜிட்டல் நல்வாழ்வு",
+      "icon": "⚖️",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-6-finding-balance-screen-time.html",
+      "questions": [
+        {
+          "id": "DD06-Q001",
+          "question_en": "Why do I feel grumpy after playing games for too long?",
+          "question_ta": "நீண்ட நேரம் கேம் விளையாடிய பிறகு ஏன் எரிச்சலாக உணர்கிறேன்?",
+          "answer_en": "Your brain and body need breaks too. After a long stretch of gaming, you may feel tired, restless, or irritable. Taking a break, moving around, drinking water, and doing something away from the screen can help.",
+          "answer_ta": "உங்கள் மூளைக்கும் உடலுக்கும் கூட இடைவெளி தேவை. நீண்ட நேரம் கேமிங் செய்த பிறகு, நீங்கள் சோர்வாக, அமைதியற்றதாக அல்லது எரிச்சலாக உணரலாம். இடைவெளி எடுப்பது, சுற்றி நடப்பது, தண்ணீர் குடிப்பது மற்றும் திரைக்கு வெளியே ஏதாவது செய்வது உதவும்."
+        },
+        {
+          "id": "DD06-Q002",
+          "question_en": "How do I know when it is time to stop using a screen?",
+          "question_ta": "திரையைப் பயன்படுத்துவதை எப்போது நிறுத்த வேண்டும் என்று எப்படி தெரிந்து கொள்வது?",
+          "answer_en": "Listen to your body. Tired eyes, feeling restless, sitting for too long, or ignoring sleep, food, schoolwork, or people around you are good reasons to take a break.",
+          "answer_ta": "உங்கள் உடலைக் கேளுங்கள். சோர்வான கண்கள், அமைதியற்ற உணர்வு, நீண்ட நேரம் உட்கார்ந்திருப்பது, அல்லது தூக்கம், உணவு, பள்ளிப்பாடம் அல்லது உங்களைச் சுற்றியுள்ள மக்களை புறக்கணிப்பது ஆகியவை இடைவெளி எடுக்க நல்ல காரணங்கள்."
+        },
+        {
+          "id": "DD06-Q003",
+          "question_en": "Is it okay to use my phone before sleeping?",
+          "question_ta": "தூங்குவதற்கு முன் போன் பயன்படுத்துவது சரியா?",
+          "answer_en": "Using a screen right before bed can make it harder for some people to settle down. A calm, screen-free routine before sleep can help your mind get ready for rest.",
+          "answer_ta": "படுக்கைக்கு முன் திரையைப் பயன்படுத்துவது சிலருக்கு அமைதியாக இருப்பதை கடினமாக்கும். தூங்குவதற்கு முன் திரை இல்லாத அமைதியான வழக்கம் உங்கள் மனதை ஓய்வுக்கு தயார் செய்ய உதவும்."
+        },
+        {
+          "id": "DD06-Q004",
+          "question_en": "How can I balance screen time with real life?",
+          "question_ta": "திரை நேரத்தை நிஜ வாழ்க்கையுடன் எப்படி சமப்படுத்துவது?",
+          "answer_en": "Make room for both digital and real-world activities. Learn online, play outside, talk with family, read, create things, move your body, and get enough sleep. A healthy digital life has balance.",
+          "answer_ta": "டிஜிட்டல் மற்றும் நிஜ உலக செயல்பாடுகள் இரண்டிற்கும் இடம் கொடுங்கள். ஆன்லைனில் கற்றுக்கொள்ளுங்கள், வெளியே விளையாடுங்கள், குடும்பத்துடன் பேசுங்கள், படியுங்கள், பொருட்களை உருவாக்குங்கள், உடலை அசையுங்கள், போதுமான தூக்கம் பெறுங்கள். ஆரோக்கியமான டிஜிட்டல் வாழ்க்கைக்கு சமநிலை உண்டு."
+        }
+      ]
+    },
+    {
+      "id": "DD07",
+      "title_en": "The Echo Chamber — Fake News & Forwards",
+      "title_ta": "எதிரொலி அறை — போலி செய்திகள் மற்றும் ஃபார்வர்டுகள்",
+      "icon": "📢",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/lesson-7-echo-chamber-fake-news.html",
+      "questions": [
+        {
+          "id": "DD07-Q001",
+          "question_en": "How do I know if a message is fake news?",
+          "question_ta": "ஒரு செய்தி போலி செய்தியா என்று எப்படி தெரிந்து கொள்வது?",
+          "answer_en": "Don't believe a message just because it sounds convincing or has been forwarded many times. Check the source, look for an official source, and verify the information before believing or sharing it.",
+          "answer_ta": "ஒரு செய்தி நம்பும்படியாக இருக்கிறது அல்லது பல முறை ஃபார்வர்டு செய்யப்பட்டது என்பதற்காக அதை நம்பாதீர்கள். மூலத்தை சரிபாருங்கள், அதிகாரப்பூர்வ மூலத்தைத் தேடுங்கள், நம்புவதற்கு அல்லது பகிர்வதற்கு முன் தகவலை சரிபாருங்கள்."
+        },
+        {
+          "id": "DD07-Q002",
+          "question_en": "Does forwarding a message many times make it true?",
+          "question_ta": "ஒரு செய்தியை பல முறை ஃபார்வர்டு செய்வது அதை உண்மையாக்குமா?",
+          "answer_en": "No. A message doesn't become true because many people forward it. Repetition is not proof. Remember: Think, Verify, Share.",
+          "answer_ta": "இல்லை. பலர் ஃபார்வர்டு செய்வதால் ஒரு செய்தி உண்மையாகிவிடாது. திரும்ப திரும்ப சொல்வது ஆதாரம் அல்ல. நினைவில் கொள்ளுங்கள்: சிந்தியுங்கள், சரிபாருங்கள், பகிருங்கள்."
+        },
+        {
+          "id": "DD07-Q003",
+          "question_en": "What should I check before forwarding a message?",
+          "question_ta": "செய்தியை ஃபார்வர்டு செய்வதற்கு முன் என்ன சரிபார்க்க வேண்டும்?",
+          "answer_en": "Check three things: the source, whether an official source confirms it, and whether you can verify the claim. If you cannot verify it, don't forward it.",
+          "answer_ta": "மூன்று விஷயங்களை சரிபாருங்கள்: மூலம், அதிகாரப்பூர்வ மூலம் அதை உறுதிப்படுத்துகிறதா, மற்றும் நீங்கள் கூற்றை சரிபார்க்க முடியுமா. உங்களால் சரிபார்க்க முடியவில்லை என்றால், ஃபார்வர்டு செய்யாதீர்கள்."
+        },
+        {
+          "id": "DD07-Q004",
+          "question_en": "What should I do before sharing something online?",
+          "question_ta": "ஆன்லைனில் எதையும் பகிரும் முன் என்ன செய்ய வேண்டும்?",
+          "answer_en": "Pause before sharing. Think about whether it is true, check the source, verify important claims, and consider whether sharing it could hurt someone. Think, Verify, Share.",
+          "answer_ta": "பகிரும் முன் நிறுத்துங்கள். அது உண்மையா, மூலத்தை சரிபாருங்கள், முக்கியமான கூற்றுகளை சரிபாருங்கள், அதைப் பகிர்வது யாரையாவது காயப்படுத்துமா என்று யோசியுங்கள். சிந்தியுங்கள், சரிபாருங்கள், பகிருங்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD08",
+      "title_en": "AI Voice Spoofing — Family Safety",
+      "title_ta": "AI குரல் ஏமாற்று — குடும்ப பாதுகாப்பு",
+      "icon": "🎙️",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/ai-voice-cloning-scam-prevention-family-safety.html",
+      "questions": [
+        {
+          "id": "DD08-Q001",
+          "question_en": "Can AI copy someone's voice?",
+          "question_ta": "AI ஒருவரின் குரலை நகலெடுக்க முடியுமா?",
+          "answer_en": "Yes. AI can be used to create a voice that sounds like a real person. That's why a familiar voice on a phone call should not automatically be treated as proof that the person is really calling.",
+          "answer_ta": "ஆம். AI ஐப் பயன்படுத்தி ஒரு உண்மையான நபரைப் போல ஒலிக்கும் குரலை உருவாக்க முடியும். அதனால்தான் தொலைபேசி அழைப்பில் பழக்கமான குரல் உண்மையில் அந்த நபர்தான் அழைக்கிறார் என்பதற்கு ஆதாரமாக கருதக்கூடாது."
+        },
+        {
+          "id": "DD08-Q002",
+          "question_en": "What if I get a call that sounds exactly like my mother?",
+          "question_ta": "என் அம்மாவைப் போலவே ஒரு அழைப்பு வந்தால் என்ன?",
+          "answer_en": "Don't panic or act immediately. A scammer may be using a copied voice. Use a family safety rule such as your secret family code word, and verify the situation through another trusted way before doing anything.",
+          "answer_ta": "பீதியடையாதீர்கள் அல்லது உடனடியாக செயல்படாதீர்கள். ஒரு மோசடி செய்பவர் நகலெடுக்கப்பட்ட குரலைப் பயன்படுத்தலாம். உங்கள் ரகசிய குடும்ப குறியீட்டு வார்த்தை போன்ற குடும்ப பாதுகாப்பு விதியைப் பயன்படுத்துங்கள், எதையும் செய்வதற்கு முன் வேறு நம்பகமான வழியில் நிலைமையை சரிபாருங்கள்."
+        },
+        {
+          "id": "DD08-Q003",
+          "question_en": "How can I know if a voice call is really from my family?",
+          "question_ta": "குரல் அழைப்பு உண்மையில் என் குடும்பத்தினரிடமிருந்து வந்ததா என்று எப்படி தெரிந்து கொள்வது?",
+          "answer_en": "A familiar voice alone is not enough. Ask your family to create a secret code word and use it when something seems unusual. You can also verify by calling the person back through a trusted number.",
+          "answer_ta": "பழக்கமான குரல் மட்டும் போதாது. உங்கள் குடும்பத்தினரிடம் ஒரு ரகசிய குறியீட்டு வார்த்தையை உருவாக்கச் சொல்லுங்கள், ஏதாவது அசாதாரணமாகத் தோன்றும்போது அதைப் பயன்படுத்துங்கள். நம்பகமான எண் மூலம் அந்த நபரை திரும்ப அழைத்தும் சரிபார்க்கலாம்."
+        },
+        {
+          "id": "DD08-Q004",
+          "question_en": "What is a family code word?",
+          "question_ta": "குடும்ப குறியீட்டு வார்த்தை என்றால் என்ன?",
+          "answer_en": "It is a secret word or phrase known only to your family. If someone calls claiming to be a family member during an emergency, the code word can help you verify that the caller is really them. Keep the word private.",
+          "answer_ta": "அது உங்கள் குடும்பத்திற்கு மட்டுமே தெரிந்த ஒரு ரகசிய வார்த்தை அல்லது சொற்றொடர். அவசர காலத்தில் குடும்ப உறுப்பினர் என்று கூறி யாராவது அழைத்தால், அழைப்பவர் உண்மையில் அவர்தான் என்பதை சரிபார்க்க குறியீட்டு வார்த்தை உதவும். அந்த வார்த்தையை ரகசியமாக வைத்திருங்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD09",
+      "title_en": "Digital Arrest Scam",
+      "title_ta": "டிஜிட்டல் கைது மோசடி",
+      "icon": "🚨",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/digital-arrest-fake-scam-call-safety-tips.html",
+      "questions": [
+        {
+          "id": "DD09-Q001",
+          "question_en": "What is a digital arrest scam?",
+          "question_ta": "டிஜிட்டல் கைது மோசடி என்றால் என்ன?",
+          "answer_en": "It is a scam where someone pretends to be police or another authority and frightens you with claims that you are involved in a crime. The scammer may demand money or personal information. Stay calm, disconnect, and tell a trusted adult.",
+          "answer_ta": "யாரோ ஒருவர் போலீஸ் அல்லது வேறு அதிகாரி போல் நடித்து, நீங்கள் ஒரு குற்றத்தில் ஈடுபட்டுள்ளதாகக் கூறி பயமுறுத்தும் மோசடி இது. மோசடி செய்பவர் பணம் அல்லது தனிப்பட்ட தகவல்களைக் கேட்கலாம். அமைதியாக இருங்கள், தொடர்பைத் துண்டியுங்கள், நம்பகமான பெரியவரிடம் சொல்லுங்கள்."
+        },
+        {
+          "id": "DD09-Q002",
+          "question_en": "Can the police arrest me over a video call?",
+          "question_ta": "போலீசார் என்னை வீடியோ காலில் கைது செய்ய முடியுமா?",
+          "answer_en": "A person claiming to be police cannot make a scary video call into proof that you are under arrest. If someone threatens you with a so-called digital arrest, don't follow their instructions. Disconnect and tell a trusted adult immediately.",
+          "answer_ta": "போலீஸ் என்று கூறும் ஒருவர் பயமுறுத்தும் வீடியோ கால் செய்தால் அது நீங்கள் கைது செய்யப்பட்டுள்ளீர்கள் என்பதற்கு ஆதாரமாகாது. யாராவது டிஜிட்டல் கைது என்று மிரட்டினால், அவர்களின் வழிமுறைகளைப் பின்பற்றாதீர்கள். தொடர்பைத் துண்டித்து உடனடியாக நம்பகமான பெரியவரிடம் சொல்லுங்கள்."
+        },
+        {
+          "id": "DD09-Q003",
+          "question_en": "What should I do if someone calls saying I am under digital arrest?",
+          "question_ta": "யாராவது நான் டிஜிட்டல் கைதில் இருப்பதாக சொல்லி அழைத்தால் என்ன செய்வது?",
+          "answer_en": "Disconnect immediately. Don't send money or personal information and don't let the caller frighten you into obeying. Inform a trusted adult and let them handle the situation.",
+          "answer_ta": "உடனடியாக தொடர்பைத் துண்டியுங்கள். பணம் அல்லது தனிப்பட்ட தகவல்களை அனுப்பாதீர்கள், அழைப்பவர் உங்களை பயமுறுத்தி கீழ்ப்படிய வைக்க அனுமதிக்காதீர்கள். நம்பகமான பெரியவரிடம் தெரிவியுங்கள், அவர்கள் நிலைமையை கையாளட்டும்."
+        },
+        {
+          "id": "DD09-Q004",
+          "question_en": "Should I stay on the phone if someone threatens me with arrest?",
+          "question_ta": "யாராவது என்னை கைது செய்வதாக மிரட்டினால் போனில் இருக்க வேண்டுமா?",
+          "answer_en": "No. Threats are meant to make you panic. Stay calm, disconnect the call, and tell a trusted adult. You do not have to solve a frightening call by yourself.",
+          "answer_ta": "வேண்டாம். மிரட்டல்கள் உங்களை பீதியடைய வைக்கவே. அமைதியாக இருங்கள், அழைப்பைத் துண்டியுங்கள், நம்பகமான பெரியவரிடம் சொல்லுங்கள். பயமுறுத்தும் அழைப்பை நீங்கள் தனியாக தீர்க்க வேண்டியதில்லை."
+        }
+      ]
+    },
+    {
+      "id": "DD10",
+      "title_en": "Fake Tech Support Scam",
+      "title_ta": "போலி டெக் சப்போர்ட் மோசடி",
+      "icon": "💻",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/08/tech-support-scam-remote-support-app.html",
+      "questions": [
+        {
+          "id": "DD10-Q001",
+          "question_en": "What exactly is a tech support scam?",
+          "question_ta": "டெக் சப்போர்ட் மோசடி என்றால் என்ன?",
+          "answer_en": "It is a scam where someone pretends your computer or phone has a serious problem and tries to frighten you into giving them money, information, or access to your device.",
+          "answer_ta": "உங்கள் கணினி அல்லது போனில் தீவிர பிரச்சனை இருப்பதாக நடித்து, பணம், தகவல் அல்லது உங்கள் சாதனத்திற்கான அணுகலைப் பெற உங்களை பயமுறுத்த முயற்சிக்கும் மோசடி இது."
+        },
+        {
+          "id": "DD10-Q002",
+          "question_en": "Why do scammers ask me to install apps like AnyDesk?",
+          "question_ta": "மோசடி செய்பவர்கள் ஏன் AnyDesk போன்ற ஆப்களை நிறுவச் சொல்கிறார்கள்?",
+          "answer_en": "Remote-access apps can allow another person to control or view a device. A scammer may try to use one to gain access to your computer. Never install a remote-access app because an unexpected caller tells you to.",
+          "answer_ta": "ரிமோட்-அக்சஸ் ஆப்கள் மற்றொரு நபர் உங்கள் சாதனத்தை கட்டுப்படுத்தவோ பார்க்கவோ அனுமதிக்கும். ஒரு மோசடி செய்பவர் உங்கள் கணினியை அணுக இதைப் பயன்படுத்த முயற்சிக்கலாம். எதிர்பாராத அழைப்பாளர் சொல்கிறார் என்பதற்காக ரிமோட்-அக்சஸ் ஆப்பை ஒருபோதும் நிறுவாதீர்கள்."
+        },
+        {
+          "id": "DD10-Q003",
+          "question_en": "How can I tell if a virus alert is fake?",
+          "question_ta": "வைரஸ் எச்சரிக்கை போலியானதா என்று எப்படி தெரிந்து கொள்வது?",
+          "answer_en": "Be suspicious of alarming pop-ups that demand immediate action or tell you to call an unfamiliar number. Don't call the number in the pop-up. Close it and ask a trusted adult to help verify the problem through the device maker's or software company's official support channel.",
+          "answer_ta": "உடனடி நடவடிக்கை எடுக்க வேண்டும் அல்லது தெரியாத எண்ணை அழைக்கச் சொல்லும் பயமுறுத்தும் பாப்-அப்களில் சந்தேகம் கொள்ளுங்கள். பாப்-அப்பில் உள்ள எண்ணை அழைக்காதீர்கள். அதை மூடிவிட்டு, சாதனம் தயாரித்தவர் அல்லது மென்பொருள் நிறுவனத்தின் அதிகாரப்பூர்வ ஆதரவு வழியாக பிரச்சனையை சரிபார்க்க நம்பகமான பெரியவரிடம் உதவி கேளுங்கள்."
+        },
+        {
+          "id": "DD10-Q004",
+          "question_en": "What should I do if I already installed a remote-access app for a stranger?",
+          "question_ta": "ஏற்கனவே ஒரு அந்நியருக்காக ரிமோட்-அக்சஸ் ஆப் நிறுவிவிட்டால் என்ன செய்வது?",
+          "answer_en": "Don't panic. Stop communicating with the stranger and tell a trusted adult immediately. They can help disconnect the remote access, remove the app if appropriate, and check whether any accounts or passwords need attention.",
+          "answer_ta": "பீதியடையாதீர்கள். அந்நியருடன் பேசுவதை நிறுத்தி உடனடியாக நம்பகமான பெரியவரிடம் சொல்லுங்கள். அவர்கள் ரிமோட் அணுகலைத் துண்டிக்கவும், தேவைப்பட்டால் ஆப்பை நீக்கவும், எந்த கணக்குகள் அல்லது கடவுச்சொற்கள் கவனிக்கப்பட வேண்டும் என்று சரிபார்க்கவும் உதவுவார்கள்."
+        },
+        {
+          "id": "DD10-Q005",
+          "question_en": "Do real companies or banks call me out of the blue about a virus?",
+          "question_ta": "உண்மையான நிறுவனங்கள் அல்லது வங்கிகள் வைரஸ் பற்றி திடீரென்று அழைப்பார்களா?",
+          "answer_en": "An unexpected caller claiming your device has a virus should be treated with suspicion. Don't give them remote access, passwords, OTPs, or payment information. Hang up first and verify through the company's official contact method.",
+          "answer_ta": "உங்கள் சாதனத்தில் வைரஸ் இருப்பதாகக் கூறும் எதிர்பாராத அழைப்பாளரை சந்தேகத்துடன் பார்க்க வேண்டும். அவர்களுக்கு ரிமோட் அணுகல், கடவுச்சொற்கள், OTP கள் அல்லது கட்டணத் தகவலைக் கொடுக்காதீர்கள். முதலில் போனை வைத்துவிட்டு நிறுவனத்தின் அதிகாரப்பூர்வ தொடர்பு முறை மூலம் சரிபாருங்கள்."
+        }
+      ]
+    },
+    {
+      "id": "DD11",
+      "title_en": "Talking With Lokesh & Varsha",
+      "title_ta": "லோகேஷ் & வர்ஷாவுடன் பேசுவது",
+      "icon": "🙋",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/",
+      "questions": [
+        {
+          "id": "DD11-Q001",
+          "question_en": "Am I good?",
+          "question_ta": "நான் நல்ல பிள்ளையா?",
+          "answer_en": "You have kindness in you, and every day you get to choose kind actions. That's what makes someone good — not being perfect, but choosing well again and again.",
+          "answer_ta": "உன்னிடம் கருணை இருக்கிறது, ஒவ்வொரு நாளும் நீ கருணையான செயல்களைத் தேர்ந்தெடுக்கலாம். இதுவே ஒருவரை நல்லவராக்குகிறது — முழுமையாக இருப்பது அல்ல, மீண்டும் மீண்டும் சரியானதைத் தேர்ந்தெடுப்பது."
+        },
+        {
+          "id": "DD11-Q002",
+          "question_en": "Are you good?",
+          "question_ta": "நீங்கள் நல்லவர்களா?",
+          "answer_en": "We try our best to be kind and helpful! We're here to answer your questions and cheer you on.",
+          "answer_ta": "நாங்கள் கருணையாகவும் உதவியாகவும் இருக்க முயற்சிக்கிறோம்! உங்கள் கேள்விகளுக்குப் பதிலளிக்கவும், உங்களை ஊக்குவிக்கவும் நாங்கள் இங்கே இருக்கிறோம்."
+        },
+        {
+          "id": "DD11-Q003",
+          "question_en": "You are bad",
+          "question_ta": "நீங்கள் கெட்டவர்கள்",
+          "answer_en": "That's okay to say — we won't be upset. If something we said wasn't helpful, try asking in a different way and we'll do our best to help.",
+          "answer_ta": "அப்படி சொல்வது பரவாயில்லை — நாங்கள் வருத்தப்பட மாட்டோம். நாங்கள் சொன்னது உதவியாக இல்லையென்றால், வேறு விதமாகக் கேளுங்கள், நாங்கள் முழு முயற்சி செய்வோம்."
+        },
+        {
+          "id": "DD11-Q004",
+          "question_en": "I don't like you",
+          "question_ta": "எனக்கு உங்களைப் பிடிக்கவில்லை",
+          "answer_en": "That's okay! You don't have to like us. We're here whenever you have a question, no matter how you feel about us.",
+          "answer_ta": "பரவாயில்லை! நீங்கள் எங்களை விரும்ப வேண்டிய அவசியம் இல்லை. உங்களுக்கு எங்கள் மீது எப்படி உணர்வு இருந்தாலும், உங்களுக்கு கேள்வி இருக்கும்போது நாங்கள் இங்கே இருக்கிறோம்."
+        },
+        {
+          "id": "DD11-Q005",
+          "question_en": "I love you",
+          "question_ta": "நான் உங்களை விரும்புகிறேன்",
+          "answer_en": "That's so sweet of you! We enjoy chatting with you too. Remember to share that love with your family and friends as well — they're your real-life cheerleaders.",
+          "answer_ta": "இது மிகவும் இனிமையானது! நாங்களும் உங்களுடன் பேசுவதை விரும்புகிறோம். அந்த அன்பை உங்கள் குடும்பத்தினருடனும் நண்பர்களுடனும் பகிர்ந்து கொள்ள மறக்காதீர்கள் — அவர்கள்தான் உங்கள் நிஜ வாழ்க்கை ஆதரவாளர்கள்."
+        },
+        {
+          "id": "DD11-Q006",
+          "question_en": "Are you real?",
+          "question_ta": "நீங்கள் உண்மையானவர்களா?",
+          "answer_en": "We're characters made to help you learn and have fun with questions — not real people. For real friendship and support, your family and friends are the best place to turn.",
+          "answer_ta": "நாங்கள் உங்களுக்கு கற்றுக்கொடுக்கவும், கேள்விகளுடன் வேடிக்கையாக இருக்கவும் உருவாக்கப்பட்ட கதாபாத்திரங்கள் — உண்மையான மனிதர்கள் அல்ல. உண்மையான நட்புக்கும் ஆதரவுக்கும், உங்கள் குடும்பமும் நண்பர்களுமே சிறந்தவர்கள்."
+        },
+        {
+          "id": "DD11-Q007",
+          "question_en": "Can you be my friend?",
+          "question_ta": "நீங்கள் என் நண்பராக இருக்க முடியுமா?",
+          "answer_en": "We'd love to chat with you like friends do! But real friends you can play with, hug, and share your day with are just as important — don't forget to spend time with them too.",
+          "answer_ta": "நண்பர்கள் பேசுவது போல உங்களுடன் பேச விரும்புகிறோம்! ஆனால் நீங்கள் விளையாடவும், கட்டியணைக்கவும், உங்கள் நாளைப் பகிர்ந்து கொள்ளவும் முடிந்த உண்மையான நண்பர்களும் அதே அளவு முக்கியம் — அவர்களுடன் நேரம் செலவிட மறக்காதீர்கள்."
+        },
+        {
+          "id": "DD11-Q008",
+          "question_en": "Why don't you know the answer?",
+          "question_ta": "ஏன் உங்களுக்கு பதில் தெரியாது?",
+          "answer_en": "We're still learning new things every day! Our helpers add new answers regularly, so it might be here soon. Thanks for asking — it helps us grow.",
+          "answer_ta": "நாங்கள் இன்னும் ஒவ்வொரு நாளும் புதிய விஷயங்களைக் கற்றுக்கொண்டிருக்கிறோம்! எங்கள் உதவியாளர்கள் தொடர்ந்து புதிய பதில்களைச் சேர்க்கிறார்கள், எனவே இது விரைவில் இங்கே வரலாம். கேட்டதற்கு நன்றி — இது எங்களை வளர உதவுகிறது."
+        },
+        {
+          "id": "DD11-Q009",
+          "question_en": "Who are trusted adults?",
+          "question_ta": "யார் நம்பகமான பெரியவர்கள்?",
+          "answer_en": "A trusted adult is someone you already know in real life who keeps you safe — like a parent, guardian, grandparent, teacher, or another family member you can talk to honestly. It's not someone you only know from an app or a game, even if they seem nice. If something online feels wrong, a trusted adult is who you go to first.",
+          "answer_ta": "நம்பகமான பெரியவர் என்பவர் நீங்கள் உண்மையான வாழ்க்கையில் ஏற்கனவே அறிந்த, உங்களைப் பாதுகாப்பாக வைத்திருக்கும் ஒருவர் — பெற்றோர், பாதுகாவலர், தாத்தா/பாட்டி, ஆசிரியர், அல்லது நீங்கள் நேர்மையாகப் பேசக்கூடிய மற்றொரு குடும்ப உறுப்பினர். அவர் எவ்வளவு நல்லவராகத் தோன்றினாலும், ஆப் அல்லது கேமில் மட்டும் அறிந்தவர் அல்ல. ஆன்லைனில் ஏதேனும் தவறாகத் தோன்றினால், முதலில் செல்ல வேண்டியவர் நம்பகமான பெரியவர்தான்."
+        },
+        {
+          "id": "DD11-Q010",
+          "question_en": "What counts as personal information?",
+          "question_ta": "தனிப்பட்ட தகவல் என்றால் என்ன?",
+          "answer_en": "Personal information is anything that could identify you or help a stranger find you — your full name, home address, school name, phone number, passwords, photos of where you live, or your daily routine. Keep these private online, even in games or chats, unless a trusted adult says it's okay to share.",
+          "answer_ta": "தனிப்பட்ட தகவல் என்பது உங்களை அடையாளம் காணவோ, ஒரு அந்நியர் உங்களைக் கண்டுபிடிக்கவோ உதவும் எதுவும் — உங்கள் முழுப் பெயர், வீட்டு முகவரி, பள்ளியின் பெயர், தொலைபேசி எண், கடவுச்சொற்கள், நீங்கள் வசிக்கும் இடத்தின் புகைப்படங்கள், அல்லது உங்கள் தினசரி நடைமுறை. விளையாட்டுகள் அல்லது அரட்டையிலும் கூட, நம்பகமான பெரியவர் சரி என்று சொல்லாத வரை இவற்றை தனிப்பட்டதாக வையுங்கள்."
+        },
+        {
+          "id": "DD11-Q011",
+          "question_en": "What is a pop-up?",
+          "question_ta": "பாப்-அப் (Pop-up) என்றால் என்ன?",
+          "answer_en": "A pop-up is a small window that suddenly appears on your screen — sometimes with scary warnings, prizes, or a number to call. Real security warnings don't panic you into acting fast. If a pop-up feels alarming, don't click it or call any number on it — close the window and tell a trusted adult.",
+          "answer_ta": "பாப்-அப் என்பது உங்கள் திரையில் திடீரென தோன்றும் ஒரு சிறிய சாளரம் — சில நேரங்களில் பயமுறுத்தும் எச்சரிக்கைகள், பரிசுகள், அல்லது அழைக்க வேண்டிய எண்ணுடன். உண்மையான பாதுகாப்பு எச்சரிக்கைகள் உங்களை பதற்றமடையச் செய்யாது. ஒரு பாப்-அப் பயமுறுத்துவதாக இருந்தால், அதைக் கிளிக் செய்யாதீர்கள் அல்லது அதில் உள்ள எந்த எண்ணையும் அழைக்காதீர்கள் — சாளரத்தை மூடிவிட்டு நம்பகமான பெரியவரிடம் சொல்லுங்கள்."
+        }
+      ]
+    }
+  ]
+}

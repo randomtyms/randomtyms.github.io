@@ -1,0 +1,1533 @@
+{
+  "version": "2.0",
+  "app": {
+    "name": "Digital Dharma",
+    "assistant": "Ask Lokesh & Varsha",
+    "languages": [
+      "en",
+      "ta"
+    ],
+    "defaultLanguage": "en"
+  },
+  "characters": {
+    "LOKESH": {
+      "id": "LOKESH",
+      "name": "Lokesh",
+      "role": "curious, practical explainer",
+      "asset": "lokesh_master"
+    },
+    "VARSHA": {
+      "id": "VARSHA",
+      "name": "Varsha",
+      "role": "calm, thoughtful explainer",
+      "asset": "varsha_master"
+    }
+  },
+  "bhashini": {
+    "enabled": true,
+    "languages": [
+      "en",
+      "ta"
+    ],
+    "pipelines": {
+      "understand": [
+        "asr",
+        "translation"
+      ],
+      "answer": [
+        "translation",
+        "tts"
+      ]
+    },
+    "notes": "DB stays en only. ta is generated at presentation time and cached in IndexedDB"
+  },
+  "answerPolicy": {
+    "answersAreFixed": true,
+    "answererAlternation": {
+      "managedBy": "session_state",
+      "order": [
+        "VARSHA",
+        "LOKESH"
+      ]
+    },
+    "unknownQuestion": {
+      "enabled": true,
+      "answer": "That’s an interesting question. We don’t have an answer for that one yet.",
+      "answer_ta": "அது ஒரு சுவாரஸ்யமான கேள்வி. எங்களிடம் இன்னும் பதில் இல்லை.",
+      "showSuggestButton": true,
+      "buttonText": "Suggest this question",
+      "buttonText_ta": "இந்த கேள்வியை பரிந்துரைக்கவும்",
+      "sendToReviewQueue": true
+    }
+  },
+  "matching": {
+    "strategy": [
+      "normalize",
+      "question_text",
+      "match_phrases",
+      "keywords",
+      "rank_candidates"
+    ],
+    "thresholds": {
+      "autoAnswerMinScore": 0.75,
+      "autoAnswerMinMargin": 0.1,
+      "clarificationMinScore": 0.55,
+      "lowConfidenceBelow": 0.55,
+      "tunable": true
+    },
+    "multipleMatches": {
+      "enabled": true,
+      "ifCloseScores": "ask_clarification",
+      "neverRandomlyChoose": true,
+      "neverClipQuestionForMatching": true
+    },
+    "futureUpgrade": {
+      "semanticMatching": true,
+      "status": "planned"
+    }
+  },
+  "voiceInput": {
+    "enabled": true,
+    "bhashiniASR": true,
+    "supportedLangs": [
+      "en",
+      "ta"
+    ],
+    "endOfSpeechSilenceMs": 1500,
+    "maxQuestionDurationMs": 20000,
+    "processAfterNaturalPause": true
+  },
+  "reviewQueue": {
+    "enabled": true,
+    "workflow": [
+      "receive_suggested_question",
+      "review_question",
+      "check_relevance",
+      "research_and_fact_check",
+      "write_answer",
+      "check_child_safety",
+      "check_digital_dharma_consistency",
+      "add_to_knowledge_base",
+      "test_matching",
+      "publish"
+    ],
+    "neverPublishAutomatically": true
+  },
+  "topics": [
+    {
+      "id": "DD01",
+      "title": "General Dharma",
+      "icon": "🪷",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html",
+      "questions": [
+        {
+          "id": "DD01-Q001",
+          "question": "Why should I tell the truth?",
+          "keywords": [
+            "truth",
+            "honest",
+            "honesty",
+            "lie",
+            "lying"
+          ],
+          "match_phrases": [
+            "why should I tell the truth",
+            "why should I be honest",
+            "why is honesty important",
+            "why is lying bad",
+            "is it important to tell the truth",
+            "should I always tell the truth"
+          ],
+          "answer": "Truth builds trust. When you speak honestly, people know they can depend on your words. Even when the truth is difficult, being honest gives you the courage to face things and make them right.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q002",
+          "question": "Why should I help others?",
+          "keywords": [
+            "help",
+            "helping",
+            "others",
+            "kind",
+            "kindness"
+          ],
+          "match_phrases": [
+            "why should I help others",
+            "why should we help people",
+            "why is helping others good",
+            "how can I help others",
+            "why is kindness important",
+            "should I help someone who needs me"
+          ],
+          "answer": "Helping someone is a simple way to make the world a little better. You don't need to do something huge. A kind word, a helping hand, or sharing what you have can make someone's day brighter.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q003",
+          "question": "What should I do when I am angry?",
+          "keywords": [
+            "angry",
+            "anger",
+            "mad",
+            "fury",
+            "temper"
+          ],
+          "match_phrases": [
+            "what should I do when I am angry",
+            "how do I control my anger",
+            "what should I do when I get mad",
+            "how can I calm down when angry",
+            "what do I do when my temper gets bad"
+          ],
+          "answer": "When anger rises, don't let it choose your actions. Pause, take a few slow breaths, and give yourself time to calm down. Then speak about what happened without hurting yourself or someone else.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q004",
+          "question": "What should I do when I feel sad?",
+          "keywords": [
+            "sad",
+            "sadness",
+            "cry",
+            "upset",
+            "unhappy"
+          ],
+          "match_phrases": [
+            "what should I do when I feel sad",
+            "what can I do when I am sad",
+            "how do I deal with sadness",
+            "what if I feel like crying",
+            "what should I do when I am unhappy"
+          ],
+          "answer": "It is okay to feel sad. You don't have to hide every difficult feeling. Talk to someone you trust, give yourself time, and remember that feelings can change. You don't have to face them alone.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q005",
+          "question": "How do I stop being afraid?",
+          "keywords": [
+            "afraid",
+            "fear",
+            "scared",
+            "scary",
+            "frightened"
+          ],
+          "match_phrases": [
+            "how do I stop being afraid",
+            "what should I do when I am scared",
+            "how can I overcome fear",
+            "what should I do if something scares me",
+            "how can I be less afraid"
+          ],
+          "answer": "Being brave does not mean never feeling afraid. Courage means taking the right step even when you feel afraid. Take a breath, understand what is frightening you, and ask a trusted person for help when you need it.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q006",
+          "question": "What if my friend hurts me?",
+          "keywords": [
+            "friend",
+            "friendship",
+            "hurt",
+            "friends",
+            "fight"
+          ],
+          "match_phrases": [
+            "what if my friend hurts me",
+            "what should I do if my friend hurts me",
+            "my friend hurt my feelings",
+            "what if my friend is mean to me",
+            "should I hurt my friend back",
+            "my friend and I had a fight"
+          ],
+          "answer": "First, don't rush to hurt them back. Tell your friend calmly that their words or actions hurt you. If the problem continues or you feel unsafe, talk to a trusted adult. A good friendship should have respect on both sides.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q007",
+          "question": "Why shouldn't I be jealous?",
+          "keywords": [
+            "jealous",
+            "jealousy",
+            "envy",
+            "envious"
+          ],
+          "match_phrases": [
+            "why shouldn't I be jealous",
+            "why do I feel jealous",
+            "how can I stop being jealous",
+            "what should I do when I envy someone",
+            "why is jealousy bad"
+          ],
+          "answer": "Jealousy makes us stare at what someone else has and forget what we have. Instead, appreciate your own journey and learn from others when you can. Someone else's success does not make yours smaller.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q008",
+          "question": "What does it mean to be courageous?",
+          "keywords": [
+            "courage",
+            "brave",
+            "bravery",
+            "courageous"
+          ],
+          "match_phrases": [
+            "what does courage mean",
+            "what does it mean to be brave",
+            "how can I be courageous",
+            "what is bravery",
+            "what makes someone courageous"
+          ],
+          "answer": "Courage is doing what is right even when it feels difficult or frightening. Sometimes courage means speaking up, sometimes asking for help, and sometimes simply taking the next right step.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q009",
+          "question": "Why should I be grateful?",
+          "keywords": [
+            "gratitude",
+            "grateful",
+            "thankful",
+            "thanks"
+          ],
+          "match_phrases": [
+            "why should I be grateful",
+            "why is gratitude important",
+            "why should I be thankful",
+            "what is the importance of gratitude",
+            "how can gratitude help me"
+          ],
+          "answer": "Gratitude helps you notice the good things already around you. When you appreciate people, opportunities, and even small moments, your heart becomes less focused on what is missing.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q010",
+          "question": "What does responsibility mean?",
+          "keywords": [
+            "responsibility",
+            "responsible",
+            "duty",
+            "job"
+          ],
+          "match_phrases": [
+            "what does responsibility mean",
+            "what is responsibility",
+            "what does it mean to be responsible",
+            "why is responsibility important",
+            "what is my responsibility"
+          ],
+          "answer": "Responsibility means taking care of what has been trusted to you and accepting the results of your choices. It means doing your part, even when nobody is reminding you.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q011",
+          "question": "What should I do when I make a mistake?",
+          "keywords": [
+            "mistake",
+            "wrong",
+            "failure",
+            "failed",
+            "error"
+          ],
+          "match_phrases": [
+            "what should I do when I make a mistake",
+            "what should I do when I do something wrong",
+            "how should I handle a mistake",
+            "what if I fail",
+            "how do I learn from mistakes"
+          ],
+          "answer": "Don't hide from a mistake. Admit it, understand what went wrong, fix what you can, and learn from it. A mistake can become a lesson when you have the courage to learn from it.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q012",
+          "question": "Why should I be patient?",
+          "keywords": [
+            "patience",
+            "patient",
+            "wait",
+            "waiting"
+          ],
+          "match_phrases": [
+            "why should I be patient",
+            "why is patience important",
+            "how can I be more patient",
+            "why do I have to wait",
+            "how do I learn patience"
+          ],
+          "answer": "Not everything happens immediately. Patience gives you the space to think instead of reacting in a hurry. Good things often need time, practice, and steady effort.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q013",
+          "question": "Is it okay to say no when something feels wrong?",
+          "keywords": [
+            "no",
+            "wrong",
+            "unsafe",
+            "uncomfortable",
+            "boundary"
+          ],
+          "match_phrases": [
+            "can I say no if something feels wrong",
+            "is it okay to say no",
+            "what if something makes me uncomfortable",
+            "what if something feels unsafe",
+            "do I have to say yes",
+            "can I refuse something that feels wrong"
+          ],
+          "answer": "Yes. You can say no when something feels unsafe, uncomfortable, or wrong. You do not have to obey a request just because someone asks. If you are unsure, move away and tell a trusted adult.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q014",
+          "question": "How can I become a better person?",
+          "keywords": [
+            "good",
+            "better",
+            "person",
+            "character",
+            "dharma"
+          ],
+          "match_phrases": [
+            "how can I become a better person",
+            "how can I be a good person",
+            "how do I improve myself",
+            "how can I become better",
+            "what makes someone a good person"
+          ],
+          "answer": "Start with small choices: speak truthfully, treat people kindly, take responsibility, control your anger, and help when you can. Becoming better is not about being perfect. It is about choosing wisely, again and again.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD01-Q015",
+          "question": "What should I do when someone hurts my feelings?",
+          "keywords": [
+            "feelings",
+            "hurt",
+            "sad",
+            "words",
+            "upset"
+          ],
+          "match_phrases": [
+            "what should I do when someone hurts my feelings",
+            "someone hurt my feelings",
+            "what if someone's words hurt me",
+            "how do I deal with hurt feelings",
+            "what should I do when someone makes me upset"
+          ],
+          "answer": "Your feelings matter. Take a moment to calm down, then tell the person how their words or actions affected you. If they keep hurting you or you feel unsafe, talk to someone you trust.",
+          "source": "added",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD02",
+      "title": "The Golden Deer — Phishing & Fake Links",
+      "icon": "🦌",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-2-golden-deer-phishing-fake-links.html",
+      "questions": [
+        {
+          "id": "DD02-Q001",
+          "question": "How can I tell if a link is fake?",
+          "keywords": [
+            "link",
+            "fake",
+            "phishing",
+            "url",
+            "website",
+            "bad",
+            "unsafe",
+            "dangerous"
+          ],
+          "match_phrases": [
+            "how can I tell if a link is fake",
+            "is this link fake",
+            "how do I know if a link is safe",
+            "how can I identify a phishing link",
+            "someone sent me a strange link",
+            "how do I know whether to click a link",
+            "how do I know if a link is bad",
+            "what if someone sends me a bad link",
+            "how to know a bad link",
+            "is this a bad link"
+          ],
+          "answer": "Don't trust a link just because it looks exciting. Check who sent it, look carefully at the web address, and be suspicious if the message creates panic or promises an unbelievable prize. When you're unsure, ask a trusted adult before clicking.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD02-Q002",
+          "question": "What should I check before clicking a link?",
+          "keywords": [
+            "click",
+            "link",
+            "check",
+            "sender",
+            "url"
+          ],
+          "match_phrases": [
+            "what should I check before clicking a link",
+            "what should I look at before clicking",
+            "should I click this link",
+            "how do I check a link before opening it",
+            "what should I check before opening a link"
+          ],
+          "answer": "Pause first. Check the sender and the web address. Ask yourself why you received the link and whether the message is trying to make you act quickly. If you're not sure, don't click it—show it to a trusted adult.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD02-Q003",
+          "question": "What if someone sends me a message saying I won a prize?",
+          "keywords": [
+            "prize",
+            "won",
+            "winner",
+            "gift",
+            "message"
+          ],
+          "match_phrases": [
+            "someone says I won a prize",
+            "I got a message saying I won",
+            "I won a prize message",
+            "is this prize message real",
+            "someone says I am a winner",
+            "I got a surprise prize message"
+          ],
+          "answer": "A surprise prize can be tempting, but don't rush. It may be a trap. Check the sender and the link carefully, and never give away personal information just to claim a prize. When you're unsure, ask a trusted adult.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD02-Q004",
+          "question": "Why do fake messages make me hurry?",
+          "keywords": [
+            "hurry",
+            "urgent",
+            "urgency",
+            "quick",
+            "phishing"
+          ],
+          "match_phrases": [
+            "why do scam messages make me hurry",
+            "why does a fake message say act now",
+            "why do scammers make things urgent",
+            "why do phishing messages create urgency",
+            "why does the message tell me to act quickly"
+          ],
+          "answer": "Scammers often create urgency because they don't want you to stop and think. A message saying 'act now' or 'you will lose this chance' should make you pause, not panic.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD02-Q005",
+          "question": "What should I do if I accidentally click a suspicious link?",
+          "keywords": [
+            "clicked",
+            "click",
+            "suspicious",
+            "link",
+            "accident"
+          ],
+          "match_phrases": [
+            "I accidentally clicked a suspicious link",
+            "what if I clicked a bad link",
+            "I clicked a strange link by mistake",
+            "what should I do after clicking a suspicious link",
+            "I opened a suspicious link accidentally"
+          ],
+          "answer": "Don't panic. Close the page and don't enter any information or download anything. Tell a trusted adult what happened so they can help you check the device and account.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD03",
+      "title": "The Digital Lock — Passwords & Security",
+      "icon": "🔐",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-3-digital-lock-passwords-security.html",
+      "questions": [
+        {
+          "id": "DD03-Q001",
+          "question": "Why do I need a strong password?",
+          "keywords": [
+            "password",
+            "strong",
+            "security",
+            "safe"
+          ],
+          "match_phrases": [
+            "why do I need a strong password",
+            "why should my password be strong",
+            "how does a strong password protect me",
+            "why are strong passwords important"
+          ],
+          "answer": "A strong password makes it harder for someone else to get into your account. Use a password that is difficult to guess and don't share it with friends. A trusted adult can help you manage important passwords safely.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD03-Q002",
+          "question": "Is my name and birth year a good password?",
+          "keywords": [
+            "name",
+            "birth",
+            "year",
+            "password",
+            "weak"
+          ],
+          "match_phrases": [
+            "is my name a good password",
+            "can I use my birth year as a password",
+            "is my name and birthday a safe password",
+            "why is my name a weak password",
+            "can someone guess my password from my birthday"
+          ],
+          "answer": "No. Your name and birth year can be easy for someone to guess. A strong password should not contain obvious personal information and should be difficult for others to predict.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD03-Q003",
+          "question": "Can I use the same password everywhere?",
+          "keywords": [
+            "same",
+            "password",
+            "everywhere",
+            "accounts"
+          ],
+          "match_phrases": [
+            "can I use one password everywhere",
+            "should I use the same password for every account",
+            "is it okay to reuse passwords",
+            "can all my accounts have the same password"
+          ],
+          "answer": "It's safer not to reuse the same password for every account. If one account is compromised, reused passwords can put your other accounts at risk.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD03-Q004",
+          "question": "Should I write my password on a sticky note?",
+          "keywords": [
+            "write",
+            "password",
+            "sticky",
+            "note"
+          ],
+          "match_phrases": [
+            "can I write my password on a sticky note",
+            "where should I keep my password",
+            "is it safe to write down my password",
+            "can I keep my password on paper"
+          ],
+          "answer": "A password written where other people can easily see it is not safe. Keep passwords private and use a trusted password manager with adult guidance if you need help remembering them.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD04",
+      "title": "The Permanent Path — Digital Footprints & Privacy",
+      "icon": "👣",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-4-permanent-path-digital.html",
+      "questions": [
+        {
+          "id": "DD04-Q001",
+          "question": "Can something I delete from the internet really be gone?",
+          "keywords": [
+            "delete",
+            "deleted",
+            "internet",
+            "digital footprint"
+          ],
+          "match_phrases": [
+            "is something deleted from the internet really gone",
+            "can I permanently delete something online",
+            "what happens when I delete a post",
+            "can deleted internet posts come back",
+            "can someone save something I deleted"
+          ],
+          "answer": "Not always. Someone may have taken a screenshot, saved a copy, or shared it before you deleted it. That's why it is wise to think carefully before posting anything online.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD04-Q002",
+          "question": "Should I share my school or location online?",
+          "keywords": [
+            "school",
+            "location",
+            "address",
+            "online",
+            "privacy"
+          ],
+          "match_phrases": [
+            "should I share my school online",
+            "can I post my location",
+            "should I share my address online",
+            "is it safe to tell people where I go to school",
+            "should I share where I live online"
+          ],
+          "answer": "Be careful with information that can reveal where you live, study, or spend time. Don't share your school, home address, daily routine, or precise location publicly. When in doubt, ask a trusted adult.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD04-Q003",
+          "question": "Can I post my friend's photo without asking?",
+          "keywords": [
+            "friend",
+            "photo",
+            "picture",
+            "permission",
+            "post"
+          ],
+          "match_phrases": [
+            "can I post my friend's photo",
+            "should I ask before posting someone's picture",
+            "can I share a friend's photo without permission",
+            "is it okay to post my friend's picture"
+          ],
+          "answer": "It's better to ask your friend's permission first. Their photo belongs to their personal space too. Respecting someone's privacy is part of being a good digital citizen.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD04-Q004",
+          "question": "Should I give an app my real name and phone number?",
+          "keywords": [
+            "app",
+            "name",
+            "phone",
+            "number",
+            "privacy"
+          ],
+          "match_phrases": [
+            "should I give an app my phone number",
+            "can I give an app my real name",
+            "why does an app need my phone number",
+            "is it safe to give an app my personal information",
+            "should I share personal information with an app"
+          ],
+          "answer": "Don't share personal information automatically. First ask why the app needs it and whether the request is necessary. If you're a child, check with a parent or trusted adult before giving an app personal information.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD05",
+      "title": "The Power of Words — Cyberbullying",
+      "icon": "💬",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-5-power-of-words-cyberbullying.html",
+      "questions": [
+        {
+          "id": "DD05-Q001",
+          "question": "What should I do if someone is being bullied online?",
+          "keywords": [
+            "bully",
+            "bullying",
+            "cyberbullying",
+            "online",
+            "victim"
+          ],
+          "match_phrases": [
+            "what should I do if someone is bullied online",
+            "how can I help someone being bullied online",
+            "what if I see cyberbullying",
+            "someone is being bullied on the internet",
+            "how do I help an online bullying victim"
+          ],
+          "answer": "Don't join in and don't encourage the bully. Support the person being hurt, save evidence if appropriate, report the harmful behavior, and tell a trusted adult.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD05-Q002",
+          "question": "Should I fight back if someone bullies me online?",
+          "keywords": [
+            "fight",
+            "revenge",
+            "bully",
+            "bullying",
+            "retaliate"
+          ],
+          "match_phrases": [
+            "should I fight back against an online bully",
+            "should I bully the bully back",
+            "what should I do if someone bullies me online",
+            "should I take revenge on a cyberbully"
+          ],
+          "answer": "No. Fighting back with more hurtful words can make the situation worse. Step away, block or report the person when appropriate, save evidence, and tell a trusted adult.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD05-Q003",
+          "question": "When does a joke become bullying?",
+          "keywords": [
+            "joke",
+            "bullying",
+            "bully",
+            "teasing",
+            "hurt"
+          ],
+          "match_phrases": [
+            "when does a joke become bullying",
+            "how do I know if teasing is bullying",
+            "when is a joke no longer funny",
+            "is teasing someone bullying",
+            "what if someone says it was just a joke"
+          ],
+          "answer": "A joke stops being funny when it repeatedly hurts, humiliates, frightens, or targets someone—and the person being targeted isn't enjoying it. If someone says it hurts, listen and stop.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD05-Q004",
+          "question": "Why can words hurt people online?",
+          "keywords": [
+            "words",
+            "hurt",
+            "online",
+            "comments",
+            "feelings"
+          ],
+          "match_phrases": [
+            "why do words hurt online",
+            "can online words really hurt people",
+            "why do comments hurt feelings",
+            "why can messages hurt someone"
+          ],
+          "answer": "A screen doesn't remove someone's feelings. Words can still make a person feel embarrassed, frightened, or lonely. Before you post, pause and ask: would I say this kindly if the person were standing in front of me?",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD05-Q005",
+          "question": "How can I make the internet a kinder place?",
+          "keywords": [
+            "kind",
+            "kindness",
+            "internet",
+            "online",
+            "help"
+          ],
+          "match_phrases": [
+            "how can I make the internet kinder",
+            "how can I be kind online",
+            "how can I make online spaces better",
+            "what can I do to make the internet a nicer place"
+          ],
+          "answer": "Use your words to encourage rather than hurt. Don't forward cruel messages, don't join bullying, and speak up when someone is being treated badly. Small acts of kindness can travel a long way online.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD06",
+      "title": "Finding Balance — Screen Time & Digital Well-being",
+      "icon": "⚖️",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-6-finding-balance-screen-time.html",
+      "questions": [
+        {
+          "id": "DD06-Q001",
+          "question": "Why do I feel grumpy after playing games for too long?",
+          "keywords": [
+            "grumpy",
+            "gaming",
+            "games",
+            "screen",
+            "tired"
+          ],
+          "match_phrases": [
+            "why do I feel grumpy after gaming",
+            "why do games make me irritated",
+            "why do I feel bad after playing too long",
+            "why am I angry after screen time",
+            "why do I feel tired after gaming"
+          ],
+          "answer": "Your brain and body need breaks too. After a long stretch of gaming, you may feel tired, restless, or irritable. Taking a break, moving around, drinking water, and doing something away from the screen can help.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD06-Q002",
+          "question": "How do I know when it is time to stop using a screen?",
+          "keywords": [
+            "stop",
+            "screen",
+            "screen time",
+            "tired",
+            "eyes"
+          ],
+          "match_phrases": [
+            "how do I know when to stop screen time",
+            "when should I stop using a screen",
+            "how much screen time is too much",
+            "when should I take a screen break",
+            "how do I know I need a break from screens"
+          ],
+          "answer": "Listen to your body. Tired eyes, feeling restless, sitting for too long, or ignoring sleep, food, schoolwork, or people around you are good reasons to take a break.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD06-Q003",
+          "question": "Is it okay to use my phone before sleeping?",
+          "keywords": [
+            "phone",
+            "sleep",
+            "bed",
+            "night",
+            "screen"
+          ],
+          "match_phrases": [
+            "can I use my phone before sleeping",
+            "is using a phone before bed okay",
+            "should I use screens before bed",
+            "can I watch my phone at night"
+          ],
+          "answer": "Using a screen right before bed can make it harder for some people to settle down. A calm, screen-free routine before sleep can help your mind get ready for rest.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD06-Q004",
+          "question": "How can I balance screen time with real life?",
+          "keywords": [
+            "balance",
+            "screen",
+            "screen time",
+            "outside",
+            "play"
+          ],
+          "match_phrases": [
+            "how can I balance screen time",
+            "how do I balance games and real life",
+            "how can I spend less time on screens",
+            "how do I balance online and offline activities",
+            "how can I make time for things besides screens"
+          ],
+          "answer": "Make room for both digital and real-world activities. Learn online, play outside, talk with family, read, create things, move your body, and get enough sleep. A healthy digital life has balance.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD07",
+      "title": "The Echo Chamber — Fake News & Forwards",
+      "icon": "📢",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/lesson-7-echo-chamber-fake-news.html",
+      "questions": [
+        {
+          "id": "DD07-Q001",
+          "question": "How do I know if a message is fake news?",
+          "keywords": [
+            "fake",
+            "news",
+            "message",
+            "forward",
+            "whatsapp"
+          ],
+          "match_phrases": [
+            "how do I know if news is fake",
+            "how can I identify fake news",
+            "is this forwarded message fake",
+            "how do I check if a message is true",
+            "how can I tell if a WhatsApp message is fake"
+          ],
+          "answer": "Don't believe a message just because it sounds convincing or has been forwarded many times. Check the source, look for an official source, and verify the information before believing or sharing it.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD07-Q002",
+          "question": "Does forwarding a message many times make it true?",
+          "keywords": [
+            "forward",
+            "forwards",
+            "true",
+            "message"
+          ],
+          "match_phrases": [
+            "does forwarding make something true",
+            "if many people forward it is it true",
+            "does a viral message mean it is true",
+            "can a forwarded message be trusted"
+          ],
+          "answer": "No. A message doesn't become true because many people forward it. Repetition is not proof. Remember: Think, Verify, Share.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD07-Q003",
+          "question": "What should I check before forwarding a message?",
+          "keywords": [
+            "check",
+            "forward",
+            "source",
+            "official",
+            "verify"
+          ],
+          "match_phrases": [
+            "what should I check before forwarding",
+            "how do I verify a message",
+            "what should I check before sharing a forward",
+            "how can I check if a forwarded message is true"
+          ],
+          "answer": "Check three things: the source, whether an official source confirms it, and whether you can verify the claim. If you cannot verify it, don't forward it.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD07-Q004",
+          "question": "What should I do before sharing something online?",
+          "keywords": [
+            "share",
+            "sharing",
+            "verify",
+            "check",
+            "online"
+          ],
+          "match_phrases": [
+            "what should I do before sharing something online",
+            "what should I check before posting",
+            "should I share this online",
+            "how do I know if something is safe to share"
+          ],
+          "answer": "Pause before sharing. Think about whether it is true, check the source, verify important claims, and consider whether sharing it could hurt someone. Think, Verify, Share.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD08",
+      "title": "AI Voice Spoofing — Family Safety",
+      "icon": "🎙️",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/ai-voice-cloning-scam-prevention-family-safety.html",
+      "questions": [
+        {
+          "id": "DD08-Q001",
+          "question": "Can AI copy someone's voice?",
+          "keywords": [
+            "ai",
+            "voice",
+            "copy",
+            "clone",
+            "voice cloning"
+          ],
+          "match_phrases": [
+            "can AI copy a person's voice",
+            "can AI clone voices",
+            "can AI sound like my mother",
+            "how does voice cloning work",
+            "can someone fake a voice using AI"
+          ],
+          "answer": "Yes. AI can be used to create a voice that sounds like a real person. That's why a familiar voice on a phone call should not automatically be treated as proof that the person is really calling.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD08-Q002",
+          "question": "What if I get a call that sounds exactly like my mother?",
+          "keywords": [
+            "mother",
+            "mom",
+            "voice",
+            "call",
+            "ai"
+          ],
+          "match_phrases": [
+            "what if a call sounds exactly like my mother",
+            "what if someone sounds like my mom on the phone",
+            "what should I do if my mother's voice is copied",
+            "I got a call that sounds like my mother"
+          ],
+          "answer": "Don't panic or act immediately. A scammer may be using a copied voice. Use a family safety rule such as your secret family code word, and verify the situation through another trusted way before doing anything.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD08-Q003",
+          "question": "How can I know if a voice call is really from my family?",
+          "keywords": [
+            "voice",
+            "family",
+            "call",
+            "verify",
+            "real"
+          ],
+          "match_phrases": [
+            "how do I know a family call is real",
+            "how can I verify a family member's voice",
+            "how do I know if someone calling is really my family",
+            "how can I check if a voice call is genuine"
+          ],
+          "answer": "A familiar voice alone is not enough. Ask your family to create a secret code word and use it when something seems unusual. You can also verify by calling the person back through a trusted number.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD08-Q004",
+          "question": "What is a family code word?",
+          "keywords": [
+            "code",
+            "word",
+            "family",
+            "password",
+            "secret"
+          ],
+          "match_phrases": [
+            "what is a family code word",
+            "how does a family code word work",
+            "why do families need a secret code word",
+            "what should our family code word do"
+          ],
+          "answer": "It is a secret word or phrase known only to your family. If someone calls claiming to be a family member during an emergency, the code word can help you verify that the caller is really them. Keep the word private.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD09",
+      "title": "Digital Arrest Scam",
+      "icon": "🚨",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/digital-arrest-fake-scam-call-safety-tips.html",
+      "questions": [
+        {
+          "id": "DD09-Q001",
+          "question": "What is a digital arrest scam?",
+          "keywords": [
+            "digital arrest",
+            "arrest",
+            "scam",
+            "police",
+            "call"
+          ],
+          "match_phrases": [
+            "what is a digital arrest scam",
+            "what does digital arrest mean",
+            "what is a fake digital arrest",
+            "how does a digital arrest scam work"
+          ],
+          "answer": "It is a scam where someone pretends to be police or another authority and frightens you with claims that you are involved in a crime. The scammer may demand money or personal information. Stay calm, disconnect, and tell a trusted adult.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD09-Q002",
+          "question": "Can the police arrest me over a video call?",
+          "keywords": [
+            "police",
+            "arrest",
+            "video call",
+            "digital arrest"
+          ],
+          "match_phrases": [
+            "can police arrest me on a video call",
+            "can someone arrest me over video call",
+            "can a police officer arrest me through a video call",
+            "is a video call arrest real"
+          ],
+          "answer": "A person claiming to be police cannot make a scary video call into proof that you are under arrest. If someone threatens you with a so-called digital arrest, don't follow their instructions. Disconnect and tell a trusted adult immediately.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD09-Q003",
+          "question": "What should I do if someone calls saying I am under digital arrest?",
+          "keywords": [
+            "digital arrest",
+            "call",
+            "police",
+            "scam"
+          ],
+          "match_phrases": [
+            "someone says I am under digital arrest",
+            "what should I do if someone threatens digital arrest",
+            "I got a digital arrest call",
+            "someone called saying I am arrested"
+          ],
+          "answer": "Disconnect immediately. Don't send money or personal information and don't let the caller frighten you into obeying. Inform a trusted adult and let them handle the situation.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD09-Q004",
+          "question": "Should I stay on the phone if someone threatens me with arrest?",
+          "keywords": [
+            "threat",
+            "arrest",
+            "phone",
+            "scam",
+            "fear"
+          ],
+          "match_phrases": [
+            "should I stay on a call with someone threatening arrest",
+            "should I keep talking to a scammer who threatens me",
+            "what if someone threatens me with arrest on the phone",
+            "should I hang up a fake police call"
+          ],
+          "answer": "No. Threats are meant to make you panic. Stay calm, disconnect the call, and tell a trusted adult. You do not have to solve a frightening call by yourself.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD10",
+      "title": "Fake Tech Support Scam",
+      "icon": "💻",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/08/tech-support-scam-remote-support-app.html",
+      "questions": [
+        {
+          "id": "DD10-Q001",
+          "question": "What exactly is a tech support scam?",
+          "keywords": [
+            "tech support",
+            "scam",
+            "virus",
+            "computer"
+          ],
+          "match_phrases": [
+            "what is a tech support scam",
+            "what is fake tech support",
+            "how does a tech support scam work",
+            "someone says my computer has a virus"
+          ],
+          "answer": "It is a scam where someone pretends your computer or phone has a serious problem and tries to frighten you into giving them money, information, or access to your device.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD10-Q002",
+          "question": "Why do scammers ask me to install apps like AnyDesk?",
+          "keywords": [
+            "anydesk",
+            "remote access",
+            "install",
+            "scammer"
+          ],
+          "match_phrases": [
+            "why do scammers ask me to install AnyDesk",
+            "why do scammers want remote access",
+            "what is AnyDesk used for in scams",
+            "why does a scammer want me to install a remote access app",
+            "should I install a remote access app for a caller"
+          ],
+          "answer": "Remote-access apps can allow another person to control or view a device. A scammer may try to use one to gain access to your computer. Never install a remote-access app because an unexpected caller tells you to.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD10-Q003",
+          "question": "How can I tell if a virus alert is fake?",
+          "keywords": [
+            "virus",
+            "alert",
+            "fake",
+            "popup",
+            "warning"
+          ],
+          "match_phrases": [
+            "how do I know if a virus alert is fake",
+            "is this virus popup real",
+            "what should I do about a scary virus warning",
+            "how can I check a fake virus alert",
+            "should I call the number on a virus popup"
+          ],
+          "answer": "Be suspicious of alarming pop-ups that demand immediate action or tell you to call an unfamiliar number. Don't call the number in the pop-up. Close it and ask a trusted adult to help verify the problem through the device maker's or software company's official support channel.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD10-Q004",
+          "question": "What should I do if I already installed a remote-access app for a stranger?",
+          "keywords": [
+            "installed",
+            "remote",
+            "app",
+            "anydesk",
+            "stranger"
+          ],
+          "match_phrases": [
+            "I already installed a remote access app",
+            "what if I installed AnyDesk for a stranger",
+            "I gave a stranger remote access",
+            "what should I do after installing a remote access app",
+            "someone made me install a remote app"
+          ],
+          "answer": "Don't panic. Stop communicating with the stranger and tell a trusted adult immediately. They can help disconnect the remote access, remove the app if appropriate, and check whether any accounts or passwords need attention.",
+          "source": "existing",
+          "status": "approved"
+        },
+        {
+          "id": "DD10-Q005",
+          "question": "Do real companies or banks call me out of the blue about a virus?",
+          "keywords": [
+            "company",
+            "bank",
+            "virus",
+            "call",
+            "tech support"
+          ],
+          "match_phrases": [
+            "do real companies call about computer viruses",
+            "will my bank call me about a virus",
+            "can a company call me unexpectedly about a virus",
+            "someone called saying my computer has a virus",
+            "is an unexpected tech support call real"
+          ],
+          "answer": "An unexpected caller claiming your device has a virus should be treated with suspicion. Don't give them remote access, passwords, OTPs, or payment information. Hang up first and verify through the company's official contact method.",
+          "source": "existing",
+          "status": "approved"
+        }
+      ]
+    },
+    {
+      "id": "DD11",
+      "title": "Talking With Lokesh & Varsha",
+      "icon": "🙋",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/",
+      "questions": [
+        {
+          "id": "DD11-Q001",
+          "question": "Am I good?",
+          "keywords": [
+            "good",
+            "bad",
+            "person",
+            "myself"
+          ],
+          "match_phrases": [
+            "am I good",
+            "am I a good person",
+            "am I a bad person",
+            "do you think I am good"
+          ],
+          "answer": "You have kindness in you, and every day you get to choose kind actions. That's what makes someone good — not being perfect, but choosing well again and again.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q002",
+          "question": "Are you good?",
+          "keywords": [
+            "good",
+            "nice",
+            "kind"
+          ],
+          "match_phrases": [
+            "are you good",
+            "are you nice",
+            "are you a good person",
+            "are you kind"
+          ],
+          "answer": "We try our best to be kind and helpful! We're here to answer your questions and cheer you on.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q003",
+          "question": "You are bad",
+          "keywords": [
+            "bad",
+            "mean",
+            "stupid",
+            "dumb",
+            "rude"
+          ],
+          "match_phrases": [
+            "you are bad",
+            "you are mean",
+            "you are stupid",
+            "you are not helpful",
+            "you are dumb",
+            "you are useless"
+          ],
+          "answer": "That's okay to say — we won't be upset. If something we said wasn't helpful, try asking in a different way and we'll do our best to help.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q004",
+          "question": "I don't like you",
+          "keywords": [
+            "dont",
+            "like",
+            "hate"
+          ],
+          "match_phrases": [
+            "I dont like you",
+            "I hate you",
+            "I dont like varsha",
+            "I dont like lokesh",
+            "I dont want to talk to you"
+          ],
+          "answer": "That's okay! You don't have to like us. We're here whenever you have a question, no matter how you feel about us.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q005",
+          "question": "I love you",
+          "keywords": [
+            "love",
+            "like",
+            "favorite"
+          ],
+          "match_phrases": [
+            "I love you",
+            "I really like you",
+            "you are my best friend",
+            "I love talking to you"
+          ],
+          "answer": "That's so sweet of you! We enjoy chatting with you too. Remember to share that love with your family and friends as well — they're your real-life cheerleaders.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q006",
+          "question": "Are you real?",
+          "keywords": [
+            "real",
+            "robot",
+            "human",
+            "ai"
+          ],
+          "match_phrases": [
+            "are you real",
+            "are you a robot",
+            "are you human",
+            "are you an ai",
+            "are you alive"
+          ],
+          "answer": "We're characters made to help you learn and have fun with questions — not real people. For real friendship and support, your family and friends are the best place to turn.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q007",
+          "question": "Can you be my friend?",
+          "keywords": [
+            "friend",
+            "friendship"
+          ],
+          "match_phrases": [
+            "can you be my friend",
+            "will you be my friend",
+            "can we be friends"
+          ],
+          "answer": "We'd love to chat with you like friends do! But real friends you can play with, hug, and share your day with are just as important — don't forget to spend time with them too.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q008",
+          "question": "Why don't you know the answer?",
+          "keywords": [
+            "dont",
+            "know",
+            "dunno",
+            "unknown"
+          ],
+          "match_phrases": [
+            "why dont you know",
+            "why cant you answer",
+            "you dont know anything",
+            "why dont you know that"
+          ],
+          "answer": "We're still learning new things every day! Our helpers add new answers regularly, so it might be here soon. Thanks for asking — it helps us grow.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q009",
+          "question": "Who are trusted adults?",
+          "keywords": [
+            "trusted",
+            "adult",
+            "parent",
+            "teacher",
+            "family",
+            "guardian"
+          ],
+          "match_phrases": [
+            "who are trusted adults",
+            "who is a trusted adult",
+            "who can i trust",
+            "who should i tell",
+            "what is a trusted adult"
+          ],
+          "answer": "A trusted adult is someone you already know in real life who keeps you safe — like a parent, guardian, grandparent, teacher, or another family member you can talk to honestly. It's not someone you only know from an app or a game, even if they seem nice. If something online feels wrong, a trusted adult is who you go to first.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q010",
+          "question": "What counts as personal information?",
+          "keywords": [
+            "personal",
+            "information",
+            "private",
+            "share",
+            "address"
+          ],
+          "match_phrases": [
+            "what counts as personal information",
+            "what is personal information",
+            "what should i not share online",
+            "what information should i keep private"
+          ],
+          "answer": "Personal information is anything that could identify you or help a stranger find you — your full name, home address, school name, phone number, passwords, photos of where you live, or your daily routine. Keep these private online, even in games or chats, unless a trusted adult says it's okay to share.",
+          "source": "added",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q011",
+          "question": "What is a pop-up?",
+          "keywords": [
+            "popup",
+            "pop",
+            "alarming",
+            "window",
+            "warning"
+          ],
+          "match_phrases": [
+            "what is a pop-up",
+            "why is a pop-up dangerous",
+            "should i trust a pop-up",
+            "what if a pop-up appears"
+          ],
+          "answer": "A pop-up is a small window that suddenly appears on your screen — sometimes with scary warnings, prizes, or a number to call. Real security warnings don't panic you into acting fast. If a pop-up feels alarming, don't click it or call any number on it — close the window and tell a trusted adult.",
+          "source": "added",
+          "status": "approved"
+        }
+      ]
+    }
+  ]
+}
