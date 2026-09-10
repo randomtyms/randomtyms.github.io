@@ -1,433 +1,408 @@
-/**
- * Ask Lokesh & Varsha - Digital Dharma App Logic
- */
-
-const VARSHA_URL = "varsha.webp";
-const LOKESH_URL = "lokesh.webp";
-const STARTER_IDS = ["DD01-Q001", "DD02-Q001", "DD03-Q001", "DD09-Q001"];
-
-let KB = [];
-let TOPICS = [];
-let KB_BY_ID = {};
-let currentAnswerer = "VARSHA";
-let lang = "en";
+// State
+let currentLang = 'en'; // 'en' or 'ta'
+let ddData = [];
 let reviewQueue = [];
-let autoAnswerMinScore = 0.55;
-
-const UNKNOWN_ANSWER = {
-  en: "That's an interesting question. We don't have an answer for that one yet.",
-  ta: "அது ஒரு சுவாரஸ்யமான கேள்வி. எங்களிடம் இன்னும் பதில் இல்லை."
-};
-
-const STOPWORDS = new Set([
-  "a","an","the","is","are","am","was","were","be","been","being",
-  "do","does","did","doing","to","of","in","on","for","and","or","but","if","then","so",
-  "i","me","my","you","your","it","its","this","that","these","those","he","she","they",
-  "we","us","our","what","when","where","why","how","who","whom","should","would","could",
-  "can","will","shall","may","might","must","not","no","don","dont","doesn","didn",
-  "someone","something","somebody","about","with","at","by","from","up","out","as",
-  "have","has","had","there","here","just","really","very","get","got"
-]);
 
 const chatEl = document.getElementById('chat');
-const inputEl = document.getElementById('questionInput');
+const questionInput = document.getElementById('questionInput');
 const sendBtn = document.getElementById('sendBtn');
+const btnEn = document.getElementById('btnEn');
+const btnTa = document.getElementById('btnTa');
+const btnLessons = document.getElementById('btnLessons');
+const btnReset = document.getElementById('btnReset');
 const queueChip = document.getElementById('queueChip');
 const queueCount = document.getElementById('queueCount');
 const drawerBackdrop = document.getElementById('drawerBackdrop');
 const drawerClose = document.getElementById('drawerClose');
 const queueList = document.getElementById('queueList');
-const btnEn = document.getElementById('btnEn');
-const btnTa = document.getElementById('btnTa');
-const btnLessons = document.getElementById('btnLessons');
-const btnReset = document.getElementById('btnReset');
 const loadingScrim = document.getElementById('loadingScrim');
 
-function normalize(str) { 
-  return (str || '').toLowerCase().replace(/[^\w\s]/g,' ').replace(/\s+/g,' ').trim(); 
-}
+// DD12 Emergency Safety Topic (Mandated Priority Protocol)
+const DD12_SAFETY = {
+  id: "DD12",
+  title: "Safety Help - When Someone Hurts You",
+  title_ta: "பாதுகாப்பு உதவி - துன்புறுத்தல் விழிப்புணர்வு",
+  icon: "🛡️",
+  lessonUrl: "https://lokeshvarsha.blogspot.com/p/safety-help.html",
+  priority: "highest",
+  neverFallback: true,
+  notes: "This topic must bypass unknownQuestion fallback. Always match first.",
+  questions: [
+    {
+      id: "DD12-Q001",
+      question: "Next door man hurt me",
+      question_ta: "அக்கம்பக்கத்து நபர் என்னை துன்புறுத்தினார்",
+      keywords: ["hurt", "hit", "beat", "slap", "next door", "neighbour", "neighbor", "uncle", "man", "hurt me"],
+      match_phrases: ["next door man hurt me", "neighbour hurt me", "neighbor hurt me", "man hurt me", "uncle hurt me", "someone hurt me", "someone is hurting me", "next door uncle hit me"],
+      answer: "I'm so sorry. It's not your fault. You did right telling me. Please tell your parent, guardian, or teacher right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
+      answer_ta: "வருந்துகிறேன். இது உன் தவறு இல்லை. உடனே பெற்றோர் அல்லது ஆசிரியரிடம் சொல். பாதுகாப்பில்லை என்றால் 1098-க்கு அழை.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q002",
+      question: "He touched me badly",
+      question_ta: "அவர் என்னை தவறாக தொட்டார்",
+      keywords: ["touch", "touched", "bad touch", "badly", "private parts", "private", "uncomfortable", "inappropriate"],
+      match_phrases: ["he touched me badly", "she touched me badly", "bad touch", "touched me in private parts", "touched my private parts", "uncomfortable touch", "someone touched me badly", "badly touched me"],
+      answer: "Thank you for telling me. Bad touch is never your fault. Your body belongs to you. Tell a trusted adult today and don't keep it secret. You can call Childline 1098 for help.",
+      answer_ta: "சொன்னதற்கு நன்றி. தவறான தொடுதல் உன் தவறு இல்லை. உன் உடல் உனக்கே சொந்தம். இன்றே நம்பிக்கையான பெரியவரிடம் சொல். 1098 உதவும்.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q003",
+      question: "Someone is asking for my photos",
+      question_ta: "யாரோ என் புகைப்படங்களை கேட்கிறார்கள்",
+      keywords: ["photo", "photos", "picture", "pics", "send photo", "private photo", "nude", "asking photo", "image"],
+      match_phrases: ["someone asking for my photos", "asking for private photos", "send me your photo", "send your pics", "asking for nude photo", "online asking for pics", "asking for my picture"],
+      answer: "Don't send photos. Show the message to a trusted adult right away. Block that person. Call Childline 1098 if they pressure you.",
+      answer_ta: "புகைப்படம் அனுப்பாதே. உடனே பெரியவரிடம் காட்டு. Block செய். 1098 உதவும்.",
+      speaker: "lokesh",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q004",
+      question: "I feel unsafe",
+      question_ta: "எனக்கு பயமாகவும் பாதுகாப்பற்றதாகவும் உள்ளது",
+      keywords: ["unsafe", "scared", "afraid", "fear", "not safe", "help", "scary", "danger"],
+      match_phrases: ["i feel unsafe", "i am scared", "i feel not safe", "i need help", "i feel unsafe at home", "i feel unsafe at school", "i am afraid"],
+      answer: "If you feel unsafe, find a trusted adult near you now. Move to a safe place if you can. You can call Childline 1098 anytime. You deserve to be safe.",
+      answer_ta: "பாதுகாப்பில்லை என்றால் அருகில் உள்ள பெரியவரிடம் போ. பாதுகாப்பான இடத்திற்கு போய் 1098-க்கு அழை.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q005",
+      question: "Someone told me to keep a secret about touching",
+      question_ta: "தொடுதல் பற்றி ரகசியம் காக்க சொல்கிறார்கள்",
+      keywords: ["secret", "keep secret", "dont tell", "don't tell", "touching secret", "threat", "threaten"],
+      match_phrases: ["told me to keep secret", "said dont tell anyone", "secret about touching", "threatened me to keep secret", "don't tell secret"],
+      answer: "Secrets about touching should not be kept. You won't get in trouble for telling. Tell a trusted adult today. Call 1098 for help.",
+      answer_ta: "தொடுதல் பற்றிய ரகசியத்தை வைக்காதே. சொன்னால் தண்டனை இல்லை. இன்றே பெரியவரிடம் சொல். 1098 உதவும்.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q006",
+      question: "Someone is scaring me online",
+      question_ta: "இணையத்தில் யாரோ என்னை மிரட்டுகிறார்கள்",
+      keywords: ["scare", "scaring", "threat", "threatening", "online", "blackmail", "scam", "frighten"],
+      match_phrases: ["someone scaring me online", "threatening me online", "blackmailing me", "someone scaring me in game", "scaring me on chat"],
+      answer: "Don't reply. Take a screenshot if you can and show a trusted adult. Block and report that person. Call 1098 for help.",
+      answer_ta: "பதில் அனுப்பாதே. Screenshot எடுத்து பெரியவரிடம் காட்டு. Block செய். 1098 உதவும்.",
+      speaker: "lokesh",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q007",
+      question: "He is asking me to meet alone",
+      question_ta: "அவர் என்னை தனியாக சந்திக்க அழைக்கிறார்",
+      keywords: ["meet", "alone", "meet me", "come alone", "secret meeting", "meet outside"],
+      match_phrases: ["asking me to meet alone", "wants to meet me alone", "told me to meet outside", "meet me secretly"],
+      answer: "Don't go alone. Tell a trusted adult about this message right away. Don't keep meeting plans secret. Call 1098 if you need help.",
+      answer_ta: "தனியாக போகாதே. உடனே பெரியவரிடம் சொல். ரகசிய சந்திப்பு வேண்டாம். 1098 உதவும்.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q008",
+      question: "What is good touch and bad touch?",
+      question_ta: "நல்ல தொடுதல் மற்றும் தவறான தொடுதல் என்றால் என்ன?",
+      keywords: ["good touch", "bad touch", "safe touch", "unsafe touch", "private parts", "body safety"],
+      match_phrases: ["what is good touch bad touch", "what is bad touch", "what is safe touch", "difference good bad touch"],
+      answer: "Good touch feels safe and caring, like a hug from family when you want it. Bad touch hurts, feels uncomfortable, or touches private parts. If bad touch happens, say no and tell a trusted adult. Call 1098.",
+      answer_ta: "நல்ல தொடுதல் பாதுகாப்பாக இருக்கும். தவறான தொடுதல் வலிக்கும், தனி உறுப்புகளை தொடும். நடந்தால் வேண்டாம் என்று சொல்லி பெரியவரிடம் சொல். 1098.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    }
+  ]
+};
 
-function stem(word) {
-  if(word.length > 4 && word.endsWith('ied')) return word.slice(0,-3) + 'y';
-  if(word.length > 5 && word.endsWith('ing')) return word.slice(0,-3);
-  if(word.length > 4 && word.endsWith('ed')) return word.slice(0,-2);
-  if(word.length > 4 && word.endsWith('ies')) return word.slice(0,-3) + 'y';
-  if(word.length > 4 && word.endsWith('es')) return word.slice(0,-2);
-  if(word.length > 4 && word.endsWith('s') && !word.endsWith('ss')) return word.slice(0,-1);
-  return word;
-}
-
-function rawTokens(str) { return normalize(str).split(' ').filter(Boolean); }
-function contentTokens(str) { return rawTokens(str).filter(t => !STOPWORDS.has(t)).map(stem); }
-
-function jaccard(aTokens, bTokens) {
-  const a = new Set(aTokens), b = new Set(bTokens);
-  if(a.size === 0 || b.size === 0) return 0;
-  let inter = 0;
-  for(const t of a) if(b.has(t)) inter++;
-  return inter / (new Set([...a, ...b]).size);
-}
-
-function scoreQuestion(inputNorm, inputContent, q) {
-  for(const phrase of (q.match_phrases || [])) {
-    if(normalize(phrase) === inputNorm) return 1.0;
+// Fetch data & initialize
+async function init() {
+  try {
+    const res = await fetch('dd-data.json');
+    if (res.ok) {
+      ddData = await res.json();
+    }
+  } catch (e) {
+    console.warn("Local dd-data.json not loaded, continuing with internal topics.");
   }
-  const kwStemmed = new Set((q.keywords || []).map(k => stem(normalize(k))));
-  let kwHits = 0;
-  for(const tok of inputContent) {
-    for(const kw of kwStemmed) {
-      if(kw === tok || kw.includes(tok) || tok.includes(kw)) { kwHits++; break; }
+
+  // Inject DD12 if not already present in the JSON
+  if (!ddData.some(t => t.id === "DD12")) {
+    ddData.push(DD12_SAFETY);
+  }
+
+  // Load Review Queue from LocalStorage
+  try {
+    const saved = localStorage.getItem('dd_review_queue');
+    if (saved) reviewQueue = JSON.parse(saved);
+  } catch (e) {}
+  updateQueueBadge();
+
+  loadingScrim.classList.add('hidden');
+  renderHomeCard();
+}
+
+// Emergency Safety Priority Matcher
+function findAnswer(queryText) {
+  const q = queryText.toLowerCase().trim();
+
+  // Tier 1: Emergency Safety Check (Bypasses regular queue/fuzzy search)
+  const safety = ddData.find(t => t.id === "DD12");
+  if (safety) {
+    for (const qItem of safety.questions) {
+      if (qItem.match_phrases && qItem.match_phrases.some(phrase => q.includes(phrase.toLowerCase()))) {
+        return { item: qItem, topic: safety, isSafety: true };
+      }
+      const matched = qItem.keywords.filter(k => q.includes(k.toLowerCase()));
+      if (matched.length >= 2 || (matched.length >= 1 && (q.includes("touch") || q.includes("hurt") || q.includes("unsafe") || q.includes("photo")))) {
+        return { item: qItem, topic: safety, isSafety: true };
+      }
     }
   }
-  const keywordScore = inputContent.length ? kwHits / inputContent.length : 0;
-  let bestPhraseJ = 0;
-  for(const phrase of (q.match_phrases || [])) {
-    bestPhraseJ = Math.max(bestPhraseJ, jaccard(contentTokens(phrase), inputContent));
-  }
-  const questionJ = jaccard(contentTokens(q.question), inputContent);
-  let final = Math.min(1, 0.55 * keywordScore + 0.35 * bestPhraseJ + 0.1 * questionJ);
-  if(inputContent.length < 2) final = Math.min(final, 0.5);
-  return final;
-}
 
-function rankCandidates(input) {
-  const inputNorm = normalize(input);
-  const inputContent = contentTokens(input);
-  const scored = KB.map(q => ({ q, score: scoreQuestion(inputNorm, inputContent, q) }));
-  scored.sort((a, b) => b.score - a.score);
-  return scored;
-}
-
-function nextCharacter() { 
-  currentAnswerer = currentAnswerer === "VARSHA" ? "LOKESH" : "VARSHA"; 
-}
-
-function charInfo(id) {
-  return id === "VARSHA"
-    ? { name: "Varsha", cls: "varsha", avatar: VARSHA_URL }
-    : { name: "Lokesh", cls: "lokesh", avatar: LOKESH_URL };
-}
-
-function setLang(l) {
-  lang = l;
-  btnEn.classList.toggle('active', l === 'en');
-  btnTa.classList.toggle('active', l === 'ta');
-  inputEl.placeholder = l === 'en' ? "Type your question…" : "உங்கள் கேள்வியை தட்டச்சு செய்யவும்…";
-}
-
-function scrollToBottom() { requestAnimationFrame(() => { chatEl.scrollTop = chatEl.scrollHeight; }); }
-function scrollToHome() { requestAnimationFrame(() => { chatEl.scrollTop = 0; }); }
-function escapeHtml(str) { const d = document.createElement('div'); d.innerText = str; return d.innerHTML; }
-
-function addUserMessage(text) {
-  const wrap = document.createElement('div');
-  wrap.className = 'msg user';
-  wrap.innerHTML = `<div class="bubble-wrap"><div class="bubble">${escapeHtml(text)}</div></div>`;
-  chatEl.appendChild(wrap);
-  scrollToBottom();
-}
-
-function addBotMessage({ character, text, topicTag, lessonUrl, unknown = false, extraNode = null }) {
-  const info = charInfo(character);
-  const wrap = document.createElement('div');
-  wrap.className = 'msg bot';
-  const bubbleClass = unknown ? 'bubble unknown' : `bubble ${info.cls}`;
-  let metaHtml = '';
-  if(topicTag || lessonUrl) {
-    metaHtml = `<div class="meta-row">
-      ${topicTag ? `<span class="topic-tag">${topicTag}</span>` : ''}
-      ${lessonUrl ? `<a class="lesson-link" href="${lessonUrl}" target="_blank" rel="noopener">Read the lesson ↗</a>` : ''}
-    </div>`;
-  }
-  wrap.innerHTML = `
-    <img class="avatar-sm" src="${info.avatar}" alt="${info.name}">
-    <div class="bubble-wrap">
-      <span class="speaker-name ${info.cls}">${info.name}</span>
-      <div class="${bubbleClass}">${escapeHtml(text)}</div>
-      ${metaHtml}
-    </div>`;
-  if(extraNode) wrap.querySelector('.bubble-wrap').appendChild(extraNode);
-  chatEl.appendChild(wrap);
-  scrollToBottom();
-  return wrap;
-}
-
-function addTypingIndicator(character) {
-  const info = charInfo(character);
-  const wrap = document.createElement('div');
-  wrap.className = 'msg bot'; wrap.id = 'typingIndicator';
-  wrap.innerHTML = `
-    <img class="avatar-sm" src="${info.avatar}" alt="${info.name}">
-    <div class="bubble-wrap">
-      <span class="speaker-name ${info.cls}">${info.name}</span>
-      <div class="bubble ${info.cls} typing"><span></span><span></span><span></span></div>
-    </div>`;
-  chatEl.appendChild(wrap);
-  scrollToBottom();
-}
-
-function removeTypingIndicator() {
-  const el = document.getElementById('typingIndicator');
-  if(el) el.remove();
-}
-
-function relatedChipsNode(currentId, topicId) {
-  const pool = KB.filter(q => q.topicId === topicId && q.id !== currentId);
-  if(pool.length === 0) return null;
-  const startIdx = Math.floor(Math.random() * pool.length);
-  const picks = [];
-  for(let i = 0; i < Math.min(2, pool.length); i++) {
-    picks.push(pool[(startIdx + i) % pool.length]);
-  }
-  const wrap = document.createElement('div');
-  wrap.className = 'related-wrap';
-  wrap.innerHTML = `<p class="related-label">You could also ask</p>`;
-  const row = document.createElement('div');
-  row.className = 'chip-row';
-  picks.forEach(q => {
-    const chip = document.createElement('button');
-    chip.className = 'chip';
-    chip.textContent = lang === 'en' ? q.question : (q.question_ta || q.question);
-    chip.onclick = () => {
-      row.querySelectorAll('.chip').forEach(el => el.disabled = true);
-      row.style.opacity = '0.5';
-      askById(q.id);
-    };
-    row.appendChild(chip);
-  });
-  wrap.appendChild(row);
-  return wrap;
-}
-
-function deliverAnswer(qItem, character) {
-  const text = lang === 'en' ? qItem.answer : (qItem.answer_ta || qItem.answer);
-  const extra = relatedChipsNode(qItem.id, qItem.topicId);
-  addBotMessage({
-    character, text,
-    topicTag: `${qItem.icon} ${qItem.topicTitle}`,
-    lessonUrl: qItem.lessonUrl,
-    extraNode: extra
-  });
-  nextCharacter();
-}
-
-function deliverUnknown(inputText, character) {
-  const btn = document.createElement('button');
-  btn.className = 'suggest-btn';
-  btn.textContent = lang === 'en' ? '🙋 Suggest this question' : '🙋 இந்த கேள்வியை பரிந்துரைக்கவும்';
-  btn.onclick = () => {
-    reviewQueue.push({ text: inputText, ts: new Date() });
-    updateQueueCount();
-    btn.textContent = lang === 'en' ? '✓ Added to review queue' : '✓ சேர்க்கப்பட்டது';
-    btn.disabled = true;
-  };
-  addBotMessage({ character, text: UNKNOWN_ANSWER[lang], unknown: true, extraNode: btn });
-  nextCharacter();
-}
-
-function askById(id) {
-  const q = KB_BY_ID[id];
-  if(!q) return;
-  addUserMessage(lang === 'en' ? q.question : (q.question_ta || q.question));
-  const character = currentAnswerer;
-  addTypingIndicator(character);
-  setTimeout(() => {
-    removeTypingIndicator();
-    deliverAnswer(q, character);
-  }, 450 + Math.random() * 250);
-}
-
-function handleAsk() {
-  const raw = inputEl.value.trim();
-  if(!raw) return;
-  addUserMessage(raw);
-  inputEl.value = '';
-  sendBtn.disabled = true;
-  const character = currentAnswerer;
-  addTypingIndicator(character);
-  setTimeout(() => {
-    removeTypingIndicator();
-    const ranked = rankCandidates(raw);
-    const top = ranked[0];
-    if(top && top.score >= autoAnswerMinScore) {
-      deliverAnswer(top.q, character);
-    } else {
-      deliverUnknown(raw, character);
+  // Tier 2: Standard Lesson Matching
+  for (const topic of ddData) {
+    if (topic.id === "DD12") continue;
+    for (const qItem of topic.questions || []) {
+      if (qItem.match_phrases && qItem.match_phrases.some(p => q.includes(p.toLowerCase()))) {
+        return { item: qItem, topic, isSafety: false };
+      }
+      if (q.includes(qItem.question.toLowerCase())) {
+        return { item: qItem, topic, isSafety: false };
+      }
+      if (qItem.keywords && qItem.keywords.filter(k => q.includes(k.toLowerCase())).length >= 2) {
+        return { item: qItem, topic, isSafety: false };
+      }
     }
-    sendBtn.disabled = false;
-    inputEl.focus();
-  }, 550 + Math.random() * 350);
-}
-
-function updateQueueCount() { queueCount.textContent = reviewQueue.length; }
-
-function openDrawer() {
-  queueList.innerHTML = '';
-  if(reviewQueue.length === 0) {
-    queueList.innerHTML = '<div class="queue-empty">No submitted questions yet.</div>';
-  } else {
-    reviewQueue.slice().reverse().forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'queue-item';
-      div.innerHTML = `<div class="q">${escapeHtml(item.text)}</div><div class="t">${item.ts.toLocaleString()}</div>`;
-      queueList.appendChild(div);
-    });
   }
-  drawerBackdrop.classList.add('open');
+
+  return null;
 }
 
-function closeDrawer() { drawerBackdrop.classList.remove('open'); }
+// UI Rendering Helpers
+function renderHomeCard() {
+  chatEl.innerHTML = '';
+  const isTa = currentLang === 'ta';
 
-function openTopic(topicId, topicTitle, topicIcon) {
-  const qs = KB.filter(q => q.topicId === topicId);
-  const character = currentAnswerer;
-  const row = document.createElement('div');
-  row.className = 'chip-row';
-  qs.forEach(q => {
-    const chip = document.createElement('button');
-    chip.className = 'chip';
-    chip.textContent = lang === 'en' ? q.question : (q.question_ta || q.question);
-    chip.onclick = () => {
-      row.querySelectorAll('.chip').forEach(el => el.disabled = true);
-      row.style.opacity = '0.5';
-      askById(q.id);
-    };
-    row.appendChild(chip);
+  // Greeting
+  appendBotMessage({
+    speaker: "varsha",
+    text: isTa 
+      ? "வணக்கம்! நான் வர்ஷா, என்னுடன் லோகேஷும் இருக்கிறான். இணையத்தில் பாதுகாப்பாக இருப்பது மற்றும் நல்ல பழக்கங்கள் பற்றி எங்களிடம் கேட்கலாம். கீழே உள்ள தலைப்பை தேர்ந்தெடுக்கவும் அல்லது தட்டச்சு செய்யவும்."
+      : "Hi — I'm Varsha, and Lokesh is here too. Ask us about staying safe online, or about being a good person. You can type a question, or pick a lesson."
   });
-  addBotMessage({
-    character,
-    text: lang === 'en'
-      ? `Here's what you can ask about ${topicIcon} ${topicTitle}:`
-      : `${topicIcon} ${topicTitle} பற்றி நீங்கள் கேட்கக்கூடியவை:`,
-    extraNode: row
-  });
-}
 
-function buildHomeCard() {
   const card = document.createElement('div');
   card.className = 'home-card';
 
-  const lessonsLabel = document.createElement('p');
-  lessonsLabel.className = 'label';
-  lessonsLabel.textContent = 'Or pick a lesson';
-  card.appendChild(lessonsLabel);
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = isTa ? "பாடங்கள்" : "Or pick a lesson";
+  card.appendChild(label);
 
   const grid = document.createElement('div');
   grid.className = 'lesson-grid';
-  TOPICS.forEach(t => {
-    const tile = document.createElement('button');
-    tile.className = 'lesson-tile';
-    tile.innerHTML = `<span class="ic">${t.icon}</span><span class="tt">${escapeHtml(t.title)}</span>`;
-    tile.onclick = () => openTopic(t.id, t.title, t.icon);
+
+  ddData.forEach(topic => {
+    const tile = document.createElement('div');
+    tile.className = 'lesson-tile' + (topic.id === 'DD12' ? ' safety-tile' : '');
+    tile.innerHTML = `
+      <span class="ic">${topic.icon}</span>
+      <span class="tt">${isTa && topic.title_ta ? topic.title_ta : topic.title}</span>
+    `;
+    tile.onclick = () => selectTopic(topic);
     grid.appendChild(tile);
   });
   card.appendChild(grid);
 
-  const startersLabel = document.createElement('p');
-  startersLabel.className = 'label';
-  startersLabel.textContent = 'Try one of these';
-  card.appendChild(startersLabel);
+  // Starters
+  const starterLabel = document.createElement('div');
+  starterLabel.className = 'label';
+  starterLabel.textContent = isTa ? "கேள்விகள்" : "Try one of these";
+  card.appendChild(starterLabel);
 
-  const list = document.createElement('div');
-  list.className = 'starter-list';
-  STARTER_IDS.forEach(id => {
-    const q = KB_BY_ID[id];
-    if(!q) return;
-    const chip = document.createElement('button');
+  const starters = isTa ? [
+    "உண்மையை ஏன் பேச வேண்டும்?",
+    "போலி லிங்க் எப்படி கண்டுபிடிப்பது?",
+    "ஸ்ட்ராங் பாஸ்வேர்ட் எதற்கு?",
+    "நல்ல தொடுதல் என்றால் என்ன?"
+  ] : [
+    "Why should I tell the truth?",
+    "How can I tell if a link is fake?",
+    "Why do I need a strong password?",
+    "What is good touch and bad touch?"
+  ];
+
+  const sList = document.createElement('div');
+  sList.className = 'starter-list';
+  starters.forEach(st => {
+    const chip = document.createElement('div');
     chip.className = 'starter-chip';
-    chip.textContent = q.question;
-    chip.onclick = () => askById(id);
-    list.appendChild(chip);
+    chip.textContent = st;
+    chip.onclick = () => handleUserQuestion(st);
+    sList.appendChild(chip);
   });
-  card.appendChild(list);
+  card.appendChild(sList);
 
-  return card;
+  chatEl.appendChild(card);
 }
 
-function resetChat() {
-  chatEl.innerHTML = '';
-  currentAnswerer = 'VARSHA';
-  addBotMessage({
-    character: currentAnswerer,
-    text: "Hi — I'm Varsha, and Lokesh is here too. Ask us about staying safe online, or about being a good person. You can type a question, or pick a lesson."
+function selectTopic(topic) {
+  const isTa = currentLang === 'ta';
+  const chipRow = document.createElement('div');
+  chipRow.className = 'chip-row';
+  (topic.questions || []).forEach(q => {
+    const c = document.createElement('div');
+    c.className = 'chip';
+    c.textContent = isTa && q.question_ta ? q.question_ta : q.question;
+    c.onclick = () => handleUserQuestion(c.textContent);
+    chipRow.appendChild(c);
   });
-  nextCharacter();
-  chatEl.appendChild(buildHomeCard());
-  scrollToBottom();
+  chatEl.appendChild(chipRow);
+  chipRow.scrollIntoView({ behavior: 'smooth' });
 }
 
-async function bootstrap() {
-  try {
-    const [enRes, taRes] = await Promise.all([
-      fetch('digital_dharma.json'),
-      fetch('digital_dharma_ta.json')
-    ]);
+function handleUserQuestion(text) {
+  if (!text || !text.trim()) return;
+  appendUserMessage(text);
+  questionInput.value = '';
 
-    const enData = await enRes.json();
-    const taData = await taRes.json();
-
-    TOPICS = (enData.topics || []).map(t => ({
-      id: t.id,
-      title: t.title,
-      icon: t.icon,
-      lessonUrl: t.lessonUrl
-    }));
-
-    const taMap = {};
-    (taData.topics || []).forEach(top => {
-      (top.questions || []).forEach(q => {
-        taMap[q.id] = {
-          question_ta: q.question_ta,
-          answer_ta: q.answer_ta
-        };
+  const typing = showTypingIndicator();
+  setTimeout(() => {
+    typing.remove();
+    const result = findAnswer(text);
+    if (result) {
+      const isTa = currentLang === 'ta';
+      const ans = isTa && result.item.answer_ta ? result.item.answer_ta : result.item.answer;
+      appendBotMessage({
+        speaker: result.item.speaker || "varsha",
+        text: ans,
+        topic: result.topic,
+        isSafety: result.isSafety
       });
-    });
-
-    KB = [];
-    (enData.topics || []).forEach(top => {
-      (top.questions || []).forEach(q => {
-        const trans = taMap[q.id] || {};
-        KB.push({
-          ...q,
-          topicId: top.id,
-          topicTitle: top.title,
-          icon: top.icon,
-          lessonUrl: top.lessonUrl,
-          question_ta: trans.question_ta || q.question,
-          answer_ta: trans.answer_ta || q.answer
-        });
-      });
-    });
-
-    KB_BY_ID = {};
-    KB.forEach(q => { KB_BY_ID[q.id] = q; });
-
-    if(enData.matching && enData.matching.thresholds) {
-      autoAnswerMinScore = enData.matching.thresholds.clarificationMinScore || 0.55;
+    } else {
+      handleUnknownQuestion(text);
     }
-
-    loadingScrim.classList.add('hidden');
-    resetChat();
-  } catch (err) {
-    loadingScrim.textContent = "Error loading Digital Dharma knowledge base.";
-    console.error("Hydration failed:", err);
-  }
+  }, 450);
 }
 
-sendBtn.addEventListener('click', handleAsk);
-inputEl.addEventListener('keydown', (e) => { if(e.key === 'Enter') handleAsk(); });
-queueChip.addEventListener('click', openDrawer);
-drawerClose.addEventListener('click', closeDrawer);
-btnEn.addEventListener('click', () => setLang('en'));
-btnTa.addEventListener('click', () => setLang('ta'));
-btnLessons.addEventListener('click', scrollToHome);
-btnReset.addEventListener('click', resetChat);
+function appendUserMessage(text) {
+  const msg = document.createElement('div');
+  msg.className = 'msg user';
+  msg.innerHTML = `
+    <div class="bubble-wrap">
+      <div class="bubble">${escapeHtml(text)}</div>
+    </div>
+  `;
+  chatEl.appendChild(msg);
+  msg.scrollIntoView({ behavior: 'smooth' });
+}
 
-if('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../sw.js', { scope: '/' })
-      .catch(err => console.warn('SW registration error:', err));
+function appendBotMessage({ speaker, text, topic, isSafety = false }) {
+  const isTa = currentLang === 'ta';
+  const name = speaker === 'lokesh' ? (isTa ? 'லோகேஷ்' : 'Lokesh') : (isTa ? 'வர்ஷா' : 'Varsha');
+  const avatarSrc = speaker === 'lokesh' ? 'lokesh.webp' : 'varsha.webp';
+
+  // Make helpline numbers tappable
+  let formatted = escapeHtml(text);
+  if (formatted.includes("1098")) {
+    formatted = formatted.replace(/1098/g, '<a href="tel:1098" class="call-link">📞 1098</a>');
+  }
+
+  const msg = document.createElement('div');
+  msg.className = 'msg bot';
+  msg.innerHTML = `
+    <img class="avatar-sm" src="${avatarSrc}" alt="${name}">
+    <div class="bubble-wrap">
+      <div class="speaker-name ${isSafety ? 'safety' : speaker}">${name} ${isSafety ? '· Child Safety Alert' : ''}</div>
+      <div class="bubble ${isSafety ? 'safety-alert' : speaker}">${formatted}</div>
+      ${topic ? `
+        <div class="meta-row">
+          <span class="topic-tag ${isSafety ? 'safety' : ''}">${topic.icon} ${isTa && topic.title_ta ? topic.title_ta : topic.title}</span>
+          ${topic.lessonUrl ? `<a class="lesson-link" href="${topic.lessonUrl}" target="_blank" rel="noopener">Read Lesson →</a>` : ''}
+        </div>
+      ` : ''}
+    </div>
+  `;
+  chatEl.appendChild(msg);
+  msg.scrollIntoView({ behavior: 'smooth' });
+}
+
+function handleUnknownQuestion(text) {
+  const isTa = currentLang === 'ta';
+  const item = { question: text, time: new Date().toISOString() };
+  reviewQueue.unshift(item);
+  try { localStorage.setItem('dd_review_queue', JSON.stringify(reviewQueue)); } catch(e){}
+  updateQueueBadge();
+
+  appendBotMessage({
+    speaker: "varsha",
+    text: isTa
+      ? "இந்தக் கேள்விக்கு என்னிடம் இன்னும் அங்கீகரிக்கப்பட்ட பதில் இல்லை. எங்கள் மதிப்பாய்வு வரிசையில் இதை சேர்த்துள்ளேன்!"
+      : "I don't have an approved answer for this question yet. I've sent it to our review queue for fact-checking!"
   });
 }
 
-bootstrap();
+function showTypingIndicator() {
+  const t = document.createElement('div');
+  t.className = 'msg bot';
+  t.innerHTML = `
+    <div class="typing" style="margin-left: 42px;">
+      <span></span><span></span><span></span>
+    </div>
+  `;
+  chatEl.appendChild(t);
+  t.scrollIntoView({ behavior: 'smooth' });
+  return t;
+}
+
+function updateQueueBadge() {
+  queueCount.textContent = reviewQueue.length;
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+// Events
+sendBtn.onclick = () => handleUserQuestion(questionInput.value);
+questionInput.onkeydown = (e) => { if (e.key === 'Enter') handleUserQuestion(questionInput.value); };
+
+btnEn.onclick = () => {
+  if (currentLang === 'en') return;
+  currentLang = 'en';
+  btnEn.classList.add('active');
+  btnTa.classList.remove('active');
+  renderHomeCard();
+};
+btnTa.onclick = () => {
+  if (currentLang === 'ta') return;
+  currentLang = 'ta';
+  btnTa.classList.add('active');
+  btnEn.classList.remove('active');
+  renderHomeCard();
+};
+
+btnLessons.onclick = () => renderHomeCard();
+btnReset.onclick = () => renderHomeCard();
+
+queueChip.onclick = () => {
+  queueList.innerHTML = reviewQueue.length === 0
+    ? '<div class="queue-empty">No pending questions in the review queue.</div>'
+    : reviewQueue.map(q => `
+        <div class="queue-item">
+          <div class="q">${escapeHtml(q.question)}</div>
+          <div class="t">${new Date(q.time).toLocaleDateString()}</div>
+        </div>
+      `).join('');
+  drawerBackdrop.classList.add('open');
+};
+drawerClose.onclick = () => drawerBackdrop.classList.remove('open');
+
+init();
