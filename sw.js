@@ -1,4 +1,4 @@
-const CACHE = "randomtyms-hub-v3";
+const CACHE = "randomtyms-hub-v4";
 
 const ASSETS = [
   "./",
@@ -7,7 +7,15 @@ const ASSETS = [
   "./icon-192.png",
   "./icon-512.png",
   "./logo.webp",
-  "./hero-characters.jpg"
+  "./hero-characters.jpg",
+  // Digital Dharma files in /dd/
+  "./dd/",
+  "./dd/index.html",
+  "./dd/app.js",
+  "./dd/digital_dharma.json",
+  "./dd/digital_dharma_ta.json",
+  "./dd/varsha.webp",
+  "./dd/lokesh.webp"
 ];
 
 self.addEventListener("install", (event) => {
@@ -61,7 +69,13 @@ self.addEventListener("fetch", (event) => {
           return response;
         } catch (e) {
           const cached = await caches.match(event.request);
-          return cached || caches.match("./index.html");
+          if (cached) return cached;
+
+          // Route-aware offline fallbacks
+          if (url.pathname.includes("/dd/")) {
+            return caches.match("./dd/index.html");
+          }
+          return caches.match("./index.html");
         }
       })()
     );
