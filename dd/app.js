@@ -155,6 +155,13 @@ async function init() {
 function findAnswer(queryText) {
   const q = queryText.toLowerCase().trim();
 
+  // Tier 0: Direct Helpline & 1098 Inquiries
+  if (q.includes("1098") || q.includes("childline")) {
+    const safety = ddData.find(t => t.id === "DD12");
+    const item = safety?.questions?.find(qi => qi.id === "DD12-Q009");
+    if (item) return { item, topic: safety, isSafety: true };
+  }
+
   // Tier 1: Emergency Safety Check (Always evaluated first)
   const safety = ddData.find(t => t.id === "DD12");
   if (safety) {
@@ -163,10 +170,22 @@ function findAnswer(queryText) {
         return { item: qItem, topic: safety, isSafety: true };
       }
       const matched = (qItem.keywords || []).filter(k => q.includes(k.toLowerCase()));
-      if (matched.length >= 2 || (matched.length >= 1 && (q.includes("touch") || q.includes("hurt") || q.includes("unsafe") || q.includes("photo")))) {
+      if (matched.length >= 2 || (matched.length >= 1 && (q.includes("touch") || q.includes("hurt") || q.includes("unsafe") || q.includes("photo") || q.includes("secret")))) {
         return { item: qItem, topic: safety, isSafety: true };
       }
     }
+  }
+
+  // Tier 1.5: Conversational Shortcuts (Identity, Feelings, Greetings)
+  if (q.includes("who are you") || q.includes("who r u") || q.includes("what is your name")) {
+    const dd11 = ddData.find(t => t.id === "DD11");
+    const item = dd11?.questions?.find(qi => qi.id === "DD11-Q006" || qi.id === "DD11-Q002");
+    if (item) return { item, topic: dd11, isSafety: false };
+  }
+  if (q.includes("nobody likes me") || q.includes("no one likes me") || q.includes("i am sad") || q.includes("feel sad")) {
+    const dd01 = ddData.find(t => t.id === "DD01");
+    const item = dd01?.questions?.find(qi => qi.id === "DD01-Q004");
+    if (item) return { item, topic: dd01, isSafety: false };
   }
 
   // Tier 2: Standard Lesson Matching
@@ -190,6 +209,7 @@ function findAnswer(queryText) {
 
   return null;
 }
+
 
 // UI Rendering Helpers
 function renderHomeCard() {
