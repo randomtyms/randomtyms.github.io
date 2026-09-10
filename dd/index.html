@@ -16,6 +16,7 @@
       --lokesh-deep:#c98a12; --lokesh-soft:#fff6e2; --lokesh-accent:#2f8f74;
       --marigold:#F4A300;
       --danger-soft:#fbeaea; --danger-ink:#8a3b3b;
+      --safety-red:#c82333; --safety-bg:#fff5f5; --safety-border:#f5c2c2;
     }
     *{box-sizing:border-box;}
     html,body{margin:0;padding:0;}
@@ -43,8 +44,6 @@
       border-bottom:1px solid var(--line);
       display:flex; flex-direction:column; gap:10px;
     }
-
-    /* Dedicated top bar preventing overlay collisions */
     .head-top-bar{
       display:flex; align-items:center; justify-content:space-between; width:100%;
     }
@@ -70,7 +69,6 @@
     .avatar.varsha{outline:2px solid var(--varsha-deep);outline-offset:2px;}
     .avatar.lokesh{outline:2px solid var(--lokesh-deep);outline-offset:2px;}
 
-    /* Luminous Krishna Video Avatar Frame */
     .krishna-video-ring{
       width:78px; height:78px; border-radius:50%; padding:2.5px;
       background:linear-gradient(135deg, var(--marigold), #ffe082);
@@ -107,10 +105,13 @@
       text-transform:uppercase; margin:0 0 10px 2px;}
     .lesson-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px;}
     .lesson-tile{background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px 10px;
-      text-align:left; cursor:pointer; font-family:'Hind Madurai',sans-serif;}
+      text-align:left; cursor:pointer; font-family:'Hind Madurai',sans-serif; transition:border-color 0.15s;}
     .lesson-tile .ic{font-size:19px; display:block; margin-bottom:6px;}
-    .lesson-tile .tt{font-size:12.5px; font-weight:700; line-height:1.3; color:var(--ink);}
+    .lesson-tile .tt{font-size:12px; font-weight:700; line-height:1.3; color:var(--ink);}
     .lesson-tile:hover{border-color:var(--varsha-deep);}
+    .lesson-tile.safety-tile{border-color:#f5b8b8; background:var(--safety-bg);}
+    .lesson-tile.safety-tile .tt{color:var(--safety-red);}
+    
     .starter-list{display:flex; flex-direction:column; gap:7px;}
     .starter-chip{background:#fff; border:1px solid var(--line); border-radius:12px; padding:10px 13px;
       font-size:13.5px; font-weight:500; text-align:center; cursor:pointer; color:var(--ink);}
@@ -126,18 +127,29 @@
     .speaker-name{font-size:11px; font-weight:700; font-family:'Baloo Thambi 2', sans-serif; padding-left:2px;}
     .speaker-name.varsha{color:var(--varsha-deep);}
     .speaker-name.lokesh{color:var(--lokesh-deep);}
+    .speaker-name.safety{color:var(--safety-red);}
+
     .bubble{padding:11px 14px; border-radius:16px; font-size:14.5px; line-height:1.5;
       box-shadow:0 2px 6px rgba(60,40,100,0.08);}
     .msg.bot .bubble.varsha{background:var(--varsha-soft); border:1px solid #dfe3f5;
       border-top-left-radius:5px; color:var(--ink);}
     .msg.bot .bubble.lokesh{background:var(--lokesh-soft); border:1px solid #f2e2bd;
       border-top-left-radius:5px; color:var(--ink);}
+    .msg.bot .bubble.safety-alert{
+      background:var(--safety-bg); border:1.5px solid var(--safety-border);
+      border-top-left-radius:5px; color:#571818; box-shadow:0 3px 10px rgba(200,35,51,0.12);
+    }
+    .msg.bot .bubble.safety-alert a.call-link{
+      background:var(--safety-red); color:#fff; padding:2px 8px; border-radius:6px;
+      text-decoration:none; font-weight:700; display:inline-block; margin-top:4px;
+    }
     .msg.user .bubble{background:var(--ink); color:#fff; border-top-right-radius:5px;}
     .bubble.unknown{background:var(--danger-soft); border:1px solid #f0d3d3; color:var(--danger-ink);}
 
     .meta-row{display:flex; align-items:center; gap:8px; padding-left:2px; flex-wrap:wrap;}
     .topic-tag{font-size:10.5px; background:#f1eefc; color:var(--ink-soft); border-radius:999px;
       padding:2px 8px; font-weight:600;}
+    .topic-tag.safety{background:#ffe3e3; color:var(--safety-red);}
     .lesson-link{font-size:10.5px; font-weight:700; color:var(--varsha-deep); text-decoration:none;}
     .lesson-link:hover{text-decoration:underline;}
 
@@ -201,7 +213,6 @@
   <div id="loadingScrim" class="loading-scrim">Loading Digital Dharma…</div>
   
   <div class="head">
-    <!-- Top Controls Row (No overlap) -->
     <div class="head-top-bar">
       <div class="queue-chip" id="queueChip">📋 Review <span class="dot" id="queueCount">0</span></div>
       <div class="lang-toggle">
@@ -210,7 +221,6 @@
       </div>
     </div>
 
-    <!-- Center Row with Krishna Video Avatar & Siblings -->
     <div class="head-row">
       <img class="avatar varsha" src="varsha.webp" alt="Varsha">
       <div class="krishna-video-ring">
@@ -263,4 +273,3 @@
 <script src="app.js" defer></script>
 </body>
 </html>
-
