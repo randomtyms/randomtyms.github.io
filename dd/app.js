@@ -17,7 +17,7 @@ const drawerClose = document.getElementById('drawerClose');
 const queueList = document.getElementById('queueList');
 const loadingScrim = document.getElementById('loadingScrim');
 
-// DD12 Emergency Safety Topic (Mandated Priority Protocol)
+// DD12 Emergency Safety Topic (Mandated Offline Failsafe)
 const DD12_SAFETY = {
   id: "DD12",
   title: "Safety Help - When Someone Hurts You",
@@ -121,16 +121,21 @@ const DD12_SAFETY = {
 
 // Fetch data & initialize
 async function init() {
+  const fileName = currentLang === 'ta' ? 'digital_dharma_ta.json' : 'digital_dharma.json';
+  
   try {
-    const res = await fetch('dd-data.json');
+    const res = await fetch(fileName);
     if (res.ok) {
-      ddData = await res.json();
+      const data = await res.json();
+      ddData = data.topics || (Array.isArray(data) ? data : []);
+    } else {
+      console.warn(`Failed to fetch ${fileName}, status: ${res.status}`);
     }
   } catch (e) {
-    console.warn("Local dd-data.json not loaded, continuing with internal topics.");
+    console.warn(`Could not load ${fileName}, using fallback.`, e);
   }
 
-  // Inject DD12 if not already present in the JSON
+  // Ensure DD12 safety topic is present
   if (!ddData.some(t => t.id === "DD12")) {
     ddData.push(DD12_SAFETY);
   }
@@ -142,7 +147,7 @@ async function init() {
   } catch (e) {}
   updateQueueBadge();
 
-  loadingScrim.classList.add('hidden');
+  if (loadingScrim) loadingScrim.classList.add('hidden');
   renderHomeCard();
 }
 
@@ -150,14 +155,14 @@ async function init() {
 function findAnswer(queryText) {
   const q = queryText.toLowerCase().trim();
 
-  // Tier 1: Emergency Safety Check (Bypasses regular queue/fuzzy search)
+  // Tier 1: Emergency Safety Check (Always evaluated first)
   const safety = ddData.find(t => t.id === "DD12");
   if (safety) {
-    for (const qItem of safety.questions) {
+    for (const qItem of safety.questions || []) {
       if (qItem.match_phrases && qItem.match_phrases.some(phrase => q.includes(phrase.toLowerCase()))) {
         return { item: qItem, topic: safety, isSafety: true };
       }
-      const matched = qItem.keywords.filter(k => q.includes(k.toLowerCase()));
+      const matched = (qItem.keywords || []).filter(k => q.includes(k.toLowerCase()));
       if (matched.length >= 2 || (matched.length >= 1 && (q.includes("touch") || q.includes("hurt") || q.includes("unsafe") || q.includes("photo")))) {
         return { item: qItem, topic: safety, isSafety: true };
       }
@@ -168,10 +173,13 @@ function findAnswer(queryText) {
   for (const topic of ddData) {
     if (topic.id === "DD12") continue;
     for (const qItem of topic.questions || []) {
+      const enQ = (qItem.question_en || qItem.question || '').toLowerCase();
+      const taQ = (qItem.question_ta || '').toLowerCase();
+
       if (qItem.match_phrases && qItem.match_phrases.some(p => q.includes(p.toLowerCase()))) {
         return { item: qItem, topic, isSafety: false };
       }
-      if (q.includes(qItem.question.toLowerCase())) {
+      if ((enQ && q.includes(enQ)) || (taQ && q.includes(taQ))) {
         return { item: qItem, topic, isSafety: false };
       }
       if (qItem.keywords && qItem.keywords.filter(k => q.includes(k.toLowerCase())).length >= 2) {
@@ -188,7 +196,6 @@ function renderHomeCard() {
   chatEl.innerHTML = '';
   const isTa = currentLang === 'ta';
 
-  // Greeting
   appendBotMessage({
     speaker: "varsha",
     text: isTa 
@@ -210,9 +217,15 @@ function renderHomeCard() {
   ddData.forEach(topic => {
     const tile = document.createElement('div');
     tile.className = 'lesson-tile' + (topic.id === 'DD12' ? ' safety-tile' : '');
+    
+    // Normalizes properties between digital_dharma.json & digital_dharma_ta.json
+    const titleText = isTa 
+      ? (topic.title_ta || topic.title || topic.title_en)
+      : (topic.title_en || topic.title);
+
     tile.innerHTML = `
       <span class="ic">${topic.icon}</span>
-      <span class="tt">${isTa && topic.title_ta ? topic.title_ta : topic.title}</span>
+      <span class="tt">${titleText}</span>
     `;
     tile.onclick = () => selectTopic(topic);
     grid.appendChild(tile);
@@ -258,7 +271,7 @@ function selectTopic(topic) {
   (topic.questions || []).forEach(q => {
     const c = document.createElement('div');
     c.className = 'chip';
-    c.textContent = isTa && q.question_ta ? q.question_ta : q.question;
+    c.textContent = isTa ? (q.question_ta || q.question || q.question_en) : (q.question_en || q.question);
     c.onclick = () => handleUserQuestion(c.textContent);
     chipRow.appendChild(c);
   });
@@ -277,7 +290,10 @@ function handleUserQuestion(text) {
     const result = findAnswer(text);
     if (result) {
       const isTa = currentLang === 'ta';
-      const ans = isTa && result.item.answer_ta ? result.item.answer_ta : result.item.answer;
+      const ans = isTa 
+        ? (result.item.answer_ta || result.item.answer || result.item.answer_en)
+        : (result.item.answer_en || result.item.answer);
+
       appendBotMessage({
         speaker: result.item.speaker || "varsha",
         text: ans,
@@ -307,11 +323,14 @@ function appendBotMessage({ speaker, text, topic, isSafety = false }) {
   const name = speaker === 'lokesh' ? (isTa ? 'லோகேஷ்' : 'Lokesh') : (isTa ? 'வர்ஷா' : 'Varsha');
   const avatarSrc = speaker === 'lokesh' ? 'lokesh.webp' : 'varsha.webp';
 
-  // Make helpline numbers tappable
   let formatted = escapeHtml(text);
   if (formatted.includes("1098")) {
     formatted = formatted.replace(/1098/g, '<a href="tel:1098" class="call-link">📞 1098</a>');
   }
+
+  const topicTitle = topic 
+    ? (isTa ? (topic.title_ta || topic.title || topic.title_en) : (topic.title_en || topic.title))
+    : '';
 
   const msg = document.createElement('div');
   msg.className = 'msg bot';
@@ -322,7 +341,7 @@ function appendBotMessage({ speaker, text, topic, isSafety = false }) {
       <div class="bubble ${isSafety ? 'safety-alert' : speaker}">${formatted}</div>
       ${topic ? `
         <div class="meta-row">
-          <span class="topic-tag ${isSafety ? 'safety' : ''}">${topic.icon} ${isTa && topic.title_ta ? topic.title_ta : topic.title}</span>
+          <span class="topic-tag ${isSafety ? 'safety' : ''}">${topic.icon} ${topicTitle}</span>
           ${topic.lessonUrl ? `<a class="lesson-link" href="${topic.lessonUrl}" target="_blank" rel="noopener">Read Lesson →</a>` : ''}
         </div>
       ` : ''}
@@ -379,14 +398,15 @@ btnEn.onclick = () => {
   currentLang = 'en';
   btnEn.classList.add('active');
   btnTa.classList.remove('active');
-  renderHomeCard();
+  init();
 };
+
 btnTa.onclick = () => {
   if (currentLang === 'ta') return;
   currentLang = 'ta';
   btnTa.classList.add('active');
   btnEn.classList.remove('active');
-  renderHomeCard();
+  init();
 };
 
 btnLessons.onclick = () => renderHomeCard();
