@@ -1528,6 +1528,241 @@
           "status": "approved"
         }
       ]
+    },
+    {
+      "id": "DD12",
+      "title": "Safety Help - When Someone Hurts You",
+      "icon": "🛡️",
+      "lessonUrl": "https://lokeshvarsha.blogspot.com/p/safety-help.html",
+      "priority": "highest",
+      "neverFallback": true,
+      "notes": "This topic must bypass unknownQuestion fallback. Always match first.",
+      "questions": [
+        {
+          "id": "DD12-Q001",
+          "question": "Next door man hurt me",
+          "keywords": [
+            "hurt",
+            "hit",
+            "beat",
+            "slap",
+            "next door",
+            "neighbour",
+            "neighbor",
+            "uncle",
+            "man",
+            "hurt me"
+          ],
+          "match_phrases": [
+            "next door man hurt me",
+            "neighbour hurt me",
+            "neighbor hurt me",
+            "man hurt me",
+            "uncle hurt me",
+            "someone hurt me",
+            "someone is hurting me",
+            "next door uncle hit me"
+          ],
+          "answer": "I'm so sorry. It's not your fault. You did right telling me. Please tell your parent, guardian, or teacher right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q002",
+          "question": "He touched me badly",
+          "keywords": [
+            "touch",
+            "touched",
+            "bad touch",
+            "badly",
+            "private parts",
+            "private",
+            "uncomfortable",
+            "inappropriate"
+          ],
+          "match_phrases": [
+            "he touched me badly",
+            "she touched me badly",
+            "bad touch",
+            "touched me in private parts",
+            "touched my private parts",
+            "uncomfortable touch",
+            "someone touched me badly",
+            "badly touched me"
+          ],
+          "answer": "Thank you for telling me. Bad touch is never your fault. Your body belongs to you. Tell a trusted adult today and don't keep it secret. You can call Childline 1098 for help.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q003",
+          "question": "Someone is asking for my photos",
+          "keywords": [
+            "photo",
+            "photos",
+            "picture",
+            "pics",
+            "send photo",
+            "private photo",
+            "nude",
+            "asking photo",
+            "image"
+          ],
+          "match_phrases": [
+            "someone asking for my photos",
+            "asking for private photos",
+            "send me your photo",
+            "send your pics",
+            "asking for nude photo",
+            "online asking for pics",
+            "asking for my picture"
+          ],
+          "answer": "Don't send photos. Show the message to a trusted adult right away. Block that person. Call Childline 1098 if they pressure you.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q004",
+          "question": "I feel unsafe",
+          "keywords": [
+            "unsafe",
+            "scared",
+            "afraid",
+            "fear",
+            "not safe",
+            "help",
+            "scary",
+            "danger"
+          ],
+          "match_phrases": [
+            "i feel unsafe",
+            "i am scared",
+            "i feel not safe",
+            "i need help",
+            "i feel unsafe at home",
+            "i feel unsafe at school",
+            "i am afraid"
+          ],
+          "answer": "If you feel unsafe, find a trusted adult near you now. Move to a safe place if you can. You can call Childline 1098 anytime. You deserve to be safe.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q005",
+          "question": "Someone told me to keep a secret about touching",
+          "keywords": [
+            "secret",
+            "keep secret",
+            "dont tell",
+            "don't tell",
+            "touching secret",
+            "threat",
+            "threaten"
+          ],
+          "match_phrases": [
+            "told me to keep secret",
+            "said dont tell anyone",
+            "secret about touching",
+            "threatened me to keep secret",
+            "don't tell secret"
+          ],
+          "answer": "Secrets about touching should not be kept. You won't get in trouble for telling. Tell a trusted adult today. Call 1098 for help.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q006",
+          "question": "Someone is scaring me online",
+          "keywords": [
+            "scare",
+            "scaring",
+            "threat",
+            "threatening",
+            "online",
+            "blackmail",
+            "scam",
+            "frighten"
+          ],
+          "match_phrases": [
+            "someone scaring me online",
+            "threatening me online",
+            "blackmailing me",
+            "someone scaring me in game",
+            "scaring me on chat"
+          ],
+          "answer": "Don't reply. Take a screenshot if you can and show a trusted adult. Block and report that person. Call 1098 for help.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q007",
+          "question": "He is asking me to meet alone",
+          "keywords": [
+            "meet",
+            "alone",
+            "meet me",
+            "come alone",
+            "secret meeting",
+            "meet outside"
+          ],
+          "match_phrases": [
+            "asking me to meet alone",
+            "wants to meet me alone",
+            "told me to meet outside",
+            "meet me secretly"
+          ],
+          "answer": "Don't go alone. Tell a trusted adult about this message right away. Don't keep meeting plans secret. Call 1098 if you need help.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        },
+        {
+          "id": "DD12-Q008",
+          "question": "What is good touch and bad touch?",
+          "keywords": [
+            "good touch",
+            "bad touch",
+            "safe touch",
+            "unsafe touch",
+            "private parts",
+            "body safety"
+          ],
+          "match_phrases": [
+            "what is good touch bad touch",
+            "what is bad touch",
+            "what is safe touch",
+            "difference good bad touch"
+          ],
+          "answer": "Good touch feels safe and caring, like a hug from family when you want it. Bad touch hurts, feels uncomfortable, or touches private parts. If bad touch happens, say no and tell a trusted adult. Call 1098.",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        }
+      ]
     }
+
+    
   ]
 }
