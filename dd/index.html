@@ -69,6 +69,7 @@
     .avatar.varsha{outline:2px solid var(--varsha-deep);outline-offset:2px;}
     .avatar.lokesh{outline:2px solid var(--lokesh-deep);outline-offset:2px;}
 
+    .krishna-wrap{position:relative; flex-shrink:0;}
     .krishna-video-ring{
       width:78px; height:78px; border-radius:50%; padding:2.5px;
       background:linear-gradient(135deg, var(--marigold), #ffe082);
@@ -77,11 +78,18 @@
         0 0 24px rgba(244,163,0,0.25),
         0 4px 12px rgba(60,40,100,0.2);
       overflow:hidden; display:flex; align-items:center; justify-content:center;
-      flex-shrink:0; animation:krishnaRingGlow 3s ease-in-out infinite;
+      animation:krishnaRingGlow 3s ease-in-out infinite;
     }
     .krishna-video{
       width:100%; height:100%; border-radius:50%; object-fit:cover; display:block;
     }
+    .krishna-mute-btn{
+      position:absolute; right:-2px; bottom:-2px; width:23px; height:23px; border-radius:50%;
+      background:var(--ink); color:#fff; border:2px solid #fff; font-size:11px;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      box-shadow:0 2px 6px rgba(60,40,100,0.35); z-index:2; padding:0; line-height:1;
+    }
+    .krishna-mute-btn:active{transform:scale(0.92);}
     @keyframes krishnaRingGlow{
       0%,100%{ box-shadow:0 0 10px rgba(244,163,0,0.45), 0 4px 12px rgba(60,40,100,0.2); }
       50%{ box-shadow:0 0 18px rgba(244,163,0,0.75), 0 0 28px rgba(255,224,130,0.4), 0 4px 14px rgba(60,40,100,0.25); }
@@ -223,17 +231,21 @@
 
     <div class="head-row">
       <img class="avatar varsha" src="varsha.webp" alt="Varsha">
-      <div class="krishna-video-ring">
-        <video 
-          class="krishna-video"
-          src="https://github.com/user-attachments/assets/512a6582-528e-42bf-98c7-4b2ececaa602"
-          autoplay 
-          loop 
-          muted 
-          playsinline 
-          preload="auto"
-          poster="../Assets/krishna.webp">
-        </video>
+      <div class="krishna-wrap">
+        <div class="krishna-video-ring">
+          <video 
+            id="krishnaVideo"
+            class="krishna-video"
+            src="https://github.com/user-attachments/assets/512a6582-528e-42bf-98c7-4b2ececaa602"
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            preload="auto"
+            poster="../Assets/krishna.webp">
+          </video>
+        </div>
+        <button class="krishna-mute-btn" id="krishnaMuteBtn" title="Tap for sound" aria-label="Toggle Krishna video sound">🔇</button>
       </div>
       <img class="avatar lokesh" src="lokesh.webp" alt="Lokesh">
     </div>
@@ -271,5 +283,20 @@
 </div>
 
 <script src="app.js" defer></script>
+<script>
+  // Tap-to-unmute for the Krishna video (browsers block autoplay-with-sound,
+  // so it starts muted and this lets a real tap turn sound on)
+  (function(){
+    const krishnaVideo = document.getElementById('krishnaVideo');
+    const krishnaMuteBtn = document.getElementById('krishnaMuteBtn');
+    if (!krishnaVideo || !krishnaMuteBtn) return;
+    krishnaMuteBtn.onclick = () => {
+      krishnaVideo.muted = !krishnaVideo.muted;
+      krishnaMuteBtn.textContent = krishnaVideo.muted ? '🔇' : '🔊';
+      krishnaMuteBtn.title = krishnaVideo.muted ? 'Tap for sound' : 'Tap to mute';
+      krishnaVideo.play().catch(() => {});
+    };
+  })();
+</script>
 </body>
 </html>
