@@ -291,10 +291,18 @@
     const krishnaMuteBtn = document.getElementById('krishnaMuteBtn');
     if (!krishnaVideo || !krishnaMuteBtn) return;
     krishnaMuteBtn.onclick = () => {
-      krishnaVideo.muted = !krishnaVideo.muted;
-      krishnaMuteBtn.textContent = krishnaVideo.muted ? '🔇' : '🔊';
-      krishnaMuteBtn.title = krishnaVideo.muted ? 'Tap for sound' : 'Tap to mute';
-      krishnaVideo.play().catch(() => {});
+      const willBeMuted = !krishnaVideo.muted;
+      krishnaVideo.muted = willBeMuted;
+      krishnaVideo.volume = 1.0;
+      krishnaMuteBtn.textContent = willBeMuted ? '🔇' : '🔊';
+      krishnaMuteBtn.title = willBeMuted ? 'Tap for sound' : 'Tap to mute';
+      if (!willBeMuted) {
+        // Android Chrome sometimes won't re-engage audio output just from
+        // toggling .muted on a video that's already mid-autoplay — forcing
+        // a fresh pause/play handoff makes the unmute actually take effect.
+        krishnaVideo.pause();
+        krishnaVideo.play().catch(() => {});
+      }
     };
   })();
 </script>
