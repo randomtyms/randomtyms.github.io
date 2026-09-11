@@ -1551,7 +1551,11 @@
             "neighbor",
             "uncle",
             "man",
-            "hurt me"
+            "hurt me",
+            "relative",
+            "family member",
+            "hits me",
+            "beats me"
           ],
           "match_phrases": [
             "next door man hurt me",
@@ -1561,7 +1565,12 @@
             "uncle hurt me",
             "someone hurt me",
             "someone is hurting me",
-            "next door uncle hit me"
+            "next door uncle hit me",
+            "my relative hurt me",
+            "my uncle hits me",
+            "someone at home hurts me",
+            "family member hurt me",
+            "someone did something bad to me"
           ],
           "answer": "I'm so sorry. It's not your fault. You did right telling me. Please tell your parent, guardian, or teacher right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
           "source": "safety_expert",
@@ -1581,7 +1590,9 @@
             "private parts",
             "private",
             "uncomfortable",
-            "inappropriate"
+            "inappropriate",
+            "touching me",
+            "wrong way"
           ],
           "match_phrases": [
             "he touched me badly",
@@ -1591,7 +1602,10 @@
             "touched my private parts",
             "uncomfortable touch",
             "someone touched me badly",
-            "badly touched me"
+            "badly touched me",
+            "somebody is touching me",
+            "touching me in a wrong way",
+            "someone touched me and i didn't like it"
           ],
           "answer": "Thank you for telling me. Bad touch is never your fault. Your body belongs to you. Tell a trusted adult today and don't keep it secret. You can call Childline 1098 for help.",
           "source": "safety_expert",
@@ -1641,7 +1655,8 @@
             "not safe",
             "help",
             "scary",
-            "danger"
+            "danger",
+            "please help"
           ],
           "match_phrases": [
             "i feel unsafe",
@@ -1650,7 +1665,11 @@
             "i need help",
             "i feel unsafe at home",
             "i feel unsafe at school",
-            "i am afraid"
+            "i am afraid",
+            "please help me",
+            "i want to tell someone",
+            "can i tell you something bad happened",
+            "i don't feel safe with someone"
           ],
           "answer": "If you feel unsafe, find a trusted adult near you now. Move to a safe place if you can. You can call Childline 1098 anytime. You deserve to be safe.",
           "source": "safety_expert",
@@ -1760,34 +1779,33 @@
             "safety_critical"
           ]
         },
-       {
-  "id": "DD12-Q009",
-  "question": "What is 1098? Whose number is 1098?",
-  "keywords": [
-    "1098",
-    "childline",
-    "number",
-    "helpline",
-    "phone number",
-    "call 1098"
-  ],
-  "match_phrases": [
-    "1098 whose number",
-    "whose number is 1098",
-    "what is 1098",
-    "who will answer 1098",
-    "is 1098 free",
-    "what is childline"
-  ],
-  "answer": "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
-  "speaker": "varsha",
-  "source": "safety_expert",
-  "status": "approved",
-  "tags": [
-    "safety_critical"
-  ]
-}
- 
+        {
+          "id": "DD12-Q009",
+          "question": "What is 1098? Whose number is 1098?",
+          "keywords": [
+            "1098",
+            "childline",
+            "number",
+            "helpline",
+            "phone number",
+            "call 1098"
+          ],
+          "match_phrases": [
+            "1098 whose number",
+            "whose number is 1098",
+            "what is 1098",
+            "who will answer 1098",
+            "is 1098 free",
+            "what is childline"
+          ],
+          "answer": "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
+          "speaker": "varsha",
+          "source": "safety_expert",
+          "status": "approved",
+          "tags": [
+            "safety_critical"
+          ]
+        }
       ]
     }
   ]

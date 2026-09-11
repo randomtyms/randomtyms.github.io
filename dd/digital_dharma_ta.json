@@ -577,14 +577,44 @@
           "question_en": "Next door man hurt me",
           "question_ta": "அக்கம்பக்கத்து நபர் என்னை துன்புறுத்தினார்",
           "answer_en": "I'm so sorry. It's not your fault. You did right telling me. Please tell your parent, guardian, or teacher right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
-          "answer_ta": "வருந்துகிறேன். இது உன் தவறு இல்லை. உடனே பெற்றோர் அல்லது ஆசிரியரிடம் சொல். பாதுகாப்பில்லை என்றால் 1098-க்கு அழை."
+          "answer_ta": "வருந்துகிறேன். இது உன் தவறு இல்லை. உடனே பெற்றோர் அல்லது ஆசிரியரிடம் சொல். பாதுகாப்பில்லை என்றால் 1098-க்கு அழை.",
+          "keywords": [
+            "காயப்படுத்தினார்",
+            "அடித்தார்",
+            "அடிக்கிறார்",
+            "துன்புறுத்தினார்",
+            "மாமா",
+            "அக்கம்பக்கத்து",
+            "சொந்தக்காரர்"
+          ],
+          "match_phrases": [
+            "அக்கம்பக்கத்து மனிதர் என்னை காயப்படுத்தினார்",
+            "மாமா என்னை அடித்தார்",
+            "யாரோ என்னை காயப்படுத்தினார்கள்",
+            "யாரோ என்னை துன்புறுத்துகிறார்கள்",
+            "என் சொந்தக்காரர் என்னை காயப்படுத்தினார்",
+            "வீட்டில் யாரோ என்னை அடிக்கிறார்கள்"
+          ]
         },
         {
           "id": "DD12-Q002",
           "question_en": "He touched me badly",
           "question_ta": "அவர் என்னை தவறாக தொட்டார்",
           "answer_en": "Thank you for telling me. Bad touch is never your fault. Your body belongs to you. Tell a trusted adult today and don't keep it secret. You can call Childline 1098 for help.",
-          "answer_ta": "சொன்னதற்கு நன்றி. தவறான தொடுதல் உன் தவறு இல்லை. உன் உடல் உனக்கே சொந்தம். இன்றே நம்பிக்கையான பெரியவரிடம் சொல். 1098 உதவும்."
+          "answer_ta": "சொன்னதற்கு நன்றி. தவறான தொடுதல் உன் தவறு இல்லை. உன் உடல் உனக்கே சொந்தம். இன்றே நம்பிக்கையான பெரியவரிடம் சொல். 1098 உதவும்.",
+          "keywords": [
+            "தொட்டார்",
+            "தவறாக தொட்டார்",
+            "தனிப்பட்ட பாகங்கள்",
+            "சங்கடமாக",
+            "தொடுகிறார்"
+          ],
+          "match_phrases": [
+            "அவர் என்னை தவறாக தொட்டார்",
+            "யாரோ என்னை தவறாக தொட்டார்கள்",
+            "என்னை சங்கடமான முறையில் தொடுகிறார்",
+            "தவறான தொடுதல்"
+          ]
         },
         {
           "id": "DD12-Q003",
@@ -598,7 +628,20 @@
           "question_en": "I feel unsafe",
           "question_ta": "எனக்கு பயமாகவும் பாதுகாப்பற்றதாகவும் உள்ளது",
           "answer_en": "If you feel unsafe, find a trusted adult near you now. Move to a safe place if you can. You can call Childline 1098 anytime. You deserve to be safe.",
-          "answer_ta": "பாதுகாப்பில்லை என்றால் அருகில் உள்ள பெரியவரிடம் போ. பாதுகாப்பான இடத்திற்கு போய் 1098-க்கு அழை."
+          "answer_ta": "பாதுகாப்பில்லை என்றால் அருகில் உள்ள பெரியவரிடம் போ. பாதுகாப்பான இடத்திற்கு போய் 1098-க்கு அழை.",
+          "keywords": [
+            "பாதுகாப்பில்லை",
+            "பயமாக",
+            "உதவி வேண்டும்",
+            "பயம்"
+          ],
+          "match_phrases": [
+            "எனக்கு பாதுகாப்பில்லை",
+            "நான் பயப்படுகிறேன்",
+            "எனக்கு உதவி வேண்டும்",
+            "எனக்கு பயமாக உள்ளது",
+            "யாரிடமாவது சொல்ல வேண்டும்"
+          ]
         },
         {
           "id": "DD12-Q005",
@@ -629,11 +672,11 @@
           "answer_ta": "நல்ல தொடுதல் பாதுகாப்பாக இருக்கும். தவறான தொடுதல் வலிக்கும், தனி உறுப்புகளை தொடும். நடந்தால் வேண்டாம் என்று சொல்லி பெரியவரிடம் சொல். 1098."
         },
         {
-  "id": "DD12-Q009",
-  "question_en": "What is 1098? Whose number is 1098?",
-  "question_ta": "1098 யாருடைய எண்? 1098 என்றால் என்ன?",
-  "answer_en": "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
-  "answer_ta": "1098 என்பது குழந்தைகளுக்கான இந்தியாவின் இலவச அவசர உதவி எண் (Childline). ஆபத்து அல்லது துன்புறுத்தலில் இருந்து உங்களைப் பாதுகாக்க உதவும் நபர்கள் இதில் பேசுவார்கள். எந்த போனிலிருந்தும் எப்போது வேண்டுமானாலும் இலவசமாக அழைக்கலாம்."
+          "id": "DD12-Q009",
+          "question_en": "What is 1098? Whose number is 1098?",
+          "question_ta": "1098 யாருடைய எண்? 1098 என்றால் என்ன?",
+          "answer_en": "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
+          "answer_ta": "1098 என்பது குழந்தைகளுக்கான இந்தியாவின் இலவச அவசர உதவி எண் (Childline). ஆபத்து அல்லது துன்புறுத்தலில் இருந்து உங்களைப் பாதுகாக்க உதவும் நபர்கள் இதில் பேசுவார்கள். எந்த போனிலிருந்தும் எப்போது வேண்டுமானாலும் இலவசமாக அழைக்கலாம்."
         }
       ]
     }
