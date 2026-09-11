@@ -1759,7 +1759,35 @@
           "tags": [
             "safety_critical"
           ]
-        }
+        },
+       {
+  "id": "DD12-Q009",
+  "question": "What is 1098? Whose number is 1098?",
+  "keywords": [
+    "1098",
+    "childline",
+    "number",
+    "helpline",
+    "phone number",
+    "call 1098"
+  ],
+  "match_phrases": [
+    "1098 whose number",
+    "whose number is 1098",
+    "what is 1098",
+    "who will answer 1098",
+    "is 1098 free",
+    "what is childline"
+  ],
+  "answer": "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
+  "speaker": "varsha",
+  "source": "safety_expert",
+  "status": "approved",
+  "tags": [
+    "safety_critical"
+  ]
+}
+ 
       ]
     }
   ]
