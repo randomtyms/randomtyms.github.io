@@ -32,8 +32,8 @@ const DD12_SAFETY = {
       id: "DD12-Q001",
       question: "Next door man hurt me",
       question_ta: "அக்கம்பக்கத்து நபர் என்னை துன்புறுத்தினார்",
-      keywords: ["hurt", "hit", "beat", "slap", "next door", "neighbour", "neighbor", "uncle", "man", "hurt me"],
-      match_phrases: ["next door man hurt me", "neighbour hurt me", "neighbor hurt me", "man hurt me", "uncle hurt me", "someone hurt me", "someone is hurting me", "next door uncle hit me"],
+      keywords: ["hurt", "hit", "beat", "slap", "next door", "neighbour", "neighbor", "uncle", "man", "hurt me", "relative", "family member", "hits me", "beats me"],
+      match_phrases: ["next door man hurt me", "neighbour hurt me", "neighbor hurt me", "man hurt me", "uncle hurt me", "someone hurt me", "someone is hurting me", "next door uncle hit me", "my relative hurt me", "my uncle hits me", "someone at home hurts me", "family member hurt me", "someone did something bad to me"],
       answer: "I'm so sorry. It's not your fault. You did right telling me. Please tell your parent, guardian, or teacher right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
       answer_ta: "வருந்துகிறேன். இது உன் தவறு இல்லை. உடனே பெற்றோர் அல்லது ஆசிரியரிடம் சொல். பாதுகாப்பில்லை என்றால் 1098-க்கு அழை.",
       speaker: "varsha",
@@ -43,8 +43,8 @@ const DD12_SAFETY = {
       id: "DD12-Q002",
       question: "He touched me badly",
       question_ta: "அவர் என்னை தவறாக தொட்டார்",
-      keywords: ["touch", "touched", "bad touch", "badly", "private parts", "private", "uncomfortable", "inappropriate"],
-      match_phrases: ["he touched me badly", "she touched me badly", "bad touch", "touched me in private parts", "touched my private parts", "uncomfortable touch", "someone touched me badly", "badly touched me"],
+      keywords: ["touch", "touched", "bad touch", "badly", "private parts", "private", "uncomfortable", "inappropriate", "touching me", "wrong way"],
+      match_phrases: ["he touched me badly", "she touched me badly", "bad touch", "touched me in private parts", "touched my private parts", "uncomfortable touch", "someone touched me badly", "badly touched me", "somebody is touching me", "touching me in a wrong way", "someone touched me and i didn't like it"],
       answer: "Thank you for telling me. Bad touch is never your fault. Your body belongs to you. Tell a trusted adult today and don't keep it secret. You can call Childline 1098 for help.",
       answer_ta: "சொன்னதற்கு நன்றி. தவறான தொடுதல் உன் தவறு இல்லை. உன் உடல் உனக்கே சொந்தம். இன்றே நம்பிக்கையான பெரியவரிடம் சொல். 1098 உதவும்.",
       speaker: "varsha",
@@ -65,8 +65,8 @@ const DD12_SAFETY = {
       id: "DD12-Q004",
       question: "I feel unsafe",
       question_ta: "எனக்கு பயமாகவும் பாதுகாப்பற்றதாகவும் உள்ளது",
-      keywords: ["unsafe", "scared", "afraid", "fear", "not safe", "help", "scary", "danger"],
-      match_phrases: ["i feel unsafe", "i am scared", "i feel not safe", "i need help", "i feel unsafe at home", "i feel unsafe at school", "i am afraid"],
+      keywords: ["unsafe", "scared", "afraid", "fear", "not safe", "help", "scary", "danger", "please help"],
+      match_phrases: ["i feel unsafe", "i am scared", "i feel not safe", "i need help", "i feel unsafe at home", "i feel unsafe at school", "i am afraid", "please help me", "i want to tell someone", "can i tell you something bad happened", "i don't feel safe with someone"],
       answer: "If you feel unsafe, find a trusted adult near you now. Move to a safe place if you can. You can call Childline 1098 anytime. You deserve to be safe.",
       answer_ta: "பாதுகாப்பில்லை என்றால் அருகில் உள்ள பெரியவரிடம் போ. பாதுகாப்பான இடத்திற்கு போய் 1098-க்கு அழை.",
       speaker: "varsha",
@@ -113,6 +113,17 @@ const DD12_SAFETY = {
       match_phrases: ["what is good touch bad touch", "what is bad touch", "what is safe touch", "difference good bad touch"],
       answer: "Good touch feels safe and caring, like a hug from family when you want it. Bad touch hurts, feels uncomfortable, or touches private parts. If bad touch happens, say no and tell a trusted adult. Call 1098.",
       answer_ta: "நல்ல தொடுதல் பாதுகாப்பாக இருக்கும். தவறான தொடுதல் வலிக்கும், தனி உறுப்புகளை தொடும். நடந்தால் வேண்டாம் என்று சொல்லி பெரியவரிடம் சொல். 1098.",
+      speaker: "varsha",
+      tags: ["safety_critical"]
+    },
+    {
+      id: "DD12-Q009",
+      question: "What is Childline 1098?",
+      question_ta: "சைல்ட்லைன் 1098 என்றால் என்ன?",
+      keywords: ["1098", "childline", "helpline", "emergency number"],
+      match_phrases: ["what is 1098", "what is childline", "how do i call childline", "call 1098", "1098 number", "childline number", "who is childline"],
+      answer: "Childline 1098 is a free helpline in India for any child who needs help or feels unsafe. You can call it any time, day or night, and talk to someone who will listen and help. It's free, and you won't get in trouble for calling.",
+      answer_ta: "சைல்ட்லைன் 1098 என்பது இந்தியாவில் குழந்தைகளுக்கான இலவச உதவி எண். எப்போது வேண்டுமானாலும் அழைக்கலாம். இலவசம், தண்டனை இல்லை.",
       speaker: "varsha",
       tags: ["safety_critical"]
     }
@@ -314,11 +325,16 @@ function handleUserQuestion(text) {
         ? (result.item.answer_ta || result.item.answer || result.item.answer_en)
         : (result.item.answer_en || result.item.answer);
 
+      const related = (result.isSafety || !result.topic)
+        ? []
+        : (result.topic.questions || []).filter(q => q.id !== result.item.id).slice(0, 2);
+
       appendBotMessage({
         speaker: result.item.speaker || "varsha",
         text: ans,
         topic: result.topic,
-        isSafety: result.isSafety
+        isSafety: result.isSafety,
+        related
       });
     } else {
       handleUnknownQuestion(text);
@@ -338,7 +354,7 @@ function appendUserMessage(text) {
   msg.scrollIntoView({ behavior: 'smooth' });
 }
 
-function appendBotMessage({ speaker, text, topic, isSafety = false }) {
+function appendBotMessage({ speaker, text, topic, isSafety = false, related = [] }) {
   const isTa = currentLang === 'ta';
   const name = speaker === 'lokesh' ? (isTa ? 'லோகேஷ்' : 'Lokesh') : (isTa ? 'வர்ஷா' : 'Varsha');
   const avatarSrc = speaker === 'lokesh' ? 'lokesh.webp' : 'varsha.webp';
@@ -368,6 +384,28 @@ function appendBotMessage({ speaker, text, topic, isSafety = false }) {
     </div>
   `;
   chatEl.appendChild(msg);
+
+  if (!isSafety && related && related.length) {
+    const bubbleWrap = msg.querySelector('.bubble-wrap');
+    const wrap = document.createElement('div');
+    wrap.className = 'related-wrap';
+    const label = document.createElement('div');
+    label.className = 'related-label';
+    label.textContent = isTa ? 'மேலும் கேட்கலாம்' : 'You could also ask';
+    wrap.appendChild(label);
+    const chipRow = document.createElement('div');
+    chipRow.className = 'chip-row';
+    related.forEach(rq => {
+      const c = document.createElement('div');
+      c.className = 'chip';
+      c.textContent = isTa ? (rq.question_ta || rq.question || rq.question_en) : (rq.question_en || rq.question);
+      c.onclick = () => handleUserQuestion(c.textContent);
+      chipRow.appendChild(c);
+    });
+    wrap.appendChild(chipRow);
+    bubbleWrap.appendChild(wrap);
+  }
+
   msg.scrollIntoView({ behavior: 'smooth' });
 }
 
