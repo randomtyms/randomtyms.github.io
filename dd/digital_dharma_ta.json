@@ -627,6 +627,13 @@
           "question_ta": "நல்ல தொடுதல் மற்றும் தவறான தொடுதல் என்றால் என்ன?",
           "answer_en": "Good touch feels safe and caring, like a hug from family when you want it. Bad touch hurts, feels uncomfortable, or touches private parts. If bad touch happens, say no and tell a trusted adult. Call 1098.",
           "answer_ta": "நல்ல தொடுதல் பாதுகாப்பாக இருக்கும். தவறான தொடுதல் வலிக்கும், தனி உறுப்புகளை தொடும். நடந்தால் வேண்டாம் என்று சொல்லி பெரியவரிடம் சொல். 1098."
+        },
+        {
+  "id": "DD12-Q009",
+  "question_en": "What is 1098? Whose number is 1098?",
+  "question_ta": "1098 யாருடைய எண்? 1098 என்றால் என்ன?",
+  "answer_en": "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
+  "answer_ta": "1098 என்பது குழந்தைகளுக்கான இந்தியாவின் இலவச அவசர உதவி எண் (Childline). ஆபத்து அல்லது துன்புறுத்தலில் இருந்து உங்களைப் பாதுகாக்க உதவும் நபர்கள் இதில் பேசுவார்கள். எந்த போனிலிருந்தும் எப்போது வேண்டுமானாலும் இலவசமாக அழைக்கலாம்."
         }
       ]
     }
