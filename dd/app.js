@@ -467,7 +467,11 @@ btnTa.onclick = () => {
   init();
 };
 
-btnLessons.onclick = () => renderHomeCard();
+// UPDATED: Lessons button now goes to the blog series page
+btnLessons.onclick = () => {
+  window.open("https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html", "_blank", "noopener");
+};
+
 btnReset.onclick = () => renderHomeCard();
 
 queueChip.onclick = () => {
