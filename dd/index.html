@@ -11,14 +11,14 @@
   <meta property="og:url" content="https://randomtyms.github.io/dd/">
   <meta property="og:title" content="Ask Lokesh & Varsha — Digital Dharma">
   <meta property="og:description" content="A bilingual (English & Tamil) Q&A companion for kids — safe, moderated answers on cybersafety, kindness, and everyday questions.">
-  <meta property="og:image" content="https://randomtyms.github.io/dd/Krishna-LV.webp">
+  <meta property="og:image" content="https://randomtyms.github.io/dd/varsha.webp">
   <meta property="og:site_name" content="RandomTyms">
   <meta property="og:locale" content="en_IN">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ask Lokesh & Varsha — Digital Dharma">
   <meta name="twitter:description" content="A bilingual (English & Tamil) Q&A companion for kids — safe, moderated answers on cybersafety, kindness, and everyday questions.">
-  <meta name="twitter:image" content="https://randomtyms.github.io/dd/Krishna-LV.webp">
+  <meta name="twitter:image" content="https://randomtyms.github.io/dd/varsha.webp">
 
   <link rel="manifest" href="../manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -260,8 +260,7 @@
   <div id="loadingScrim" class="loading-scrim">Loading Digital Dharma…</div>
   
   <div class="head">
-    <div class="head-top-bar">
-      <div class="queue-chip" id="queueChip">📋 Review <span class="dot" id="queueCount">0</span></div>
+    <div class="head-top-bar" style="justify-content:flex-end;">
       <div class="lang-toggle">
         <button id="btnEn" class="active">EN</button>
         <button id="btnTa">தமிழ்</button>
@@ -301,24 +300,6 @@
   </div>
 
   <div class="chat" id="chat"></div>
-
-  <div class="composer">
-    <div class="composer-row">
-      <button class="mic-btn" title="Voice input — coming in a later version" disabled>🎤</button>
-      <input type="text" id="questionInput" placeholder="Type your question…" autocomplete="off">
-      <button class="send-btn" id="sendBtn">➤</button>
-    </div>
-    <p class="hint">Approved answers from Digital Dharma · pick a lesson, tap a question, or type your own</p>
-  </div>
-</div>
-
-<div class="drawer-backdrop" id="drawerBackdrop">
-  <div class="drawer">
-    <h2>Review Queue</h2>
-    <p class="sub">Questions kids asked that aren't covered yet — for you to research, fact-check, and approve before they're added.</p>
-    <div id="queueList"></div>
-    <button class="drawer-close" id="drawerClose">Close</button>
-  </div>
 </div>
 
 <script src="app.js" defer></script>
