@@ -302,7 +302,7 @@ function renderHomeCard() {
     speaker: "varsha",
     text: isTa 
       ? "வணக்கம்! நான் வர்ஷா, என்னுடன் லோகேஷும் இருக்கிறான். இணையத்தில் பாதுகாப்பாக இருப்பது மற்றும் நல்ல பழக்கங்கள் பற்றி எங்களிடம் கேட்கலாம். கீழே உள்ள தலைப்பை தேர்ந்தெடுக்கவும் அல்லது தட்டச்சு செய்யவும்."
-      : "Hi — I'm Varsha, and Lokesh is here too. Ask us about staying safe online, or about being a good person. You can type a question, or pick a lesson."
+      : "Hi — I'm Varsha, and Lokesh is here too. Ask us about staying safe online, or about being a good person. You can choose a question, or pick a lesson."
   });
 
   const card = document.createElement('div');
