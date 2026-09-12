@@ -3,18 +3,9 @@ let currentLang = 'en'; // 'en' or 'ta'
 let ddData = [];
 
 // ---- BHASHINI INTEGRATION POINT ----
-// Currently OFF (no credentials issued yet). The app runs entirely on the
-// pre-approved, human-reviewed Tamil translations already stored in
-// digital_dharma_ta.json (question_ta / answer_ta) — that stays the fallback
-// permanently, even once this is enabled, since live MT output for
-// child-facing content should still be reviewed, not served raw.
-//
-// Once BHASHINI issues an API key: set enabled=true and fill in endpoint/apiKey
-// below. No other code changes needed — resolveTamilText() already calls this
-// first and only falls back to the cached JSON if it's off or the call fails.
 const BHASHINI_CONFIG = {
   enabled: false,
-  endpoint: '',   // e.g. the BHASHINI pipeline inference endpoint
+  endpoint: '',
   apiKey: '',
   sourceLang: 'en',
   targetLang: 'ta'
@@ -47,10 +38,6 @@ async function translateViaBhashini(text) {
   }
 }
 
-// Resolves the Tamil text for an answer: tries a live BHASHINI translation
-// first (only if enabled), otherwise instantly uses the cached, reviewed
-// Tamil text — so behavior is unchanged today, and upgrades automatically
-// the moment BHASHINI_CONFIG.enabled is flipped on.
 async function resolveTamilText(englishText, cachedTamil) {
   const live = await translateViaBhashini(englishText);
   return live || cachedTamil;
@@ -156,7 +143,7 @@ const DD12_SAFETY = {
       question: "What is good touch and bad touch?",
       question_ta: "நல்ல தொடுதல் மற்றும் தவறான தொடுதல் என்றால் என்ன?",
       keywords: ["good touch", "bad touch", "safe touch", "unsafe touch", "private parts", "body safety"],
-      match_phrases: ["what is good touch bad touch", "what is bad touch", "what is safe touch", "difference good bad touch"],
+      match_phrases: ["what is good touch bad touch", "what is bad touch", "what is safe touch", "difference good bad touch", "good touch bad touch difference"],
       answer: "Good touch feels safe and caring, like a hug from family when you want it. Bad touch hurts, feels uncomfortable, or touches private parts. If bad touch happens, say no and tell a trusted adult. Call 1098.",
       answer_ta: "நல்ல தொடுதல் பாதுகாப்பாக இருக்கும். தவறான தொடுதல் வலிக்கும், தனி உறுப்புகளை தொடும். நடந்தால் வேண்டாம் என்று சொல்லி பெரியவரிடம் சொல். 1098.",
       speaker: "varsha",
@@ -164,32 +151,49 @@ const DD12_SAFETY = {
     },
     {
       id: "DD12-Q009",
-      question: "What is Childline 1098?",
-      question_ta: "சைல்ட்லைன் 1098 என்றால் என்ன?",
-      keywords: ["1098", "childline", "helpline", "emergency number"],
-      match_phrases: ["what is 1098", "what is childline", "how do i call childline", "call 1098", "1098 number", "childline number", "who is childline"],
-      answer: "Childline 1098 is a free helpline in India for any child who needs help or feels unsafe. You can call it any time, day or night, and talk to someone who will listen and help. It's free, and you won't get in trouble for calling.",
-      answer_ta: "சைல்ட்லைன் 1098 என்பது இந்தியாவில் குழந்தைகளுக்கான இலவச உதவி எண். எப்போது வேண்டுமானாலும் அழைக்கலாம். இலவசம், தண்டனை இல்லை.",
+      question: "What is 1098? Whose number is 1098?",
+      question_ta: "1098 யாருடைய எண்? 1098 என்றால் என்ன?",
+      keywords: ["1098", "childline", "helpline", "emergency number", "whose number", "phone number"],
+      match_phrases: ["what is 1098", "what is childline", "how do i call childline", "call 1098", "1098 number", "childline number", "who is childline", "1098 whose number", "whose number is 1098"],
+      answer: "1098 is India's free, 24/7 emergency phone helpline for children (Childline). Kind people answer the phone to help keep you safe from harm, bad touch, or danger. You can call it anytime from any phone without recharge.",
+      answer_ta: "1098 என்பது குழந்தைகளுக்கான இந்தியாவின் இலவச அவசர உதவி எண் (Childline). ஆபத்து அல்லது துன்புறுத்தலில் இருந்து உங்களைப் பாதுகாக்க உதவும் நபர்கள் இதில் பேசுவார்கள். எந்த போனிலிருந்தும் எப்போது வேண்டுமானாலும் இலவசமாக அழைக்கலாம்.",
       speaker: "varsha",
       tags: ["safety_critical"]
     }
   ]
 };
 
+// Clean text for flexible matching
+function cleanMatchText(str) {
+  return (str || '')
+    .toLowerCase()
+    .replace(/[?.,!—–\-_:;'"()[\]]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 // Fetch data & initialize
 async function init() {
-  const fileName = currentLang === 'ta' ? 'digital_dharma_ta.json' : 'digital_dharma.json';
-  
-  try {
-    const res = await fetch(fileName);
-    if (res.ok) {
-      const data = await res.json();
-      ddData = data.topics || (Array.isArray(data) ? data : []);
-    } else {
-      console.warn(`Failed to fetch ${fileName}, status: ${res.status}`);
-    }
-  } catch (e) {
-    console.warn(`Could not load ${fileName}, using fallback.`, e);
+  const baseName = currentLang === 'ta' ? 'digital_dharma_ta.json' : 'digital_dharma.json';
+  const candidateUrls = [baseName, `../${baseName}`, `./${baseName}`];
+  let loaded = false;
+
+  for (const url of candidateUrls) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const data = await res.json();
+        ddData = data.topics || (Array.isArray(data) ? data : []);
+        if (ddData.length > 0) {
+          loaded = true;
+          break;
+        }
+      }
+    } catch (e) {}
+  }
+
+  if (!loaded) {
+    console.warn("Could not find data file, using fallback.", baseName);
   }
 
   // Ensure DD12 safety topic is present
@@ -203,10 +207,11 @@ async function init() {
 
 // Emergency Safety Priority Matcher
 function findAnswer(queryText) {
-  const q = queryText.toLowerCase().trim();
+  const qClean = cleanMatchText(queryText);
+  const qRaw = queryText.toLowerCase().trim();
 
   // Tier 0: Direct Helpline & 1098 Inquiries
-  if (q.includes("1098") || q.includes("childline")) {
+  if (qRaw.includes("1098") || qClean.includes("childline")) {
     const safety = ddData.find(t => t.id === "DD12");
     const item = safety?.questions?.find(qi => qi.id === "DD12-Q009");
     if (item) return { item, topic: safety, isSafety: true };
@@ -216,42 +221,50 @@ function findAnswer(queryText) {
   const safety = ddData.find(t => t.id === "DD12");
   if (safety) {
     for (const qItem of safety.questions || []) {
-      if (qItem.match_phrases && qItem.match_phrases.some(phrase => q.includes(phrase.toLowerCase()))) {
+      if (qItem.match_phrases && qItem.match_phrases.some(phrase => qClean.includes(cleanMatchText(phrase)))) {
         return { item: qItem, topic: safety, isSafety: true };
       }
-      const matched = (qItem.keywords || []).filter(k => q.includes(k.toLowerCase()));
-      if (matched.length >= 2 || (matched.length >= 1 && (q.includes("touch") || q.includes("hurt") || q.includes("unsafe") || q.includes("photo") || q.includes("secret")))) {
+      const matched = (qItem.keywords || []).filter(k => qClean.includes(cleanMatchText(k)));
+      if (matched.length >= 2 || (matched.length >= 1 && (qClean.includes("touch") || qClean.includes("hurt") || qClean.includes("unsafe") || qClean.includes("photo") || qClean.includes("secret") || qClean.includes("தொடு") || qClean.includes("பாதுகாப்")))) {
         return { item: qItem, topic: safety, isSafety: true };
       }
     }
   }
 
   // Tier 1.5: Conversational Shortcuts (Identity, Feelings, Greetings)
-  if (q.includes("who are you") || q.includes("who r u") || q.includes("what is your name")) {
+  if (qClean.includes("who are you") || qClean.includes("who r u") || qClean.includes("what is your name") || qClean.includes("யார் நீங்கள்") || qClean.includes("நீங்கள் யார்")) {
     const dd11 = ddData.find(t => t.id === "DD11");
     const item = dd11?.questions?.find(qi => qi.id === "DD11-Q006" || qi.id === "DD11-Q002");
     if (item) return { item, topic: dd11, isSafety: false };
   }
-  if (q.includes("nobody likes me") || q.includes("no one likes me") || q.includes("i am sad") || q.includes("feel sad")) {
+  if (qClean.includes("nobody likes me") || qClean.includes("no one likes me") || qClean.includes("i am sad") || qClean.includes("feel sad") || qClean.includes("சோகமாக")) {
     const dd01 = ddData.find(t => t.id === "DD01");
     const item = dd01?.questions?.find(qi => qi.id === "DD01-Q004");
     if (item) return { item, topic: dd01, isSafety: false };
   }
 
-  // Tier 2: Standard Lesson Matching
+  // Tier 2: Standard Lesson Matching (Bidirectional & Normalized)
   for (const topic of ddData) {
     if (topic.id === "DD12") continue;
     for (const qItem of topic.questions || []) {
-      const enQ = (qItem.question_en || qItem.question || '').toLowerCase();
-      const taQ = (qItem.question_ta || '').toLowerCase();
+      const enQClean = cleanMatchText(qItem.question_en || qItem.question);
+      const taQClean = cleanMatchText(qItem.question_ta);
 
-      if (qItem.match_phrases && qItem.match_phrases.some(p => q.includes(p.toLowerCase()))) {
+      // Match phrases list
+      if (qItem.match_phrases && qItem.match_phrases.some(p => qClean.includes(cleanMatchText(p)))) {
         return { item: qItem, topic, isSafety: false };
       }
-      if ((enQ && q.includes(enQ)) || (taQ && q.includes(taQ))) {
+
+      // Exact or bidirectional inclusion matching
+      if (enQClean && (qClean === enQClean || qClean.includes(enQClean) || enQClean.includes(qClean))) {
         return { item: qItem, topic, isSafety: false };
       }
-      if (qItem.keywords && qItem.keywords.filter(k => q.includes(k.toLowerCase())).length >= 2) {
+      if (taQClean && (qClean === taQClean || qClean.includes(taQClean) || taQClean.includes(qClean))) {
+        return { item: qItem, topic, isSafety: false };
+      }
+
+      // Keyword overlap
+      if (qItem.keywords && qItem.keywords.filter(k => qClean.includes(cleanMatchText(k))).length >= 2) {
         return { item: qItem, topic, isSafety: false };
       }
     }
@@ -259,7 +272,6 @@ function findAnswer(queryText) {
 
   return null;
 }
-
 
 // UI Rendering Helpers
 function renderHomeCard() {
@@ -288,7 +300,6 @@ function renderHomeCard() {
     const tile = document.createElement('div');
     tile.className = 'lesson-tile' + (topic.id === 'DD12' ? ' safety-tile' : '');
     
-    // Normalizes properties between digital_dharma.json & digital_dharma_ta.json
     const titleText = isTa 
       ? (topic.title_ta || topic.title || topic.title_en)
       : (topic.title_en || topic.title);
@@ -302,17 +313,17 @@ function renderHomeCard() {
   });
   card.appendChild(grid);
 
-  // Starters
+  // Starters aligned to the exact questions in digital_dharma.json & digital_dharma_ta.json
   const starterLabel = document.createElement('div');
   starterLabel.className = 'label';
   starterLabel.textContent = isTa ? "கேள்விகள்" : "Try one of these";
   card.appendChild(starterLabel);
 
   const starters = isTa ? [
-    "உண்மையை ஏன் பேச வேண்டும்?",
-    "போலி லிங்க் எப்படி கண்டுபிடிப்பது?",
-    "ஸ்ட்ராங் பாஸ்வேர்ட் எதற்கு?",
-    "நல்ல தொடுதல் என்றால் என்ன?"
+    "நான் ஏன் உண்மையைச் சொல்ல வேண்டும்?",
+    "ஒரு லிங்க் போலியானதா என்று எப்படி தெரிந்து கொள்வது?",
+    "எனக்கு ஏன் வலுவான கடவுச்சொல் தேவை?",
+    "நல்ல தொடுதல் மற்றும் தவறான தொடுதல் என்றால் என்ன?"
   ] : [
     "Why should I tell the truth?",
     "How can I tell if a link is fake?",
