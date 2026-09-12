@@ -2,6 +2,60 @@
 let currentLang = 'en'; // 'en' or 'ta'
 let ddData = [];
 
+// ---- BHASHINI INTEGRATION POINT ----
+// Currently OFF (no credentials issued yet). The app runs entirely on the
+// pre-approved, human-reviewed Tamil translations already stored in
+// digital_dharma_ta.json (question_ta / answer_ta) — that stays the fallback
+// permanently, even once this is enabled, since live MT output for
+// child-facing content should still be reviewed, not served raw.
+//
+// Once BHASHINI issues an API key: set enabled=true and fill in endpoint/apiKey
+// below. No other code changes needed — resolveTamilText() already calls this
+// first and only falls back to the cached JSON if it's off or the call fails.
+const BHASHINI_CONFIG = {
+  enabled: false,
+  endpoint: '',   // e.g. the BHASHINI pipeline inference endpoint
+  apiKey: '',
+  sourceLang: 'en',
+  targetLang: 'ta'
+};
+
+async function translateViaBhashini(text) {
+  if (!BHASHINI_CONFIG.enabled || !BHASHINI_CONFIG.endpoint) return null;
+  try {
+    const res = await fetch(BHASHINI_CONFIG.endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': BHASHINI_CONFIG.apiKey
+      },
+      body: JSON.stringify({
+        input: [{ source: text }],
+        config: {
+          language: {
+            sourceLanguage: BHASHINI_CONFIG.sourceLang,
+            targetLanguage: BHASHINI_CONFIG.targetLang
+          }
+        }
+      })
+    });
+    const data = await res.json();
+    return data?.output?.[0]?.target || null;
+  } catch (e) {
+    console.error('BHASHINI translation failed, falling back to cached Tamil:', e);
+    return null;
+  }
+}
+
+// Resolves the Tamil text for an answer: tries a live BHASHINI translation
+// first (only if enabled), otherwise instantly uses the cached, reviewed
+// Tamil text — so behavior is unchanged today, and upgrades automatically
+// the moment BHASHINI_CONFIG.enabled is flipped on.
+async function resolveTamilText(englishText, cachedTamil) {
+  const live = await translateViaBhashini(englishText);
+  return live || cachedTamil;
+}
+
 const chatEl = document.getElementById('chat');
 const btnEn = document.getElementById('btnEn');
 const btnTa = document.getElementById('btnTa');
@@ -300,14 +354,16 @@ function handleUserQuestion(text) {
   appendUserMessage(text);
 
   const typing = showTypingIndicator();
-  setTimeout(() => {
+  setTimeout(async () => {
     typing.remove();
     const result = findAnswer(text);
     if (result) {
       const isTa = currentLang === 'ta';
-      const ans = isTa 
-        ? (result.item.answer_ta || result.item.answer || result.item.answer_en)
-        : (result.item.answer_en || result.item.answer);
+      const englishAns = result.item.answer_en || result.item.answer;
+      const cachedTamilAns = result.item.answer_ta || result.item.answer || result.item.answer_en;
+      const ans = isTa
+        ? await resolveTamilText(englishAns, cachedTamilAns)
+        : englishAns;
 
       const related = (result.isSafety || !result.topic)
         ? []
@@ -443,4 +499,3 @@ btnLessons.onclick = () => window.open('https://lokeshvarsha.blogspot.com/p/digi
 btnReset.onclick = () => renderHomeCard();
 
 init();
-
