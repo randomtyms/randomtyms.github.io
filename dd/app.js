@@ -78,7 +78,7 @@ const DD12_SAFETY = {
       id: "DD12-Q002",
       question: "He touched me badly",
       question_ta: "அவர் என்னை தவறாக தொட்டார்",
-      keywords: ["touch", "touched", "bad touch", "badly", "private parts", "private", "uncomfortable", "inappropriate", "touching me", "wrong way"],
+      keywords: ["touch", "touched", "badly", "private parts", "private", "uncomfortable", "inappropriate", "touching me", "wrong way"],
       match_phrases: ["he touched me badly", "she touched me badly", "bad touch", "touched me in private parts", "touched my private parts", "uncomfortable touch", "someone touched me badly", "badly touched me", "somebody is touching me", "touching me in a wrong way", "someone touched me and i didn't like it"],
       answer: "Thank you for telling me. Bad touch is never your fault. Your body belongs to you. Tell a trusted adult today and don't keep it secret. You can call Childline 1098 for help.",
       answer_ta: "சொன்னதற்கு நன்றி. தவறான தொடுதல் உன் தவறு இல்லை. உன் உடல் உனக்கே சொந்தம். இன்றே நம்பிக்கையான பெரியவரிடம் சொல். 1098 உதவும்.",
