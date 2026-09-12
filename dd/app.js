@@ -1,9 +1,11 @@
 // Ask Lokesh & Varsha — Digital Dharma
 // Matching: question id (chips) → exact phrase → longest approved phrase.
-// No keyword bags. EN+TA are one bank. Chips never re-parse text.
+// Speakers: first answer Varsha; same lesson keeps the speaker; a new lesson switches.
 
 let currentLang = "en";
 let ddData = [];
+let lastAnswerer = null;
+let lastTopicId = null;
 
 const BHASHINI_CONFIG = {
   enabled: false,
@@ -405,7 +407,26 @@ function findAnswer(queryText) {
   return bestPhraseHit(queryText, lessons, false);
 }
 
+function chooseSpeaker(item, topic) {
+  const assigned = String((item && item.speaker) || "").toLowerCase();
+  let who;
+  if (assigned === "lokesh" || assigned === "varsha") {
+    who = assigned;
+  } else if (!lastAnswerer) {
+    who = "varsha";
+  } else if (topic && lastTopicId === topic.id) {
+    who = lastAnswerer;
+  } else {
+    who = lastAnswerer === "lokesh" ? "varsha" : "lokesh";
+  }
+  lastAnswerer = who;
+  lastTopicId = topic ? topic.id : null;
+  return who;
+}
+
 function renderHomeCard() {
+  lastAnswerer = null;
+  lastTopicId = null;
   chatEl.innerHTML = "";
   const isTa = currentLang === "ta";
 
@@ -490,6 +511,7 @@ function handleKnown(found) {
 }
 
 function presentAnswer(found) {
+  const speaker = chooseSpeaker(found.item, found.topic);
   const typing = showTypingIndicator();
   setTimeout(async () => {
     typing.remove();
@@ -503,7 +525,7 @@ function presentAnswer(found) {
         : (found.topic.questions || []).filter((q) => q.id !== found.item.id).slice(0, 2);
 
     appendBotMessage({
-      speaker: found.item.speaker || "varsha",
+      speaker,
       text: ans,
       topic: found.topic,
       isSafety: found.isSafety,
