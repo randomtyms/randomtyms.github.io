@@ -1,20 +1,12 @@
 // State
 let currentLang = 'en'; // 'en' or 'ta'
 let ddData = [];
-let reviewQueue = [];
 
 const chatEl = document.getElementById('chat');
-const questionInput = document.getElementById('questionInput');
-const sendBtn = document.getElementById('sendBtn');
 const btnEn = document.getElementById('btnEn');
 const btnTa = document.getElementById('btnTa');
 const btnLessons = document.getElementById('btnLessons');
 const btnReset = document.getElementById('btnReset');
-const queueChip = document.getElementById('queueChip');
-const queueCount = document.getElementById('queueCount');
-const drawerBackdrop = document.getElementById('drawerBackdrop');
-const drawerClose = document.getElementById('drawerClose');
-const queueList = document.getElementById('queueList');
 const loadingScrim = document.getElementById('loadingScrim');
 
 // DD12 Emergency Safety Topic (Mandated Offline Failsafe)
@@ -150,13 +142,6 @@ async function init() {
   if (!ddData.some(t => t.id === "DD12")) {
     ddData.push(DD12_SAFETY);
   }
-
-  // Load Review Queue from LocalStorage
-  try {
-    const saved = localStorage.getItem('dd_review_queue');
-    if (saved) reviewQueue = JSON.parse(saved);
-  } catch (e) {}
-  updateQueueBadge();
 
   if (loadingScrim) loadingScrim.classList.add('hidden');
   renderHomeCard();
@@ -313,7 +298,6 @@ function selectTopic(topic) {
 function handleUserQuestion(text) {
   if (!text || !text.trim()) return;
   appendUserMessage(text);
-  questionInput.value = '';
 
   const typing = showTypingIndicator();
   setTimeout(() => {
@@ -411,17 +395,18 @@ function appendBotMessage({ speaker, text, topic, isSafety = false, related = []
 
 function handleUnknownQuestion(text) {
   const isTa = currentLang === 'ta';
-  const item = { question: text, time: new Date().toISOString() };
-  reviewQueue.unshift(item);
-  try { localStorage.setItem('dd_review_queue', JSON.stringify(reviewQueue)); } catch(e){}
-  updateQueueBadge();
-
   appendBotMessage({
     speaker: "varsha",
     text: isTa
-      ? "இந்தக் கேள்விக்கு என்னிடம் இன்னும் அங்கீகரிக்கப்பட்ட பதில் இல்லை. எங்கள் மதிப்பாய்வு வரிசையில் இதை சேர்த்துள்ளேன்!"
-      : "I don't have an approved answer for this question yet. I've sent it to our review queue for fact-checking!"
+      ? "இதற்கு பதில் இப்போது என்னிடம் இல்லை. வேறு வார்த்தைகளில் கேளுங்கள் அல்லது ஒரு பாடத்தைத் தேர்வு செய்யுங்கள். ஏதாவது கவலையாக இருந்தால், அல்லது யாராவது உங்களை காயப்படுத்தினால், எப்போது வேண்டுமானாலும் 1098-ஐ அழைக்கலாம் — இலவசம், மற்றும் உண்மையான உதவி கிடைக்கும்."
+      : "I don't have an answer for that one yet! Try asking a different way, or pick a lesson. And if something's worrying you, or someone is hurting you, you can always call 1098 — it's free, anytime, and someone will really help."
   });
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
 }
 
 function showTypingIndicator() {
@@ -437,20 +422,7 @@ function showTypingIndicator() {
   return t;
 }
 
-function updateQueueBadge() {
-  queueCount.textContent = reviewQueue.length;
-}
-
-function escapeHtml(str) {
-  const d = document.createElement('div');
-  d.textContent = str;
-  return d.innerHTML;
-}
-
 // Events
-sendBtn.onclick = () => handleUserQuestion(questionInput.value);
-questionInput.onkeydown = (e) => { if (e.key === 'Enter') handleUserQuestion(questionInput.value); };
-
 btnEn.onclick = () => {
   if (currentLang === 'en') return;
   currentLang = 'en';
@@ -467,24 +439,7 @@ btnTa.onclick = () => {
   init();
 };
 
-// UPDATED: Lessons button now goes to the blog series page
-btnLessons.onclick = () => {
-  window.open("https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html", "_blank", "noopener");
-};
-
+btnLessons.onclick = () => renderHomeCard();
 btnReset.onclick = () => renderHomeCard();
-
-queueChip.onclick = () => {
-  queueList.innerHTML = reviewQueue.length === 0
-    ? '<div class="queue-empty">No pending questions in the review queue.</div>'
-    : reviewQueue.map(q => `
-        <div class="queue-item">
-          <div class="q">${escapeHtml(q.question)}</div>
-          <div class="t">${new Date(q.time).toLocaleDateString()}</div>
-        </div>
-      `).join('');
-  drawerBackdrop.classList.add('open');
-};
-drawerClose.onclick = () => drawerBackdrop.classList.remove('open');
 
 init();
