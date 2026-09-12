@@ -44,6 +44,8 @@ async function resolveTamilText(englishText, cachedTamil) {
 }
 
 const chatEl = document.getElementById('chat');
+const questionInput = document.getElementById('questionInput');
+const sendBtn = document.getElementById('sendBtn');
 const btnEn = document.getElementById('btnEn');
 const btnTa = document.getElementById('btnTa');
 const btnLessons = document.getElementById('btnLessons');
@@ -163,7 +165,18 @@ const DD12_SAFETY = {
   ]
 };
 
-// Clean text for flexible matching
+// Direct starter & colloquial mapping dictionary
+const TA_STARTER_MAP = {
+  "உண்மையை ஏன் பேச வேண்டும்": "DD01-Q001",
+  "நான் ஏன் உண்மையைச் சொல்ல வேண்டும்": "DD01-Q001",
+  "போலி லிங்க் எப்படி கண்டுபிடிப்பது": "DD02-Q001",
+  "ஒரு லிங்க் போலியானதா என்று எப்படி தெரிந்து கொள்வது": "DD02-Q001",
+  "ஸ்ட்ராங் பாஸ்வேர்ட் எதற்கு": "DD03-Q001",
+  "எனக்கு ஏன் வலுவான கடவுச்சொல் தேவை": "DD03-Q001",
+  "நல்ல தொடுதல் என்றால் என்ன": "DD12-Q008",
+  "நல்ல தொடுதல் மற்றும் தவறான தொடுதல் என்றால் என்ன": "DD12-Q008"
+};
+
 function cleanMatchText(str) {
   return (str || '')
     .toLowerCase()
@@ -211,10 +224,20 @@ function findAnswer(queryText) {
   const qRaw = queryText.toLowerCase().trim();
 
   // Tier 0: Direct Helpline & 1098 Inquiries
-  if (qRaw.includes("1098") || qClean.includes("childline")) {
+  if (qRaw.includes("1098") || qClean.includes("childline") || qClean.includes("சைல்ட்லைன்")) {
     const safety = ddData.find(t => t.id === "DD12");
     const item = safety?.questions?.find(qi => qi.id === "DD12-Q009");
     if (item) return { item, topic: safety, isSafety: true };
+  }
+
+  // Tier 0.5: Direct Tamil Starter/Colloquial Mapping
+  for (const [phrase, targetId] of Object.entries(TA_STARTER_MAP)) {
+    if (qClean.includes(cleanMatchText(phrase))) {
+      for (const topic of ddData) {
+        const item = topic.questions?.find(qi => qi.id === targetId);
+        if (item) return { item, topic, isSafety: topic.id === "DD12" };
+      }
+    }
   }
 
   // Tier 1: Emergency Safety Check (Always evaluated first)
@@ -225,7 +248,7 @@ function findAnswer(queryText) {
         return { item: qItem, topic: safety, isSafety: true };
       }
       const matched = (qItem.keywords || []).filter(k => qClean.includes(cleanMatchText(k)));
-      if (matched.length >= 2 || (matched.length >= 1 && (qClean.includes("touch") || qClean.includes("hurt") || qClean.includes("unsafe") || qClean.includes("photo") || qClean.includes("secret") || qClean.includes("தொடு") || qClean.includes("பாதுகாப்")))) {
+      if (matched.length >= 2 || (matched.length >= 1 && (qClean.includes("touch") || qClean.includes("hurt") || qClean.includes("unsafe") || qClean.includes("photo") || qClean.includes("secret") || qClean.includes("தொடு") || qClean.includes("காயப்") || qClean.includes("பாதுகாப்")))) {
         return { item: qItem, topic: safety, isSafety: true };
       }
     }
@@ -250,12 +273,10 @@ function findAnswer(queryText) {
       const enQClean = cleanMatchText(qItem.question_en || qItem.question);
       const taQClean = cleanMatchText(qItem.question_ta);
 
-      // Match phrases list
       if (qItem.match_phrases && qItem.match_phrases.some(p => qClean.includes(cleanMatchText(p)))) {
         return { item: qItem, topic, isSafety: false };
       }
 
-      // Exact or bidirectional inclusion matching
       if (enQClean && (qClean === enQClean || qClean.includes(enQClean) || enQClean.includes(qClean))) {
         return { item: qItem, topic, isSafety: false };
       }
@@ -263,7 +284,6 @@ function findAnswer(queryText) {
         return { item: qItem, topic, isSafety: false };
       }
 
-      // Keyword overlap
       if (qItem.keywords && qItem.keywords.filter(k => qClean.includes(cleanMatchText(k))).length >= 2) {
         return { item: qItem, topic, isSafety: false };
       }
@@ -313,7 +333,7 @@ function renderHomeCard() {
   });
   card.appendChild(grid);
 
-  // Starters aligned to the exact questions in digital_dharma.json & digital_dharma_ta.json
+  // Starters aligned to both JSON entries and direct map
   const starterLabel = document.createElement('div');
   starterLabel.className = 'label';
   starterLabel.textContent = isTa ? "கேள்விகள்" : "Try one of these";
@@ -363,6 +383,7 @@ function selectTopic(topic) {
 function handleUserQuestion(text) {
   if (!text || !text.trim()) return;
   appendUserMessage(text);
+  if (questionInput) questionInput.value = '';
 
   const typing = showTypingIndicator();
   setTimeout(async () => {
@@ -490,6 +511,13 @@ function showTypingIndicator() {
 }
 
 // Events
+if (sendBtn && questionInput) {
+  sendBtn.onclick = () => handleUserQuestion(questionInput.value);
+  questionInput.onkeydown = (e) => {
+    if (e.key === 'Enter') handleUserQuestion(questionInput.value);
+  };
+}
+
 btnEn.onclick = () => {
   if (currentLang === 'en') return;
   currentLang = 'en';
