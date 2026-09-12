@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#efe9fb">
   <title>Ask Lokesh &amp; Varsha — Digital Dharma</title>
   <meta name="description" content="Ask Lokesh & Varsha — a bilingual (English &amp; Tamil) Digital Dharma companion for kids from RandomTyms, with safe, moderated answers on cybersafety, kindness, and everyday questions.">
   <link rel="canonical" href="https://randomtyms.github.io/dd/">
@@ -12,6 +14,7 @@
   <meta property="og:title" content="Ask Lokesh & Varsha — Digital Dharma">
   <meta property="og:description" content="A bilingual (English & Tamil) Q&A companion for kids — safe, moderated answers on cybersafety, kindness, and everyday questions.">
   <meta property="og:image" content="https://randomtyms.github.io/dd/Krishna-LV.webp">
+  <meta property="og:image:alt" content="Baby Krishna playing the flute, RandomTyms Digital Dharma">
   <meta property="og:site_name" content="RandomTyms">
   <meta property="og:locale" content="en_IN">
 
@@ -32,6 +35,7 @@
         "headline": "Ask Lokesh & Varsha — Digital Dharma",
         "url": "https://randomtyms.github.io/dd/",
         "description": "A bilingual (English & Tamil) Digital Dharma Q&A companion for kids, with safe, moderated answers on cybersafety and kindness.",
+        "image": "https://randomtyms.github.io/dd/Krishna-LV.webp",
         "about": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
         "mainEntity": { "@id": "https://lokeshvarsha.blogspot.com/#lokeshvarshaseries" }
       },
@@ -257,6 +261,7 @@
 <body>
 
 <div class="app">
+  <audio id="bgAudio" src="Krishna-LV.mp3" loop preload="none"></audio>
   <div id="loadingScrim" class="loading-scrim">Loading Digital Dharma…</div>
   
   <div class="head">
@@ -271,19 +276,13 @@
       <img class="avatar varsha" src="varsha.webp" alt="Varsha">
       <div class="krishna-wrap">
         <div class="krishna-video-ring">
-          <video 
-            id="krishnaVideo"
+          <img 
+            id="krishnaImg"
             class="krishna-video"
-            src="https://github.com/user-attachments/assets/512a6582-528e-42bf-98c7-4b2ececaa602"
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            preload="auto"
-            poster="../Assets/krishna.webp">
-          </video>
+            src="Krishna-LV.webp"
+            alt="Krishna playing the flute">
         </div>
-        <button class="krishna-mute-btn" id="krishnaMuteBtn" title="Tap for sound" aria-label="Toggle Krishna video sound">🔇</button>
+        <button class="krishna-mute-btn" id="krishnaMusicBtn" title="Tap for music" aria-label="Toggle background music">🎵</button>
       </div>
       <img class="avatar lokesh" src="lokesh.webp" alt="Lokesh">
     </div>
@@ -304,24 +303,22 @@
 
 <script src="app.js" defer></script>
 <script>
-  // Tap-to-unmute for the Krishna video (browsers block autoplay-with-sound,
-  // so it starts muted and this lets a real tap turn sound on)
+  // Tap-to-play background music (browsers block audio autoplay, so it
+  // starts silent and this button is the one required user gesture)
   (function(){
-    const krishnaVideo = document.getElementById('krishnaVideo');
-    const krishnaMuteBtn = document.getElementById('krishnaMuteBtn');
-    if (!krishnaVideo || !krishnaMuteBtn) return;
-    krishnaMuteBtn.onclick = () => {
-      const willBeMuted = !krishnaVideo.muted;
-      krishnaVideo.muted = willBeMuted;
-      krishnaVideo.volume = 1.0;
-      krishnaMuteBtn.textContent = willBeMuted ? '🔇' : '🔊';
-      krishnaMuteBtn.title = willBeMuted ? 'Tap for sound' : 'Tap to mute';
-      if (!willBeMuted) {
-        // Android Chrome sometimes won't re-engage audio output just from
-        // toggling .muted on a video that's already mid-autoplay — forcing
-        // a fresh pause/play handoff makes the unmute actually take effect.
-        krishnaVideo.pause();
-        krishnaVideo.play().catch(() => {});
+    const bgAudio = document.getElementById('bgAudio');
+    const musicBtn = document.getElementById('krishnaMusicBtn');
+    if (!bgAudio || !musicBtn) return;
+    bgAudio.volume = 0.18;
+    musicBtn.onclick = () => {
+      if (bgAudio.paused) {
+        bgAudio.play().catch(() => {});
+        musicBtn.textContent = '🔊';
+        musicBtn.title = 'Tap to mute music';
+      } else {
+        bgAudio.pause();
+        musicBtn.textContent = '🎵';
+        musicBtn.title = 'Tap for music';
       }
     };
   })();
