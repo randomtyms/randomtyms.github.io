@@ -1,4 +1,4 @@
-const CACHE = "randomtyms-hub-v4";
+const CACHE = "randomtyms-hub-v5";
 
 const ASSETS = [
   "./",
@@ -6,6 +6,7 @@ const ASSETS = [
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",
+  "./icon-512-maskable.png",
   "./logo.webp",
   "./hero-characters.jpg",
   "./Assets/krishna.webp",
@@ -19,9 +20,24 @@ const ASSETS = [
   "./dd/lokesh.webp"
 ];
 
+// Resilient precache: uses Promise.allSettled so that one missing or 404 asset
+// will NEVER abort service worker installation.
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE).then(async (cache) => {
+      await Promise.allSettled(
+        ASSETS.map(async (url) => {
+          try {
+            const res = await fetch(url);
+            if (res.ok) {
+              await cache.put(url, res);
+            }
+          } catch (err) {
+            // Silently continue so installation proceeds
+          }
+        })
+      );
+    })
   );
 });
 
@@ -34,8 +50,7 @@ self.addEventListener("message", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
-      // Enable navigation preload if supported — speeds up the first
-      // navigation response while the SW is still starting up.
+      // Enable navigation preload if supported
       if (self.registration.navigationPreload) {
         await self.registration.navigationPreload.enable();
       }
@@ -56,8 +71,6 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       (async () => {
         try {
-          // Use the preloaded response if the browser already started
-          // fetching it, instead of firing a second network request.
           const preloadResp = await event.preloadResponse;
           if (preloadResp) {
             const clone = preloadResp.clone();
@@ -83,10 +96,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Always fetch fresh from network for data feeds — the CORS relay used
-  // for the YouTube video list and Blogger's JSONP post feed. Caching
-  // these is what made new videos/posts only show up one visit late —
-  // these must never be served stale.
+  // Always fetch fresh from network for dynamic feeds
   const isDataFeed =
     url.hostname === "api.allorigins.win" ||
     url.hostname === "api.codetabs.com" ||
