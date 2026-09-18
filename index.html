@@ -186,7 +186,7 @@
     color:var(--kraft-2);
     margin:-10px auto 16px;
     max-width:340px;
-    line-line:1.4;
+    line-height:1.4; /* Fixed typo line-line to line-height */
   }
   .press-line{
     font-size:0.82rem;
@@ -331,6 +331,7 @@
     padding:9px 16px;
     border-radius:10px 10px 0 0;
     cursor:pointer;
+    transition:background-color 0.15s, color 0.15s;
   }
   nav.tabs button.active{
     background:var(--kraft);
@@ -476,7 +477,7 @@
   .feed-status{
     font-family:'JetBrains Mono',monospace;
     font-size:0.7rem;
-    color:#5c6f68;
+    color:#3B4D46; /* Increased contrast against var(--kraft) for WCAG AA */
     margin:0 0 12px;
   }
   .feed-status.live::before{content:"● "; color:#2e7d4f;}
@@ -762,15 +763,15 @@
   <div class="search-box">
     <input type="search" id="appSearchInput" placeholder="🔍 Search posts, series, stickers, tools..." oninput="filterContent()" aria-label="Search site content">
   </div>
-  <span id="searchResultsCount" class="search-count"></span>
+  <span id="searchResultsCount" class="search-count" aria-live="polite"></span>
 </div>
 
 <div class="tabs-genie-wrap">
-<nav class="tabs">
-  <button class="tab-btn" data-tab="videos">🎬 Shorts</button>
-  <button class="tab-btn active" data-tab="blog">📖 Blog</button>
-  <button class="tab-btn" data-tab="stickers">👦 Stickers</button>
-  <button class="tab-btn" data-tab="about">🎮 Apps</button>
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" id="tab-videos" aria-selected="false" aria-controls="videos" class="tab-btn" data-tab="videos">🎬 Shorts</button>
+  <button role="tab" id="tab-blog" aria-selected="true" aria-controls="blog" class="tab-btn active" data-tab="blog">📖 Blog</button>
+  <button role="tab" id="tab-stickers" aria-selected="false" aria-controls="stickers" class="tab-btn" data-tab="stickers">👦 Stickers</button>
+  <button role="tab" id="tab-about" aria-selected="false" aria-controls="about" class="tab-btn" data-tab="about">🎮 Apps</button>
 </nav>
 <div id="genie" class="genie" aria-hidden="true">🧞</div>
 <div id="genieBubble" class="genie-bubble"></div>
@@ -778,7 +779,7 @@
 
 <div class="wrap">
 
-  <section class="panel active" id="blog">
+  <section class="panel active" id="blog" role="tabpanel" aria-labelledby="tab-blog">
     <div class="panel-head">
       <h2>Latest on the blog</h2>
       <a class="open-all" href="https://lokeshvarsha.blogspot.com/" target="_blank" rel="noopener">All posts →</a>
@@ -842,7 +843,7 @@
     </div>
   </section>
 
-  <section class="panel" id="videos">
+  <section class="panel" id="videos" role="tabpanel" aria-labelledby="tab-videos">
     <div class="panel-head">
       <h2>Latest uploads</h2>
       <a class="open-all" href="https://youtube.com/@randomtyms" target="_blank" rel="noopener">Channel →</a>
@@ -880,7 +881,7 @@
     </a>
   </section>
 
-  <section class="panel" id="stickers">
+  <section class="panel" id="stickers" role="tabpanel" aria-labelledby="tab-stickers">
     <div class="panel-head">
       <h2>Stickers &amp; GIFs</h2>
       <span class="tenor-cta-wrap">
@@ -912,7 +913,7 @@
     <a class="cta-btn" href="https://tenor.com/official/randomtyms" target="_blank" rel="noopener">Open Tenor Profile →</a>
   </section>
 
-  <section class="panel" id="about">
+  <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
     <div class="panel-head">
       <h2>Interactive Apps</h2>
     </div>
@@ -971,55 +972,104 @@
     <a href="mailto:randomtyms@gmail.com">Email ↗</a>
   </div>
   <p class="footer-tag">RandomTyms · Lokesh &amp; Varsha · built one phone at a time</p>
-  <footer style="text-align:center; margin-top:20px; font-size:14px;">
-  <p>
-    This work by <strong>RandomTyms (Ganga Ponnu)</strong> is licensed under a 
-    <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">
-      Creative Commons Attribution-NonCommercial 4.0 International License
-    </a>.
-  </p>
-  <p>
-    <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">
-      <img src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" alt="CC BY-NC 4.0 License Badge" />
-    </a>
-  </p>
-  </footer>
-  
+  <div style="text-align:center; margin-top:20px; font-size:14px;">
+    <p>
+      This work by <strong>RandomTyms (Ganga Ponnu)</strong> is licensed under a 
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">
+        Creative Commons Attribution-NonCommercial 4.0 International License
+      </a>.
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" alt="CC BY-NC 4.0 License Badge" />
+      </a>
+    </p>
+  </div>
 </footer>
 
 <script>
-  // Search Functionality
+  // UI Toast notification helper (replaces intrusive alert/prompt)
+  function showToast(message, duration = 3500) {
+    const existing = document.getElementById('rtToast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'rtToast';
+    toast.style.cssText = 'position:fixed;left:20px;right:20px;bottom:24px;z-index:10000;'
+      + 'max-width:440px;margin:0 auto;background:var(--cream);color:var(--ink);'
+      + 'padding:12px 18px;border-radius:12px;font-family:\'Baloo 2\',sans-serif;'
+      + 'font-size:0.92rem;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,0.35);'
+      + 'border:1px solid rgba(21,36,32,0.15);text-align:center;';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), duration);
+  }
+
+  // Cross-tab search with live badge indicators on tab buttons
+  const TAB_BASE_NAMES = {
+    videos: '🎬 Shorts',
+    blog: '📖 Blog',
+    stickers: '👦 Stickers',
+    about: '🎮 Apps'
+  };
+
   function filterContent() {
     const query = document.getElementById('appSearchInput').value.toLowerCase().trim();
     const items = document.querySelectorAll('.searchable, .video-card');
-    let matches = 0;
+    const countEl = document.getElementById('searchResultsCount');
+
+    if (!query) {
+      items.forEach(item => item.classList.remove('search-hidden'));
+      countEl.textContent = '';
+      Object.keys(TAB_BASE_NAMES).forEach(tabId => {
+        const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+        if (btn) btn.textContent = TAB_BASE_NAMES[tabId];
+      });
+      return;
+    }
+
+    let totalMatches = 0;
+    const tabCounts = { videos: 0, blog: 0, stickers: 0, about: 0 };
 
     items.forEach(item => {
-      const textContent = item.textContent.toLowerCase();
-      const altText = item.querySelector('img') ? item.querySelector('img').alt.toLowerCase() : '';
-      
-      if (query === "" || textContent.includes(query) || altText.includes(query)) {
+      const text = item.textContent.toLowerCase();
+      const alt = item.querySelector('img') ? item.querySelector('img').alt.toLowerCase() : '';
+      const match = text.includes(query) || alt.includes(query);
+
+      if (match) {
         item.classList.remove('search-hidden');
-        matches++;
+        totalMatches++;
+        const panel = item.closest('.panel');
+        if (panel && tabCounts.hasOwnProperty(panel.id)) {
+          tabCounts[panel.id]++;
+        }
       } else {
         item.classList.add('search-hidden');
       }
     });
 
-    const countEl = document.getElementById('searchResultsCount');
-    if (query.length > 0) {
-      countEl.textContent = `${matches} item(s) found`;
-    } else {
-      countEl.textContent = "";
-    }
+    // Update tab labels with match indicators so users know which tab contains results
+    Object.keys(tabCounts).forEach(tabId => {
+      const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      if (btn) {
+        const c = tabCounts[tabId];
+        btn.textContent = c > 0 ? `${TAB_BASE_NAMES[tabId]} (${c})` : TAB_BASE_NAMES[tabId];
+      }
+    });
+
+    countEl.textContent = `${totalMatches} result${totalMatches === 1 ? '' : 's'} found`;
   }
 
-  // Live blog feed — pulls latest posts from Blogger via JSONP
+  // Safe HTML attribute escaping (escapes &, <, >, ", ')
   function escapeHtml(str){
-    const d = document.createElement('div');
-    d.textContent = str;
-    return d.innerHTML;
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
+
   function stripAndTrim(html, max){
     const d = document.createElement('div');
     d.innerHTML = html;
@@ -1027,10 +1077,12 @@
     const text = (d.textContent || '').replace(/\s+/g,' ').trim();
     return text.length > max ? text.slice(0, max).trim() + '…' : text;
   }
+
   function formatDate(iso){
     const dt = new Date(iso);
     return dt.toLocaleDateString('en-US', { month:'short', day:'2-digit', year:'numeric' });
   }
+
   window.handleBloggerFeed = function(data){
     const status = document.getElementById('blogStatus');
     const list = document.getElementById('blogList');
@@ -1053,8 +1105,8 @@
         } else {
           thumb = thumb.replace(/\/s72-c\//, '/s160-c/');
         }
-        return `<a class="post searchable" href="${link}" target="_blank" rel="noopener">
-          <img class="post-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.onerror=null;this.src='logo.webp';">
+        return `<a class="post searchable" href="${escapeHtml(link)}" target="_blank" rel="noopener">
+          <img class="post-thumb" src="${escapeHtml(thumb)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='logo.webp';">
           <div class="post-body">
             <div class="post-date">${published} · ${escapeHtml(cat)}</div>
             <div class="post-title">${escapeHtml(title)}</div>
@@ -1071,6 +1123,7 @@
       status.className = 'feed-status offline';
     }
   };
+
   (function loadBloggerFeed(){
     const status = document.getElementById('blogStatus');
     const script = document.createElement('script');
@@ -1107,9 +1160,9 @@
         const maxThumb = vidId ? `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg` : '';
         const fallbackThumb = vidId ? `https://img.youtube.com/vi/${vidId}/hqdefault.jpg` : '';
         const title = item.title.length > 60 ? item.title.slice(0,58) + '…' : item.title;
-        return `<a class="video-card searchable" href="${item.link}" target="_blank" rel="noopener">
-          <img src="${maxThumb}" alt="${title.replace(/"/g, '&quot;')}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackThumb}';">
-          <div class="v-title">${title.replace(/</g,'&lt;')}</div>
+        return `<a class="video-card searchable" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">
+          <img src="${escapeHtml(maxThumb)}" alt="${escapeHtml(title)}" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(fallbackThumb)}';">
+          <div class="v-title">${escapeHtml(title)}</div>
         </a>`;
       }).join('');
     }
@@ -1277,12 +1330,17 @@
     const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
     const panel = document.getElementById(tabId);
     if(!btn || !panel) return;
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     panel.classList.add('active');
     buzzGenie(tabId);
   }
+
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click',()=> activateTab(btn.dataset.tab));
   });
@@ -1297,14 +1355,7 @@
     const sharedUrl = params.get('url');
     if(sharedTitle || sharedText || sharedUrl){
       const summary = sharedTitle || sharedText || sharedUrl;
-      const banner = document.createElement('div');
-      banner.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;'
-        + 'background:var(--kraft);color:var(--ink);padding:14px 16px;border-radius:12px;'
-        + 'font-family:\'Baloo 2\',sans-serif;font-size:0.85rem;line-height:1.4;'
-        + 'box-shadow:0 8px 20px rgba(0,0,0,0.3);';
-      banner.textContent = `Received: ${summary}`;
-      document.body.appendChild(banner);
-      setTimeout(()=> banner.remove(), 5000);
+      showToast(`Received: ${summary}`, 5000);
     }
   })();
 
@@ -1359,7 +1410,7 @@
       + 'box-shadow:0 -2px 10px rgba(0,0,0,0.25);';
     banner.innerHTML = '<span>New version available</span>'
       + '<button style="background:var(--kraft);color:var(--ink);border:none;'
-      + 'padding:8px 14px;border-radius:8px;font-weight:700;font-family:inherit;">Refresh</button>';
+      + 'padding:8px 14px;border-radius:8px;font-weight:700;font-family:inherit;cursor:pointer;">Refresh</button>';
     banner.querySelector('button').addEventListener('click', ()=>{
       waitingWorker.postMessage('SKIP_WAITING');
     });
@@ -1422,17 +1473,17 @@
       }
       try{
         await navigator.clipboard.writeText(SITE_URL);
-        alert('Link copied! Share it with friends 💛');
+        showToast('Link copied! Share it with friends 💛');
       }catch(e){
-        window.prompt('Copy this link to share RandomTyms:', SITE_URL);
+        showToast(`Share link: ${SITE_URL}`, 6000);
       }
     }
 
     function showInstallHelp(){
       if(isIOS()){
-        alert('To install RandomTyms:\n\n1. Tap the Share icon in Safari (square with an arrow)\n2. Choose "Add to Home Screen"');
+        showToast('To install: Tap the Safari Share button (square with arrow) → tap "Add to Home Screen"', 6000);
       } else {
-        alert('To install RandomTyms:\n\nLook for an install icon in your browser\'s address bar, or open the browser menu and choose "Install app" / "Add to Home Screen".');
+        showToast('To install: Open browser menu (⋮) → select "Install app" or "Add to Home screen"', 5000);
       }
     }
 
@@ -1469,4 +1520,3 @@
 
 </body>
 </html>
-
