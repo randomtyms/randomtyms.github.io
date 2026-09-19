@@ -1,13 +1,9 @@
-const CACHE = "randomtyms-hub-v5";
+const CACHE = "randomtyms-hub-v6";
 
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png",
-  "./icon-512-maskable.png",
-  "./logo.webp",
   "./hero-characters.jpg",
   "./Assets/krishna.webp",
   // Digital Dharma files in /dd/
@@ -65,6 +61,17 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
+
+  // Icons, the logo, and Google Fonts basically never change — let the
+  // browser's own HTTP cache handle them instead of routing every request
+  // through Cache Storage. Not calling respondWith() here means the SW
+  // steps aside entirely and the browser does its normal default fetch.
+  const isStaticChrome =
+    /\/icon-(192|512)(-maskable)?\.png$/.test(url.pathname) ||
+    /\/logo\.webp$/.test(url.pathname) ||
+    url.hostname === "fonts.googleapis.com" ||
+    url.hostname === "fonts.gstatic.com";
+  if (isStaticChrome) return;
 
   // Network-first for page navigations (the HTML shell)
   if (event.request.mode === "navigate") {
