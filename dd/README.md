@@ -10,13 +10,25 @@
 
 <img src="https://randomtyms.github.io/dd/Krishna-LV.webp" width="220" align="right" alt="Krishna playing the flute" />
 
-A bilingual (English & Tamil), tap-only Q&A companion for kids, guided by Krishna, Lokesh, and Varsha — covering everyday moral questions alongside real cybersafety topics: phishing, passwords, digital footprints, cyberbullying, screen time, fake news, AI voice spoofing, and scam awareness.
+A bilingual (English & Tamil) **interactive tutorial** for Grades 4–8. Lokesh and Varsha guide children through cyber safety and everyday ethics: phishing, passwords, digital footprints, cyberbullying, screen time, fake news, AI voice spoofing, digital-arrest scams, and family safety.
 
-**Built responsibly, not just functionally:**
-- **No free-text input.** Every question a child can ask is a pre-approved, reviewed tap — nothing typed, nothing unpredictable.
-- **A dedicated safety layer.** Questions signaling real distress (e.g. "someone hurt me") are recognized ahead of everything else and answered directly with guidance and a tap-to-call link to **Childline 1098** — never deferred to a generic "I'll get back to you."
-- **Bilingual by design**, with Tamil built as a reviewed, cached layer rather than raw live translation — and a working integration point already wired for BHASHINI, ready to activate once API access is granted.
-- **Installable PWA**, offline-aware, built and maintained entirely from a phone.
+**How children use it**
+- Tap a lesson card, or tap a suggested question.
+- They may also type a short question. Answers come from a reviewed response set — this is not an open chatbot.
+- Distress questions (photos asked, someone hurt me, what is 1098) jump a **Child Safety Alert** with a tap-to-call to **Childline 1098**.
+
+**For teachers**
+- Format: interactive tutorial · story lessons · safety Q&A
+- Languages: English and Tamil
+- Time: about 10–15 minutes per lesson
+- Classroom license: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — free to reuse, remix, and translate for non-commercial teaching, with credit
+- Live app: https://randomtyms.github.io/dd/
+- MERLOT ID: 824240226
+
+**Built responsibly**
+- Safety replies are checked first, before any normal lesson answer.
+- Tamil is a reviewed layer, not raw live translation. A BHASHINI hook is ready when API access is granted.
+- Independent resource. Not affiliated with or certified by MeitY / ISEA. NEP 2020 and ISEA are public frameworks cited for topic relevance.
 
 👉 **[Try it live](https://randomtyms.github.io/dd/)**
 
