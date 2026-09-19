@@ -285,9 +285,9 @@ function mergeTopics(enTopics, taTopics) {
         return {
           ...q,
           question_en: q.question_en || q.question,
-          question_ta: x.question_ta || q.question_ta || q.question,
+          question_ta: x.question_ta || q.question_ta || x.question || "",
           answer_en: q.answer_en || q.answer,
-          answer_ta: x.answer_ta || q.answer_ta || q.answer,
+          answer_ta: x.answer_ta || q.answer_ta || x.answer || "",
           speaker: q.speaker || x.speaker,
           match_phrases: uniquePhrases([
             q.question_en || q.question,
