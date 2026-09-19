@@ -117,6 +117,7 @@
     {
       "id": "DD01",
       "title": "General Dharma",
+      "title_ta": "பொதுவான தர்மம் & நற்பண்புகள்",
       "icon": "🪷",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html",
       "questions": [
@@ -439,6 +440,7 @@
     {
       "id": "DD02",
       "title": "The Golden Deer — Phishing & Fake Links",
+      "title_ta": "தங்க மான் — ஃபிஷிங் & போலி இணைப்புகள்",
       "icon": "🦌",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-2-golden-deer-phishing-fake-links.html",
       "questions": [
@@ -561,6 +563,7 @@
     {
       "id": "DD03",
       "title": "The Digital Lock — Passwords & Security",
+      "title_ta": "டிஜிட்டல் பூட்டு — பாஸ்வேர்ட் & பாதுகாப்பு",
       "icon": "🔐",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-3-digital-lock-passwords-security.html",
       "questions": [
@@ -647,6 +650,7 @@
     {
       "id": "DD04",
       "title": "The Permanent Path — Digital Footprints & Privacy",
+      "title_ta": "நிரந்தர பாதை — டிஜிட்டல் தடம் & தனியுரிமை",
       "icon": "👣",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-4-permanent-path-digital.html",
       "questions": [
@@ -737,6 +741,7 @@
     {
       "id": "DD05",
       "title": "The Power of Words — Cyberbullying",
+      "title_ta": "வார்த்தைகளின் வலிமை — இணைய மிரட்டல் தடுப்பு",
       "icon": "💬",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-5-power-of-words-cyberbullying.html",
       "questions": [
@@ -847,6 +852,7 @@
     {
       "id": "DD06",
       "title": "Finding Balance — Screen Time & Digital Well-being",
+      "title_ta": "சமநிலையைக் கண்டறிதல் — திரை நேரம் & நல்வாழ்வு",
       "icon": "⚖️",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/06/lesson-6-finding-balance-screen-time.html",
       "questions": [
@@ -938,6 +944,7 @@
     {
       "id": "DD07",
       "title": "The Echo Chamber — Fake News & Forwards",
+      "title_ta": "எதிரொலி அறை — போலிச் செய்திகள் & பகிர்வுகள்",
       "icon": "📢",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/lesson-7-echo-chamber-fake-news.html",
       "questions": [
@@ -1026,6 +1033,7 @@
     {
       "id": "DD08",
       "title": "AI Voice Spoofing — Family Safety",
+      "title_ta": "AI குரல் ஏமாற்றுதல் — குடும்பப் பாதுகாப்பு",
       "icon": "🎙️",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/ai-voice-cloning-scam-prevention-family-safety.html",
       "questions": [
@@ -1115,6 +1123,7 @@
     {
       "id": "DD09",
       "title": "Digital Arrest Scam",
+      "title_ta": "டிஜிட்டல் கைது மோசடி — போலி போலீஸ் மிரட்டல்",
       "icon": "🚨",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/07/digital-arrest-fake-scam-call-safety-tips.html",
       "questions": [
@@ -1201,6 +1210,7 @@
     {
       "id": "DD10",
       "title": "Fake Tech Support Scam",
+      "title_ta": "போலி தொழில்நுட்ப உதவி மோசடி (Tech Support)",
       "icon": "💻",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/2026/08/tech-support-scam-remote-support-app.html",
       "questions": [
@@ -1311,6 +1321,7 @@
     {
       "id": "DD11",
       "title": "Talking With Lokesh & Varsha",
+      "title_ta": "லோகேஷ் & வர்ஷாவுடன் உரையாடல்",
       "icon": "🙋",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/",
       "questions": [
@@ -1532,6 +1543,7 @@
     {
       "id": "DD12",
       "title": "Safety Help - When Someone Hurts You",
+      "title_ta": "பாதுகாப்பு உதவி — துன்புறுத்தல் விழிப்புணர்வு",
       "icon": "🛡️",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/p/safety-help.html",
       "priority": "highest",

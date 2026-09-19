@@ -636,6 +636,25 @@ function appendBotMessage({ speaker, text, topic, item, isSafety = false, isUnkn
   wrap.appendChild(who);
   wrap.appendChild(bubble);
 
+  // Big distress "Tap to Call 1098" call-to-action button for child distress paths
+  if (isSafety || String(text || "").includes("1098")) {
+    const distressCard = document.createElement("div");
+    distressCard.className = "distress-action-card";
+    distressCard.innerHTML = `
+      <a href="tel:1098" class="distress-call-button" id="btn-distress-1098" aria-label="Call Childline 1098">
+        <div class="distress-left">
+          <span class="distress-icon-circle">📞</span>
+          <div class="distress-text-group">
+            <span class="distress-headline">${isTa ? "1098-க்கு அழைக்க தட்டவும் (இலவசம்)" : "Tap to Call 1098 (Toll-Free 24/7)"}</span>
+            <span class="distress-subtext">${isTa ? "குழந்தைகளுக்கான அவசர உதவி எண் — ரீசார்ஜ் இன்றி எந்த போனிலிருந்தும் அழைக்கலாம்" : "Childline Emergency Helpline — Free from any phone, no recharge needed"}</span>
+          </div>
+        </div>
+        <span class="distress-call-badge">${isTa ? "அழைக்கவும்" : "CALL NOW"}</span>
+      </a>
+    `;
+    wrap.appendChild(distressCard);
+  }
+
   if (isUnknown && suggestedQuery) {
     const btnWrap = document.createElement("div");
     btnWrap.style.marginTop = "8px";
@@ -725,11 +744,73 @@ function showTypingIndicator() {
 }
 
 function setLang(lang) {
-  if (currentLang === lang) return;
   currentLang = lang;
   if (btnEn) btnEn.classList.toggle("active", lang === "en");
   if (btnTa) btnTa.classList.toggle("active", lang === "ta");
   document.documentElement.lang = lang === "ta" ? "ta" : "en";
+
+  const isTa = lang === "ta";
+
+  if (btnLessons) btnLessons.textContent = isTa ? "பாடங்கள்" : "Lessons";
+  if (btnReset) btnReset.textContent = isTa ? "மீட்டமை" : "Reset";
+
+  const homeBtn = document.getElementById("randomtyms-home-btn");
+  if (homeBtn) {
+    homeBtn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      ${isTa ? "முகப்பு" : "Home"}
+    `;
+  }
+
+  const chatSubtitle = document.getElementById("chatSubtitle");
+  if (chatSubtitle) {
+    chatSubtitle.textContent = isTa
+      ? "ஊடாடும் இணைய பாதுகாப்பு & நல்லொழுக்க வழிகாட்டி (வகுப்புகள் 4–8)"
+      : "Interactive Cyber Safety & Ethics Companion (Grades 4–8)";
+  }
+
+  const chatHeaderTitle = document.getElementById("chatHeaderTitle");
+  if (chatHeaderTitle) {
+    chatHeaderTitle.textContent = isTa
+      ? "லோகேஷ் & வர்ஷாவிடம் கேளுங்கள் — டிஜிட்டல் தர்மம்"
+      : "Ask Lokesh & Varsha — Digital Dharma";
+  }
+
+  if (chatInput) {
+    chatInput.placeholder = isTa
+      ? "ஒரு கேள்வியைத் தட்டச்சு செய்க (எ.கா: '1098 என்றால் என்ன?', 'தவறான தொடுதல்', 'பாஸ்வேர்ட்')..."
+      : "Type a question (e.g., 'What is 1098?', 'Bad touch', 'Strong password')...";
+  }
+
+  const sendBtn = document.getElementById("chatSendBtn");
+  if (sendBtn) {
+    sendBtn.textContent = isTa ? "கேட்கவும்" : "Ask";
+  }
+
+  const bannerTeacher = document.querySelector(".banner-teacher");
+  if (bannerTeacher) {
+    if (isTa) {
+      bannerTeacher.innerHTML = `
+        <strong>🎯 ஆசிரியர்கள் / மதிப்பீட்டாளர்களுக்காக</strong><br />
+        <b>வகுப்புகள்:</b> 4-8 | <b>நேரம்:</b> 5 மணிநேரம் | <b>மொழிகள்:</b> ஆங்கிலம் + தமிழ் |
+        <b>தலைப்புகள்:</b> AI நல்லொழுக்கம், இணைய பாதுகாப்பு, டிஜிட்டல் குடியுரிமை |
+        <b>வடிவம்:</b> கதைகள் + வினாடி வினாக்கள் + பயிற்சி தாள்கள்<br />
+        <span style="font-size:13px;">NEP 2020 டிஜிட்டல் எழுத்தறிவு இலக்குகளை ஆதரிக்கிறது. ISEA (MeitY) இணைய பாதுகாப்பு விழிப்புணர்வு பாடங்களை உள்ளடக்கியது — பாதுகாப்பான பாஸ்வேர்டுகள், சைபர்புல்லிங் தடுப்பு, AI நற்பண்புகள், தனியுரிமை. லோகேஷ் மற்றும் வர்ஷாவின் இருமொழி வழிகாட்டுதல்.</span>
+      `;
+    } else {
+      bannerTeacher.innerHTML = `
+        <strong>🎯 For Teachers / Reviewers</strong><br />
+        <b>Grades:</b> 4-8 | <b>Time:</b> 5 hrs | <b>Languages:</b> English + Tamil |
+        <b>Topics:</b> AI Ethics, Cyber Safety, Digital Citizenship |
+        <b>Format:</b> Stories + Quizzes + Worksheets<br />
+        <span style="font-size:13px;">Supports NEP 2020 digital literacy goals. Covers topics from ISEA (MeitY) digital safety awareness - safe passwords, cyberbullying, AI ethics, privacy. Bilingual storytelling with original characters Lokesh & Varsha.</span>
+      `;
+    }
+  }
+
   renderHomeCard();
 }
 
