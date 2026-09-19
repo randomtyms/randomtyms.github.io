@@ -18,12 +18,17 @@
       --safety-bg: #fff1f2;
       --safety-border: #fecdd3;
       --bg: #fdfcfe;
+      --card-bg: #ffffff;
       --border: #e9d5ff;
       --text: #1e1b4b;
       --text-muted: #6b7280;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hind Madurai", sans-serif;
@@ -41,12 +46,13 @@
 
     /* Top Navigation Header */
     header.top-header {
-      background: rgba(255, 255, 255, 0.95);
+      background: #ffffff;
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .header-inner {
@@ -109,14 +115,16 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .btn-toggle:hover { background: #faf5ff; }
+    .btn-toggle:hover {
+      background: #faf5ff;
+    }
     .btn-toggle.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
     }
 
-    /* Teacher / Reviewer Notice Banners */
+    /* Teacher / Reviewer Banners */
     .banner-teacher {
       background: #fff8e1;
       border-left: 5px solid #ff9800;
@@ -161,6 +169,9 @@
       background: linear-gradient(135deg, #4c1d95, #312e81);
       color: white;
       padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .chat-header h1 {
       font-size: 18px;
@@ -188,7 +199,9 @@
       align-items: flex-start;
       gap: 10px;
     }
-    .msg.user { justify-content: flex-end; }
+    .msg.user {
+      justify-content: flex-end;
+    }
     .msg.user .bubble {
       background: var(--primary);
       color: #ffffff;
@@ -218,7 +231,9 @@
       border: 1px solid #d8b4fe;
     }
 
-    .bubble-wrap { max-width: 82%; }
+    .bubble-wrap {
+      max-width: 82%;
+    }
     .speaker-name {
       font-size: 11px;
       font-weight: 800;
@@ -240,8 +255,14 @@
       color: #1e293b;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
-    .bubble.varsha { background: #faf5ff; border-color: #e9d5ff; }
-    .bubble.lokesh { background: #fffbeb; border-color: #fef08a; }
+    .bubble.varsha {
+      background: #faf5ff;
+      border-color: #e9d5ff;
+    }
+    .bubble.lokesh {
+      background: #fffbeb;
+      border-color: #fef08a;
+    }
     .bubble.safety-alert {
       background: var(--safety-bg);
       border-color: var(--safety-border);
@@ -285,7 +306,9 @@
       text-decoration: underline;
     }
 
-    .related-wrap { margin-top: 10px; }
+    .related-wrap {
+      margin-top: 10px;
+    }
     .related-label {
       font-size: 11px;
       font-weight: 700;
@@ -293,7 +316,10 @@
       margin-bottom: 6px;
     }
 
-    /* Lessons & Chips */
+    /* Home Card & Lessons Grid */
+    .home-card {
+      padding: 6px 0;
+    }
     .home-card .label {
       font-size: 12px;
       font-weight: 800;
@@ -314,6 +340,7 @@
       padding: 10px;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       gap: 4px;
       cursor: pointer;
       text-align: left;
@@ -328,7 +355,9 @@
       background: #fff1f2;
       border-color: #fecdd3;
     }
-    .lesson-tile.safety-tile:hover { background: #ffe4e6; }
+    .lesson-tile.safety-tile:hover {
+      background: #ffe4e6;
+    }
     .lesson-tile .ic { font-size: 20px; }
     .lesson-tile .tt {
       font-size: 12px;
@@ -365,7 +394,7 @@
       color: #9f1239;
     }
 
-    /* Typing Animation */
+    /* Typing Indicator */
     .typing {
       display: inline-flex;
       gap: 4px;
@@ -387,13 +416,16 @@
       40% { opacity: 1; transform: scale(1.1); }
     }
 
-    /* Input Bar */
+    /* Search Input Form */
     .chat-input-bar {
       background: #faf8ff;
       border-top: 1px solid var(--border);
       padding: 12px 16px;
     }
-    .chat-input-bar form { display: flex; gap: 8px; }
+    .chat-input-bar form {
+      display: flex;
+      gap: 8px;
+    }
     .chat-input-bar input {
       flex: 1;
       border: 1px solid #d1d5db;
@@ -401,6 +433,7 @@
       padding: 10px 14px;
       font-size: 14px;
       outline: none;
+      transition: border 0.15s ease;
     }
     .chat-input-bar input:focus {
       border-color: var(--primary);
@@ -415,8 +448,11 @@
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
+      transition: background 0.15s ease;
     }
-    .chat-input-bar button:hover { background: var(--primary-dark); }
+    .chat-input-bar button:hover {
+      background: var(--primary-dark);
+    }
 
     /* Footer */
     footer.site-footer {
@@ -427,8 +463,15 @@
       color: var(--text-muted);
       border-top: 1px solid #e5e7eb;
     }
-    footer.site-footer a { color: var(--primary); text-decoration: underline; }
-    .license-badge { display: inline-block; margin-top: 8px; }
+    footer.site-footer a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .license-badge {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
     .hidden { display: none !important; }
   </style>
 </head>
@@ -438,6 +481,7 @@
   <header class="top-header">
     <div class="header-inner">
       <div class="brand-group">
+        <!-- Exact Requested Home Button -->
         <a id="randomtyms-home-btn" href="https://randomtyms.github.io" title="Back to randomtyms.github.io">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -458,7 +502,7 @@
   </header>
 
   <div class="container">
-    <!-- Teacher / Reviewer Banner (Directly after Header) -->
+    <!-- Exact Requested Teacher / Reviewer Banner (Directly after Header) -->
     <div class="banner-teacher">
       <strong>🎯 For Teachers / Reviewers</strong><br />
       <b>Grades:</b> 4-8 | <b>Time:</b> 5 hrs | <b>Languages:</b> English + Tamil |
@@ -467,22 +511,24 @@
       <span style="font-size:13px;">Supports NEP 2020 digital literacy goals. Covers topics from ISEA (MeitY) digital safety awareness - safe passwords, cyberbullying, AI ethics, privacy. Bilingual storytelling with original characters Lokesh & Varsha.</span>
     </div>
 
-    <!-- Open License Banner -->
+    <!-- Exact Requested Open License Banner -->
     <div class="banner-license">
       <b>📄 Open License:</b> © RandomTyms | CC BY-SA 4.0 + MIT Licensed. Free for teachers to reuse, remix, translate with credit. Source: <a href="https://github.com/randomtyms/randomtyms.github.io" target="_blank" rel="noopener">GitHub</a> | Listed on MERLOT ID 824240226<br />
       <span style="font-size:11px; opacity:0.7;">Independent educational resource. Not officially affiliated with or certified by MeitY/ISEA. NEP 2020 & ISEA are public frameworks referenced for topic relevance.</span>
     </div>
 
-    <!-- Main Chat Interface -->
+    <!-- Main Chat Interface Component -->
     <main class="chat-card">
       <div class="chat-header">
-        <h1>Ask Lokesh &amp; Varsha — Digital Dharma</h1>
-        <p>Interactive Cyber Safety &amp; Ethics Companion (Grades 4–8)</p>
+        <div>
+          <h1>Ask Lokesh &amp; Varsha — Digital Dharma</h1>
+          <p>Interactive Cyber Safety &amp; Ethics Companion (Grades 4–8)</p>
+        </div>
       </div>
 
       <div id="loadingScrim" class="hidden"></div>
       
-      <!-- Interactive Conversation Area -->
+      <!-- Interactive Conversation Feed -->
       <div id="chat"></div>
 
       <!-- Free-text input search bar -->
@@ -499,7 +545,7 @@
       </div>
     </main>
 
-    <!-- License Footer -->
+    <!-- Footer with Creative Commons License -->
     <footer class="site-footer">
       <p>© RandomTyms — Digital Dharma Series. Created for Indian schools &amp; NEP 2020 digital citizenship.</p>
       <div class="license-badge">
@@ -512,6 +558,7 @@
     </footer>
   </div>
 
+  <!-- Connected Script File -->
   <script src="app.js"></script>
 </body>
 </html>

@@ -372,18 +372,36 @@ function phraseScore(query, phrase) {
   return 0;
 }
 
+function scoreItem(query, item) {
+  const q = cleanMatchText(query);
+  if (!q) return 0;
+  let best = 0;
+  itemPhrases(item).forEach((ph) => {
+    const s = phraseScore(query, ph);
+    if (s > best) best = s;
+  });
+  const qWords = q.split(" ");
+  (item.keywords || []).forEach((kw) => {
+    const k = cleanMatchText(kw);
+    if (!k) return;
+    if (qWords.includes(k) || (k.length >= 5 && q.includes(k))) {
+      const kwScore = 60 + k.length;
+      if (kwScore > best) best = kwScore;
+    }
+  });
+  return best;
+}
+
 function bestPhraseHit(query, topics, isSafety) {
   let best = null;
   let bestScore = 0;
   topics.forEach((topic) => {
     (topic.questions || []).forEach((item) => {
-      itemPhrases(item).forEach((ph) => {
-        const score = phraseScore(query, ph);
-        if (score > bestScore) {
-          bestScore = score;
-          best = { item, topic, isSafety };
-        }
-      });
+      const score = scoreItem(query, item);
+      if (score > bestScore) {
+        bestScore = score;
+        best = { item, topic, isSafety };
+      }
     });
   });
   return bestScore > 0 ? best : null;
@@ -537,7 +555,6 @@ function presentAnswer(found) {
   }, 450);
 }
 
-// Dynamically resolves anchor (#dd01, #dd02...) or custom per-question URL
 function getLessonTargetUrl(topic, item) {
   if (item && item.lessonUrl) return item.lessonUrl;
   if (!topic) return null;
@@ -547,6 +564,7 @@ function getLessonTargetUrl(topic, item) {
       ? `https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html#${topic.id.toLowerCase()}`
       : null;
   }
+  // If it points to the general series page without an anchor, deep link to this specific lesson section
   if (
     rawUrl.includes("digital-dharma-series-krishnas-timeless.html") &&
     !rawUrl.includes("#") &&
@@ -571,7 +589,7 @@ function appendUserMessage(text) {
   msg.scrollIntoView({ behavior: "smooth" });
 }
 
-function appendBotMessage({ speaker, text, topic, item, isSafety = false, related = [], relatedTopic }) {
+function appendBotMessage({ speaker, text, topic, item, isSafety = false, isUnknown = false, suggestedQuery = null, related = [], relatedTopic }) {
   const isTa = currentLang === "ta";
   const name = speaker === "lokesh" ? (isTa ? "லோகேஷ்" : "Lokesh") : isTa ? "வர்ஷா" : "Varsha";
   const avatarSrc = speaker === "lokesh" ? "lokesh.webp" : "varsha.webp";
@@ -579,6 +597,7 @@ function appendBotMessage({ speaker, text, topic, item, isSafety = false, relate
   const msg = document.createElement("div");
   msg.className = "msg bot";
 
+  // Avatar with image and graceful emoji fallback
   const img = document.createElement("img");
   img.className = "avatar-sm";
   img.src = avatarSrc;
@@ -617,6 +636,30 @@ function appendBotMessage({ speaker, text, topic, item, isSafety = false, relate
   wrap.appendChild(who);
   wrap.appendChild(bubble);
 
+  if (isUnknown && suggestedQuery) {
+    const btnWrap = document.createElement("div");
+    btnWrap.style.marginTop = "8px";
+    const suggestBtn = document.createElement("button");
+    suggestBtn.type = "button";
+    suggestBtn.className = "chip";
+    suggestBtn.style.background = "#faf5ff";
+    suggestBtn.style.borderColor = "#c084fc";
+    suggestBtn.style.color = "#581c87";
+    suggestBtn.style.fontWeight = "700";
+    suggestBtn.textContent = isTa ? "இந்த கேள்வியை பரிந்துரைக்கவும்" : "Suggest this question";
+    suggestBtn.onclick = () => {
+      suggestBtn.disabled = true;
+      suggestBtn.textContent = isTa
+        ? "✓ நன்றி! ஆசிரியர்களுக்கு பரிந்துரைக்கப்பட்டது"
+        : "✓ Sent to teachers for review!";
+      suggestBtn.style.background = "#ecfdf5";
+      suggestBtn.style.borderColor = "#a7f3d0";
+      suggestBtn.style.color = "#065f46";
+    };
+    btnWrap.appendChild(suggestBtn);
+    wrap.appendChild(btnWrap);
+  }
+
   if (topic) {
     const meta = document.createElement("div");
     meta.className = "meta-row";
@@ -626,7 +669,6 @@ function appendBotMessage({ speaker, text, topic, item, isSafety = false, relate
       (topic.icon ? topic.icon + " " : "") +
       (isTa ? topic.title_ta || topic.title || topic.title_en : topic.title_en || topic.title);
     meta.appendChild(tag);
-
     const lessonUrl = getLessonTargetUrl(topic, item);
     if (lessonUrl) {
       const link = document.createElement("a");
@@ -691,6 +733,7 @@ function setLang(lang) {
   renderHomeCard();
 }
 
+// User query input handling
 if (chatForm && chatInput) {
   chatForm.onsubmit = (e) => {
     e.preventDefault();
@@ -703,17 +746,19 @@ if (chatForm && chatInput) {
     if (hit) {
       presentAnswer(hit);
     } else {
+      // Unknown question fallback matching answerPolicy schema
       const typing = showTypingIndicator();
       setTimeout(() => {
         typing.remove();
         const isTa = currentLang === "ta";
         const fallback = isTa
-          ? "நல்ல கேள்வி! இணையத்தில் யோசித்து செயல்படுங்கள். தெரியாத நபர்கள் உங்கள் கடவுச்சொல், OTP அல்லது புகைப்படங்களை கேட்டால் பெரியவர்களிடம் சொல்லுங்கள். அவசர உதவிக்கு 1098 அழைக்கவும்."
-          : "Thank you for asking! Remember: never share passwords, address, or photos with strangers online. If you ever feel scared or unsafe, tell a trusted adult or call Childline 1098 anytime.";
+          ? "அது ஒரு சுவாரஸ்யமான கேள்வி. எங்களிடம் இன்னும் பதில் இல்லை."
+          : "That’s an interesting question. We don’t have an answer for that one yet.";
         appendBotMessage({
           speaker: "varsha",
           text: fallback,
-          isSafety: true,
+          isUnknown: true,
+          suggestedQuery: query,
         });
       }, 500);
     }
