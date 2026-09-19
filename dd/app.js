@@ -53,6 +53,8 @@ const btnTa = document.getElementById("btnTa");
 const btnLessons = document.getElementById("btnLessons");
 const btnReset = document.getElementById("btnReset");
 const loadingScrim = document.getElementById("loadingScrim");
+const chatForm = document.getElementById("chatForm");
+const chatInput = document.getElementById("chatInput");
 
 const STARTER_IDS = ["DD01-Q001", "DD02-Q001", "DD03-Q001", "DD12-Q008"];
 
@@ -360,8 +362,6 @@ function itemPhrases(item) {
   ]);
 }
 
-// Exact phrase wins. A phrase may sit inside the query only if it is long
-// enough to be a real question — never "bad touch" inside "what is good touch and bad touch".
 function phraseScore(query, phrase) {
   const q = cleanMatchText(query);
   const p = cleanMatchText(phrase);
@@ -427,6 +427,7 @@ function chooseSpeaker(item, topic) {
 function renderHomeCard() {
   lastAnswerer = null;
   lastTopicId = null;
+  if (!chatEl) return;
   chatEl.innerHTML = "";
   const isTa = currentLang === "ta";
 
@@ -456,7 +457,7 @@ function renderHomeCard() {
       : topic.title_en || topic.title;
     const ic = document.createElement("span");
     ic.className = "ic";
-    ic.textContent = topic.icon || "";
+    ic.textContent = topic.icon || "📖";
     const tt = document.createElement("span");
     tt.className = "tt";
     tt.textContent = titleText;
@@ -479,7 +480,7 @@ function renderHomeCard() {
     if (!found) return;
     const chip = document.createElement("button");
     chip.type = "button";
-    chip.className = "starter-chip";
+    chip.className = "starter-chip" + (found.isSafety ? " safety" : "");
     chip.textContent = displayQuestion(found.item);
     chip.onclick = () => handleKnown(found);
     sList.appendChild(chip);
@@ -528,11 +529,32 @@ function presentAnswer(found) {
       speaker,
       text: ans,
       topic: found.topic,
+      item: found.item,
       isSafety: found.isSafety,
       related,
       relatedTopic: found.topic,
     });
   }, 450);
+}
+
+// Dynamically resolves anchor (#dd01, #dd02...) or custom per-question URL
+function getLessonTargetUrl(topic, item) {
+  if (item && item.lessonUrl) return item.lessonUrl;
+  if (!topic) return null;
+  const rawUrl = topic.lessonUrl || "";
+  if (!rawUrl) {
+    return topic.id
+      ? `https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html#${topic.id.toLowerCase()}`
+      : null;
+  }
+  if (
+    rawUrl.includes("digital-dharma-series-krishnas-timeless.html") &&
+    !rawUrl.includes("#") &&
+    topic.id
+  ) {
+    return `${rawUrl}#${topic.id.toLowerCase()}`;
+  }
+  return rawUrl;
 }
 
 function appendUserMessage(text) {
@@ -549,7 +571,7 @@ function appendUserMessage(text) {
   msg.scrollIntoView({ behavior: "smooth" });
 }
 
-function appendBotMessage({ speaker, text, topic, isSafety = false, related = [], relatedTopic }) {
+function appendBotMessage({ speaker, text, topic, item, isSafety = false, related = [], relatedTopic }) {
   const isTa = currentLang === "ta";
   const name = speaker === "lokesh" ? (isTa ? "லோகேஷ்" : "Lokesh") : isTa ? "வர்ஷா" : "Varsha";
   const avatarSrc = speaker === "lokesh" ? "lokesh.webp" : "varsha.webp";
@@ -561,6 +583,13 @@ function appendBotMessage({ speaker, text, topic, isSafety = false, related = []
   img.className = "avatar-sm";
   img.src = avatarSrc;
   img.alt = name;
+  img.onerror = () => {
+    img.style.display = "none";
+    const fb = document.createElement("div");
+    fb.className = "avatar-sm avatar-fallback " + speaker;
+    fb.textContent = speaker === "lokesh" ? "👦" : "👧";
+    wrap.parentElement.insertBefore(fb, wrap);
+  };
 
   const wrap = document.createElement("div");
   wrap.className = "bubble-wrap";
@@ -578,6 +607,7 @@ function appendBotMessage({ speaker, text, topic, isSafety = false, related = []
       a.href = "tel:1098";
       a.className = "call-link";
       a.textContent = "1098";
+      a.title = "Call Childline 1098 (Free 24/7 Helpline)";
       bubble.appendChild(a);
     } else {
       bubble.appendChild(document.createTextNode(part));
@@ -596,10 +626,12 @@ function appendBotMessage({ speaker, text, topic, isSafety = false, related = []
       (topic.icon ? topic.icon + " " : "") +
       (isTa ? topic.title_ta || topic.title || topic.title_en : topic.title_en || topic.title);
     meta.appendChild(tag);
-    if (topic.lessonUrl) {
+
+    const lessonUrl = getLessonTargetUrl(topic, item);
+    if (lessonUrl) {
       const link = document.createElement("a");
       link.className = "lesson-link";
-      link.href = topic.lessonUrl;
+      link.href = lessonUrl;
       link.target = "_blank";
       link.rel = "noopener";
       link.textContent = isTa ? "பாடத்தை படிக்கவும் →" : "Read Lesson →";
@@ -653,20 +685,51 @@ function showTypingIndicator() {
 function setLang(lang) {
   if (currentLang === lang) return;
   currentLang = lang;
-  btnEn.classList.toggle("active", lang === "en");
-  btnTa.classList.toggle("active", lang === "ta");
+  if (btnEn) btnEn.classList.toggle("active", lang === "en");
+  if (btnTa) btnTa.classList.toggle("active", lang === "ta");
   document.documentElement.lang = lang === "ta" ? "ta" : "en";
   renderHomeCard();
 }
 
-btnEn.onclick = () => setLang("en");
-btnTa.onclick = () => setLang("ta");
-btnLessons.onclick = () =>
-  window.open(
-    "https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html",
-    "_blank",
-    "noopener",
-  );
-btnReset.onclick = () => renderHomeCard();
+if (chatForm && chatInput) {
+  chatForm.onsubmit = (e) => {
+    e.preventDefault();
+    const query = chatInput.value.trim();
+    if (!query) return;
+    appendUserMessage(query);
+    chatInput.value = "";
+
+    const hit = findAnswer(query);
+    if (hit) {
+      presentAnswer(hit);
+    } else {
+      const typing = showTypingIndicator();
+      setTimeout(() => {
+        typing.remove();
+        const isTa = currentLang === "ta";
+        const fallback = isTa
+          ? "நல்ல கேள்வி! இணையத்தில் யோசித்து செயல்படுங்கள். தெரியாத நபர்கள் உங்கள் கடவுச்சொல், OTP அல்லது புகைப்படங்களை கேட்டால் பெரியவர்களிடம் சொல்லுங்கள். அவசர உதவிக்கு 1098 அழைக்கவும்."
+          : "Thank you for asking! Remember: never share passwords, address, or photos with strangers online. If you ever feel scared or unsafe, tell a trusted adult or call Childline 1098 anytime.";
+        appendBotMessage({
+          speaker: "varsha",
+          text: fallback,
+          isSafety: true,
+        });
+      }, 500);
+    }
+  };
+}
+
+if (btnEn) btnEn.onclick = () => setLang("en");
+if (btnTa) btnTa.onclick = () => setLang("ta");
+if (btnLessons) {
+  btnLessons.onclick = () =>
+    window.open(
+      "https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html",
+      "_blank",
+      "noopener",
+    );
+}
+if (btnReset) btnReset.onclick = () => renderHomeCard();
 
 init();
