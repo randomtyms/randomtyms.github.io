@@ -31,12 +31,12 @@
     }
   },
   "related_applications": [
-    {
-      "platform": "windows",
-      "url": "https://microsoft.com",
-      "id": "9MW2XQB7WQBK"
-    }
-  ],
+  {
+    "platform": "windows",
+    "url": "https://apps.microsoft.com/detail/9MW2XQB7WQBK",
+    "id": "9MW2XQB7WQBK"
+  }
+],
   "shortcuts": [
     {
       "name": "Blog",
