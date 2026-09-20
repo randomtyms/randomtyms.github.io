@@ -1547,6 +1547,41 @@
       }, 320);
     });
   })();
+
+  //microsoft 
+window.addEventListener('DOMContentLoaded', async () => {
+  const msStoreBadge = document.getElementById('msStoreBadge');
+
+  // If this page is already running as an installed PWA,
+  // don't show the Microsoft Store badge.
+  const isRunningAsApp =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true;
+
+  if (isRunningAsApp) {
+    if (msStoreBadge) msStoreBadge.style.display = 'none';
+    return;
+  }
+
+  // Check whether the Windows Store version is installed.
+  if ('getInstalledRelatedApps' in navigator) {
+    try {
+      const relatedApps = await navigator.getInstalledRelatedApps();
+
+      const isWindowsAppInstalled = relatedApps.some(
+        app => app.platform === 'windows' &&
+               app.id === '9MW2XQB7WQBK'
+      );
+
+      if (isWindowsAppInstalled) {
+        console.log('RandomTyms Windows app is already installed.');
+        if (msStoreBadge) msStoreBadge.style.display = 'none';
+      }
+    } catch (error) {
+      console.log('Could not check installed related apps:', error);
+    }
+  }
+});
 </script>
 
 </body>
