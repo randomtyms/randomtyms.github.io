@@ -16,7 +16,7 @@
   "theme_color": "#1E3A34",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["education", "utilities", "entertainment"],
+  "categories": ["education", "kids", "entertainment"],
   "prefer_related_applications": false,
   "launch_handler": {
     "client_mode": "auto"
@@ -31,12 +31,12 @@
     }
   },
   "related_applications": [
-  {
-    "platform": "windows",
-    "url": "https://apps.microsoft.com/detail/9MW2XQB7WQBK",
-    "id": "9MW2XQB7WQBK"
-  }
-],
+    {
+      "platform": "windows",
+      "url": "https://apps.microsoft.com/detail/9MW2XQB7WQBK",
+      "id": "9MW2XQB7WQBK"
+    }
+  ],
   "shortcuts": [
     {
       "name": "Blog",
@@ -72,13 +72,7 @@
       "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512.png",
