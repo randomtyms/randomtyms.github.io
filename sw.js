@@ -69,8 +69,8 @@ self.addEventListener("fetch", (event) => {
   const isStaticChrome =
     /\/icon-(192|512)(-maskable)?\.png$/.test(url.pathname) ||
     /\/logo\.webp$/.test(url.pathname) ||
-    url.hostname === "fonts.googleapis.com" ||
-    url.hostname === "fonts.gstatic.com";
+    url.hostname === "://googleapis.com" ||
+    url.hostname === "://gstatic.com";
   if (isStaticChrome) return;
 
   // Network-first for page navigations (the HTML shell)
@@ -89,7 +89,8 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE).then((cache) => cache.put(event.request, clone));
           return response;
         } catch (e) {
-          const cached = await caches.match(event.request);
+          // ignoreSearch: true strips parameter anomalies like ?tab=blog or Web Share variables
+          const cached = await caches.match(event.request, { ignoreSearch: true });
           if (cached) return cached;
 
           // Route-aware offline fallbacks
@@ -106,7 +107,7 @@ self.addEventListener("fetch", (event) => {
   // Always fetch fresh from network for dynamic feeds
   const isDataFeed =
     url.hostname === "api.allorigins.win" ||
-    url.hostname === "api.codetabs.com" ||
+    url.hostname === "://codetabs.com" ||
     url.hostname === "api.cors.lol" ||
     (url.hostname === self.location.hostname && url.pathname.endsWith("/videos.json")) ||
     (url.hostname.endsWith("blogspot.com") && url.pathname.startsWith("/feeds/"));
