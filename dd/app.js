@@ -508,6 +508,14 @@ function renderHomeCard() {
   chatEl.appendChild(card);
 }
 
+function scrollChatToBottom(smooth = true) {
+  if (!chatEl) return;
+  chatEl.scrollTo({
+    top: chatEl.scrollHeight,
+    behavior: smooth ? "smooth" : "auto",
+  });
+}
+
 function selectTopic(topic) {
   const chipRow = document.createElement("div");
   chipRow.className = "chip-row";
@@ -520,7 +528,7 @@ function selectTopic(topic) {
     chipRow.appendChild(c);
   });
   chatEl.appendChild(chipRow);
-  chipRow.scrollIntoView({ behavior: "smooth" });
+  scrollChatToBottom();
 }
 
 function handleKnown(found) {
@@ -586,7 +594,7 @@ function appendUserMessage(text) {
   wrap.appendChild(bubble);
   msg.appendChild(wrap);
   chatEl.appendChild(msg);
-  msg.scrollIntoView({ behavior: "smooth" });
+  scrollChatToBottom();
 }
 
 function appendBotMessage({ speaker, text, topic, item, isSafety = false, isUnknown = false, suggestedQuery = null, related = [], relatedTopic }) {
@@ -730,7 +738,7 @@ function appendBotMessage({ speaker, text, topic, item, isSafety = false, isUnkn
   msg.appendChild(img);
   msg.appendChild(wrap);
   chatEl.appendChild(msg);
-  msg.scrollIntoView({ behavior: "smooth" });
+  scrollChatToBottom();
 }
 
 function showTypingIndicator() {
@@ -739,7 +747,7 @@ function showTypingIndicator() {
   t.innerHTML =
     '<div class="typing" style="margin-left: 42px;"><span></span><span></span><span></span></div>';
   chatEl.appendChild(t);
-  t.scrollIntoView({ behavior: "smooth" });
+  scrollChatToBottom();
   return t;
 }
 
