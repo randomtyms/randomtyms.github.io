@@ -51,7 +51,7 @@
       flex-direction: column;
     }
 
-    /* Main container flexes to fill available vertical height */
+    /* Main container flexes to fill available vertical height; extended on desktop to reduce white space */
     .container {
       width: 100%;
       max-width: 900px;
@@ -60,6 +60,85 @@
       flex: 1 0 auto;
       display: flex;
       flex-direction: column;
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1200px;
+        padding: 0 24px 32px 24px;
+      }
+      .header-inner {
+        max-width: 1200px !important;
+      }
+      .chat-card {
+        min-height: 640px !important;
+      }
+      #chat {
+        min-height: 480px !important;
+        max-height: clamp(520px, 68vh, 760px) !important;
+      }
+    }
+
+    /* Mobile mode: reduce certificate & details to give extra room for questions */
+    @media (max-width: 767px) {
+      .container {
+        padding: 0 10px 16px 10px;
+      }
+      .banner-teacher, .banner-license {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin: 6px 0;
+      }
+      .chat-header {
+        padding: 10px 14px;
+      }
+      .chat-header h1 {
+        font-size: 15px;
+      }
+      #chat {
+        padding: 12px;
+        min-height: 320px;
+        max-height: 52vh;
+      }
+      .site-footer {
+        padding: 14px 12px !important;
+      }
+      .footer-grid-container {
+        gap: 12px !important;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-award-column {
+        max-width: 220px;
+        align-items: center;
+      }
+      .responsive-certificate-img {
+        max-width: 150px !important;
+        max-height: 95px !important;
+        object-fit: cover;
+      }
+      .privacy-compliance-text {
+        font-size: 10px !important;
+        line-height: 1.35 !important;
+        padding: 6px 8px !important;
+        margin-top: 6px;
+      }
+      .footer-heading {
+        font-size: 1.05rem !important;
+        margin-bottom: 4px !important;
+      }
+      .footer-context-text {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+      }
+      .copyright-notice {
+        font-size: 11px !important;
+        margin-bottom: 8px !important;
+      }
+      .footer-divider {
+        margin: 6px 0 10px 0 !important;
+      }
     }
 
     /* Top Navigation Header */
