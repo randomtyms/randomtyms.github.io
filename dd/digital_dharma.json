@@ -54,10 +54,8 @@
       "enabled": true,
       "answer": "That’s an interesting question. We don’t have an answer for that one yet.",
       "answer_ta": "அது ஒரு சுவாரஸ்யமான கேள்வி. எங்களிடம் இன்னும் பதில் இல்லை.",
-      "showSuggestButton": true,
-      "buttonText": "Suggest this question",
-      "buttonText_ta": "இந்த கேள்வியை பரிந்துரைக்கவும்",
-      "sendToReviewQueue": true
+      "showSuggestButton": false,
+      "sendToReviewQueue": false
     }
   },
   "matching": {
@@ -96,22 +94,6 @@
     "endOfSpeechSilenceMs": 1500,
     "maxQuestionDurationMs": 20000,
     "processAfterNaturalPause": true
-  },
-  "reviewQueue": {
-    "enabled": true,
-    "workflow": [
-      "receive_suggested_question",
-      "review_question",
-      "check_relevance",
-      "research_and_fact_check",
-      "write_answer",
-      "check_child_safety",
-      "check_digital_dharma_consistency",
-      "add_to_knowledge_base",
-      "test_matching",
-      "publish"
-    ],
-    "neverPublishAutomatically": true
   },
   "topics": [
     {
@@ -1961,10 +1943,10 @@
     },
     {
       "id": "DD11",
-      "title": "Talking With Lokesh & Varsha",
-      "title_en": "Talking With Lokesh & Varsha",
-      "title_ta": "லோகேஷ் & வர்ஷாவுடன் உரையாடல்",
-      "icon": "🙋",
+      "title": "About & Talking With Lokesh & Varsha",
+      "title_en": "About & Talking With Lokesh & Varsha",
+      "title_ta": "லோகேஷ் & வர்ஷா பற்றி",
+      "icon": "👧👦",
       "lessonUrl": "https://lokeshvarsha.blogspot.com/",
       "questions": [
         {
@@ -2267,6 +2249,328 @@
           ],
           "source": "added",
           "status": "approved"
+        },
+        {
+          "id": "DD11-Q012",
+          "question": "Why isn't Lokesh here?",
+          "question_en": "Why isn't Lokesh here?",
+          "question_ta": "லோகேஷ் ஏன் இங்கே இல்லை?",
+          "answer": "I'm here! Lokesh and Varsha take turns answering. Ask another question and see who answers next.",
+          "answer_en": "I'm here! Lokesh and Varsha take turns answering. Ask another question and see who answers next.",
+          "answer_ta": "நான் இங்கே தான் இருக்கிறேன்! லோகேஷும் வர்ஷாவும் மாறி மாறி பதில் சொல்வோம். இன்னொரு கேள்வி கேளுங்கள், அடுத்து யார் சொல்கிறார்கள் என்று பாருங்கள்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "lokesh",
+            "where",
+            "here",
+            "missing"
+          ],
+          "match_phrases": [
+            "Why isn't Lokesh here?",
+            "why isnt lokesh here",
+            "where is lokesh",
+            "why is only varsha answering",
+            "I want lokesh",
+            "can lokesh answer",
+            "call lokesh",
+            "is lokesh there",
+            "லோகேஷ் ஏன் இங்கே இல்லை?",
+            "லோகேஷ் எங்கே",
+            "லோகேஷ் ஏன் பதில் சொல்லவில்லை"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q013",
+          "question": "Why isn't Varsha here?",
+          "question_en": "Why isn't Varsha here?",
+          "question_ta": "வர்ஷா ஏன் இங்கே இல்லை?",
+          "answer": "I'm here! Varsha and Lokesh take turns answering. Ask another question and see who answers next.",
+          "answer_en": "I'm here! Varsha and Lokesh take turns answering. Ask another question and see who answers next.",
+          "answer_ta": "நான் இங்கே தான் இருக்கிறேன்! வர்ஷாவும் லோகேஷும் மாறி மாறி பதில் சொல்வோம். இன்னொரு கேள்வி கேளுங்கள், அடுத்து யார் சொல்கிறார்கள் என்று பாருங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "varsha",
+            "where",
+            "here",
+            "missing"
+          ],
+          "match_phrases": [
+            "Why isn't Varsha here?",
+            "why isnt varsha here",
+            "where is varsha",
+            "why is only lokesh answering",
+            "I want varsha",
+            "can varsha answer",
+            "call varsha",
+            "is varsha there",
+            "வர்ஷா ஏன் இங்கே இல்லை?",
+            "வர்ஷா எங்கே",
+            "வர்ஷா ஏன் பதில் சொல்லவில்லை"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q014",
+          "question": "Who are Lokesh and Varsha?",
+          "question_en": "Who are Lokesh and Varsha?",
+          "question_ta": "லோகேஷ் & வர்ஷா யார்?",
+          "answer": "We're Lokesh and Varsha, a brother and sister from our stories. We're characters who help kids learn how to stay safe and kind online.",
+          "answer_en": "We're Lokesh and Varsha, a brother and sister from our stories. We're characters who help kids learn how to stay safe and kind online.",
+          "answer_ta": "நாங்கள் லோகேஷ் & வர்ஷா, எங்கள் கதைகளில் வரும் அண்ணன் தங்கை. இணையத்தில் பாதுகாப்பாகவும் அன்பாகவும் இருப்பது எப்படி என்று குழந்தைகள் கற்றுக்கொள்ள உதவும் கதாபாத்திரங்கள் நாங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "lokesh",
+            "varsha",
+            "who",
+            "characters",
+            "about"
+          ],
+          "match_phrases": [
+            "lokesh",
+            "varsha",
+            "lokesh and varsha",
+            "lokesh varsha",
+            "who is lokesh",
+            "who is varsha",
+            "who are lokesh and varsha",
+            "who are you",
+            "tell me about yourself",
+            "tell me about lokesh and varsha",
+            "லோகேஷ்",
+            "வர்ஷா",
+            "லோகேஷ் & வர்ஷா யார்?",
+            "நீங்கள் யார்",
+            "Who are Lokesh and Varsha?",
+            "what is your story",
+            "லோகேஷ் வர்ஷா யார்"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q015",
+          "question": "Who made you?",
+          "question_en": "Who made you?",
+          "question_ta": "உங்களை யார் உருவாக்கினார்கள்?",
+          "answer": "A mom in Chennai created us with a phone and AI tools, to help children learn about online safety in Tamil and English.",
+          "answer_en": "A mom in Chennai created us with a phone and AI tools, to help children learn about online safety in Tamil and English.",
+          "answer_ta": "சென்னையில் உள்ள ஒரு அம்மா, குழந்தைகள் தமிழிலும் ஆங்கிலத்திலும் இணைய பாதுகாப்பைக் கற்றுக்கொள்ள உதவ, ஒரு போன் மற்றும் AI கருவிகளைக் கொண்டு எங்களை உருவாக்கினார்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "made",
+            "created",
+            "creator",
+            "who made",
+            "built"
+          ],
+          "match_phrases": [
+            "Who made you?",
+            "who made you",
+            "who created you",
+            "who built you",
+            "who is your creator",
+            "who made this app",
+            "who made this",
+            "உங்களை யார் உருவாக்கினார்கள்?",
+            "உங்களை யார் உருவாக்கினார்கள்",
+            "யார் செய்தது"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q016",
+          "question": "How old are you?",
+          "question_en": "How old are you?",
+          "question_ta": "உங்களுக்கு எத்தனை வயது?",
+          "answer": "In our stories, Varsha is 13 and Lokesh is 8. But we're characters, so we don't really have birthdays!",
+          "answer_en": "In our stories, Varsha is 13 and Lokesh is 8. But we're characters, so we don't really have birthdays!",
+          "answer_ta": "எங்கள் கதைகளில் வர்ஷாவுக்கு 13, லோகேஷுக்கு 8 வயது. ஆனால் நாங்கள் கதாபாத்திரங்கள், அதனால் எங்களுக்கு பிறந்தநாள் கிடையாது!",
+          "speaker": "varsha",
+          "keywords": [
+            "age",
+            "old",
+            "birthday",
+            "how old"
+          ],
+          "match_phrases": [
+            "How old are you?",
+            "how old are you",
+            "what is your age",
+            "how old is lokesh",
+            "how old is varsha",
+            "when is your birthday",
+            "உங்களுக்கு எத்தனை வயது?",
+            "உங்களுக்கு எத்தனை வயது",
+            "வயது என்ன"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q017",
+          "question": "Have you gone to the movies?",
+          "question_en": "Have you gone to the movies?",
+          "question_ta": "நீங்கள் சினிமாவுக்குப் போயிருக்கிறீர்களா?",
+          "answer": "We're characters, so we don't go to the movies. But we love stories, and good stories teach us a lot!",
+          "answer_en": "We're characters, so we don't go to the movies. But we love stories, and good stories teach us a lot!",
+          "answer_ta": "நாங்கள் கதாபாத்திரங்கள், அதனால் சினிமாவுக்குப் போக மாட்டோம். ஆனால் எங்களுக்குக் கதைகள் பிடிக்கும், நல்ல கதைகள் நமக்கு நிறைய கற்றுத் தருகின்றன!",
+          "speaker": "lokesh",
+          "keywords": [
+            "movies",
+            "movie",
+            "cinema",
+            "film",
+            "watch"
+          ],
+          "match_phrases": [
+            "Have you gone to the movies?",
+            "have you gone to movies",
+            "have you gone to the movies",
+            "do you watch movies",
+            "do you like movies",
+            "what is your favourite movie",
+            "have you seen a movie",
+            "do you go to cinema",
+            "நீங்கள் சினிமாவுக்குப் போயிருக்கிறீர்களா?",
+            "சினிமாவுக்குப் போயிருக்கிறீர்களா",
+            "படம் பார்ப்பீர்களா"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q018",
+          "question": "What do you like to do?",
+          "question_en": "What do you like to do?",
+          "question_ta": "உங்களுக்கு என்ன செய்யப் பிடிக்கும்?",
+          "answer": "We love learning new things, answering your questions and hearing your ideas. What do you like to do?",
+          "answer_en": "We love learning new things, answering your questions and hearing your ideas. What do you like to do?",
+          "answer_ta": "புதிய விஷயங்களைக் கற்பதும், உங்கள் கேள்விகளுக்குப் பதில் சொல்வதும், உங்கள் யோசனைகளைக் கேட்பதும் எங்களுக்குப் பிடிக்கும். உங்களுக்கு என்ன செய்யப் பிடிக்கும்?",
+          "speaker": "varsha",
+          "keywords": [
+            "like",
+            "favourite",
+            "favorite",
+            "hobby",
+            "food",
+            "game",
+            "play"
+          ],
+          "match_phrases": [
+            "What do you like to do?",
+            "what do you like to do",
+            "what is your hobby",
+            "what is your favourite food",
+            "what is your favorite game",
+            "do you play games",
+            "what do you like",
+            "what is your favourite colour",
+            "உங்களுக்கு என்ன செய்யப் பிடிக்கும்?",
+            "உங்களுக்கு என்ன பிடிக்கும்",
+            "உங்கள் விருப்பம் என்ன"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q019",
+          "question": "Where do you live?",
+          "question_en": "Where do you live?",
+          "question_ta": "நீங்கள் எங்கே வசிக்கிறீர்கள்?",
+          "answer": "We live inside this app and in our stories. Remember, you should never tell strangers online where you live!",
+          "answer_en": "We live inside this app and in our stories. Remember, you should never tell strangers online where you live!",
+          "answer_ta": "நாங்கள் இந்த app-இலும் எங்கள் கதைகளிலும் வசிக்கிறோம். நினைவில் வையுங்கள், இணையத்தில் தெரியாதவர்களிடம் நீங்கள் எங்கே வசிக்கிறீர்கள் என்று சொல்லவே கூடாது!",
+          "speaker": "lokesh",
+          "keywords": [
+            "live",
+            "home",
+            "house",
+            "address",
+            "where"
+          ],
+          "match_phrases": [
+            "Where do you live?",
+            "where do you live",
+            "where is your house",
+            "what is your address",
+            "do you have a house",
+            "which city do you live in",
+            "where are you from",
+            "நீங்கள் எங்கே வசிக்கிறீர்கள்?",
+            "நீங்கள் எங்கே இருக்கிறீர்கள்",
+            "உங்கள் வீடு எங்கே"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q020",
+          "question": "Do you go to school?",
+          "question_en": "Do you go to school?",
+          "question_ta": "நீங்கள் பள்ளிக்குப் போகிறீர்களா?",
+          "answer": "In our stories, yes! We learn, ask questions and make mistakes, just like you. Here, we love helping you learn too.",
+          "answer_en": "In our stories, yes! We learn, ask questions and make mistakes, just like you. Here, we love helping you learn too.",
+          "answer_ta": "எங்கள் கதைகளில் ஆம்! உங்களைப் போலவே நாங்களும் கற்கிறோம், கேள்விகள் கேட்கிறோம், தவறுகளும் செய்கிறோம். இங்கே உங்களுக்குக் கற்றுக்கொள்ள உதவுவதும் எங்களுக்குப் பிடிக்கும்.",
+          "speaker": "varsha",
+          "keywords": [
+            "school",
+            "study",
+            "class",
+            "student",
+            "homework"
+          ],
+          "match_phrases": [
+            "Do you go to school?",
+            "do you go to school",
+            "which school do you go to",
+            "what class are you in",
+            "do you study",
+            "do you have homework",
+            "நீங்கள் பள்ளிக்குப் போகிறீர்களா?",
+            "பள்ளிக்குப் போகிறீர்களா",
+            "எந்த பள்ளி"
+          ],
+          "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD11-Q021",
+          "question": "Can I meet you? Can you give me your phone number?",
+          "question_en": "Can I meet you? Can you give me your phone number?",
+          "question_ta": "நான் உங்களைச் சந்திக்கலாமா? உங்கள் phone number தருவீர்களா?",
+          "answer": "We're characters, so you can't meet us or call us. If anyone online says they are Lokesh or Varsha and wants to meet or chat privately, that is not us. Tell a trusted adult right away.",
+          "answer_en": "We're characters, so you can't meet us or call us. If anyone online says they are Lokesh or Varsha and wants to meet or chat privately, that is not us. Tell a trusted adult right away.",
+          "answer_ta": "நாங்கள் கதாபாத்திரங்கள், அதனால் நீங்கள் எங்களைச் சந்திக்கவோ போனில் அழைக்கவோ முடியாது. இணையத்தில் யாராவது தாங்கள் லோகேஷ் அல்லது வர்ஷா என்று சொல்லி சந்திக்கவோ தனியாகப் பேசவோ கேட்டால் அது நாங்கள் அல்ல. உடனே ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "meet",
+            "phone number",
+            "call you",
+            "contact",
+            "whatsapp",
+            "number"
+          ],
+          "match_phrases": [
+            "Can I meet you? Can you give me your phone number?",
+            "can I meet you",
+            "can I meet lokesh",
+            "can I meet varsha",
+            "give me your phone number",
+            "what is your number",
+            "can I call you",
+            "can we chat on whatsapp",
+            "can I message you privately",
+            "where can I see you in real life",
+            "நான் உங்களைச் சந்திக்கலாமா? உங்கள் phone number தருவீர்களா?",
+            "உங்களைச் சந்திக்கலாமா",
+            "உங்கள் phone number என்ன"
+          ],
+          "source": "generated",
+          "status": "approved"
         }
       ]
     },
@@ -2296,9 +2600,7 @@
             "neighbour",
             "neighbor",
             "uncle",
-            "man",
             "hurt me",
-            "relative",
             "family member",
             "hits me",
             "beats me"
@@ -2370,15 +2672,10 @@
           "answer_ta": "புகைப்படம் அனுப்பாதே. உடனே பெரியவரிடம் காட்டு. Block செய். 1098 உதவும்.",
           "speaker": "lokesh",
           "keywords": [
-            "photo",
-            "photos",
-            "picture",
-            "pics",
             "send photo",
             "private photo",
             "nude",
-            "asking photo",
-            "image"
+            "asking photo"
           ],
           "match_phrases": [
             "Someone is asking for my photos",
@@ -2409,7 +2706,6 @@
             "afraid",
             "fear",
             "not safe",
-            "help",
             "scary",
             "danger",
             "please help"
@@ -2502,7 +2798,6 @@
           "answer_ta": "தனியாக போகாதே. உடனே பெரியவரிடம் சொல். ரகசிய சந்திப்பு வேண்டாம். 1098 உதவும்.",
           "speaker": "varsha",
           "keywords": [
-            "meet",
             "alone",
             "meet me",
             "come alone",
@@ -2588,12 +2883,10 @@
           "answer_ta": "உங்களுக்குத் தெரிந்தவர்கள் இருக்கும் பாதுகாப்பான இடத்துக்குச் செல்லுங்கள் — வீடு, பள்ளி அல்லது உறவினர் வீடு. என்ன நடக்கிறது என்பதை நம்பிக்கையான ஒரு பெரியவரிடம் சொல்லுங்கள். யாரும் கிடைக்கவில்லை என்றால் எந்த போனிலிருந்தும் Childline 1098-ஐ அழையுங்கள். அது இலவசம்.",
           "speaker": "varsha",
           "keywords": [
-            "where",
-            "go",
-            "help",
             "safe place",
-            "run",
-            "escape"
+            "where to go for help",
+            "need help safe place",
+            "run away danger"
           ],
           "match_phrases": [
             "Where should I go if I need help?",
@@ -2654,7 +2947,6 @@
           "speaker": "varsha",
           "keywords": [
             "trouble",
-            "tell",
             "punish",
             "scold",
             "afraid to tell"
@@ -2752,10 +3044,8 @@
           "keywords": [
             "stranger",
             "messaging",
-            "message",
             "unknown person",
-            "dm",
-            "chat"
+            "dm"
           ],
           "match_phrases": [
             "A stranger is messaging me",
@@ -2785,7 +3075,6 @@
           "keywords": [
             "video chat",
             "video call",
-            "camera",
             "stranger",
             "on camera"
           ],
@@ -2832,332 +3121,6 @@
             "ஒருவர் எனக்கு கெட்ட video காட்டினார்",
             "கெட்ட video பார்த்தேன்",
             "தவறான video காட்டினார்"
-          ],
-          "source": "generated",
-          "status": "approved"
-        }
-      ]
-    },
-    {
-      "id": "DD13",
-      "title": "About Lokesh & Varsha",
-      "title_en": "About Lokesh & Varsha",
-      "title_ta": "லோகேஷ் & வர்ஷா பற்றி",
-      "icon": "👧",
-      "lessonUrl": "https://lokeshvarsha.blogspot.com/",
-      "questions": [
-        {
-          "id": "DD13-Q001",
-          "question": "Why isn't Lokesh here?",
-          "question_en": "Why isn't Lokesh here?",
-          "question_ta": "லோகேஷ் ஏன் இங்கே இல்லை?",
-          "answer": "I'm here! Lokesh and Varsha take turns answering. Ask another question and see who answers next.",
-          "answer_en": "I'm here! Lokesh and Varsha take turns answering. Ask another question and see who answers next.",
-          "answer_ta": "நான் இங்கே தான் இருக்கிறேன்! லோகேஷும் வர்ஷாவும் மாறி மாறி பதில் சொல்வோம். இன்னொரு கேள்வி கேளுங்கள், அடுத்து யார் சொல்கிறார்கள் என்று பாருங்கள்.",
-          "speaker": "lokesh",
-          "keywords": [
-            "lokesh",
-            "where",
-            "here",
-            "missing"
-          ],
-          "match_phrases": [
-            "Why isn't Lokesh here?",
-            "why isnt lokesh here",
-            "where is lokesh",
-            "why is only varsha answering",
-            "I want lokesh",
-            "can lokesh answer",
-            "call lokesh",
-            "is lokesh there",
-            "லோகேஷ் ஏன் இங்கே இல்லை?",
-            "லோகேஷ் எங்கே",
-            "லோகேஷ் ஏன் பதில் சொல்லவில்லை"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q002",
-          "question": "Why isn't Varsha here?",
-          "question_en": "Why isn't Varsha here?",
-          "question_ta": "வர்ஷா ஏன் இங்கே இல்லை?",
-          "answer": "I'm here! Varsha and Lokesh take turns answering. Ask another question and see who answers next.",
-          "answer_en": "I'm here! Varsha and Lokesh take turns answering. Ask another question and see who answers next.",
-          "answer_ta": "நான் இங்கே தான் இருக்கிறேன்! வர்ஷாவும் லோகேஷும் மாறி மாறி பதில் சொல்வோம். இன்னொரு கேள்வி கேளுங்கள், அடுத்து யார் சொல்கிறார்கள் என்று பாருங்கள்.",
-          "speaker": "varsha",
-          "keywords": [
-            "varsha",
-            "where",
-            "here",
-            "missing"
-          ],
-          "match_phrases": [
-            "Why isn't Varsha here?",
-            "why isnt varsha here",
-            "where is varsha",
-            "why is only lokesh answering",
-            "I want varsha",
-            "can varsha answer",
-            "call varsha",
-            "is varsha there",
-            "வர்ஷா ஏன் இங்கே இல்லை?",
-            "வர்ஷா எங்கே",
-            "வர்ஷா ஏன் பதில் சொல்லவில்லை"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q003",
-          "question": "Who are Lokesh and Varsha?",
-          "question_en": "Who are Lokesh and Varsha?",
-          "question_ta": "லோகேஷ் & வர்ஷா யார்?",
-          "answer": "We're Lokesh and Varsha, a brother and sister from our stories. We're characters who help kids learn how to stay safe and kind online.",
-          "answer_en": "We're Lokesh and Varsha, a brother and sister from our stories. We're characters who help kids learn how to stay safe and kind online.",
-          "answer_ta": "நாங்கள் லோகேஷ் & வர்ஷா, எங்கள் கதைகளில் வரும் அண்ணன் தங்கை. இணையத்தில் பாதுகாப்பாகவும் அன்பாகவும் இருப்பது எப்படி என்று குழந்தைகள் கற்றுக்கொள்ள உதவும் கதாபாத்திரங்கள் நாங்கள்.",
-          "speaker": "varsha",
-          "keywords": [
-            "who",
-            "lokesh",
-            "varsha",
-            "characters",
-            "about"
-          ],
-          "match_phrases": [
-            "Who are Lokesh and Varsha?",
-            "who are you",
-            "who are lokesh and varsha",
-            "who is lokesh",
-            "who is varsha",
-            "tell me about yourself",
-            "tell me about lokesh and varsha",
-            "what is your story",
-            "லோகேஷ் & வர்ஷா யார்?",
-            "நீங்கள் யார்",
-            "லோகேஷ் வர்ஷா யார்"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q004",
-          "question": "Who made you?",
-          "question_en": "Who made you?",
-          "question_ta": "உங்களை யார் உருவாக்கினார்கள்?",
-          "answer": "A mom in Chennai created us with a phone and AI tools, to help children learn about online safety in Tamil and English.",
-          "answer_en": "A mom in Chennai created us with a phone and AI tools, to help children learn about online safety in Tamil and English.",
-          "answer_ta": "சென்னையில் உள்ள ஒரு அம்மா, குழந்தைகள் தமிழிலும் ஆங்கிலத்திலும் இணைய பாதுகாப்பைக் கற்றுக்கொள்ள உதவ, ஒரு போன் மற்றும் AI கருவிகளைக் கொண்டு எங்களை உருவாக்கினார்.",
-          "speaker": "lokesh",
-          "keywords": [
-            "made",
-            "created",
-            "creator",
-            "who made",
-            "built"
-          ],
-          "match_phrases": [
-            "Who made you?",
-            "who made you",
-            "who created you",
-            "who built you",
-            "who is your creator",
-            "who made this app",
-            "who made this",
-            "உங்களை யார் உருவாக்கினார்கள்?",
-            "உங்களை யார் உருவாக்கினார்கள்",
-            "யார் செய்தது"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q005",
-          "question": "How old are you?",
-          "question_en": "How old are you?",
-          "question_ta": "உங்களுக்கு எத்தனை வயது?",
-          "answer": "In our stories, Varsha is 13 and Lokesh is 8. But we're characters, so we don't really have birthdays!",
-          "answer_en": "In our stories, Varsha is 13 and Lokesh is 8. But we're characters, so we don't really have birthdays!",
-          "answer_ta": "எங்கள் கதைகளில் வர்ஷாவுக்கு 13, லோகேஷுக்கு 8 வயது. ஆனால் நாங்கள் கதாபாத்திரங்கள், அதனால் எங்களுக்கு பிறந்தநாள் கிடையாது!",
-          "speaker": "varsha",
-          "keywords": [
-            "age",
-            "old",
-            "birthday",
-            "how old"
-          ],
-          "match_phrases": [
-            "How old are you?",
-            "how old are you",
-            "what is your age",
-            "how old is lokesh",
-            "how old is varsha",
-            "when is your birthday",
-            "உங்களுக்கு எத்தனை வயது?",
-            "உங்களுக்கு எத்தனை வயது",
-            "வயது என்ன"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q006",
-          "question": "Have you gone to the movies?",
-          "question_en": "Have you gone to the movies?",
-          "question_ta": "நீங்கள் சினிமாவுக்குப் போயிருக்கிறீர்களா?",
-          "answer": "We're characters, so we don't go to the movies. But we love stories, and good stories teach us a lot!",
-          "answer_en": "We're characters, so we don't go to the movies. But we love stories, and good stories teach us a lot!",
-          "answer_ta": "நாங்கள் கதாபாத்திரங்கள், அதனால் சினிமாவுக்குப் போக மாட்டோம். ஆனால் எங்களுக்குக் கதைகள் பிடிக்கும், நல்ல கதைகள் நமக்கு நிறைய கற்றுத் தருகின்றன!",
-          "speaker": "lokesh",
-          "keywords": [
-            "movies",
-            "movie",
-            "cinema",
-            "film",
-            "watch"
-          ],
-          "match_phrases": [
-            "Have you gone to the movies?",
-            "have you gone to movies",
-            "have you gone to the movies",
-            "do you watch movies",
-            "do you like movies",
-            "what is your favourite movie",
-            "have you seen a movie",
-            "do you go to cinema",
-            "நீங்கள் சினிமாவுக்குப் போயிருக்கிறீர்களா?",
-            "சினிமாவுக்குப் போயிருக்கிறீர்களா",
-            "படம் பார்ப்பீர்களா"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q007",
-          "question": "What do you like to do?",
-          "question_en": "What do you like to do?",
-          "question_ta": "உங்களுக்கு என்ன செய்யப் பிடிக்கும்?",
-          "answer": "We love learning new things, answering your questions and hearing your ideas. What do you like to do?",
-          "answer_en": "We love learning new things, answering your questions and hearing your ideas. What do you like to do?",
-          "answer_ta": "புதிய விஷயங்களைக் கற்பதும், உங்கள் கேள்விகளுக்குப் பதில் சொல்வதும், உங்கள் யோசனைகளைக் கேட்பதும் எங்களுக்குப் பிடிக்கும். உங்களுக்கு என்ன செய்யப் பிடிக்கும்?",
-          "speaker": "varsha",
-          "keywords": [
-            "like",
-            "favourite",
-            "favorite",
-            "hobby",
-            "food",
-            "game",
-            "play"
-          ],
-          "match_phrases": [
-            "What do you like to do?",
-            "what do you like to do",
-            "what is your hobby",
-            "what is your favourite food",
-            "what is your favorite game",
-            "do you play games",
-            "what do you like",
-            "what is your favourite colour",
-            "உங்களுக்கு என்ன செய்யப் பிடிக்கும்?",
-            "உங்களுக்கு என்ன பிடிக்கும்",
-            "உங்கள் விருப்பம் என்ன"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q008",
-          "question": "Where do you live?",
-          "question_en": "Where do you live?",
-          "question_ta": "நீங்கள் எங்கே வசிக்கிறீர்கள்?",
-          "answer": "We live inside this app and in our stories. Remember, you should never tell strangers online where you live!",
-          "answer_en": "We live inside this app and in our stories. Remember, you should never tell strangers online where you live!",
-          "answer_ta": "நாங்கள் இந்த app-இலும் எங்கள் கதைகளிலும் வசிக்கிறோம். நினைவில் வையுங்கள், இணையத்தில் தெரியாதவர்களிடம் நீங்கள் எங்கே வசிக்கிறீர்கள் என்று சொல்லவே கூடாது!",
-          "speaker": "lokesh",
-          "keywords": [
-            "live",
-            "home",
-            "house",
-            "address",
-            "where"
-          ],
-          "match_phrases": [
-            "Where do you live?",
-            "where do you live",
-            "where is your house",
-            "what is your address",
-            "do you have a house",
-            "which city do you live in",
-            "where are you from",
-            "நீங்கள் எங்கே வசிக்கிறீர்கள்?",
-            "நீங்கள் எங்கே இருக்கிறீர்கள்",
-            "உங்கள் வீடு எங்கே"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q009",
-          "question": "Do you go to school?",
-          "question_en": "Do you go to school?",
-          "question_ta": "நீங்கள் பள்ளிக்குப் போகிறீர்களா?",
-          "answer": "In our stories, yes! We learn, ask questions and make mistakes, just like you. Here, we love helping you learn too.",
-          "answer_en": "In our stories, yes! We learn, ask questions and make mistakes, just like you. Here, we love helping you learn too.",
-          "answer_ta": "எங்கள் கதைகளில் ஆம்! உங்களைப் போலவே நாங்களும் கற்கிறோம், கேள்விகள் கேட்கிறோம், தவறுகளும் செய்கிறோம். இங்கே உங்களுக்குக் கற்றுக்கொள்ள உதவுவதும் எங்களுக்குப் பிடிக்கும்.",
-          "speaker": "varsha",
-          "keywords": [
-            "school",
-            "study",
-            "class",
-            "student",
-            "homework"
-          ],
-          "match_phrases": [
-            "Do you go to school?",
-            "do you go to school",
-            "which school do you go to",
-            "what class are you in",
-            "do you study",
-            "do you have homework",
-            "நீங்கள் பள்ளிக்குப் போகிறீர்களா?",
-            "பள்ளிக்குப் போகிறீர்களா",
-            "எந்த பள்ளி"
-          ],
-          "source": "generated",
-          "status": "approved"
-        },
-        {
-          "id": "DD13-Q010",
-          "question": "Can I meet you? Can you give me your phone number?",
-          "question_en": "Can I meet you? Can you give me your phone number?",
-          "question_ta": "நான் உங்களைச் சந்திக்கலாமா? உங்கள் phone number தருவீர்களா?",
-          "answer": "We're characters, so you can't meet us or call us. If anyone online says they are Lokesh or Varsha and wants to meet or chat privately, that is not us. Tell a trusted adult right away.",
-          "answer_en": "We're characters, so you can't meet us or call us. If anyone online says they are Lokesh or Varsha and wants to meet or chat privately, that is not us. Tell a trusted adult right away.",
-          "answer_ta": "நாங்கள் கதாபாத்திரங்கள், அதனால் நீங்கள் எங்களைச் சந்திக்கவோ போனில் அழைக்கவோ முடியாது. இணையத்தில் யாராவது தாங்கள் லோகேஷ் அல்லது வர்ஷா என்று சொல்லி சந்திக்கவோ தனியாகப் பேசவோ கேட்டால் அது நாங்கள் அல்ல. உடனே ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள்.",
-          "speaker": "varsha",
-          "keywords": [
-            "meet",
-            "phone number",
-            "call you",
-            "contact",
-            "whatsapp",
-            "number"
-          ],
-          "match_phrases": [
-            "Can I meet you? Can you give me your phone number?",
-            "can I meet you",
-            "can I meet lokesh",
-            "can I meet varsha",
-            "give me your phone number",
-            "what is your number",
-            "can I call you",
-            "can we chat on whatsapp",
-            "can I message you privately",
-            "where can I see you in real life",
-            "நான் உங்களைச் சந்திக்கலாமா? உங்கள் phone number தருவீர்களா?",
-            "உங்களைச் சந்திக்கலாமா",
-            "உங்கள் phone number என்ன"
           ],
           "source": "generated",
           "status": "approved"

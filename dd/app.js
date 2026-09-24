@@ -395,7 +395,7 @@ function bestPhraseHit(query, topics, isSafety) {
       const score = scoreItem(query, item);
       if (score > bestScore) {
         bestScore = score;
-        best = { item, topic, isSafety };
+        best = { item, topic, isSafety, score: bestScore };
       }
     });
   });
@@ -408,16 +408,26 @@ function findAnswer(queryText) {
   if (!qClean) return null;
 
   if (/\b1098\b/.test(qRaw) || qClean.includes("childline") || qClean.includes("சைல்ட்லைன்")) {
-    return findById("DD12-Q009");
+    const safety1098 = findById("DD12-Q009");
+    if (safety1098) return { ...safety1098, score: 9999 };
   }
 
   const safety = ddData.filter((t) => t.id === "DD12");
   const lessons = ddData.filter((t) => t.id !== "DD12");
 
   const safetyHit = bestPhraseHit(queryText, safety, true);
-  if (safetyHit) return safetyHit;
+  const lessonHit = bestPhraseHit(queryText, lessons, false);
 
-  return bestPhraseHit(queryText, lessons, false);
+  if (!safetyHit && !lessonHit) return null;
+  if (safetyHit && !lessonHit) return safetyHit;
+  if (!safetyHit && lessonHit) return lessonHit;
+
+  // If safety has an exact match (>= 1000) or stronger score, choose safety
+  if (safetyHit.score >= 1000) return safetyHit;
+  // If lesson has an exact match and safety does not, favor the lesson
+  if (lessonHit.score >= 1000 && safetyHit.score < 1000) return lessonHit;
+
+  return safetyHit.score >= lessonHit.score ? safetyHit : lessonHit;
 }
 
 function chooseSpeaker(item, topic) {
@@ -658,29 +668,8 @@ function appendBotMessage({ speaker, text, topic, item, isSafety = false, isUnkn
     wrap.appendChild(distressCard);
   }
 
-  if (isUnknown && suggestedQuery) {
-    const btnWrap = document.createElement("div");
-    btnWrap.style.marginTop = "8px";
-    const suggestBtn = document.createElement("button");
-    suggestBtn.type = "button";
-    suggestBtn.className = "chip";
-    suggestBtn.style.background = "#faf5ff";
-    suggestBtn.style.borderColor = "#c084fc";
-    suggestBtn.style.color = "#581c87";
-    suggestBtn.style.fontWeight = "700";
-    suggestBtn.textContent = isTa ? "இந்த கேள்வியை பரிந்துரைக்கவும்" : "Suggest this question";
-    suggestBtn.onclick = () => {
-      suggestBtn.disabled = true;
-      suggestBtn.textContent = isTa
-        ? "✓ நன்றி! ஆசிரியர்களுக்கு பரிந்துரைக்கப்பட்டது"
-        : "✓ Sent to teachers for review!";
-      suggestBtn.style.background = "#ecfdf5";
-      suggestBtn.style.borderColor = "#a7f3d0";
-      suggestBtn.style.color = "#065f46";
-    };
-    btnWrap.appendChild(suggestBtn);
-    wrap.appendChild(btnWrap);
-  }
+  // No suggest button: keep unknown response clean and private without inbox spam
+
 
   if (topic) {
     const meta = document.createElement("div");
