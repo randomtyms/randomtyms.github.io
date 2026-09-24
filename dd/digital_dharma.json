@@ -434,7 +434,9 @@
             "what if I fail",
             "how do I learn from mistakes",
             "தவறு செய்தால் என்ன செய்வது",
-            "தவறை திருத்துவது எப்படி"
+            "தவறை திருத்துவது எப்படி",
+            "I did something wrong online",
+            "I made a mistake online"
           ],
           "source": "added",
           "status": "approved"
@@ -658,7 +660,10 @@
             "I got a surprise prize message",
             "பரிசு வென்றுள்ளதாக செய்தி வந்தால்",
             "லாட்டரி விழுந்துள்ளது என்று செய்தி வந்தால்",
-            "இலவச பரிசு மெசேஜ்"
+            "இலவச பரிசு மெசேஜ்",
+            "someone sent me a link and says I won",
+            "a link says I won a prize",
+            "click this link to win a prize"
           ],
           "source": "existing",
           "status": "approved"
@@ -716,10 +721,45 @@
             "I clicked a strange link by mistake",
             "what should I do after clicking a suspicious link",
             "I opened a suspicious link accidentally",
-            "தவறான லிங்கை தொட்டுவிட்டேன்"
+            "தவறான லிங்கை தொட்டுவிட்டேன்",
+            "I clicked a bad link",
+            "I clicked on a bad link",
+            "I clicked a wrong link"
           ],
           "source": "existing",
           "status": "approved"
+        },
+        {
+          "id": "DD02-Q006",
+          "question": "Someone is asking for my OTP",
+          "question_en": "Someone is asking for my OTP",
+          "question_ta": "ஒருவர் என் OTP கேட்கிறார்",
+          "answer": "Never share an OTP with anyone, even someone who says they are from a bank, the police or a company. An OTP is like a secret key to money and accounts. Stop talking to that person and tell a trusted adult right away.",
+          "answer_en": "Never share an OTP with anyone, even someone who says they are from a bank, the police or a company. An OTP is like a secret key to money and accounts. Stop talking to that person and tell a trusted adult right away.",
+          "answer_ta": "OTP-ஐ யாரிடமும் சொல்ல வேண்டாம் — வங்கி, police அல்லது கம்பெனி என்று சொல்பவரிடம்கூட. OTP என்பது பணம், account-க்கான ரகசிய சாவி போன்றது. அந்த நபருடன் பேசுவதை நிறுத்திவிட்டு உடனே ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "otp",
+            "code",
+            "bank",
+            "verification code",
+            "one time password"
+          ],
+          "match_phrases": [
+            "Someone is asking for my OTP",
+            "someone is asking for my OTP",
+            "should I share my OTP",
+            "someone asked me for a code on my phone",
+            "a caller wants my OTP",
+            "can I tell my OTP to someone",
+            "someone wants the code sent to my phone",
+            "what is an OTP",
+            "ஒருவர் என் OTP கேட்கிறார்",
+            "OTP கேட்கிறார்",
+            "OTP சொல்லலாமா"
+          ],
+          "source": "generated",
+          "status": "draft"
         }
       ]
     },
@@ -841,6 +881,38 @@
           ],
           "source": "existing",
           "status": "approved"
+        },
+        {
+          "id": "DD03-Q005",
+          "question": "I gave my password to someone. What should I do?",
+          "question_en": "I gave my password to someone. What should I do?",
+          "question_ta": "என் password-ஐ ஒருவரிடம் கொடுத்துவிட்டேன். என்ன செய்வது?",
+          "answer": "Don't panic. Tell a trusted adult right away. Change the password now, and change it anywhere else you used the same one. Don't share your password again, not even with friends.",
+          "answer_en": "Don't panic. Tell a trusted adult right away. Change the password now, and change it anywhere else you used the same one. Don't share your password again, not even with friends.",
+          "answer_ta": "பயப்பட வேண்டாம். உடனே ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள். இப்போதே password-ஐ மாற்றுங்கள். அதே password-ஐ வேறு இடங்களில் பயன்படுத்தியிருந்தால் அங்கும் மாற்றுங்கள். இனி நண்பர்களிடம்கூட password-ஐப் பகிர வேண்டாம்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "gave password",
+            "shared password",
+            "told password",
+            "password",
+            "stolen"
+          ],
+          "match_phrases": [
+            "I gave my password to someone. What should I do?",
+            "I gave my password to someone",
+            "I shared my password",
+            "I told someone my password",
+            "someone knows my password",
+            "someone asked for my password and I gave it",
+            "I gave my password to a stranger",
+            "what if I shared my password",
+            "என் password-ஐ ஒருவரிடம் கொடுத்துவிட்டேன். என்ன செய்வது?",
+            "password கொடுத்துவிட்டேன்",
+            "password சொல்லிவிட்டேன்"
+          ],
+          "source": "generated",
+          "status": "draft"
         }
       ]
     },
@@ -906,7 +978,11 @@
             "is it safe to tell people where I go to school",
             "should I share where I live online",
             "பள்ளி பெயரை பகிரலாமா",
-            "வீட்டு முகவரியை பகிரலாமா"
+            "வீட்டு முகவரியை பகிரலாமா",
+            "someone is asking where I live",
+            "a stranger asked for my address",
+            "someone asked which school I go to",
+            "should I tell a stranger my address"
           ],
           "source": "existing",
           "status": "approved"
@@ -968,6 +1044,37 @@
           ],
           "source": "existing",
           "status": "approved"
+        },
+        {
+          "id": "DD04-Q005",
+          "question": "Someone made a fake account with my name",
+          "question_en": "Someone made a fake account with my name",
+          "question_ta": "என் பெயரில் ஒருவர் fake account உருவாக்கியுள்ளார்",
+          "answer": "Tell a trusted adult right away. Take screenshots of the fake account, don't reply to it, and report it in the app. It is not your fault.",
+          "answer_en": "Tell a trusted adult right away. Take screenshots of the fake account, don't reply to it, and report it in the app. It is not your fault.",
+          "answer_ta": "உடனே ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள். அந்த fake account-ஐ screenshot எடுங்கள், அதற்குப் பதில் சொல்ல வேண்டாம், app-இல் report செய்யுங்கள். இது உங்கள் தவறு அல்ல.",
+          "speaker": "varsha",
+          "keywords": [
+            "fake account",
+            "fake profile",
+            "my name",
+            "pretending",
+            "impersonate"
+          ],
+          "match_phrases": [
+            "Someone made a fake account with my name",
+            "someone made a fake account with my name",
+            "someone is pretending to be me online",
+            "there is a fake profile of me",
+            "someone is using my photo",
+            "someone made a fake id with my name",
+            "a fake account has my picture",
+            "என் பெயரில் ஒருவர் fake account உருவாக்கியுள்ளார்",
+            "என் பெயரில் fake account",
+            "நான் போல் நடிக்கிறார்"
+          ],
+          "source": "generated",
+          "status": "draft"
         }
       ]
     },
@@ -1033,7 +1140,13 @@
             "should I bully the bully back",
             "what should I do if someone bullies me online",
             "should I take revenge on a cyberbully",
-            "திருப்பி சண்டை போடலாமா"
+            "திருப்பி சண்டை போடலாமா",
+            "someone is bullying me online",
+            "someone is bullying me",
+            "I am being cyberbullied",
+            "people are being mean to me online",
+            "they are saying bad things about me",
+            "someone is spreading rumours about me online"
           ],
           "source": "existing",
           "status": "approved"
@@ -1122,6 +1235,38 @@
           ],
           "source": "existing",
           "status": "approved"
+        },
+        {
+          "id": "DD05-Q006",
+          "question": "How do I block someone?",
+          "question_en": "How do I block someone?",
+          "question_ta": "ஒருவரை block செய்வது எப்படி?",
+          "answer": "Open that person's profile or chat, tap the three dots or their name, and choose Block. You can also choose Report. Take a screenshot first if you can, and ask a trusted adult to help you. Blocking is not rude. It keeps you safe.",
+          "answer_en": "Open that person's profile or chat, tap the three dots or their name, and choose Block. You can also choose Report. Take a screenshot first if you can, and ask a trusted adult to help you. Blocking is not rude. It keeps you safe.",
+          "answer_ta": "அந்த நபரின் profile அல்லது chat-ஐத் திறந்து, மூன்று புள்ளிகள் அல்லது அவர் பெயரைத் தொட்டு Block என்பதைத் தேர்ந்தெடுங்கள். Report செய்யும் வசதியும் இருக்கும். முடிந்தால் முதலில் screenshot எடுங்கள், ஒரு நம்பிக்கையான பெரியவரின் உதவியைக் கேளுங்கள். Block செய்வது மரியாதைக்குறைவு அல்ல; அது உங்களைப் பாதுகாக்கும்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "block",
+            "report",
+            "how to block",
+            "stop messages",
+            "unfriend"
+          ],
+          "match_phrases": [
+            "How do I block someone?",
+            "how do I block someone",
+            "how to block a person",
+            "how do I stop someone from messaging me",
+            "how can I block a number",
+            "how do I report someone",
+            "how do I block a stranger",
+            "how to report a bad account",
+            "ஒருவரை block செய்வது எப்படி?",
+            "block செய்வது எப்படி",
+            "report செய்வது எப்படி"
+          ],
+          "source": "generated",
+          "status": "draft"
         }
       ]
     },
@@ -1619,7 +1764,10 @@
             "someone says I am under digital arrest",
             "what should I do if someone threatens digital arrest",
             "I got a digital arrest call",
-            "someone called saying I am arrested"
+            "someone called saying I am arrested",
+            "a man on video call says I am arrested",
+            "someone on a video call says police will arrest me",
+            "a video call says I am under arrest"
           ],
           "source": "existing",
           "status": "approved"
@@ -1797,6 +1945,38 @@
           ],
           "source": "existing",
           "status": "approved"
+        },
+        {
+          "id": "DD10-Q006",
+          "question": "Someone sent me an app file to install. Is it safe?",
+          "question_en": "Someone sent me an app file to install. Is it safe?",
+          "question_ta": "ஒருவர் app file அனுப்பி install செய்யச் சொன்னார். இது பாதுகாப்பானதா?",
+          "answer": "Don't install it. Apps sent on WhatsApp, SMS or a link, especially files ending in .apk, can steal your information. Only install apps from the official Play Store or App Store, and ask a trusted adult first.",
+          "answer_en": "Don't install it. Apps sent on WhatsApp, SMS or a link, especially files ending in .apk, can steal your information. Only install apps from the official Play Store or App Store, and ask a trusted adult first.",
+          "answer_ta": "அதை install செய்ய வேண்டாம். WhatsApp, SMS அல்லது link மூலம் வரும் app-கள், குறிப்பாக .apk file-கள், உங்கள் தகவலைத் திருடலாம். அதிகாரப்பூர்வ Play Store அல்லது App Store-இல் இருந்து மட்டும் app-களை install செய்யுங்கள், முதலில் ஒரு நம்பிக்கையான பெரியவரிடம் கேளுங்கள்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "apk",
+            "install",
+            "app file",
+            "download",
+            "whatsapp app"
+          ],
+          "match_phrases": [
+            "Someone sent me an app file to install. Is it safe?",
+            "someone sent me an app file to install",
+            "someone asked me to install an app",
+            "should I install an apk",
+            "someone sent me an apk file",
+            "someone sent me a link to download an app",
+            "can I install an app from whatsapp",
+            "is it safe to install an app from a link",
+            "ஒருவர் app file அனுப்பி install செய்யச் சொன்னார். இது பாதுகாப்பானதா?",
+            "app install செய்யச் சொன்னார்",
+            "apk file அனுப்பினார்"
+          ],
+          "source": "generated",
+          "status": "draft"
         }
       ]
     },
@@ -2048,7 +2228,14 @@
             "who should i tell",
             "what is a trusted adult",
             "நம்பகமான பெரியவர்கள் யார்",
-            "பெரியவர்கள் யார்"
+            "பெரியவர்கள் யார்",
+            "whom can I trust",
+            "whom should I tell",
+            "whom can I tell",
+            "who can I talk to",
+            "can I tell my teacher",
+            "should I tell my teacher",
+            "who can I tell if I am scared"
           ],
           "source": "added",
           "status": "approved"
@@ -2230,7 +2417,11 @@
             "send your pics",
             "asking for nude photo",
             "online asking for pics",
-            "asking for my picture"
+            "asking for my picture",
+            "someone in a game wants my photo",
+            "a game friend asked for my photo",
+            "stranger asking for my photo",
+            "he wants my photo"
           ],
           "source": "safety_expert",
           "status": "approved"
@@ -2267,7 +2458,12 @@
             "please help me",
             "i want to tell someone",
             "can i tell you something bad happened",
-            "i don't feel safe with someone"
+            "i don't feel safe with someone",
+            "who can help me",
+            "who will help me",
+            "somebody help me",
+            "I'm scared, what do I do",
+            "what do I do I feel unsafe"
           ],
           "source": "safety_expert",
           "status": "approved"
@@ -2328,7 +2524,12 @@
             "threatening me online",
             "blackmailing me",
             "someone scaring me in game",
-            "scaring me on chat"
+            "scaring me on chat",
+            "they will share my photo",
+            "threatening to share my photo",
+            "he said he will post my photo",
+            "someone is threatening me",
+            "someone is blackmailing me"
           ],
           "source": "safety_expert",
           "status": "approved"
@@ -2418,6 +2619,264 @@
           ],
           "source": "safety_expert",
           "status": "approved"
+        },
+        {
+          "id": "DD12-Q010",
+          "question": "Where should I go if I need help?",
+          "question_en": "Where should I go if I need help?",
+          "question_ta": "உதவி தேவைப்பட்டால் நான் எங்கே போக வேண்டும்?",
+          "answer": "Go to a safe place with people you know, like your home, your school, or a relative's house. Tell a trusted adult what is happening. If you can't find one, call Childline 1098 from any phone. It's free.",
+          "answer_en": "Go to a safe place with people you know, like your home, your school, or a relative's house. Tell a trusted adult what is happening. If you can't find one, call Childline 1098 from any phone. It's free.",
+          "answer_ta": "உங்களுக்குத் தெரிந்தவர்கள் இருக்கும் பாதுகாப்பான இடத்துக்குச் செல்லுங்கள் — வீடு, பள்ளி அல்லது உறவினர் வீடு. என்ன நடக்கிறது என்பதை நம்பிக்கையான ஒரு பெரியவரிடம் சொல்லுங்கள். யாரும் கிடைக்கவில்லை என்றால் எந்த போனிலிருந்தும் Childline 1098-ஐ அழையுங்கள். அது இலவசம்.",
+          "speaker": "varsha",
+          "keywords": [
+            "where",
+            "go",
+            "help",
+            "safe place",
+            "run",
+            "escape"
+          ],
+          "match_phrases": [
+            "Where should I go if I need help?",
+            "where should I go",
+            "where can I go",
+            "where do I go for help",
+            "where can I go to be safe",
+            "where to go",
+            "I don't know where to go",
+            "உதவி தேவைப்பட்டால் நான் எங்கே போக வேண்டும்?",
+            "நான் எங்கே போக வேண்டும்",
+            "உதவிக்கு எங்கே போவது"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q011",
+          "question": "Can I call the police?",
+          "question_en": "Can I call the police?",
+          "question_ta": "நான் போலீஸை அழைக்கலாமா?",
+          "answer": "Yes. If you are in danger or someone is hurting you, you can call the police on 112. You can also call Childline 1098. Real police help children. Tell a trusted adult too. But if someone calls YOU, says they are police and asks for money or scares you, that is a scam. Hang up and tell a trusted adult.",
+          "answer_en": "Yes. If you are in danger or someone is hurting you, you can call the police on 112. You can also call Childline 1098. Real police help children. Tell a trusted adult too. But if someone calls YOU, says they are police and asks for money or scares you, that is a scam. Hang up and tell a trusted adult.",
+          "answer_ta": "ஆம். நீங்கள் ஆபத்தில் இருந்தாலோ யாராவது உங்களைத் துன்புறுத்தினாலோ 112-ல் police-ஐ அழைக்கலாம். Childline 1098-ஐயும் அழைக்கலாம். உண்மையான police குழந்தைகளுக்கு உதவுவார்கள். ஒரு நம்பிக்கையான பெரியவரிடமும் சொல்லுங்கள். ஆனால் யாராவது உங்களை அழைத்து தாங்கள் police என்று சொல்லி பணம் கேட்டாலோ பயமுறுத்தினாலோ அது scam. போனை வைத்துவிட்டு ஒரு பெரியவரிடம் சொல்லுங்கள்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "call police",
+            "police help",
+            "can i call police",
+            "112",
+            "report to police"
+          ],
+          "match_phrases": [
+            "Can I call the police?",
+            "can I call police",
+            "should I call the police",
+            "can I call the police for help",
+            "how do I call the police",
+            "will police help me",
+            "can I go to the police",
+            "is it okay to call police",
+            "police number",
+            "நான் போலீஸை அழைக்கலாமா?",
+            "போலீஸை கூப்பிடலாமா",
+            "police-ஐ அழைக்கலாமா"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q012",
+          "question": "Will I get in trouble if I tell?",
+          "question_en": "Will I get in trouble if I tell?",
+          "question_ta": "நான் சொன்னால் எனக்குப் பிரச்சினை வருமா?",
+          "answer": "Telling a trusted adult is always the right thing to do. Your safety matters more than any mistake. If something bad was done to you, it is not your fault. If one adult doesn't listen, tell another one, or call Childline 1098.",
+          "answer_en": "Telling a trusted adult is always the right thing to do. Your safety matters more than any mistake. If something bad was done to you, it is not your fault. If one adult doesn't listen, tell another one, or call Childline 1098.",
+          "answer_ta": "நம்பிக்கையான பெரியவரிடம் சொல்வது எப்போதும் சரியான செயல். எந்தத் தவறையும்விட உங்கள் பாதுகாப்புதான் முக்கியம். உங்களுக்கு ஏதாவது கெட்டது நடந்திருந்தால் அது உங்கள் தவறு அல்ல. ஒரு பெரியவர் கேட்கவில்லை என்றால் மற்றொருவரிடம் சொல்லுங்கள், அல்லது Childline 1098-ஐ அழையுங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "trouble",
+            "tell",
+            "punish",
+            "scold",
+            "afraid to tell"
+          ],
+          "match_phrases": [
+            "Will I get in trouble if I tell?",
+            "will I get in trouble if I tell",
+            "will I get in trouble",
+            "what if I get in trouble for telling",
+            "will they punish me if I tell",
+            "will I be scolded if I tell",
+            "I am afraid to tell",
+            "is it my fault",
+            "நான் சொன்னால் எனக்குப் பிரச்சினை வருமா?",
+            "சொன்னால் பிரச்சினை வருமா",
+            "சொன்னால் திட்டுவார்களா"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q013",
+          "question": "What if my parents get angry when I tell them?",
+          "question_en": "What if my parents get angry when I tell them?",
+          "question_ta": "நான் சொன்னால் என் பெற்றோர் கோபப்படுவார்களா?",
+          "answer": "Parents sometimes look upset because they are worried about you, not because they are angry with you. You can start by saying, \"I need to tell you something important. Please listen first.\" If you are still afraid, tell another trusted adult, like a teacher, grandparent or relative, or call Childline 1098.",
+          "answer_en": "Parents sometimes look upset because they are worried about you, not because they are angry with you. You can start by saying, \"I need to tell you something important. Please listen first.\" If you are still afraid, tell another trusted adult, like a teacher, grandparent or relative, or call Childline 1098.",
+          "answer_ta": "பெற்றோர் சில நேரம் கோபமாகத் தெரிவார்கள் — அது உங்கள்மேல் உள்ள கவலையால், உங்கள்மேல் உள்ள கோபத்தால் அல்ல. \"முக்கியமான ஒன்றைச் சொல்ல வேண்டும், முதலில் கேளுங்கள்\" என்று தொடங்கலாம். இன்னும் பயமாக இருந்தால் ஆசிரியர், தாத்தா பாட்டி அல்லது உறவினர் போன்ற வேறு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள், அல்லது Childline 1098-ஐ அழையுங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "parents",
+            "angry",
+            "scold",
+            "mother",
+            "father",
+            "afraid"
+          ],
+          "match_phrases": [
+            "What if my parents get angry when I tell them?",
+            "what if my parents get angry",
+            "my parents will be angry",
+            "my parents will scold me",
+            "what if my mother gets angry",
+            "what if my father scolds me",
+            "I am scared to tell my parents",
+            "what if my parents don't believe me",
+            "நான் சொன்னால் என் பெற்றோர் கோபப்படுவார்களா?",
+            "அம்மா அப்பா கோபப்படுவார்களா",
+            "பெற்றோரிடம் சொல்ல பயமாக இருக்கிறது"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q014",
+          "question": "Someone told me not to tell anyone",
+          "question_en": "Someone told me not to tell anyone",
+          "question_ta": "யாரிடமும் சொல்லாதே என்று ஒருவர் சொன்னார்",
+          "answer": "A safe person never asks you to keep secrets from your family. If someone says \"don't tell anyone,\" that is a warning sign. It is okay to tell. Tell a trusted adult today. Call 1098 if you need help.",
+          "answer_en": "A safe person never asks you to keep secrets from your family. If someone says \"don't tell anyone,\" that is a warning sign. It is okay to tell. Tell a trusted adult today. Call 1098 if you need help.",
+          "answer_ta": "பாதுகாப்பான ஒருவர் உங்கள் குடும்பத்திடம் ரகசியம் வைக்கச் சொல்ல மாட்டார். \"யாரிடமும் சொல்லாதே\" என்று யாராவது சொன்னால் அது ஒரு எச்சரிக்கை. சொல்வது சரிதான். இன்றே ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள். உதவி தேவைப்பட்டால் 1098-ஐ அழையுங்கள்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "secret",
+            "dont tell",
+            "keep secret",
+            "promise",
+            "dont tell anyone"
+          ],
+          "match_phrases": [
+            "Someone told me not to tell anyone",
+            "someone told me not to tell anyone",
+            "he asked me to keep it a secret",
+            "she asked me to keep it a secret",
+            "keep it a secret",
+            "they said it is our secret",
+            "they said do not tell your parents",
+            "someone made me promise not to tell",
+            "யாரிடமும் சொல்லாதே என்று ஒருவர் சொன்னார்",
+            "யாரிடமும் சொல்லாதே என்றார்",
+            "ரகசியமாக வை என்றார்"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q015",
+          "question": "A stranger is messaging me",
+          "question_en": "A stranger is messaging me",
+          "question_ta": "ஒரு தெரியாத நபர் எனக்கு மெசேஜ் அனுப்புகிறார்",
+          "answer": "Don't reply, and don't share your name, photo, school or address. Show the messages to a trusted adult. Block the person. If they scare or pressure you, call Childline 1098.",
+          "answer_en": "Don't reply, and don't share your name, photo, school or address. Show the messages to a trusted adult. Block the person. If they scare or pressure you, call Childline 1098.",
+          "answer_ta": "பதில் சொல்ல வேண்டாம். உங்கள் பெயர், போட்டோ, பள்ளி, முகவரி எதையும் பகிர வேண்டாம். மெசேஜ்களை ஒரு நம்பிக்கையான பெரியவரிடம் காட்டுங்கள். அந்த நபரை block செய்யுங்கள். அவர் பயமுறுத்தினாலோ வற்புறுத்தினாலோ Childline 1098-ஐ அழையுங்கள்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "stranger",
+            "messaging",
+            "message",
+            "unknown person",
+            "dm",
+            "chat"
+          ],
+          "match_phrases": [
+            "A stranger is messaging me",
+            "a stranger is messaging me",
+            "an unknown person is messaging me",
+            "someone I don't know is texting me",
+            "a stranger sent me a friend request",
+            "someone I don't know sent me a message",
+            "an unknown person is chatting with me",
+            "should I reply to a stranger",
+            "ஒரு தெரியாத நபர் எனக்கு மெசேஜ் அனுப்புகிறார்",
+            "தெரியாத நபர் மெசேஜ் அனுப்புகிறார்",
+            "தெரியாதவர் chat செய்கிறார்"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q016",
+          "question": "Someone is asking me to video chat",
+          "question_en": "Someone is asking me to video chat",
+          "question_ta": "ஒருவர் என்னை video chat செய்யச் சொல்கிறார்",
+          "answer": "Don't video chat with someone you only know online. Tell a trusted adult about the request. Block the person if they keep asking. Call 1098 if they pressure or threaten you.",
+          "answer_en": "Don't video chat with someone you only know online. Tell a trusted adult about the request. Block the person if they keep asking. Call 1098 if they pressure or threaten you.",
+          "answer_ta": "இணையத்தில் மட்டும் தெரிந்த ஒருவருடன் video chat செய்ய வேண்டாம். அந்த கோரிக்கையைப் பற்றி ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள். அவர் தொடர்ந்து கேட்டால் block செய்யுங்கள். வற்புறுத்தினாலோ மிரட்டினாலோ 1098-ஐ அழையுங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "video chat",
+            "video call",
+            "camera",
+            "stranger",
+            "on camera"
+          ],
+          "match_phrases": [
+            "Someone is asking me to video chat",
+            "someone is asking me to video chat",
+            "a stranger wants a video call",
+            "someone wants me to turn on my camera",
+            "a person is asking me to video chat",
+            "someone asked me to come on camera",
+            "should I video call a stranger",
+            "ஒருவர் என்னை video chat செய்யச் சொல்கிறார்",
+            "video chat செய்யச் சொல்கிறார்",
+            "camera on செய்யச் சொல்கிறார்"
+          ],
+          "source": "generated",
+          "status": "draft"
+        },
+        {
+          "id": "DD12-Q017",
+          "question": "Someone showed me a bad video",
+          "question_en": "Someone showed me a bad video",
+          "question_ta": "ஒருவர் எனக்கு கெட்ட video காட்டினார்",
+          "answer": "It is not your fault. Close it or turn off the screen. Don't share or forward it. Tell a trusted adult so they can help you. If you feel scared or upset, call Childline 1098.",
+          "answer_en": "It is not your fault. Close it or turn off the screen. Don't share or forward it. Tell a trusted adult so they can help you. If you feel scared or upset, call Childline 1098.",
+          "answer_ta": "இது உங்கள் தவறு அல்ல. அதை மூடிவிடுங்கள் அல்லது திரையை அணைத்து விடுங்கள். அதைப் பகிரவோ forward செய்யவோ வேண்டாம். ஒரு நம்பிக்கையான பெரியவரிடம் சொல்லுங்கள். பயமாகவோ வருத்தமாகவோ இருந்தால் Childline 1098-ஐ அழையுங்கள்.",
+          "speaker": "varsha",
+          "keywords": [
+            "bad video",
+            "inappropriate",
+            "adult content",
+            "scary video",
+            "saw something bad"
+          ],
+          "match_phrases": [
+            "Someone showed me a bad video",
+            "someone showed me a bad video",
+            "I saw a bad video",
+            "I saw something I should not have seen",
+            "I saw a bad picture online",
+            "a video made me feel uncomfortable",
+            "someone sent me a bad video",
+            "I saw something scary online",
+            "ஒருவர் எனக்கு கெட்ட video காட்டினார்",
+            "கெட்ட video பார்த்தேன்",
+            "தவறான video காட்டினார்"
+          ],
+          "source": "generated",
+          "status": "draft"
         }
       ]
     }
