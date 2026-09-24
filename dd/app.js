@@ -313,13 +313,8 @@ async function fetchJson(urls) {
 }
 
 async function init() {
-  const enFile = await fetchJson(["digital_dharma.json", "./digital_dharma.json", "../digital_dharma.json"]);
-  const taFile = await fetchJson(["digital_dharma_ta.json", "./digital_dharma_ta.json", "../digital_dharma_ta.json"]);
-
-  const enTopics = enFile ? enFile.topics || (Array.isArray(enFile) ? enFile : []) : [];
-  const taTopics = taFile ? taFile.topics || (Array.isArray(taFile) ? taFile : []) : [];
-
-  ddData = mergeTopics(enTopics, taTopics);
+  const dataFile = await fetchJson(["digital_dharma.json", "./digital_dharma.json", "../digital_dharma.json"]);
+  ddData = dataFile ? dataFile.topics || (Array.isArray(dataFile) ? dataFile : []) : [];
 
   if (!ddData.some((t) => t.id === "DD12")) {
     ddData.push(DD12_SAFETY);
