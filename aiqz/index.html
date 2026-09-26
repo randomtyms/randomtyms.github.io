@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Free AI Textbook Quiz Generator (No Login) | RandomTyms</title>
+    <meta
+      name="description"
+      content="Instantly convert paragraphs or school lessons into interactive multiple-choice tests. Free bilingual Tamil & English quiz maker for teachers with no login required."
+    />
+    <meta
+      name="keywords"
+      content="free AI textbook quiz generator, AI multiple choice question maker for teachers free, convert paragraph into quiz online no login, Tamil AI quiz maker for schools, bilingual English Tamil online test generator, free AI exam worksheet maker for Class 1-8, kids cyber safety training in Tamil, AI voice cloning scam safety for children, Aadhaar scam safety, 3D solar system simulator online, RandomTyms educational hub, lightweight offline school apps"
+    />
+    <meta name="author" content="Ganga Ponnu - RandomTyms" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- OpenGraph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RandomTyms" />
+    <meta property="og:title" content="Free AI Textbook Quiz Generator (No Login) | RandomTyms" />
+    <meta
+      property="og:description"
+      content="Instantly convert paragraphs or school lessons into interactive multiple-choice tests. Free bilingual Tamil & English quiz maker for teachers with no login required."
+    />
+    <meta
+      property="og:image"
+      content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free AI Textbook Quiz Generator (No Login) | RandomTyms" />
+    <meta
+      name="twitter:description"
+      content="Instantly convert paragraphs or school lessons into interactive multiple-choice tests. Free bilingual Tamil & English quiz maker for teachers with no login required."
+    />
+    <meta
+      name="twitter:image"
+      content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png"
+    />
+
+    <!-- Font Preconnect & WebP Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="assets/correct.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/wrong.webp" fetchpriority="high" />
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html#webpage",
+          "headline": "Free AI Textbook Quiz Generator (No Login) | RandomTyms",
+          "url": "https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html",
+          "description": "Instantly convert paragraphs or school lessons into interactive multiple-choice tests. Free bilingual Tamil & English quiz maker for teachers with no login required.",
+          "about": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
+          "mainEntity": { "@id": "https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html#quizapp" },
+          "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://lokeshvarsha.blogspot.com/2026/07/randomtyms-ai-textbook-quiz-generator.html#quizapp",
+          "name": "RandomTyms AI Textbook Quiz Generator",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Any (Web Browser)",
+          "browserRequirements": "Requires JavaScript",
+          "description": "An interactive quiz widget that loads teacher-made CSV quiz files and lets students take shuffled multiple-choice quizzes on any device, no login required.",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+          "creator": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
+          "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+      :root {
+        --rtq-paper: #FBF3E1;
+        --rtq-ink: #2B2E4A;
+        --rtq-gold: #C9932F;
+        --rtq-mari: #F5A623;
+        --rtq-mari-d: #C9791A;
+        --rtq-teal: #1F8A70;
+        --rtq-teal-d: #166350;
+        --rtq-terra: #D6553F;
+        --rtq-border: #E6D9B8;
+        --rtq-disp: 'Baloo 2', cursive, sans-serif;
+        --rtq-body: 'Nunito', sans-serif;
+      }
+      
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--rtq-paper);
+        color: var(--rtq-ink);
+        font-family: var(--rtq-body);
+        line-height: 1.5;
+        padding-bottom: 40px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(251, 243, 225, 0.96);
+        backdrop-filter: blur(4px);
+        border-bottom: 1px solid var(--rtq-border);
+        padding: 10px 16px;
+      }
+
+      .header-wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--rtq-mari-d);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85em;
+        background: #fff;
+        border: 1px solid var(--rtq-border);
+        padding: 5px 12px;
+        border-radius: 999px;
+      }
+      .back-link:hover { background: #fff8ea; }
+
+      .brand-title {
+        font-family: var(--rtq-disp);
+        font-weight: 800;
+        font-size: 1.15em;
+        color: var(--rtq-ink);
+      }
+      .brand-title span { color: var(--rtq-mari); }
+
+      .hero {
+        text-align: center;
+        max-width: 900px;
+        margin: 16px auto 8px;
+        padding: 0 16px;
+      }
+
+      .hero-img {
+        max-width: 580px;
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 2px solid var(--rtq-border);
+        box-shadow: 0 4px 12px rgba(201, 147, 47, 0.15);
+      }
+
+      h1 {
+        font-family: var(--rtq-disp);
+        font-weight: 800;
+        font-size: clamp(1.4em, 3.5vw, 2.3em);
+        margin: 14px 0 6px;
+        color: var(--rtq-ink);
+      }
+      h1 span { color: var(--rtq-mari-d); }
+
+      .subtitle {
+        font-size: clamp(0.85em, 1.8vw, 1em);
+        max-width: 680px;
+        margin: 0 auto 16px;
+        color: rgba(43, 46, 74, 0.8);
+      }
+
+      .rt-quiz-box {
+        background: var(--rtq-paper);
+        border: clamp(2px, 0.4vw, 3px) dashed var(--rtq-gold);
+        text-align: center;
+        color: var(--rtq-ink);
+        width: 94%;
+        max-width: 860px;
+        margin: 16px auto;
+        padding: clamp(16px, 2.5vh, 28px) clamp(14px, 3vw, 32px);
+        border-radius: clamp(16px, 2vw, 24px);
+        box-shadow: 0 clamp(4px, 0.8vh, 8px) 0 rgba(201, 147, 47, 0.18);
+      }
+
+      .rt-quiz-badge {
+        display: inline-block;
+        background: var(--rtq-teal);
+        color: #fff;
+        font-family: var(--rtq-disp);
+        font-size: 0.8em;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 4px 14px;
+        margin-bottom: 8px;
+      }
+
+      .rt-quiz-title {
+        font-family: var(--rtq-disp);
+        font-weight: 800;
+        font-size: clamp(1.2em, 2.6vh, 1.8em);
+        margin: 0 0 6px;
+      }
+
+      .rt-quiz-hint {
+        font-size: clamp(0.8em, 1.4vh, 0.95em);
+        line-height: 1.45;
+        opacity: 0.85;
+        margin: 0 0 16px;
+      }
+
+      .rt-quiz-file-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #fff;
+        border: 2px solid var(--rtq-border);
+        border-radius: 12px;
+        padding: 10px 16px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.9em;
+        transition: border-color 0.15s, background 0.15s;
+      }
+      .rt-quiz-file-label:hover { border-color: var(--rtq-mari); background: #FFF8EA; }
+      .rt-quiz-file-input { display: none; }
+
+      .rt-quiz-url-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .rt-quiz-url-input {
+        flex: 1;
+        padding: 10px 14px;
+        border: 2px solid var(--rtq-border);
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-family: var(--rtq-body);
+        background: #fff;
+      }
+
+      .rt-quiz-btn {
+        background: var(--rtq-mari);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 999px;
+        font-size: 1em;
+        font-weight: 800;
+        font-family: var(--rtq-disp);
+        cursor: pointer;
+        white-space: nowrap;
+        box-shadow: 0 3px 0 var(--rtq-mari-d);
+        transition: transform 0.1s, box-shadow 0.1s, filter 0.1s;
+      }
+      .rt-quiz-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 var(--rtq-mari-d); }
+      .rt-quiz-btn:hover:not(:disabled) { filter: brightness(1.05); }
+      .rt-quiz-btn:disabled { background: #E0DACB; color: #9a927a; cursor: not-allowed; box-shadow: none; }
+      .rt-quiz-btn-lg { width: 100%; padding: 12px 24px; font-size: 1.1em; }
+      .rt-quiz-btn-sm { padding: 6px 14px; font-size: 0.85em; }
+      .rt-quiz-btn-outline { background: #fff; color: var(--rtq-mari); border: 2px solid var(--rtq-mari); box-shadow: none; }
+      .rt-quiz-btn-teal { background: var(--rtq-teal); box-shadow: 0 3px 0 var(--rtq-teal-d); }
+      
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 2px dashed var(--rtq-border);
+      }
+      @media (min-width: 600px) {
+        .demo-grid { grid-template-columns: 1fr 1fr; }
+      }
+      .demo-card {
+        background: #fff;
+        border: 2px solid var(--rtq-border);
+        border-radius: 12px;
+        padding: 10px 14px;
+        cursor: pointer;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .demo-card:hover { border-color: var(--rtq-mari); background: #FFF8EA; }
+      .demo-card-title { font-weight: 700; font-size: 0.9em; color: var(--rtq-ink); }
+      .demo-card-sub { font-size: 0.75em; color: rgba(43, 46, 74, 0.7); }
+
+      .rt-quiz-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+      .rt-quiz-score-chip { background: var(--rtq-teal); color: #fff; font-weight: 800; font-size: 0.85em; border-radius: 999px; padding: 4px 14px; }
+      .rt-quiz-progress-track { width: 100%; height: 8px; background: #EFE3C4; border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
+      .rt-quiz-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--rtq-mari), var(--rtq-teal)); border-radius: 999px; transition: width 0.3s ease; }
+
+      .rt-quiz-question { font-family: var(--rtq-disp); font-weight: 700; font-size: clamp(1.1em, 2.2vh, 1.55em); margin: 0 0 16px; line-height: 1.35; text-align: left; }
+      .rt-quiz-options { display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%; }
+      @media (min-width: 680px) {
+        .rt-quiz-options { grid-template-columns: 1fr 1fr; }
+      }
+      .rt-quiz-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border: 2px solid var(--rtq-border);
+        border-radius: 12px;
+        background: #fff;
+        cursor: pointer;
+        text-align: left;
+        font-size: 1.02em;
+        font-family: var(--rtq-body);
+        font-weight: 600;
+        color: var(--rtq-ink);
+        line-height: 1.3;
+        transition: all 0.15s ease;
+        min-height: 52px;
+      }
+      .rt-quiz-option::before {
+        content: attr(data-letter);
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--rtq-paper);
+        border: 2px solid var(--rtq-gold);
+        color: var(--rtq-ink);
+        font-family: var(--rtq-disp);
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85em;
+      }
+      .rt-quiz-option:hover { background: #FFF8EA; border-color: var(--rtq-mari); transform: translateX(2px); }
+      .rt-quiz-option.rt-correct { background: #E4F5EC; border-color: var(--rtq-teal); color: var(--rtq-teal-d); }
+      .rt-quiz-option.rt-wrong { background: #FBE6E1; border-color: var(--rtq-terra); color: #991b1b; }
+      .rt-quiz-option.rt-correct::before { background: var(--rtq-teal); border-color: var(--rtq-teal); color: #fff; }
+      .rt-quiz-option.rt-wrong::before { background: var(--rtq-terra); border-color: var(--rtq-terra); color: #fff; }
+
+      .rt-quiz-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(43, 46, 74, 0.65);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 16px;
+      }
+      .rt-quiz-overlay-card {
+        background: var(--rtq-paper);
+        border: 3px dashed var(--rtq-gold);
+        border-radius: 20px;
+        padding: 20px;
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+      .rt-quiz-img-wrap {
+        position: relative;
+        margin-bottom: 12px;
+      }
+      .rt-quiz-feedback-img {
+        max-height: 180px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+      .rt-quiz-banner-text {
+        position: absolute;
+        top: 10%;
+        left: 14%;
+        right: 14%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--rtq-terra);
+        font-family: var(--rtq-disp);
+        font-weight: 800;
+        line-height: 1.15;
+      }
+      .rt-quiz-line { display: block; }
+
+      .rt-quiz-final-score { font-family: var(--rtq-disp); font-size: 1.3em; font-weight: 700; margin-bottom: 10px; }
+      .rt-quiz-review { max-height: 180px; overflow-y: auto; text-align: left; border-top: 2px dashed var(--rtq-border); padding-top: 10px; margin-bottom: 14px; }
+      .rt-quiz-review-item { background: #fff; border: 1.5px solid var(--rtq-border); border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; font-size: 0.85em; }
+      .rt-quiz-review-q { font-weight: 700; margin-bottom: 2px; }
+      .rt-quiz-review-wrong { color: var(--rtq-terra); font-weight: 600; }
+      .rt-quiz-review-correct { color: var(--rtq-teal); font-weight: 700; }
+      .rt-quiz-final-actions { display: flex; flex-direction: column; gap: 8px; }
+
+      .module-card {
+        background: #fff;
+        border: 2px solid var(--rtq-border);
+        border-radius: 16px;
+        padding: 16px;
+        margin: 16px auto;
+        max-width: 860px;
+        width: 94%;
+        text-align: left;
+      }
+      .module-header { display: flex; align-items: center; gap: 8px; font-family: var(--rtq-disp); font-weight: 800; font-size: 1.25em; margin-bottom: 6px; }
+
+      .prompt-box {
+        background: #fff;
+        border-left: 4px solid var(--rtq-mari);
+        border: 1px solid var(--rtq-border);
+        border-left-width: 4px;
+        border-radius: 0 12px 12px 0;
+        padding: 14px;
+        margin: 12px 0;
+      }
+      .prompt-box textarea {
+        width: 100%;
+        height: 100px;
+        font-family: monospace;
+        font-size: 0.8em;
+        padding: 8px;
+        border: 1px solid var(--rtq-border);
+        border-radius: 8px;
+        background: var(--rtq-paper);
+        resize: vertical;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar Navigation with Main PWA Link -->
+    <header>
+      <div class="header-wrap">
+        <a href="https://lokeshvarsha.blogspot.com" class="back-link" id="pwa-back-link">
+          ← Main App
+        </a>
+        <div class="brand-title">
+          RandomTyms <span>Quiz Hub</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Character Hero Banner -->
+    <div class="hero">
+      <img
+        src="assets/banner.webp"
+        onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png'"
+        alt="RandomTyms Lokesh and Varsha characters teaching cyber safety lessons"
+        class="hero-img"
+        width="640"
+        height="426"
+      />
+      <h1>Free AI Textbook Quiz Generator <span>(No Login)</span></h1>
+      <p class="subtitle">
+        Convert paragraphs, textbook photos, and school notes into interactive multiple-choice tests.
+        Shuffled on every attempt with instant feedback, mistake review, and retake missed questions.
+      </p>
+    </div>
+
+    <!-- Interactive Quiz Engine -->
+    <div class="rt-quiz-box" id="rt-quiz-upload">
+      <div class="rt-quiz-badge">🧪 RandomTyms Classroom Quiz</div>
+      <h3 class="rt-quiz-title">Let's find out what you know!</h3>
+      <p class="rt-quiz-hint">Upload a quiz file (.csv, .txt), or paste a link below.<br />Format: Question , A , B , C , D , Correct number (1–4)</p>
+      
+      <label class="rt-quiz-file-label" id="rt-quiz-file-label" for="rt-quiz-file">
+        <span>📄</span>
+        <span id="rt-quiz-file-label-text">Choose a quiz file</span>
+      </label>
+      <input accept=".csv,.txt" class="rt-quiz-file-input" id="rt-quiz-file" type="file" />
+      
+      <div class="rt-quiz-url-row">
+        <input class="rt-quiz-url-input" id="rt-quiz-url-input" placeholder="Paste CSV link here..." type="text" />
+        <button class="rt-quiz-btn rt-quiz-btn-sm rt-quiz-btn-outline" id="rt-quiz-url-load-btn" type="button">Load</button>
+      </div>
+
+      <button class="rt-quiz-btn rt-quiz-btn-lg" disabled id="rt-quiz-start-btn" type="button">Start Loaded Quiz 🚀</button>
+      <p class="rt-quiz-msg" id="rt-quiz-upload-msg" style="color: #D6553F; font-weight:700;"></p>
+
+      <!-- 1-Click Built-in Demo Quizzes -->
+      <div class="demo-grid">
+        <div class="demo-card" id="demo-science-btn">
+          <div>
+            <div class="demo-card-title">🚀 Science &amp; Space Demo</div>
+            <div class="demo-card-sub">8 Questions · Bilingual Tamil &amp; English</div>
+          </div>
+          <span>→</span>
+        </div>
+        <div class="demo-card" id="demo-cyber-btn">
+          <div>
+            <div class="demo-card-title">🛡️ Kids Cyber Safety Demo</div>
+            <div class="demo-card-sub">5 Questions · Digital Dharma Protection</div>
+          </div>
+          <span>→</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Question Card -->
+    <div class="rt-quiz-box" id="rt-quiz-display" style="display: none;">
+      <div class="rt-quiz-topbar">
+        <span id="rt-quiz-progress" style="font-weight:700;">Question 1 / 10</span>
+        <span class="rt-quiz-score-chip" id="rt-quiz-score">Score: 0</span>
+      </div>
+      <div class="rt-quiz-progress-track">
+        <div class="rt-quiz-progress-fill" id="rt-quiz-progress-fill"></div>
+      </div>
+      <div class="rt-quiz-question" id="rt-quiz-question"></div>
+      <div class="rt-quiz-options" id="rt-quiz-options"></div>
+    </div>
+
+    <!-- Feedback Modal Overlay -->
+    <div class="rt-quiz-overlay" id="rt-quiz-feedback-overlay" style="display: none;">
+      <div class="rt-quiz-overlay-card">
+        <div class="rt-quiz-img-wrap">
+          <img
+            alt="feedback"
+            class="rt-quiz-feedback-img"
+            id="rt-quiz-feedback-img"
+            src="assets/correct.webp"
+            onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png'"
+          />
+          <div class="rt-quiz-banner-text" id="rt-quiz-feedback-text"></div>
+        </div>
+        <button class="rt-quiz-btn rt-quiz-btn-lg" id="rt-quiz-continue-btn" type="button">Continue ➜</button>
+      </div>
+    </div>
+
+    <!-- Final Result & Review Modal -->
+    <div class="rt-quiz-overlay" id="rt-quiz-final" style="display: none;">
+      <div class="rt-quiz-overlay-card">
+        <div class="rt-quiz-img-wrap">
+          <img
+            alt="result"
+            class="rt-quiz-feedback-img"
+            id="rt-quiz-final-img"
+            src="assets/correct.webp"
+            onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png'"
+          />
+          <div class="rt-quiz-banner-text" id="rt-quiz-final-msg"></div>
+        </div>
+        <div class="rt-quiz-final-score" id="rt-quiz-final-score"></div>
+        <div class="rt-quiz-review" id="rt-quiz-review"></div>
+        <div class="rt-quiz-final-actions">
+          <button class="rt-quiz-btn rt-quiz-btn-lg rt-quiz-btn-teal" id="rt-quiz-retake-missed-btn" style="display: none;" type="button">Retake Missed Questions 🔁</button>
+          <button class="rt-quiz-btn rt-quiz-btn-lg" id="rt-quiz-restart-btn" type="button">Try Again (All) 🔄</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Digital Dharma Cyber Safety Module -->
+    <div class="module-card">
+      <div class="module-header">🛡️ Digital Dharma: Kids Cyber Safety in Tamil &amp; English</div>
+      <p style="font-size:0.85em; margin: 4px 0 10px; color: rgba(43,46,74,0.8);">
+        Protecting students from voice cloning scams, preserving Aadhaar confidentiality, and building safe digital habits.
+      </p>
+      <ul style="font-size:0.85em; padding-left: 20px; line-height: 1.6;">
+        <li><strong>AI Voice Scams:</strong> Never send money on emergency calls without verifying on their real number.</li>
+        <li><strong>Aadhaar &amp; OTP Privacy:</strong> Real game admins will never request your 6-digit OTP or family ID.</li>
+        <li><strong>Password Hygiene:</strong> Combine memorable Tamil/English phrases with numbers and symbols.</li>
+      </ul>
+    </div>
+
+    <!-- Gemini AI Textbook Prompt Helper -->
+    <div class="module-card">
+      <div class="module-header">🤖 Turn Any Textbook Page into an AI Quiz</div>
+      <p style="font-size:0.85em; color: rgba(43,46,74,0.8);">
+        Copy this prompt, upload photos of your textbook pages to Google Gemini, and save the result as a .csv file:
+      </p>
+      <div class="prompt-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <strong style="font-size:0.85em; color:var(--rtq-mari-d);">📥 Copy Prompt for Gemini</strong>
+          <button class="rt-quiz-btn rt-quiz-btn-sm rt-quiz-btn-outline" id="copy-prompt-btn" type="button">Copy</button>
+        </div>
+        <textarea id="prompt-textarea" readonly>You are an expert curriculum developer. Analyze all attached textbook images to generate an exhaustive multiple-choice quiz covering every distinct concept and fact.
+
+Rules:
+1. Question , Option A , Option B , Option C , Option D , Correct Number
+2. No header row. Replace internal commas with semicolon (;).
+3. Number every question sequentially: compute position = ((N - 1) mod 4) + 1 to evenly distribute correct answers.
+4. Output only raw rows or save as quiz.csv.</textarea>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        var IMG_WRONG_URL = "assets/wrong.webp";
+        var IMG_WRONG_FALLBACK = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHOA-KW2g8ysuNUbTHH6_lTgj7QNBgXY6tt19p94F9dVs6ZPU16O8czHv7MjS1_qwZJJRPBmPyOpHgaGxv3TSZrRV6ucB8ajXkUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUez8vi2wQKlI5IWvHHXN0/s1920/1000239625.png";
+        var IMG_CORRECT_URL = "assets/correct.webp";
+        var IMG_CORRECT_FALLBACK = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png";
+
+        var fileInput = document.getElementById('rt-quiz-file');
+        var fileLabelText = document.getElementById('rt-quiz-file-label-text');
+        var urlInput = document.getElementById('rt-quiz-url-input');
+        var urlLoadBtn = document.getElementById('rt-quiz-url-load-btn');
+        var startBtn = document.getElementById('rt-quiz-start-btn');
+        var uploadMsg = document.getElementById('rt-quiz-upload-msg');
+        var uploadDiv = document.getElementById('rt-quiz-upload');
+        var quizDiv = document.getElementById('rt-quiz-display');
+        var progressEl = document.getElementById('rt-quiz-progress');
+        var progressFill = document.getElementById('rt-quiz-progress-fill');
+        var scoreEl = document.getElementById('rt-quiz-score');
+        var questionEl = document.getElementById('rt-quiz-question');
+        var optionsEl = document.getElementById('rt-quiz-options');
+        var feedbackOverlay = document.getElementById('rt-quiz-feedback-overlay');
+        var feedbackImg = document.getElementById('rt-quiz-feedback-img');
+        var feedbackText = document.getElementById('rt-quiz-feedback-text');
+        var continueBtn = document.getElementById('rt-quiz-continue-btn');
+        var finalDiv = document.getElementById('rt-quiz-final');
+        var finalImg = document.getElementById('rt-quiz-final-img');
+        var finalMsg = document.getElementById('rt-quiz-final-msg');
+        var finalScore = document.getElementById('rt-quiz-final-score');
+        var reviewEl = document.getElementById('rt-quiz-review');
+        var retakeMissedBtn = document.getElementById('rt-quiz-retake-missed-btn');
+        var restartBtn = document.getElementById('rt-quiz-restart-btn');
+
+        var masterQuestions = [];
+        var questions = [];
+        var currentIndex = 0;
+        var score = 0;
+        var awaitingContinue = false;
+        var wrongAnswers = [];
+
+        var demoScience = [
+          { q: "Which planet in our solar system is known as the Red Planet (செவ்வாய் கிரகம்)?", options: ["Venus", "Mars (செவ்வாய்)", "Jupiter", "Mercury"], correct: 2 },
+          { q: "What primary gas do plants absorb during photosynthesis?", options: ["Carbon Dioxide (கரிமில வாயு)", "Oxygen", "Nitrogen", "Argon"], correct: 1 },
+          { q: "What is the boiling point of pure water at sea level?", options: ["90°C", "80°C", "100°C", "120°C"], correct: 3 },
+          { q: "Which celestial body is at the center of our solar system?", options: ["Earth", "The Moon", "Jupiter", "The Sun (சூரியன்)"], correct: 4 },
+          { q: "What is 15 × 8 in basic mental math?", options: ["110", "120", "125", "130"], correct: 2 },
+          { q: "How many planets are currently recognized in our solar system?", options: ["7", "8 planets", "9", "10"], correct: 2 },
+          { q: "Which force pulls objects toward the center of Earth?", options: ["Magnetism", "Friction", "Gravity (புவியீர்ப்பு)", "Centrifugal"], correct: 3 },
+          { q: "What is the largest internal organ in the human body?", options: ["Heart", "Lungs", "Kidneys", "Liver"], correct: 4 }
+        ];
+
+        var demoCyber = [
+          { q: "If an unknown caller sounds like family asking for money, what should you do first?", options: ["Hang up and call their real known number directly", "Transfer money immediately", "Share OTP", "Send password"], correct: 1 },
+          { q: "Should children ever share their OTP or Aadhaar details with game strangers?", options: ["Yes for game coins", "Never! Always keep strictly confidential", "Yes if customer care", "Only with friends"], correct: 2 },
+          { q: "What is the safest practice for an online learning password?", options: ["123456", "password", "A unique passphrase mixing words, numbers, and symbols", "Share on WhatsApp"], correct: 3 },
+          { q: "What should you do if an SMS says 'You won ₹10 Lakhs lottery'?", options: ["Click immediately", "Forward to friends", "Enter parents UPI PIN", "Do not click; report as phishing scam"], correct: 4 },
+          { q: "What does 'Digital Dharma' encourage for students?", options: ["Playing games all day", "Practicing online safety, empathy, and verifying facts", "Clicking pop-ups", "Prank profiles"], correct: 2 }
+        ];
+
+        document.getElementById('demo-science-btn').onclick = function(){ startQuiz(demoScience); };
+        document.getElementById('demo-cyber-btn').onclick = function(){ startQuiz(demoCyber); };
+
+        function parseCSVLine(line){
+          var res = [], cur = '', inQuotes = false;
+          for (var i = 0; i < line.length; i++){
+            var ch = line[i];
+            if (ch === '"'){
+              if (inQuotes && line[i+1] === '"'){ cur += '"'; i++; }
+              else { inQuotes = !inQuotes; }
+            } else if (ch === ',' && !inQuotes){
+              res.push(cur); cur = '';
+            } else { cur += ch; }
+          }
+          res.push(cur);
+          return res.map(function(s){ return s.trim(); });
+        }
+
+        function parseCSV(text){
+          var lines = text.split(/\r?\n/).filter(function(l){ return l.trim().length > 0; });
+          var out = [];
+          for (var li = 0; li < lines.length && out.length < 500; li++){
+            var parts = parseCSVLine(lines[li]);
+            if (parts.length < 6) continue;
+            if (parts.length > 6){
+              var cf = parts[parts.length - 1];
+              var opts = parts.slice(parts.length - 5, parts.length - 1);
+              var qj = parts.slice(0, parts.length - 5).join(', ');
+              parts = [qj].concat(opts).concat([cf]);
+            }
+            var cn = parseInt(parts[5], 10);
+            if (isNaN(cn) || cn < 1 || cn > 4) continue;
+            out.push({ q: parts[0], options: [parts[1], parts[2], parts[3], parts[4]], correct: cn });
+          }
+          return out;
+        }
+
+        function shuffle(arr){
+          var a = arr.slice();
+          for (var i = a.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = a[i]; a[i] = a[j]; a[j] = t;
+          }
+          return a;
+        }
+
+        function loadFromText(text, src){
+          try {
+            if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+            masterQuestions = parseCSV(text);
+            if (masterQuestions.length === 0){
+              uploadMsg.textContent = 'No valid questions found. Format: Question , A , B , C , D , Correct(1-4)';
+              uploadMsg.style.color = '#D6553F';
+              startBtn.disabled = true;
+            } else {
+              uploadMsg.textContent = masterQuestions.length + ' questions loaded! Ready!';
+              uploadMsg.style.color = '#1F8A70';
+              startBtn.disabled = false;
+            }
+          } catch(e){
+            uploadMsg.textContent = 'Error parsing: ' + e.message;
+            startBtn.disabled = true;
+          }
+        }
+
+        if (fileInput){
+          fileInput.onchange = function(){
+            var file = fileInput.files[0];
+            if (!file) return;
+            if (fileLabelText) fileLabelText.textContent = file.name;
+            var reader = new FileReader();
+            reader.onload = function(e){ loadFromText(e.target.result, file.name); };
+            reader.readAsText(file);
+          };
+        }
+
+        if (urlLoadBtn){
+          urlLoadBtn.onclick = function(){
+            var url = urlInput.value.trim();
+            if (!url) return;
+            fetch(url)
+              .then(function(r){ return r.text(); })
+              .then(function(t){ loadFromText(t, 'url'); })
+              .catch(function(e){
+                uploadMsg.textContent = 'Could not load from URL. Ensure CORS is enabled.';
+                uploadMsg.style.color = '#D6553F';
+              });
+          };
+        }
+
+        function setBanner(el, l1, l2){
+          el.innerHTML = '<span class="rt-quiz-line">' + l1 + '</span><span class="rt-quiz-line">' + l2 + '</span>';
+        }
+
+        function startQuiz(items){
+          questions = shuffle(items);
+          currentIndex = 0; score = 0; wrongAnswers = [];
+          uploadDiv.style.display = 'none';
+          finalDiv.style.display = 'none';
+          quizDiv.style.display = 'block';
+          renderQ();
+        }
+
+        function renderQ(){
+          if (currentIndex >= questions.length){ showFinal(); return; }
+          var q = questions[currentIndex];
+          progressEl.textContent = 'Question ' + (currentIndex + 1) + ' / ' + questions.length;
+          scoreEl.textContent = 'Score: ' + score;
+          progressFill.style.width = Math.round((currentIndex / questions.length) * 100) + '%';
+          questionEl.textContent = q.q;
+          optionsEl.innerHTML = '';
+          var letters = ['A', 'B', 'C', 'D'];
+          q.options.forEach(function(opt, idx){
+            var btn = document.createElement('button');
+            btn.className = 'rt-quiz-option';
+            btn.setAttribute('data-letter', letters[idx]);
+            btn.textContent = opt;
+            btn.onclick = function(){ handleAns(idx + 1); };
+            optionsEl.appendChild(btn);
+          });
+        }
+
+        function handleAns(chosen){
+          if (awaitingContinue) return;
+          awaitingContinue = true;
+          var q = questions[currentIndex];
+          var isCor = (chosen === q.correct);
+          var btns = optionsEl.querySelectorAll('.rt-quiz-option');
+          btns.forEach(function(b, i){
+            b.style.pointerEvents = 'none';
+            if (i + 1 === q.correct) b.classList.add('rt-correct');
+            if (i + 1 === chosen && !isCor) b.classList.add('rt-wrong');
+          });
+
+          if (isCor){
+            score++;
+            scoreEl.textContent = 'Score: ' + score;
+            feedbackImg.src = IMG_CORRECT_URL;
+            feedbackImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
+            setBanner(feedbackText, 'Correct! 🎉', 'Score: ' + score + ' / ' + questions.length);
+          } else {
+            feedbackImg.src = IMG_WRONG_URL;
+            feedbackImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
+            setBanner(feedbackText, 'Oops!', 'Correct answer: ' + q.options[q.correct - 1]);
+            wrongAnswers.push({ q: q.q, chosen: q.options[chosen - 1], correct: q.options[q.correct - 1], raw: q });
+          }
+          feedbackOverlay.style.display = 'flex';
+        }
+
+        if (continueBtn){
+          continueBtn.onclick = function(){
+            feedbackOverlay.style.display = 'none';
+            awaitingContinue = false;
+            currentIndex++;
+            renderQ();
+          };
+        }
+
+        function showFinal(){
+          quizDiv.style.display = 'none';
+          var pct = (score / questions.length) * 100;
+          if (pct >= 80){
+            finalImg.src = IMG_CORRECT_URL;
+            finalImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
+            setBanner(finalMsg, 'Congrats!', 'Cool Dude 😎');
+          } else {
+            finalImg.src = IMG_WRONG_URL;
+            finalImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
+            setBanner(finalMsg, 'Good Try 👍', 'Keep practicing!');
+          }
+          finalScore.textContent = 'You scored ' + score + ' / ' + questions.length + ' (' + Math.round(pct) + '%)';
+          if (wrongAnswers.length === 0){
+            reviewEl.innerHTML = '<p style="color:#1F8A70; font-weight:700; text-align:center;">🎉 100% Accuracy — All Correct!</p>';
+            retakeMissedBtn.style.display = 'none';
+          } else {
+            var h = '<div style="font-weight:700; text-align:center; margin-bottom:6px;">Review Mistakes (' + wrongAnswers.length + ')</div>';
+            wrongAnswers.forEach(function(m){
+              h += '<div class="rt-quiz-review-item"><div class="rt-quiz-review-q">' + m.q + '</div><div class="rt-quiz-review-wrong">Your answer: ' + m.chosen + '</div><div class="rt-quiz-review-correct">Correct: ' + m.correct + '</div></div>';
+            });
+            reviewEl.innerHTML = h;
+            retakeMissedBtn.style.display = 'block';
+          }
+          finalDiv.style.display = 'flex';
+        }
+
+        if (startBtn) startBtn.onclick = function(){ startQuiz(masterQuestions); };
+        if (retakeMissedBtn) retakeMissedBtn.onclick = function(){ startQuiz(wrongAnswers.map(function(w){ return w.raw; })); };
+        if (restartBtn) restartBtn.onclick = function(){ finalDiv.style.display = 'none'; uploadDiv.style.display = 'block'; };
+
+        var copyBtn = document.getElementById('copy-prompt-btn');
+        if (copyBtn){
+          copyBtn.onclick = function(){
+            var ta = document.getElementById('prompt-textarea');
+            ta.select();
+            document.execCommand('copy');
+            copyBtn.textContent = 'Copied!';
+            setTimeout(function(){ copyBtn.textContent = 'Copy'; }, 2000);
+          };
+        }
+      })();
+    </script>
+  </body>
+</html>
