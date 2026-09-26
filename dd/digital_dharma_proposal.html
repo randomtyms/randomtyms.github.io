@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chinmayam ’26 - Oratory Series Poster</title>
+  <title>When Machines Can Think, What Makes Us Human? — Darsha Naresh</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* --- CSS RESET & PAGE SETUP --- */
+    /* --- RESET & PRINT GEOMETRY --- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -21,119 +21,121 @@
     }
 
     body {
-      background-color: #0b0f19;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      background-color: #080c16;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #e2e8f0;
+      color: #cbd5e1;
       -webkit-font-smoothing: antialiased;
+      line-height: 1.62;
     }
 
-    /* Print toolbar (screen only) */
-    .toolbar {
+    /* Floating Print Button */
+    .print-bar {
       position: fixed;
       top: 16px;
       right: 16px;
-      z-index: 9999;
+      z-index: 10000;
     }
 
     .btn-print {
       background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #fff;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
       font-weight: 700;
-      font-size: 14px;
-      padding: 10px 20px;
+      font-size: 13.5px;
+      letter-spacing: 0.5px;
+      padding: 10px 22px;
       border: none;
       border-radius: 9999px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.45);
+      transition: transform 0.15s ease;
     }
 
     .btn-print:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
     }
 
-    /* --- POSTER CONTAINER (EXACT A4 DIMENSIONS) --- */
-    .poster-sheet {
+    /* --- PAGE CONTAINER (A4 PORTRAIT) --- */
+    .page-container {
       width: 210mm;
       height: 297mm;
-      padding: 16mm 18mm 14mm 18mm;
+      margin: 20px auto;
+      padding: 15mm 18mm 14mm 18mm;
       position: relative;
-      background: radial-gradient(circle at 50% 15%, #18223d 0%, #0d121f 50%, #060911 100%);
+      background: radial-gradient(circle at 50% 12%, #141d33 0%, #0c111e 55%, #050811 100%);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      page-break-after: always;
+      break-after: page;
     }
 
-    /* Subtle background ambient glows */
+    /* Decorative Edge Frame */
+    .page-frame {
+      position: absolute;
+      inset: 6mm;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* Ambient Glows */
     .glow-cyan {
       position: absolute;
       top: -80px;
       right: -80px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.22) 0%, transparent 70%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .glow-amber {
       position: absolute;
-      bottom: -60px;
-      left: -60px;
-      width: 340px;
-      height: 340px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
+      bottom: -70px;
+      left: -70px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.14) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    /* Subtle ornamental inner frame */
-    .poster-frame {
-      position: absolute;
-      inset: 6mm;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      pointer-events: none;
-      border-radius: 4px;
-    }
-
-    /* --- SECTION 1: HEADER & BANNER --- */
-    header {
+    /* --- HEADER (PAGE 1) --- */
+    .header-block {
       text-align: center;
+      margin-bottom: 12px;
       position: relative;
       z-index: 2;
     }
 
-    .event-badge {
+    .top-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 16px;
+      gap: 6px;
+      padding: 4px 14px;
       border-radius: 9999px;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.35);
       color: #fbbf24;
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
-      font-size: 11.5px;
-      letter-spacing: 2.5px;
+      font-size: 11px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .main-title {
       font-family: 'Cinzel', serif;
       font-weight: 800;
-      font-size: 27px;
+      font-size: 23px;
       line-height: 1.25;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .main-title span {
@@ -142,275 +144,310 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* --- SECTION 2: CORE THEME QUOTE --- */
-    .theme-banner {
-      position: relative;
-      margin: 4px auto 0 auto;
-      padding: 10px 20px;
-      border-top: 1px solid rgba(56, 189, 248, 0.3);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.3);
-      max-width: 90%;
-      text-align: center;
-      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.05), transparent);
-    }
-
-    .theme-quote {
+    .byline {
       font-family: 'Outfit', sans-serif;
-      font-style: italic;
+      font-size: 12.5px;
       font-weight: 600;
-      font-size: 14.5px;
-      color: #cbd5e1;
-      letter-spacing: 0.3px;
-    }
-
-    /* --- SECTION 3: CENTRAL ARTWORK --- */
-    .art-container {
-      position: relative;
-      width: 100%;
-      height: 98mm; /* Balanced proportion within A4 */
-      margin: 10px 0;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: #070b14;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Replace this or embed image directly */
-    .art-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-
-    .art-caption-overlay {
-      position: absolute;
-      bottom: 8px;
-      right: 12px;
-      background: rgba(11, 15, 25, 0.75);
-      backdrop-filter: blur(6px);
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-size: 9.5px;
       color: #94a3b8;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      letter-spacing: 0.5px;
-    }
-
-    /* --- SECTION 4: THREE PILLARS --- */
-    .pillars-section {
-      text-align: center;
-      margin: 4px 0 8px 0;
-    }
-
-    .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #94a3b8;
-      margin-bottom: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
     }
 
-    .section-title::before,
-    .section-title::after {
-      content: "";
-      height: 1px;
-      width: 36px;
-      background: rgba(148, 163, 184, 0.3);
+    .byline strong {
+      color: #f8fafc;
     }
 
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .pillar-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      padding: 10px 8px;
-      text-align: center;
-      position: relative;
-    }
-
-    .pillar-card:nth-child(1) { border-top: 3px solid #38bdf8; }
-    .pillar-card:nth-child(2) { border-top: 3px solid #fbbf24; }
-    .pillar-card:nth-child(3) { border-top: 3px solid #34d399; }
-
-    .pillar-num {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 1px;
-      margin-bottom: 2px;
-    }
-
-    .pillar-card:nth-child(1) .pillar-num { color: #38bdf8; }
-    .pillar-card:nth-child(2) .pillar-num { color: #fbbf24; }
-    .pillar-card:nth-child(3) .pillar-num { color: #34d399; }
-
-    .pillar-core {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 2px;
-    }
-
-    .pillar-sub {
-      font-size: 10.5px;
-      color: #94a3b8;
-    }
-
-    /* --- SECTION 5: CALL TO ACTION --- */
-    .cta-box {
-      border: 1px dashed rgba(245, 158, 11, 0.5);
-      border-radius: 8px;
-      background: rgba(245, 158, 11, 0.04);
-      padding: 10px 14px;
-      text-align: center;
-      margin: 4px 0 10px 0;
-    }
-
-    .cta-tag {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: #fbbf24;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-    }
-
-    .cta-text {
-      font-size: 12px;
-      line-height: 1.45;
-      font-weight: 500;
-      color: #f1f5f9;
-    }
-
-    .cta-text strong {
-      color: #fbbf24;
-    }
-
-    /* --- SECTION 6: FOOTER --- */
-    footer {
+    /* Running Header for Page 2 */
+    .running-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 10.5px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: 'Outfit', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
       color: #94a3b8;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
-    footer span strong {
+    .running-header strong {
+      color: #fbbf24;
+    }
+
+    /* --- TYPOGRAPHY & SECTIONS --- */
+    .article-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 10.5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      font-size: 11.8px;
+      color: #cbd5e1;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    p.lead {
+      font-size: 12.3px;
+      color: #e2e8f0;
+    }
+
+    .section-head {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 13.5px;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+      padding-bottom: 3px;
+    }
+
+    .section-head.pill-1 { color: #38bdf8; }
+    .section-head.pill-2 { color: #fbbf24; border-bottom-color: rgba(251, 191, 36, 0.25); }
+    .section-head.pill-3 { color: #34d399; border-bottom-color: rgba(52, 211, 153, 0.25); }
+
+    /* Highlight quote boxes */
+    .quote-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid #38bdf8;
+      border-radius: 0 6px 6px 0;
+      padding: 7px 12px;
+      font-style: italic;
+      color: #f1f5f9;
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+
+    .quote-box.amber {
+      border-left-color: #fbbf24;
+      background: rgba(245, 158, 11, 0.04);
+    }
+
+    .quote-box.emerald {
+      border-left-color: #34d399;
+      background: rgba(52, 211, 153, 0.04);
+    }
+
+    /* Core summary card (The Task Ahead) */
+    .summary-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 3px 0;
+    }
+
+    .summary-line {
+      font-size: 11.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+
+    .summary-line strong {
+      color: #f8fafc;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .summary-line.c1 strong { color: #38bdf8; }
+    .summary-line.c2 strong { color: #fbbf24; }
+    .summary-line.c3 strong { color: #34d399; }
+
+    /* Final concluding callout */
+    .final-callout {
+      border: 1px dashed rgba(245, 158, 11, 0.5);
+      border-radius: 8px;
+      background: rgba(245, 158, 11, 0.05);
+      padding: 9px 13px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .final-callout p {
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+      color: #f8fafc;
+      font-weight: 500;
+    }
+
+    .final-callout strong {
+      color: #fbbf24;
+    }
+
+    /* --- FOOTER --- */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 7px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 10px;
+      color: #94a3b8;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-footer span strong {
       color: #e2e8f0;
       font-weight: 600;
     }
 
-    /* --- PRINT STYLING --- */
+    /* --- PRINT RULES --- */
     @media print {
       body {
         background: none;
         padding: 0;
       }
-      .toolbar {
+      .print-bar {
         display: none !important;
       }
-      .poster-sheet {
+      .page-container {
+        margin: 0;
         box-shadow: none;
-        page-break-after: avoid;
-        page-break-inside: avoid;
+        page-break-after: always;
+        break-after: page;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Print Control (Hidden in PDF/Print) -->
-  <div class="toolbar">
-    <button class="btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+  <!-- Print Trigger Toolbar -->
+  <div class="print-bar">
+    <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
   </div>
 
-  <main class="poster-sheet">
-    <div class="poster-frame"></div>
+  <!-- ==================== PAGE 1 ==================== -->
+  <main class="page-container">
+    <div class="page-frame"></div>
     <div class="glow-cyan"></div>
     <div class="glow-amber"></div>
 
-    <!-- HEADER -->
-    <header>
-      <div class="event-badge">
+    <header class="header-block">
+      <div class="top-badge">
         <span>★ Chinmayam ’26 • Oratory Series ★</span>
       </div>
       <h1 class="main-title">
         When Machines Can Think,<br>
         <span>What Makes Us Human?</span>
       </h1>
-      <div class="theme-banner">
-        <p class="theme-quote">“Computers have logic, but humans have a conscience.”</p>
-      </div>
+      <div class="byline">By <strong>Darsha Naresh</strong></div>
     </header>
 
-    <!-- CENTRAL 3D ARTWORK -->
-    <section class="art-container">
-      <!-- 
-        Replace the 'src' below with your local image file (e.g., "central_art.png") 
-        or paste your base64 image string here.
-      -->
-      <img src="https://img.youtube.com/vi/UmBEZk9YaAY/maxresdefault.jpg" alt="Varsha and Lokesh reflecting on AI and Human Purpose">
-      <div class="art-caption-overlay">RandomTyms Original Artwork</div>
-    </section>
+    <div class="article-body">
+      <p class="lead">Let us begin with an ordinary question that carries extraordinary weight: If a machine could answer almost every question you asked, what would you ask it?</p>
 
-    <!-- 3 PILLARS -->
-    <section class="pillars-section">
-      <div class="section-title">The Three Pillars of Human Purpose</div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-num">1. CHOOSE</div>
-          <div class="pillar-core">Freedom of Viveka</div>
-          <div class="pillar-sub">(Arjuna's Choice)</div>
+      <p>Perhaps you would ask it to solve a tricky math problem. Perhaps you would ask it to write an exciting story. Or perhaps, in a moment of indecision, you might ask: “Tell me, what should I do?”</p>
+
+      <p>Now imagine the machine gives you a clear, instant answer. Even then, a quiet gap remains that silicon cannot cross: you still have to decide whether to follow it.</p>
+
+      <p>In that pause between an answer appearing on a screen and what you choose to do next, everything changes. We are no longer talking about how fast or clever artificial intelligence is. Computers have logic, but humans have a conscience. And that simple truth leads to a question every student needs to ask: When machines can think, what makes us human?</p>
+
+      <h2 class="section-head pill-1">The Freedom to Choose: Arjuna on the Battlefield</h2>
+
+      <p>This is not a completely new dilemma. Thousands of years ago, on the battlefield of Kurukshetra, a warrior named Arjuna faced a heartbreaking crisis. Confused, overwhelmed, and unsure of what was right, he stood beside the ultimate guide—Sri Krishna, who was right there on the chariot.</p>
+
+      <p>Krishna could easily have taken control. He could have pointed a finger and commanded, “Do this, this is the answer.” But he did not. At the very end of the Bhagavad Gita, after sharing all the deepest insights of life, Krishna does not force a single decision. Instead, he says:</p>
+
+      <div class="quote-box">
+        <strong>Vimṛśyaitad aśeṣeṇa yathecchasi tathā kuru</strong><br>
+        <em>(Chapter 18, Verse 63)</em>
+      </div>
+
+      <p>In essence, Krishna tells him: “Reflect on everything I have shared, and now, choose for yourself.”</p>
+
+      <p>Think about the beauty of that principle. The greatest teacher shares wisdom freely, but never takes away the student’s right to think, weigh the options, and decide.</p>
+
+      <p>Artificial intelligence can calculate probabilities, offer advice, and hand us options in seconds. But discernment—what our tradition calls Viveka—belongs to us alone. An algorithm can give an answer, but only a human being can decide if it is the right thing to do. Technology may be brilliant, but responsibility always rests in human hands.</p>
+
+      <h2 class="section-head pill-2">Turning Information into Service</h2>
+
+      <p>This leads us to a second vital lesson, taught by Swami Vivekananda.</p>
+
+      <p>Swami Vivekananda never viewed learning as something meant to stay locked inside textbooks or trapped in clever arguments. To him, true education was about building strength of character and putting knowledge into selfless service.</p>
+    </div>
+
+
+  </main>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <main class="page-container">
+    <div class="page-frame"></div>
+    <div class="glow-cyan"></div>
+    <div class="glow-amber"></div>
+
+    <div class="running-header">
+      <span>Chinmayam ’26 • <strong>Oratory Series</strong></span>
+      <span>When Machines Can Think, What Makes Us Human?</span>
+    </div>
+
+    <div class="article-body">
+      <p>Right now, we are growing up in the most connected era in history. With artificial intelligence on our phones and laptops, answers to almost every question appear in seconds. But having all the information in the world means nothing if we do not know what to do with it.</p>
+
+      <p>Are we just going to use AI to look up quick shortcuts, scroll endlessly, and stay in our own little bubbles? Or are we going to use this incredible power to build things, solve real problems, and actually help someone who needs a hand? Technology can give us the facts, but turning those facts into kindness and service is entirely up to us.</p>
+
+      <h2 class="section-head pill-3">The Power of Purpose: Eighteen People in Pune</h2>
+
+      <p>To choose wisely and serve others, we need one more thing: a vision that does not give up. Here, the story of Pujya Gurudev Swami Chinmayananda offers an unforgettable lesson.</p>
+
+      <p>In December 1951, Swami Chinmayananda began his very first Jnana Yajna in Pune. His dream was bold: to bring the wisdom of the Upanishads and Vedanta straight to everyday people.</p>
+
+      <p>Yet it did not begin with a cheering crowd. On that very first day, when he walked into the lecture hall, only eighteen people came. Just eighteen.</p>
+
+      <p>Imagine preparing for something you believe is deeply important, walking into the room, and finding only eighteen people seated on the benches. Wouldn’t most people feel discouraged? Wouldn’t you think: “Nobody cares. This won’t work. Maybe I should stop”?</p>
+
+      <p>An algorithm would have analyzed the low attendance and calculated an immediate failure. But Gurudev did not listen to statistics. He lit the lamp, unrolled the text, and taught with total faith and dedication. He kept going, day after day. Slowly, that tiny gathering grew into hundreds, and eventually into a worldwide movement that has touched millions of lives.</p>
+
+      <p>We remember that first Yajna not because only eighteen people showed up, but because one person had a purpose and refused to quit. As Gurudev himself said:</p>
+
+      <div class="quote-box amber">
+        “As the vision, so the world appears to us. If the vision is small, we remain small.”
+      </div>
+
+      <p>A machine can compute the odds of success. But a human being can look at eighteen people and still believe in a thousand. That is imagination. That is determination. That is purpose.</p>
+
+      <h2 class="section-head pill-1">The Task Ahead</h2>
+
+      <p>When machines can think, what makes us human?</p>
+
+      <div class="summary-card">
+        <div class="summary-line c1">
+          <span>•</span>
+          <span><strong>Arjuna reminds us</strong> that we have the freedom to choose.</span>
         </div>
-
-        <div class="pillar-card">
-          <div class="pillar-num">2. SERVE</div>
-          <div class="pillar-core">Knowledge into Seva</div>
-          <div class="pillar-sub">(Vivekananda's Way)</div>
+        <div class="summary-line c2">
+          <span>•</span>
+          <span><strong>Swami Vivekananda reminds us</strong> that knowledge must turn into service.</span>
         </div>
-
-        <div class="pillar-card">
-          <div class="pillar-num">3. PERSIST</div>
-          <div class="pillar-core">Power of Purpose</div>
-          <div class="pillar-sub">(Pune Yajna)</div>
+        <div class="summary-line c3">
+          <span>•</span>
+          <span><strong>Swami Chinmayananda reminds us</strong> that a worthwhile purpose is always worth pursuing, no matter how small the beginning looks.</span>
         </div>
       </div>
-    </section>
 
-    <!-- CALL TO ACTION -->
-    <section class="cta-box">
-      <div class="cta-tag">Call to Action</div>
-      <p class="cta-text">
-        “Technology is our tool, not our conscience.<br>
-        <strong>Don’t compete with machines at calculating; become better at being human.”</strong>
-      </p>
-    </section>
+      <p>Computers and AI are like super-smart paintbrushes—we can learn with them, code with them, and create amazing projects together. But a paintbrush never decides what painting to make. We must never hand over our heart, our care for others, or our personal choices to an algorithm.</p>
 
-    <!-- FOOTER / CREDITS -->
-    <footer>
-      <span>Author / Speaker: <strong>Darsha Naresh</strong></span>
-      <span>Guided By: <strong>Mrs. Vani (English Department)</strong></span>
-    </footer>
+      <div class="final-callout">
+        <p>The future does not need us to compete with machines at being cold, mechanical calculators. It needs us to become <strong>better at being human: better at choosing, better at serving, and better at caring</strong>. And that is something no machine will ever replace.</p>
+      </div>
+    </div>
+
   </main>
 
 </body>
