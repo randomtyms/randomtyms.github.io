@@ -447,8 +447,8 @@
     <!-- Top Bar Navigation with Main PWA Link -->
     <header>
       <div class="header-wrap">
-        <a href="https://lokeshvarsha.blogspot.com" class="back-link" id="pwa-back-link">
-          ← Main App
+        <a href="https://randomtyms.github.io/" class="back-link" id="pwa-back-link">
+          ← Home
         </a>
         <div class="brand-title">
           RandomTyms <span>Quiz Hub</span>
@@ -575,6 +575,13 @@
         <li><strong>Aadhaar &amp; OTP Privacy:</strong> Real game admins will never request your 6-digit OTP or family ID.</li>
         <li><strong>Password Hygiene:</strong> Combine memorable Tamil/English phrases with numbers and symbols.</li>
       </ul>
+      <a href="https://lokeshvarsha.blogspot.com/2026/09/cyber-security-web-game-javascript.html#cs-game-app" 
+   style="display:block; text-decoration:none;">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUSQypeYR6O871QJg026sa5VZufEVMnDPPk6Cb3yojQwkhWDMnT_KQdMjkvwAK1NvR_x7xpFI70lD4laEdcZwExNGi8BX-LHYmGHTRUWCSNo4KYbktFTAK3NYaUR6mIcz41m2WsMNqd0d2rBp8SCSawG1AxUcieJofNgPeKGB1nU9NJw/s1600/48009.png" 
+       alt="Cyber Safety Simulator - Spot Online Scams" 
+       style="max-width:100%; height:auto; display:block; border-radius:8px;">
+  <div style="text-align:center; padding:8px; font-weight:bold;">🛡️ Play: Can You Spot the Scam?</div>
+      </a>
     </div>
 
     <!-- Gemini AI Textbook Prompt Helper -->
@@ -588,13 +595,56 @@
           <strong style="font-size:0.85em; color:var(--rtq-mari-d);">📥 Copy Prompt for Gemini</strong>
           <button class="rt-quiz-btn rt-quiz-btn-sm rt-quiz-btn-outline" id="copy-prompt-btn" type="button">Copy</button>
         </div>
-        <textarea id="prompt-textarea" readonly>You are an expert curriculum developer. Analyze all attached textbook images to generate an exhaustive multiple-choice quiz covering every distinct concept and fact.
+        <textarea id="prompt-textarea" readonly>You are an expert curriculum developer and instructional designer with deep experience writing standardized-test-quality multiple-choice items. Analyze all attached textbook images to generate an exhaustive, high-quality multiple-choice quiz covering every distinct concept, definition, historical fact, name, geographic location, and term present across all pages.
 
-Rules:
-1. Question , Option A , Option B , Option C , Option D , Correct Number
-2. No header row. Replace internal commas with semicolon (;).
-3. Number every question sequentially: compute position = ((N - 1) mod 4) + 1 to evenly distribute correct answers.
-4. Output only raw rows or save as quiz.csv.</textarea>
+### Extraction & Coverage Rules:
+1. Systematically scan every section, diagram, footnote, map, caption, and sidebar box before writing any questions — build a mental inventory of every extractable fact first.
+2. Only include questions directly supported by the text. No trivial padding, no rephrasings of the same fact, no invented facts not present in the images.
+3. No duplicate questions or near-duplicates. One question per distinct fact.
+4. Skip facts too trivial or ambiguous to support a fair question.
+5. Extract as many valid, non-duplicate questions as the text supports (up to 500).
+
+### Question Quality Rules:
+1. Each question must be answerable from the text alone, with exactly one unambiguously correct answer.
+2. Write questions as complete, self-contained thoughts.
+3. Vary cognitive level: mix recall with comprehension/application where the text supports it.
+4. Never use "All of the above" / "None of the above" / "Both A and B."
+5. Keep all four options grammatically consistent and similar in length.
+6. Avoid negative-phrased stems unless necessary; capitalize NOT/EXCEPT when used.
+
+### Distractor Rules:
+1. Write the best possible distractors first, from real vocabulary/names/dates found elsewhere in the text — never construct a distractor to hit a target answer slot.
+2. Target common traps: partial truths, inverted relationships, adjacent-but-wrong dates/names, similar-sounding terms.
+3. Each distractor wrong for a distinct reason.
+
+### ANSWER-POSITION RULE:
+Distractor quality and correctness always come first — decide the correct answer's position purely based on natural option ordering (e.g., alphabetical, chronological, or logical order), never to hit a quota. Then, across the full finished set, shuffle option order per question as needed so the correct answer lands in each of positions A/B/C/D roughly 25% of the time, with no repeating cycle. Do this as a final pass after all questions are drafted and verified — never mid-draft, and never in a way that changes a question's content or forces a weaker distractor into place.
+
+### MANDATORY VERIFICATION PASS (do this before the position pass):
+After drafting all questions internally, re-check EACH one against the source images:
+- Confirm the fact stated in the question is explicitly present in the source.
+- Confirm the option marked correct is the one actually supported by the text.
+- Confirm no distractor is arguably also correct.
+- If any question fails this check, discard it or fix it — do not include unverified questions.
+Only after this pass is complete, and the final question set is locked, apply the answer-position shuffle above.
+Do not show this verification work — only output the final, verified rows.
+
+### Formatting & Syntax Rules (Strict):
+1. Format every row exactly like this:
+Question , Option A , Option B , Option C , Option D , Correct Number
+2. No header row. Start immediately with the first question row.
+3. Never number questions or use bullet points.
+4. Replace all internal commas within questions or options with a semicolon (;).
+5. Use exactly one space before and after each column-separating comma ( , ).
+
+### Output Delivery Rule:
+1. Do not print the raw rows in the chat response.
+2. Write all verified rows directly into an actual .csv file (no header row, comma-separated exactly as specified above), and save it as quiz_output.csv.
+3. Present the finished file for download.
+4. In the chat reply itself, include only a brief one-line confirmation of how many questions were generated — no other commentary, no preamble, no repeated rows.
+
+### Input Data:
+Analyze the attached textbook images and output the CSV file now.</textarea>
       </div>
     </div>
 
