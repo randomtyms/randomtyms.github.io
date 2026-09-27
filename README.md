@@ -79,9 +79,9 @@ This repository is built under extreme device constraints, proving what the mode
 
 Centered around **Lokesh (8)** and **Varsha (13)**, RandomTyms produces educational content spanning space science, English grammar, cybersecurity (*Digital Dharma*), and cultural storytelling:
 
-- 🏡 [RandomTyms Universe Hub](https://lokeshvarsha.blogspot.com/p/home.html)
-- 🛡️ [Digital Dharma Series (Child Cyber Safety)](https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html)
-- 🚀 [Space Secrets Series](https://lokeshvarsha.blogspot.com/p/space-secrets-series-lokesh-varsha.html)
+- 🏡 [RandomTyms Universe Hub](https://randomtyms.github.io/)
+- 🛡️ [Digital Dharma Series (Child Cyber Safety)](https://randomtyms.github.io/dd/))
+- 🚀 [Space Secrets Series](https://randomtyms.github.io/solar/)
 
 ---
 
