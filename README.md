@@ -2,7 +2,7 @@
 
 **Smart Apps. Happy Learning. Endless Curiosity.**
 
-Free, AI-powered learning tools for kids — bilingual Tamil + English, for CBSE & Samacheer Kalvi — built independently on a smartphone by [Ganga Ponnu](https://lokeshvarsha.blogspot.com/), creator of AI-animated siblings **Lokesh & Varsha (8 & 13)**.
+Free, AI-powered learning tools for kids — bilingual Tamil + English, for CBSE & Samacheer Kalvi — built independently on a smartphone by [Ganga Ponnu](https://randomtyms.github.io/), creator of AI-animated siblings **Lokesh & Varsha (8 & 13)**.
 
 🔗 **Live App Hub (Installs like an app, no Play Store needed):** https://randomtyms.github.io/
 📖 **Blog & Stories:** https://lokeshvarsha.blogspot.com/
@@ -64,9 +64,18 @@ Educational universe on Science, English, Tech, Cyber Safety (Digital Dharma), S
 
 ## 🌟 Built on Open Tech & Community Trust
 
-| Developer Grit & Tool Accessibility | Real-World Impact & Parent Trust |
-| :--- | :--- |
-| > *"Cracked phone, stove heat, 13 years out of tech—and still shipping a flyable 3D solar system for kids. That grit plus accessible tools is exactly how STEM gets democratized. The 'we built' part stands."* <br><br>— **Official @grok on X** | > *"Parent comments like this are the ultimate proof. When kids get the phone only for carefully crafted STEM stories with Lokesh and Varsha, the work is landing exactly where it should. Safe, playful learning that parents trust—onward."* <br><br>— **Official @grok on X** |
+> 📱 **"Cracked phone, stove heat, 13 years out of tech—and still shipping a flyable 3D solar system for kids. That grit plus accessible tools is exactly how STEM gets democratized. The 'we built' part stands."**
+> — *Official @grok on X*
+
+***
+
+> 🌐 **"Building a full offline-first learning hub entirely on a smartphone using AI-directed workflows is a fantastic showcase of what the modern web can achieve today. Thanks for sharing this and for logging it on the tracker—it's great to see such a practical application of the capabilities we're working on."**
+> — *Thomas Steiner, DevRel Engineer, Google*
+
+***
+
+> 🚀 **"Kudos to the great work and accomplishments. It’s an inspirational stuff. Kindly feel free to apply for Microsoft’s Unnati AI Accelerator program..."**
+> — *Kishore Kumar, Microsoft*
 
 
 ## 📄 License
