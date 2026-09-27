@@ -1,406 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RandomTyms Festival Card Maker</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RandomTyms Festival GIF Card Maker</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gifshot/0.3.2/gifshot.min.js"></script>
   <style>
     :root {
-      --bg-color: #f7f9fc;
-      --card-bg: #fff8e7;
-      --accent: #ff6b35;
-      --text-dark: #2c3e50;
-      --font-family: 'Comic Sans MS', 'Chalkboard SE', 'Nunito', sans-serif;
+      --primary: #ff5722;
+      --primary-hover: #e64a19;
+      --whatsapp: #25d366;
+      --whatsapp-hover: #1eb857;
+      --bg: #f7f9fc;
+      --card-box: #ffffff;
+      --text: #2c3e50;
+      --font-stack: 'Comic Sans MS', 'Nunito', 'Segoe UI', sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-family);
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-dark);
-      display: flex;
-      justify-content: center;
-      padding: 20px 12px;
-    }
-
-    .card-generator {
-      width: 100%;
-      max-width: 520px;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-
-    .header h2 {
-      color: #ff5722;
-      font-size: 1.5rem;
-    }
-
-    .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .control-row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .control-row > div {
-      flex: 1;
-    }
-
-    label {
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: #555;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    select, input, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    select:focus, input:focus, textarea:focus {
-      border-color: #ff9800;
-    }
-
-    /* Greeting Card Canvas Display */
-    .card-preview-container {
-      background: #eee;
-      border-radius: 16px;
-      padding: 12px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .greeting-card {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      max-width: 380px;
-      border-radius: 16px;
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-      border: 6px solid #fff;
-      transition: background 0.3s ease;
-    }
-
-    /* Festival Visual Themes */
-    .theme-diwali {
-      background: linear-gradient(135deg, #ff9a44 0%, #fc6076 100%);
-      color: #fff;
-    }
-    .theme-raksha-bandhan {
-      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-      color: #3e2723;
-    }
-    .theme-holi {
-      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #70e1f5 100%);
-      color: #263238;
-    }
-    .theme-christmas {
-      background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
-      color: #ffffff;
-    }
-    .theme-pongal {
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      color: #4a2c00;
-    }
-
-    .badge-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand-tag {
-      background: rgba(255, 255, 255, 0.85);
-      color: #333;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-
-    .festival-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      text-align: center;
-      margin-top: 10px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .avatar-showcase {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin: 12px 0;
-    }
-
-    .character-avatar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .avatar-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      border: 3px solid #ffeb3b;
-    }
-
-    .character-avatar span {
-      font-size: 0.75rem;
-      font-weight: bold;
-      margin-top: 4px;
-      background: rgba(255,255,255,0.7);
-      padding: 2px 6px;
-      border-radius: 6px;
-      color: #222;
-    }
-
-    .card-message-box {
-      background: rgba(255, 255, 255, 0.88);
-      color: #222;
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      line-height: 1.35;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      font-weight: bold;
-      background: rgba(255,255,255,0.4);
-      padding: 6px 12px;
-      border-radius: 8px;
-    }
-
-    .action-btn {
-      width: 100%;
-      margin-top: 16px;
-      padding: 12px;
-      background: #ff5722;
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .action-btn:active {
-      transform: scale(0.98);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-stack); }
+    body { background-color: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 24px 12px; min-height: 100vh; }
+    .card-generator { width: 100%; max-width: 480px; background: var(--card-box); border-radius: 20px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 14px; }
+    .header { text-align: center; }
+    .header h1 { font-size: 1.35rem; color: var(--primary); }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    label { font-size: 0.8rem; font-weight: 700; color: #444; }
+    select, input { width: 100%; padding: 9px 12px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 0.9rem; outline: none; background: #fff; }
+    select:focus, input:focus { border-color: var(--primary); }
+    .preview-wrapper { background: #f0f3f6; padding: 12px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    canvas, #outputGif { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; border-radius: 14px; border: 4px solid #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.1); display: block; }
+    #outputGif { display: none; }
+    .btn { width: 100%; padding: 12px 16px; border: none; border-radius: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+    .btn-create { background: var(--primary); color: #fff; }
+    .btn-create:hover { background: var(--primary-hover); }
+    .btn-create:disabled { background: #b0bec5; cursor: not-allowed; }
+    .btn-whatsapp { background: var(--whatsapp); color: #fff; }
+    .btn-download { background: #455a64; color: #fff; }
+    .share-container { display: none; flex-direction: column; gap: 10px; }
+    .share-buttons { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 10px; }
+    #statusMessage { font-size: 0.85rem; text-align: center; color: #607d8b; min-height: 1.2rem; }
   </style>
 </head>
 <body>
 
   <div class="card-generator">
     <div class="header">
-      <h2>🎉 RandomTyms Card Studio</h2>
-      <p style="font-size:0.85rem; color:#666;">Create custom festival cards with Lokesh & Varsha!</p>
+      <h1>🎉 RandomTyms GIF Card Studio</h1>
+      <p style="font-size: 0.82rem; color: #666;">Design festive animated cards with Lokesh & Varsha!</p>
     </div>
 
-    <div class="controls">
-      <div class="control-row">
-        <div>
-          <label for="festivalSelect">1. Choose Festival</label>
-          <select id="festivalSelect" onchange="updateCardTheme()">
-            <option value="diwali">🪔 Diwali</option>
-            <option value="raksha-bandhan">🎀 Raksha Bandhan</option>
-            <option value="holi">🎨 Holi</option>
-            <option value="christmas">🎄 Christmas</option>
-            <option value="pongal">🌾 Pongal / Sankranti</option>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="festSelect">1. Festival</label>
+        <select id="festSelect" onchange="handleFestivalChange()">
+          <option value="diwali">🪔 Diwali</option>
+          <option value="pongal">🌾 Pongal / Sankranti</option>
+          <option value="rakhi">🎀 Raksha Bandhan</option>
+          <option value="holi">🎨 Holi</option>
+          <option value="xmas">🎄 Christmas</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="assetSelect">2. Festival Sticker</label>
+        <select id="assetSelect" onchange="handleAssetChange()">
           </select>
-        </div>
-
-        <div>
-          <label for="characterSelect">2. Character Host</label>
-          <select id="characterSelect" onchange="updateCard()">
-            <option value="both">Varsha & Lokesh</option>
-            <option value="lokesh">Lokesh (8 yrs)</option>
-            <option value="varsha">Varsha (13 yrs)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="control-row">
-        <div>
-          <label for="toInput">To (Recipient)</label>
-          <input type="text" id="toInput" placeholder="e.g. Grandma, Friend" value="Grandma" oninput="updateCard()">
-        </div>
-        <div>
-          <label for="fromInput">From (Your Name)</label>
-          <input type="text" id="fromInput" placeholder="e.g. Darsha" value="Friend" oninput="updateCard()">
-        </div>
-      </div>
-
-      <div>
-        <label for="msgInput">Greeting Message</label>
-        <textarea id="msgInput" rows="2" oninput="updateCard()">Wishing you endless joy, sweet treats, and bright smiles!</textarea>
       </div>
     </div>
 
-    <!-- Live Card Display -->
-    <div class="card-preview-container">
-      <div id="greetingCard" class="greeting-card theme-diwali">
-        <div class="badge-bar">
-          <span class="brand-tag">✨ RandomTyms</span>
-          <span id="festivalEmoji" style="font-size: 1.4rem;">🪔</span>
-        </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="charSelect">3. Character Host</label>
+        <select id="charSelect" onchange="renderFrame(0)">
+          <option value="both">Varsha & Lokesh</option>
+          <option value="lokesh">Lokesh (8 yrs)</option>
+          <option value="varsha">Varsha (13 yrs)</option>
+        </select>
+      </div>
 
-        <div id="cardTitle" class="festival-title">Happy Diwali!</div>
-
-        <div class="avatar-showcase" id="avatarBox">
-          <!-- Populated dynamically via JS -->
-        </div>
-
-        <div class="card-message-box" id="cardMessage">
-          Wishing you endless joy, sweet treats, and bright smiles!
-        </div>
-
-        <div class="card-footer">
-          <span id="cardTo">To: Grandma</span>
-          <span id="cardFrom">From: Friend</span>
-        </div>
+      <div class="form-group">
+        <label for="toName">To</label>
+        <input type="text" id="toName" value="Grandma" oninput="renderFrame(0)" />
       </div>
     </div>
 
-    <button class="action-btn" onclick="printOrSave()">
-      <span>📥</span> Print / Save Card as PDF
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fromName">From</label>
+        <input type="text" id="fromName" value="Lokesh" oninput="renderFrame(0)" />
+      </div>
+      <div class="form-group">
+        <label for="customMsg">Message</label>
+        <input type="text" id="customMsg" value="Happy Celebrations!" oninput="renderFrame(0)" />
+      </div>
+    </div>
+
+    <div class="preview-wrapper">
+      <canvas id="cardCanvas" width="400" height="500"></canvas>
+      <img id="outputGif" alt="Generated Animated GIF" />
+    </div>
+
+    <button id="generateBtn" class="btn btn-create" onclick="buildGif()">
+      ✨ Generate Animated GIF
     </button>
+
+    <div id="statusMessage"></div>
+
+    <div id="shareContainer" class="share-container">
+      <div class="share-buttons">
+        <button class="btn btn-whatsapp" onclick="shareToWhatsApp()">
+          💬 Share to WhatsApp
+        </button>
+        <a id="downloadBtn" class="btn btn-download" download="randomtyms-card.gif">
+          📥 Download
+        </a>
+      </div>
+    </div>
   </div>
 
   <script>
-    const festivalData = {
-      'diwali': {
-        name: 'Happy Diwali!',
-        emoji: '🪔',
-        theme: 'theme-diwali',
-        defaultMsg: 'May your days sparkle with joy, sweets, and laughter! Deepavali Nalvazhthukal!'
+    const canvas = document.getElementById('cardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // ==========================================
+    // PLACEHOLDER ASSET REGISTRY (REPLACE URLS)
+    // ==========================================
+    
+    // Character Placeholders (Transparent PNG/GIF recommended)
+    const CHAR_URLS = {
+      lokesh: "https://placehold.co/120x150/png?text=Lokesh+(8y)",
+      varsha: "https://placehold.co/120x180/png?text=Varsha+(13y)"
+    };
+
+    // Festival Definitions & 3 Preset Asset Options Each
+    const FESTIVALS = {
+      diwali: {
+        title: 'Happy Diwali!',
+        topColor: '#ff8f00',
+        bottomColor: '#b71c1c',
+        defaultMsg: 'Deepavali Nalvazhthukal! Sparkling joy to you!',
+        assets: [
+          { name: 'Diya Lamp', url: 'https://placehold.co/100x100/png?text=Diya' },
+          { name: 'Sparkler Firework', url: 'https://placehold.co/100x100/png?text=Sparkler' },
+          { name: 'Sweets Thali', url: 'https://placehold.co/100x100/png?text=Laddoo' }
+        ]
       },
-      'raksha-bandhan': {
-        name: 'Happy Raksha Bandhan!',
-        emoji: '🎀',
-        theme: 'theme-raksha-bandhan',
-        defaultMsg: 'To the best sibling ever! Always learning, laughing, and teaming up together.'
+      pongal: {
+        title: 'Happy Pongal!',
+        topColor: '#fbc02d',
+        bottomColor: '#e64a19',
+        defaultMsg: 'Pongalo Pongal! May your harvest overflow with joy!',
+        assets: [
+          { name: 'Clay Pot (Pongal)', url: 'https://placehold.co/100x100/png?text=Pot' },
+          { name: 'Sugarcane Stalks', url: 'https://placehold.co/100x100/png?text=Sugarcane' },
+          { name: 'Golden Sun Motif', url: 'https://placehold.co/100x100/png?text=Sun' }
+        ]
       },
-      'holi': {
-        name: 'Happy Holi!',
-        emoji: '🎨',
-        theme: 'theme-holi',
-        defaultMsg: 'Splashing colors of happiness and super fun experiments on your way!'
+      rakhi: {
+        title: 'Happy Raksha Bandhan!',
+        topColor: '#ba68c8',
+        bottomColor: '#4a148c',
+        defaultMsg: 'Best sibling duo forever! Sweet treats and smiles!',
+        assets: [
+          { name: 'Traditional Rakhi', url: 'https://placehold.co/100x100/png?text=Rakhi' },
+          { name: 'Gift Box', url: 'https://placehold.co/100x100/png?text=Gift' },
+          { name: 'Roli Chawal Plate', url: 'https://placehold.co/100x100/png?text=Thali' }
+        ]
       },
-      'christmas': {
-        name: 'Merry Christmas!',
-        emoji: '🎄',
-        theme: 'theme-christmas',
-        defaultMsg: 'Joy, warmth, and lots of holiday wonders to you and your family!'
+      holi: {
+        title: 'Happy Holi!',
+        topColor: '#00e5ff',
+        bottomColor: '#e91e63',
+        defaultMsg: 'Splashing super bright colors and cheerful laughter!',
+        assets: [
+          { name: 'Color Powder (Gulal)', url: 'https://placehold.co/100x100/png?text=Gulal' },
+          { name: 'Water Pichkari', url: 'https://placehold.co/100x100/png?text=Pichkari' },
+          { name: 'Color Splash', url: 'https://placehold.co/100x100/png?text=Splash' }
+        ]
       },
-      'pongal': {
-        name: 'Happy Pongal!',
-        emoji: '🌾',
-        theme: 'theme-pongal',
-        defaultMsg: 'Pongalo Pongal! Wishing you sweet beginnings, sunshine, and bountiful harvest.'
+      xmas: {
+        title: 'Merry Christmas!',
+        topColor: '#43a047',
+        bottomColor: '#1b5e20',
+        defaultMsg: 'Joy, warmth, and holiday wonders to you!',
+        assets: [
+          { name: 'Christmas Tree', url: 'https://placehold.co/100x100/png?text=Xmas+Tree' },
+          { name: 'Santa Cap', url: 'https://placehold.co/100x100/png?text=Santa+Hat' },
+          { name: 'Glowing Star', url: 'https://placehold.co/100x100/png?text=Star' }
+        ]
       }
     };
 
-    function updateCardTheme() {
-      const festival = document.getElementById('festivalSelect').value;
-      const data = festivalData[festival];
-      const card = document.getElementById('greetingCard');
+    // ==========================================
+    // ASSET PRELOAD PIPELINE
+    // ==========================================
+    const imgLokesh = new Image();
+    imgLokesh.crossOrigin = 'anonymous';
+    imgLokesh.src = CHAR_URLS.lokesh;
 
-      // Update Theme Classes
-      card.className = 'greeting-card ' + data.theme;
-      document.getElementById('cardTitle').innerText = data.name;
-      document.getElementById('festivalEmoji').innerText = data.emoji;
-      document.getElementById('msgInput').value = data.defaultMsg;
+    const imgVarsha = new Image();
+    imgVarsha.crossOrigin = 'anonymous';
+    imgVarsha.src = CHAR_URLS.varsha;
 
-      updateCard();
+    const imgFestivalAsset = new Image();
+    imgFestivalAsset.crossOrigin = 'anonymous';
+
+    // Redraw once images complete loading
+    imgLokesh.onload = () => renderFrame(0);
+    imgVarsha.onload = () => renderFrame(0);
+    imgFestivalAsset.onload = () => renderFrame(0);
+
+    let generatedGifBlob = null;
+    let generatedGifDataUrl = null;
+
+    function handleFestivalChange() {
+      const selected = document.getElementById('festSelect').value;
+      const data = FESTIVALS[selected];
+      document.getElementById('customMsg').value = data.defaultMsg;
+
+      // Populate Asset dropdown with 3 options
+      const assetSelect = document.getElementById('assetSelect');
+      assetSelect.innerHTML = '';
+      data.assets.forEach((item, index) => {
+        const opt = document.createElement('option');
+        opt.value = index;
+        opt.innerText = item.name;
+        assetSelect.appendChild(opt);
+      });
+
+      handleAssetChange();
     }
 
-    function updateCard() {
-      const charChoice = document.getElementById('characterSelect').value;
-      const toVal = document.getElementById('toInput').value || 'Everyone';
-      const fromVal = document.getElementById('fromInput').value || 'You';
-      const msgVal = document.getElementById('msgInput').value;
+    function handleAssetChange() {
+      const festKey = document.getElementById('festSelect').value;
+      const assetIndex = document.getElementById('assetSelect').value;
+      imgFestivalAsset.src = FESTIVALS[festKey].assets[assetIndex].url;
+    }
 
-      document.getElementById('cardTo').innerText = 'To: ' + toVal;
-      document.getElementById('cardFrom').innerText = 'From: ' + fromVal;
-      document.getElementById('cardMessage').innerText = msgVal;
+    function drawRoundedRect(x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      ctx.fill();
+    }
 
-      const avatarBox = document.getElementById('avatarBox');
-      avatarBox.innerHTML = '';
+    // ==========================================
+    // FRAME RENDERER WITH ALLOCATED POSITIONS
+    // ==========================================
+    function renderFrame(step) {
+      const festKey = document.getElementById('festSelect').value;
+      const fest = FESTIVALS[festKey];
+      const charChoice = document.getElementById('charSelect').value;
+      const to = document.getElementById('toName').value.trim() || 'Friend';
+      const from = document.getElementById('fromName').value.trim() || 'Lokesh';
+      const msg = document.getElementById('customMsg').value.trim();
 
-      if (charChoice === 'both' || charChoice === 'varsha') {
-        avatarBox.innerHTML += `
-          <div class="character-avatar">
-            <div class="avatar-circle">👧🏾</div>
-            <span>Varsha</span>
-          </div>
-        `;
+      ctx.clearRect(0, 0, 400, 500);
+
+      // 1. Dynamic Festive Gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, 500);
+      gradient.addColorStop(0, fest.topColor);
+      gradient.addColorStop(1, fest.bottomColor);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 400, 500);
+
+      // 2. Animated Twinkling Border Stars
+      ctx.fillStyle = '#ffffff';
+      for (let i = 0; i < 9; i++) {
+        const xPos = 20 + i * 45;
+        const bounce = Math.sin(step + i) * 5;
+        const radius = Math.max(1, 3 + Math.sin(step + i * 0.8) * 2);
+        ctx.beginPath();
+        ctx.arc(xPos, 20 + bounce, radius, 0, Math.PI * 2);
+        ctx.fill();
       }
-      if (charChoice === 'both' || charChoice === 'lokesh') {
-        avatarBox.innerHTML += `
-          <div class="character-avatar">
-            <div class="avatar-circle">👦🏾</div>
-            <span>Lokesh</span>
-          </div>
-        `;
+
+      // 3. Header Title
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 24px Comic Sans MS, sans-serif';
+      ctx.fillText(fest.title, 200, 65);
+
+      // 4. Position: FESTIVAL MOTIF / STICKER GIF (Centered Top with Floating Bob)
+      const motifBounce = Math.sin(step * 1.2) * 6;
+      if (imgFestivalAsset.complete && imgFestivalAsset.naturalWidth !== 0) {
+        // Allocated Area: Centered at X: 165, Y: 85 (Size: 70x70)
+        ctx.drawImage(imgFestivalAsset, 165, 80 + motifBounce, 70, 70);
+      }
+
+      // 5. White Base Message Box
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+      drawRoundedRect(28, 160, 344, 255, 16);
+
+      // 6. Positions: LOKESH & VARSHA CHARACTER ASSETS
+      if (charChoice === 'both') {
+        // Varsha (Taller): X: 70, Y: 180 (70x95)
+        if (imgVarsha.complete && imgVarsha.naturalWidth !== 0) {
+          ctx.drawImage(imgVarsha, 70, 180, 70, 95);
+        }
+        // Lokesh (Shorter): X: 260, Y: 195 (65x80)
+        if (imgLokesh.complete && imgLokesh.naturalWidth !== 0) {
+          ctx.drawImage(imgLokesh, 260, 195, 65, 80);
+        }
+      } else if (charChoice === 'varsha') {
+        // Solo Varsha: X: 165, Y: 175 (75x100)
+        if (imgVarsha.complete && imgVarsha.naturalWidth !== 0) {
+          ctx.drawImage(imgVarsha, 165, 175, 75, 100);
+        }
+      } else {
+        // Solo Lokesh: X: 165, Y: 185 (70x88)
+        if (imgLokesh.complete && imgLokesh.naturalWidth !== 0) {
+          ctx.drawImage(imgLokesh, 165, 185, 70, 88);
+        }
+      }
+
+      // 7. Greeting Text and Wishes
+      ctx.font = 'bold 15px sans-serif';
+      ctx.fillStyle = '#e64a19';
+      ctx.fillText('Dear ' + to + ',', 200, 290);
+
+      ctx.font = '13px sans-serif';
+      ctx.fillStyle = '#2c3e50';
+      wrapText(ctx, msg, 200, 315, 300, 18);
+
+      // 8. Sign-off
+      ctx.font = 'italic bold 12px sans-serif';
+      ctx.fillStyle = '#555555';
+      ctx.fillText('With love, ' + from, 200, 395);
+
+      // 9. Footer Brand Tag
+      ctx.font = '11px sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('✨ randomtyms.github.io ✨', 200, 480);
+    }
+
+    function wrapText(context, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = context.measureText(testLine);
+        if (metrics.width > maxWidth && n > 0) {
+          context.fillText(line, x, y);
+          line = words[n] + ' ';
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      context.fillText(line, x, y);
+    }
+
+    // Build Final Multi-Frame Animated GIF
+    function buildGif() {
+      const btn = document.getElementById('generateBtn');
+      const status = document.getElementById('statusMessage');
+      const canvasEl = document.getElementById('cardCanvas');
+      const outputImg = document.getElementById('outputGif');
+      const shareBox = document.getElementById('shareContainer');
+
+      btn.disabled = true;
+      shareBox.style.display = 'none';
+      status.innerText = 'Capturing animation frames...';
+
+      const frames = [];
+      const totalFrames = 6;
+
+      for (let f = 0; f < totalFrames; f++) {
+        renderFrame(f);
+        frames.push(canvas.toDataURL('image/png'));
+      }
+
+      status.innerText = 'Compiling GIF file...';
+
+      gifshot.createGIF({
+        images: frames,
+        gifWidth: 400,
+        gifHeight: 500,
+        interval: 0.16,
+        numWorkers: 2
+      }, async function(obj) {
+        if (!obj.error) {
+          generatedGifDataUrl = obj.image;
+          outputImg.src = generatedGifDataUrl;
+
+          canvasEl.style.display = 'none';
+          outputImg.style.display = 'block';
+
+          const downloadBtn = document.getElementById('downloadBtn');
+          downloadBtn.href = generatedGifDataUrl;
+
+          const res = await fetch(generatedGifDataUrl);
+          generatedGifBlob = await res.blob();
+
+          shareBox.style.display = 'flex';
+          status.innerText = '✅ Animated GIF ready!';
+        } else {
+          status.innerText = '❌ Failed to build GIF. Please try again.';
+        }
+
+        btn.disabled = false;
+        renderFrame(0);
+      });
+    }
+
+    async function shareToWhatsApp() {
+      if (!generatedGifBlob) return;
+
+      const festKey = document.getElementById('festSelect').value;
+      const festTitle = FESTIVALS[festKey].title;
+      const to = document.getElementById('toName').value.trim() || 'Friend';
+
+      const gifFile = new File([generatedGifBlob], 'randomtyms-card.gif', { type: 'image/gif' });
+
+      if (navigator.canShare && navigator.canShare({ files: [gifFile] })) {
+        try {
+          await navigator.share({
+            files: [gifFile],
+            title: festTitle,
+            text: `✨ ${festTitle} wishes for ${to}! Made with RandomTyms.`
+          });
+        } catch (err) {
+          if (err.name !== 'AbortError') console.error('Share error:', err);
+        }
+      } else {
+        document.getElementById('downloadBtn').click();
+        const fallbackText = encodeURIComponent(`✨ ${festTitle} wishes for ${to}! Made with RandomTyms: https://randomtyms.github.io`);
+        window.open(`https://api.whatsapp.com/send?text=${fallbackText}`, '_blank');
       }
     }
 
-    function printOrSave() {
-      window.print();
-    }
-
-    // Initialize on load
-    updateCardTheme();
+    // Initialize with default festival
+    handleFestivalChange();
   </script>
 </body>
 </html>
+
