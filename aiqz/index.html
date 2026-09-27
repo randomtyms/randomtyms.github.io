@@ -10,7 +10,7 @@
     />
     <meta
       name="keywords"
-      content="free AI textbook quiz generator, AI multiple choice question maker for teachers free, convert paragraph into quiz online no login, Tamil AI quiz maker for schools, bilingual English Tamil online test generator, free AI exam worksheet maker for Class 1-8, kids cyber safety training in Tamil, AI voice cloning scam safety for children, Aadhaar scam safety, 3D solar system simulator online, RandomTyms educational hub, lightweight offline school apps"
+      content="free AI textbook quiz generator, AI multiple choice question maker for teachers free, convert paragraph into quiz online no login, Tamil AI quiz maker for schools, bilingual English Tamil online test generator, free AI exam worksheet maker for Class 1-8, RandomTyms educational hub, lightweight offline school apps"
     />
     <meta name="author" content="Ganga Ponnu - RandomTyms" />
     <meta name="robots" content="index, follow" />
@@ -29,6 +29,8 @@
       property="og:image"
       content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png"
     />
+    <meta property="og:image:width" content="640" />
+    <meta property="og:image:height" content="426" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -428,17 +430,17 @@
         margin-bottom: 12px;
       }
       .rt-quiz-feedback-img {
-        max-height: 240px;
+        max-height: 340px;
         width: auto;
         max-width: 100%;
         object-fit: contain;
       }
       .rt-quiz-banner-text {
         position: absolute;
-        top: 10%;
-        left: 14%;
-        right: 14%;
-        height: 20%;
+        top: 8%;
+        left: 10%;
+        right: 10%;
+        height: 26%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -468,7 +470,37 @@
         width: 94%;
         text-align: left;
       }
-      .module-header { display: flex; align-items: center; gap: 8px; font-family: var(--rtq-disp); font-weight: 800; font-size: 1.25em; margin-bottom: 6px; }
+      .module-header { display: flex; align-items: center; gap: 8px; font-family: var(--rtq-disp); font-weight: 800; font-size: 1.25em; margin: 0 0 6px; }
+
+      .rt-steps { list-style: none; padding: 0; margin: 10px 0 0; counter-reset: rt-step; }
+      .rt-steps li {
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 12px;
+        font-size: 0.92em;
+        line-height: 1.5;
+        color: var(--rtq-ink);
+      }
+      .rt-steps li:last-child { margin-bottom: 0; }
+      .rt-steps li::before {
+        counter-increment: rt-step;
+        content: counter(rt-step);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--rtq-paper);
+        border: 2px solid var(--rtq-gold);
+        color: var(--rtq-ink);
+        font-family: var(--rtq-disp);
+        font-weight: 800;
+        font-size: 0.85em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       .prompt-box {
         background: #fff;
@@ -517,7 +549,7 @@
       <img
         src="assets/banner.webp"
         onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png'"
-        alt="RandomTyms Lokesh and Varsha characters teaching cyber safety lessons"
+        alt="RandomTyms Lokesh and Varsha characters presenting the AI textbook quiz generator"
         class="hero-img"
         width="640"
         height="426"
@@ -532,7 +564,7 @@
     <!-- Interactive Quiz Engine -->
     <div class="rt-quiz-box" id="rt-quiz-upload">
       <div class="rt-quiz-badge">🧪 RandomTyms Classroom Quiz</div>
-      <h3 class="rt-quiz-title">Let's find out what you know!</h3>
+      <h2 class="rt-quiz-title">Let's find out what you know!</h2>
       <p class="rt-quiz-hint">Upload a quiz file (.csv, .txt), or paste a link below.<br />Format: Question , A , B , C , D , Correct number (1–4)</p>
       
       <label class="rt-quiz-file-label" id="rt-quiz-file-label" for="rt-quiz-file">
@@ -586,7 +618,7 @@
       <div class="rt-quiz-overlay-card">
         <div class="rt-quiz-img-wrap">
           <img
-            alt="feedback"
+            alt=""
             class="rt-quiz-feedback-img"
             id="rt-quiz-feedback-img"
             src="assets/correct.webp"
@@ -604,7 +636,7 @@
         <button class="rt-quiz-close-btn" id="rt-quiz-final-close-btn" type="button" aria-label="Close">✕</button>
         <div class="rt-quiz-img-wrap">
           <img
-            alt="result"
+            alt=""
             class="rt-quiz-feedback-img"
             id="rt-quiz-final-img"
             src="assets/correct.webp"
@@ -622,9 +654,20 @@
       </div>
     </div>
 
+    <!-- How It Works -->
+    <div class="module-card">
+      <h2 class="module-header">📋 How the AI Quiz Generator Works</h2>
+      <ol class="rt-steps">
+        <li><strong>Get your questions ready.</strong> Upload a ready-made quiz file (.csv or .txt), or paste a link to one — no account or login needed.</li>
+        <li><strong>Don't have a quiz file yet?</strong> Use the "Copy Prompt for Gemini" tool below: copy the prompt, upload photos of any textbook page to Google Gemini, and save the output as a CSV.</li>
+        <li><strong>Take the quiz.</strong> Questions appear one at a time, shuffled on every attempt, with instant feedback after each answer.</li>
+        <li><strong>Review and retry.</strong> See your final score, review exactly which questions you missed, and retake just those — or start over from scratch.</li>
+      </ol>
+    </div>
+
     <!-- Gemini AI Textbook Prompt Helper -->
     <div class="module-card">
-      <div class="module-header">🤖 Turn Any Textbook Page into an AI Quiz</div>
+      <h2 class="module-header">🤖 Turn Any Textbook Page into an AI Quiz</h2>
       <p style="font-size:0.85em; color: rgba(43,46,74,0.8);">
         Copy this prompt, upload photos of your textbook pages to Google Gemini, and save the result as a .csv file:
       </p>
