@@ -763,8 +763,7 @@ Question , Option A , Option B , Option C , Option D , Correct Number
 Analyze the attached textbook images and output the CSV file now.</textarea>
       </div>
     </div>
-
-    <script>
+<script>
       (function(){
         var IMG_WRONG_URL = "assets/wrong.webp";
         var IMG_WRONG_FALLBACK = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHOA-KW2g8ysuNUbTHH6_lTgj7QNBgXY6tt19p94F9dVs6ZPU16O8czHv7MjS1_qwZJJRPBmPyOpHgaGxv3TSZrRV6ucB8ajXkUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUez8vi2wQKlI5IWvHHXN0/s1920/1000239625.png";
@@ -824,8 +823,10 @@ Analyze the attached textbook images and output the CSV file now.</textarea>
           { q: "What does 'Digital Dharma' encourage for students?", options: ["Playing games all day", "Practicing online safety, empathy, and verifying facts", "Clicking pop-ups", "Prank profiles"], correct: 2 }
         ];
 
-        document.getElementById('demo-science-btn').onclick = function(){ startQuiz(demoScience); };
-        document.getElementById('demo-cyber-btn').onclick = function(){ startQuiz(demoCyber); };
+        var btnScience = document.getElementById('demo-science-btn');
+        if (btnScience) btnScience.onclick = function(){ startQuiz(demoScience); };
+        var btnCyber = document.getElementById('demo-cyber-btn');
+        if (btnCyber) btnCyber.onclick = function(){ startQuiz(demoCyber); };
 
         function parseCSVLine(line){
           var res = [], cur = '', inQuotes = false;
@@ -914,44 +915,18 @@ Analyze the attached textbook images and output the CSV file now.</textarea>
           };
         }
 
-// 1. Updated setBanner function
-function setBanner(el, l1, l2, isCorrect){
-  el.className = 'rt-quiz-banner-text ' + (isCorrect ? 'rt-banner-correct' : 'rt-banner-wrong');
-  el.innerHTML = '<span class="rt-quiz-line">' + l1 + '</span><span class="rt-quiz-line">' + l2 + '</span>';
-  var maxLen = Math.max(l1.length, l2.length);
-  var size = isCorrect ? '0.98em' : '1.02em';
-  if (maxLen > 36) size = isCorrect ? '0.65em' : '0.7em';
-  else if (maxLen > 26) size = isCorrect ? '0.75em' : '0.8em';
-  else if (maxLen > 18) size = isCorrect ? '0.85em' : '0.9em';
-  var spans = el.querySelectorAll('.rt-quiz-line');
-  for (var i = 0; i < spans.length; i++){ spans[i].style.fontSize = size; }
-}
+        function setBanner(el, l1, l2, isCorrect){
+          el.className = 'rt-quiz-banner-text ' + (isCorrect ? 'rt-banner-correct' : 'rt-banner-wrong');
+          el.innerHTML = '<span class="rt-quiz-line">' + l1 + '</span><span class="rt-quiz-line">' + l2 + '</span>';
+          var maxLen = Math.max(l1.length, l2.length);
+          var size = isCorrect ? '0.98em' : '1.02em';
+          if (maxLen > 36) size = isCorrect ? '0.65em' : '0.7em';
+          else if (maxLen > 26) size = isCorrect ? '0.75em' : '0.8em';
+          else if (maxLen > 18) size = isCorrect ? '0.85em' : '0.9em';
+          var spans = el.querySelectorAll('.rt-quiz-line');
+          for (var i = 0; i < spans.length; i++){ spans[i].style.fontSize = size; }
+        }
 
-// 2. In handleAns():
-if (isCor){
-  score++;
-  scoreEl.textContent = 'Score: ' + score;
-  feedbackImg.src = IMG_CORRECT_URL;
-  feedbackImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
-  setBanner(feedbackText, 'Correct! 🎉', 'Score: ' + score + ' / ' + questions.length, true); // <--- true
-} else {
-  feedbackImg.src = IMG_WRONG_URL;
-  feedbackImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
-  setBanner(feedbackText, 'Oops!', 'Correct answer: ' + q.options[q.correct - 1], false);     // <--- false
-  wrongAnswers.push({ q: q.q, chosen: q.options[chosen - 1], correct: q.options[q.correct - 1], raw: q });
-}
-
-// 3. In showFinal():
-if (pct >= 80){
-  finalImg.src = IMG_CORRECT_URL;
-  finalImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
-  setBanner(finalMsg, 'Congrats!', 'Cool Dude 😎', true);  // <--- true (uses correct.webp)
-} else {
-  finalImg.src = IMG_WRONG_URL;
-  finalImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
-  setBanner(finalMsg, 'Good Try 👍', 'Keep practicing!', false); // <--- false (uses wrong.webp)
-}
-        
         function startQuiz(items){
           questions = shuffle(items);
           currentIndex = 0; score = 0; wrongAnswers = [];
@@ -997,11 +972,11 @@ if (pct >= 80){
             scoreEl.textContent = 'Score: ' + score;
             feedbackImg.src = IMG_CORRECT_URL;
             feedbackImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
-            setBanner(feedbackText, 'Correct! 🎉', 'Score: ' + score + ' / ' + questions.length);
+            setBanner(feedbackText, 'Correct! 🎉', 'Score: ' + score + ' / ' + questions.length, true);
           } else {
             feedbackImg.src = IMG_WRONG_URL;
             feedbackImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
-            setBanner(feedbackText, 'Oops!', 'Correct answer: ' + q.options[q.correct - 1]);
+            setBanner(feedbackText, 'Oops!', 'Correct answer: ' + q.options[q.correct - 1], false);
             wrongAnswers.push({ q: q.q, chosen: q.options[chosen - 1], correct: q.options[q.correct - 1], raw: q });
           }
           feedbackOverlay.style.display = 'flex';
@@ -1022,11 +997,11 @@ if (pct >= 80){
           if (pct >= 80){
             finalImg.src = IMG_CORRECT_URL;
             finalImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
-            setBanner(finalMsg, 'Congrats!', 'Cool Dude 😎');
+            setBanner(finalMsg, 'Congrats!', 'Cool Dude 😎', true);
           } else {
             finalImg.src = IMG_WRONG_URL;
             finalImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
-            setBanner(finalMsg, 'Good Try 👍', 'Keep practicing!');
+            setBanner(finalMsg, 'Good Try 👍', 'Keep practicing!', false);
           }
           finalScore.textContent = 'You scored ' + score + ' / ' + questions.length + ' (' + Math.round(pct) + '%)';
           if (wrongAnswers.length === 0){
@@ -1077,5 +1052,6 @@ if (pct >= 80){
         }
       })();
     </script>
+
   </body>
 </html>
