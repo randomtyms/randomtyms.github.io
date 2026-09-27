@@ -1,4 +1,4 @@
-const CACHE = "randomtyms-hub-v6";
+const CACHE = "randomtyms-hub-v7";
 
 const ASSETS = [
   "./",
@@ -6,6 +6,7 @@ const ASSETS = [
   "./manifest.json",
   "./hero-characters.jpg",
   "./Assets/krishna.webp",
+  
   // Digital Dharma files in /dd/
   "./dd/",
   "./dd/index.html",
@@ -13,7 +14,16 @@ const ASSETS = [
   "./dd/digital_dharma.json",
   "./dd/digital_dharma_ta.json",
   "./dd/varsha.webp",
-  "./dd/lokesh.webp"
+  "./dd/lokesh.webp",
+
+  // 🧠 AI Quiz Engine files in /aiqz/
+  "./aiqz/",
+  "./aiqz/index.html",
+  "./aiqz/assets/banner.webp",
+  "./aiqz/assets/correct.webp",
+  "./aiqz/assets/guide.webp",
+  "./aiqz/assets/prompt.webp",
+  "./aiqz/assets/wrong.webp"
 ];
 
 // Resilient precache: uses Promise.allSettled so that one missing or 404 asset
@@ -96,6 +106,9 @@ self.addEventListener("fetch", (event) => {
           // Route-aware offline fallbacks
           if (url.pathname.includes("/dd/")) {
             return caches.match("./dd/index.html");
+          }
+          if (url.pathname.includes("/aiqz/")) {
+            return caches.match("./aiqz/index.html");
           }
           return caches.match("./index.html");
         }
