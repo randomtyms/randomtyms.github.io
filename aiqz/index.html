@@ -448,12 +448,9 @@
 }
 
 /* ✅ 2. Position the text squarely inside the white scroll parchment */
+/* Base container */
 .rt-quiz-banner-text {
   position: absolute;
-  top: 23%;
-  left: 14%;
-  right: 14%;
-  height: 18%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -468,10 +465,26 @@
   pointer-events: none;
 }
 
-.rt-quiz-line {
-  display: block;
-  width: 100%;
-  word-break: break-word;
+/* ✅ 1. Correct Answer Banner: Higher scroll, centered between stars and checkmark */
+.rt-quiz-banner-text.rt-banner-correct {
+  top: 11%;
+  left: 18%;
+  right: 22%;
+  height: 13%;
+}
+
+/* ✅ 2. Wrong Answer Banner: The wider scroll that is lower down (your confirmed working position) */
+.rt-quiz-banner-text.rt-banner-wrong {
+  top: 23%;
+  left: 14%;
+  right: 14%;
+  height: 18%;
+}
+
+.rt-quiz-line { 
+  display: block; 
+  width: 100%; 
+  word-break: break-word; 
 }
 
       .rt-quiz-final-score { font-family: var(--rtq-disp); font-size: 1.3em; font-weight: 700; margin-bottom: 10px; }
@@ -901,17 +914,44 @@ Analyze the attached textbook images and output the CSV file now.</textarea>
           };
         }
 
-        function setBanner(el, l1, l2){
+// 1. Updated setBanner function
+function setBanner(el, l1, l2, isCorrect){
+  el.className = 'rt-quiz-banner-text ' + (isCorrect ? 'rt-banner-correct' : 'rt-banner-wrong');
   el.innerHTML = '<span class="rt-quiz-line">' + l1 + '</span><span class="rt-quiz-line">' + l2 + '</span>';
   var maxLen = Math.max(l1.length, l2.length);
-  var size = '1.05em';
-  if (maxLen > 36) size = '0.7em';
-  else if (maxLen > 26) size = '0.8em';
-  else if (maxLen > 18) size = '0.9em';
+  var size = isCorrect ? '0.98em' : '1.02em';
+  if (maxLen > 36) size = isCorrect ? '0.65em' : '0.7em';
+  else if (maxLen > 26) size = isCorrect ? '0.75em' : '0.8em';
+  else if (maxLen > 18) size = isCorrect ? '0.85em' : '0.9em';
   var spans = el.querySelectorAll('.rt-quiz-line');
   for (var i = 0; i < spans.length; i++){ spans[i].style.fontSize = size; }
 }
 
+// 2. In handleAns():
+if (isCor){
+  score++;
+  scoreEl.textContent = 'Score: ' + score;
+  feedbackImg.src = IMG_CORRECT_URL;
+  feedbackImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
+  setBanner(feedbackText, 'Correct! 🎉', 'Score: ' + score + ' / ' + questions.length, true); // <--- true
+} else {
+  feedbackImg.src = IMG_WRONG_URL;
+  feedbackImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
+  setBanner(feedbackText, 'Oops!', 'Correct answer: ' + q.options[q.correct - 1], false);     // <--- false
+  wrongAnswers.push({ q: q.q, chosen: q.options[chosen - 1], correct: q.options[q.correct - 1], raw: q });
+}
+
+// 3. In showFinal():
+if (pct >= 80){
+  finalImg.src = IMG_CORRECT_URL;
+  finalImg.onerror = function(){ this.src = IMG_CORRECT_FALLBACK; };
+  setBanner(finalMsg, 'Congrats!', 'Cool Dude 😎', true);  // <--- true (uses correct.webp)
+} else {
+  finalImg.src = IMG_WRONG_URL;
+  finalImg.onerror = function(){ this.src = IMG_WRONG_FALLBACK; };
+  setBanner(finalMsg, 'Good Try 👍', 'Keep practicing!', false); // <--- false (uses wrong.webp)
+}
+        
         function startQuiz(items){
           questions = shuffle(items);
           currentIndex = 0; score = 0; wrongAnswers = [];
