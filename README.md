@@ -1,86 +1,94 @@
-# 📱 RandomTyms Apps — Free Tamil & English Learning Apps for Kids (Class 1-8)
+# 📱 RandomTyms Apps — Free Tamil & English Learning Hub for Kids (Class 1–8)
 
 **Smart Apps. Happy Learning. Endless Curiosity.**
 
-Free, AI-powered learning tools for kids — bilingual Tamil + English, for CBSE & Samacheer Kalvi — built independently on a smartphone by [Ganga Ponnu](https://randomtyms.github.io/), creator of AI-animated siblings **Lokesh & Varsha (8 & 13)**.
+Free, offline-first educational web apps and AI learning tools built for CBSE & Samacheer Kalvi students. Developed independently on a single budget smartphone by [Ganga Ponnu](https://randomtyms.github.io/), creator of original Tamil animated siblings **Lokesh & Varsha**.
 
-🔗 **Live App Hub (Installs like an app, no Play Store needed):** https://randomtyms.github.io/
-📖 **Blog & Stories:** https://lokeshvarsha.blogspot.com/
-🏆 ISEA State Level Award Winner | Official Tenor GIF Partner | Chennai
+[🚀 Launch Web App](https://randomtyms.github.io/) • [🛍️ Microsoft Store](https://apps.microsoft.com/detail/9mw2xqb7wqbk) • [📖 Blog & Worksheets](https://lokeshvarsha.blogspot.com/) • [⭐ Star Repo](https://github.com/randomtyms/randomtyms.github.io)
 
 ![RandomTyms Apps](Assets/randomtyms-apps.png)
 
-> For children who wear glasses to see themselves as HEROES, not side characters. Built solo, on one phone, with no studio or team.
+> *"Created so children who wear glasses see themselves as heroes, not side characters. Built solo on one phone next to a home stove, with zero studio backing."*
 
 ---
 
-## 🚀 What's Inside
+## 📱 Mobile-First Engineering Pipeline
 
-Lightweight PWA that works offline after first install.
+This repository is built under extreme device constraints, proving what the modern open web can achieve:
 
-### 🧠 AI Textbook Quiz Generator [Class 5-10 | All Subjects]
-Upload/scan textbook page → Instant MCQs with OMR bubbles + score feedback. Best for exam revision.
+- **100% Smartphone Authored:** Every line of HTML, CSS, JavaScript, and asset configuration was written, tested, and pushed directly from an Android handset after a 13-year career break.
+- **Continuous Mobile Git Workflow:** Rapid iteration and deployment cycles committed directly to GitHub Pages via mobile Git.
+- **Offline-First Resilience:** Engineered with Service Workers and CacheStorage APIs to precache dynamic canvases and logic tools, ensuring smooth operation in low-bandwidth classrooms and rural networks without active data.
+- **Zero Surveillance:** Completely client-side execution—no student account logins, no cookies, no tracking scripts, and no ads.
+
+---
+
+## 🚀 Interactive Apps & Tools
+
+| App | Target & Subject | Description |
+| :--- | :--- | :--- |
+| **🧠 AI Textbook Quiz Generator** | Class 5–10 · All Subjects | Snap/upload any textbook page to generate instant MCQs with OMR bubbles and instant scoring. |
+| **🎡 Classroom Spinner Wheel** | Teachers · Classroom Tool | Clean, instant name picker and group organizer for smartboards. |
+| **✖️ Times Tables Quest** | Class 2–5 · Mathematics | Fast-paced interactive multiplication drills with progressive difficulty. |
+| **🔷 Symmetry Detective** | Class 3–6 · Mathematics | Interactive visual canvas to identify and test lines of symmetry. |
+| **🪐 3D Solar System** | Class 3–8 · Space Science | Interactive WebGL planetarium exploration paired with bilingual mini-lessons. |
+| **🔐 Logic Lab & Ciphers** | Class 3–8 · Logic & Math | 15 Olympiad-level logic challenges, Caesar ciphers, and spatial reasoning tasks. |
+
 ![AI Textbook Quiz Generator](Assets/randomtyms-textbook-ai-quiz.png)
 
-### 🎡 Spinner Wheel [Classroom Tool]
-Random name picker & group maker for teachers.
-![Wheel of Names](Assets/randomtyms-wheel-of-names.jpg)
+---
 
-### ✖️ Multiplication Practice [Class 2-5 | Maths]
-Quick-fire table drills.
+## ✨ Core Highlights
 
-### 🔷 Symmetry Detective [Class 3-6 | Maths]
-Learn lines of symmetry interactively.
-![Lines of Symmetry](Assets/randomtyms-line-of-symmetry.jpg)
+- 📦 **Progressive Web App (PWA):** Installs directly to home screens or Windows desktop via Microsoft Store.
+- 🔒 **Child-Safe by Design:** COPPA-compliant ethos—zero sign-up barriers, zero third-party telemetry, 100% free forever.
+- 📝 **Open Educational Resources:** Free printable worksheets via [randomtyms-worksheets](https://github.com/randomtyms/randomtyms-worksheets).
+- 🗣️ **Bilingual Pedagogy:** Blends Tamil, English, and Tanglish to make STEM accessible for Indian bilingual learners.
+- ⚡ **Optimized for Budget Devices:** Ultra-lightweight footprint designed to run on entry-level Android devices.
 
-More free tools coming — check hub weekly.
-![More Apps Coming Soon](Assets/randomtyms-more-apps-coming-soon.png)
+---
 
-## ✨ Features
+## 👩‍🏫 Classroom & Home Usage
 
-- 📦 Installable PWA — works offline, no Play Store
-- 🔒 No sign-up, no ads, no tracking — 100% safe for kids
-- 📝 Free worksheets library: [randomtyms-worksheets repo](https://github.com/randomtyms/randomtyms-worksheets)
-- 📰 Live Blog + 🎬 Shorts inside the app
-- 🎨 Built for low-end Android phones
+- **For Teachers (Smartboards):** Open the hub $\rightarrow$ use the Spinner for team picks $\rightarrow$ run the AI Quiz Generator for a 5-minute lesson recap $\rightarrow$ print free revision worksheets.
+- **For Parents (Offline Mobile):** Tap *Add to Home Screen* $\rightarrow$ hand the phone to kids to practice math tables and logic games offline during travel or spotty connectivity.
 
-## 👩‍🏫 For Teachers & Parents (10-min use)
+---
 
-**Teachers:** Open hub on smartboard → Use Spinner for groups → AI Quiz for 5-min recap → Print worksheets free.
+## 🛠️ Built With
 
-**Parents:** Add to Home Screen → Kids practice offline. All Tamil + English.
+- **Frontend:** Vanilla JavaScript (ES6+), HTML5, CSS3, WebGL Canvas
+- **PWA Architecture:** Service Worker lifecycle precaching, Web App Manifest
+- **AI Integrations:** Google Gemini API
+- **Deployment & Hosting:** GitHub Pages & GitHub Actions
+- **Distribution:** Microsoft Store (via PWABuilder / TWA)
 
-## 🛠️ Built With — 100% Free Stack
+---
 
-HTML / CSS / JavaScript | GitHub Pages | Google Gemini API
+## 🌟 Recognition & Milestones
 
-## 🙋 About RandomTyms
+- 🏆 **National 2nd Prize Winner** — Ministry of Electronics and Information Technology (MeitY) ISEA National Competition 2025 (Cybersecurity Cartoon Storyboards).
+- 📰 **Featured in *The Hindu's Education Plus*** — Highlighted for original regional character representation and accessible digital learning.
+- 🚀 **Chromium Capabilities Showcase (Issue #555599827)** — Submitted to Google's Chromium tracker highlighting offline-first mobile web capabilities.
+- 🛍️ **Microsoft Store Verified App** — Packaged and cleared for Windows desktop availability.
+- 🎨 **Official Tenor Content Partner** — Animated sticker packs integrated across Gboard, WhatsApp, and messaging keyboards.
 
-Educational universe on Science, English, Tech, Cyber Safety (Digital Dharma), Space Secrets — centered on Lokesh & Varsha.
+---
 
-- 🏡 [Home](https://lokeshvarsha.blogspot.com/p/home.html)
-- 🚀 [Space Secrets](https://lokeshvarsha.blogspot.com/p/space-secrets-series-lokesh-varsha.html)
-- 🛡️ [Digital Dharma](https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html)
+## 🙋 About RandomTyms & The Characters
 
-## 🌟 Built on Open Tech & Community Trust
+Centered around **Lokesh (8)** and **Varsha (13)**, RandomTyms produces educational content spanning space science, English grammar, cybersecurity (*Digital Dharma*), and cultural storytelling:
 
-> 📱 **"Cracked phone, stove heat, 13 years out of tech—and still shipping a flyable 3D solar system for kids. That grit plus accessible tools is exactly how STEM gets democratized. The 'we built' part stands."**
-> — *Official @grok on X*
+- 🏡 [RandomTyms Universe Hub](https://lokeshvarsha.blogspot.com/p/home.html)
+- 🛡️ [Digital Dharma Series (Child Cyber Safety)](https://lokeshvarsha.blogspot.com/p/digital-dharma-series-krishnas-timeless.html)
+- 🚀 [Space Secrets Series](https://lokeshvarsha.blogspot.com/p/space-secrets-series-lokesh-varsha.html)
 
-***
-
-> 🌐 **"Building a full offline-first learning hub entirely on a smartphone using AI-directed workflows is a fantastic showcase of what the modern web can achieve today. Thanks for sharing this and for logging it on the tracker—it's great to see such a practical application of the capabilities we're working on."**
-> — *Thomas Steiner, DevRel Engineer, Google*
-
-***
-
-> 🚀 **"Kudos to the great work and accomplishments. It’s an inspirational stuff. Kindly feel free to apply for Microsoft’s Unnati AI Accelerator program..."**
-> — *Kishore Kumar, Microsoft*
-
+---
 
 ## 📄 License
 
-MIT — Free for schools & families. Credit to RandomTyms.
+Distributed under the **MIT License**. Free for schools, educators, and families.
 
 ---
-⭐ Star this repo
+
+⭐ **If you believe in accessible, privacy-first open education, consider starring this repository!**
