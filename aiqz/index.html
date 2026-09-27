@@ -429,28 +429,50 @@
         position: relative;
         margin-bottom: 12px;
       }
-      .rt-quiz-feedback-img {
-        max-height: 340px;
-        width: auto;
-        max-width: 100%;
-        object-fit: contain;
-      }
-      .rt-quiz-banner-text {
-        position: absolute;
-        top: 8%;
-        left: 10%;
-        right: 10%;
-        height: 26%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: var(--rtq-terra);
-        font-family: var(--rtq-disp);
-        font-weight: 800;
-        line-height: 1.15;
-      }
-      .rt-quiz-line { display: block; }
+
+/* ✅ 1. Wrap the image so the container matches the exact image bounds */
+.rt-quiz-img-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto 12px;
+  max-width: 100%;
+}
+
+.rt-quiz-feedback-img {
+  display: block;
+  max-height: 340px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* ✅ 2. Position the text squarely inside the white scroll parchment */
+.rt-quiz-banner-text {
+  position: absolute;
+  top: 23%;
+  left: 14%;
+  right: 14%;
+  height: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--rtq-terra);
+  font-family: var(--rtq-disp);
+  font-weight: 800;
+  line-height: 1.15;
+  padding: 0 4px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rt-quiz-line {
+  display: block;
+  width: 100%;
+  word-break: break-word;
+}
 
       .rt-quiz-final-score { font-family: var(--rtq-disp); font-size: 1.3em; font-weight: 700; margin-bottom: 10px; }
       .rt-quiz-review { max-height: 180px; overflow-y: auto; text-align: left; border-top: 2px dashed var(--rtq-border); padding-top: 10px; margin-bottom: 14px; }
@@ -880,8 +902,15 @@ Analyze the attached textbook images and output the CSV file now.</textarea>
         }
 
         function setBanner(el, l1, l2){
-          el.innerHTML = '<span class="rt-quiz-line">' + l1 + '</span><span class="rt-quiz-line">' + l2 + '</span>';
-        }
+  el.innerHTML = '<span class="rt-quiz-line">' + l1 + '</span><span class="rt-quiz-line">' + l2 + '</span>';
+  var maxLen = Math.max(l1.length, l2.length);
+  var size = '1.05em';
+  if (maxLen > 36) size = '0.7em';
+  else if (maxLen > 26) size = '0.8em';
+  else if (maxLen > 18) size = '0.9em';
+  var spans = el.querySelectorAll('.rt-quiz-line');
+  for (var i = 0; i < spans.length; i++){ spans[i].style.fontSize = size; }
+}
 
         function startQuiz(items){
           questions = shuffle(items);
