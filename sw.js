@@ -1,12 +1,21 @@
-const CACHE = "randomtyms-hub-v7";
+const CACHE = "randomtyms-hub-v8";
 
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./hero-characters.jpg",
+  "./logo.webp",
+  "./icon-192.png",
+  "./icon-192-maskable.png",   // safe if missing: 404s are skipped
+  "./icon-512.png",
+  "./icon-512-maskable.png",
   "./Assets/krishna.webp",
-  
+
+  // Welcome tour
+  "./welcome/",
+  "./welcome/index.html",
+
   // Digital Dharma files in /dd/
   "./dd/",
   "./dd/index.html",
@@ -16,7 +25,7 @@ const ASSETS = [
   "./dd/varsha.webp",
   "./dd/lokesh.webp",
 
-  // 🧠 AI Quiz Engine files in /aiqz/
+  // AI Quiz Engine files in /aiqz/
   "./aiqz/",
   "./aiqz/index.html",
   "./aiqz/assets/banner.webp",
@@ -24,22 +33,25 @@ const ASSETS = [
   "./aiqz/assets/guide.webp",
   "./aiqz/assets/prompt.webp",
   "./aiqz/assets/wrong.webp"
+
+  // Add "./solar/index.html" and "./world/index.html" here only if
+  // those pages work without CDN scripts (e.g. three.js from a CDN).
 ];
 
-// Resilient precache: uses Promise.allSettled so that one missing or 404 asset
-// will NEVER abort service worker installation.
+// Resilient precache: one missing or 404 asset never aborts installation.
+// cache: "reload" bypasses the browser HTTP cache so fresh files are stored.
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE).then(async (cache) => {
       await Promise.allSettled(
         ASSETS.map(async (url) => {
           try {
-            const res = await fetch(url);
+            const res = await fetch(url, { cache: "reload" });
             if (res.ok) {
               await cache.put(url, res);
             }
           } catch (err) {
-            // Silently continue so installation proceeds
+            // Continue so installation proceeds
           }
         })
       );
@@ -48,7 +60,8 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("message", (event) => {
-  if (event.data === "SKIP_WAITING") {
+  const d = event.data;
+  if (d === "SKIP_WAITING" || (d && d.type === "SKIP_WAITING")) {
     self.skipWaiting();
   }
 });
@@ -56,7 +69,6 @@ self.addEventListener("message", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
-      // Enable navigation preload if supported
       if (self.registration.navigationPreload) {
         await self.registration.navigationPreload.enable();
       }
@@ -67,83 +79,94 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+// Store a page under its path only (no ?tab= etc.) so query strings
+// don't create a separate cache entry for every shortcut/share URL.
+async function cachePage(url, response) {
+  try {
+    const cache = await caches.open(CACHE);
+    await cache.put(url.origin + url.pathname, response);
+  } catch (e) {}
+}
+
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
+  const req = event.request;
+  if (req.method !== "GET") return;
 
-  const url = new URL(event.request.url);
-
-  // Icons, the logo, and Google Fonts basically never change — let the
-  // browser's own HTTP cache handle them instead of routing every request
-  // through Cache Storage. Not calling respondWith() here means the SW
-  // steps aside entirely and the browser does its normal default fetch.
-  const isStaticChrome =
-    /\/icon-(192|512)(-maskable)?\.png$/.test(url.pathname) ||
-    /\/logo\.webp$/.test(url.pathname) ||
-    url.hostname === "://googleapis.com" ||
-    url.hostname === "://gstatic.com";
-  if (isStaticChrome) return;
+  const url = new URL(req.url);
 
   // Network-first for page navigations (the HTML shell)
-  if (event.request.mode === "navigate") {
+  if (req.mode === "navigate") {
     event.respondWith(
       (async () => {
         try {
           const preloadResp = await event.preloadResponse;
-          if (preloadResp) {
-            const clone = preloadResp.clone();
-            caches.open(CACHE).then((cache) => cache.put(event.request, clone));
-            return preloadResp;
+          const response = preloadResp || (await fetch(req));
+          if (response && response.ok) {
+            event.waitUntil(cachePage(url, response.clone()));
           }
-          const response = await fetch(event.request);
-          const clone = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(event.request, clone));
           return response;
         } catch (e) {
-          // ignoreSearch: true strips parameter anomalies like ?tab=blog or Web Share variables
-          const cached = await caches.match(event.request, { ignoreSearch: true });
+          // ignoreSearch: ?tab=blog, share params etc. still match the cached page
+          const cached = await caches.match(req, { ignoreSearch: true });
           if (cached) return cached;
 
           // Route-aware offline fallbacks
+          let fallback;
           if (url.pathname.includes("/dd/")) {
-            return caches.match("./dd/index.html");
+            fallback = await caches.match("./dd/index.html");
+          } else if (url.pathname.includes("/aiqz/")) {
+            fallback = await caches.match("./aiqz/index.html");
+          } else if (url.pathname.includes("/welcome/")) {
+            fallback = await caches.match("./welcome/index.html");
           }
-          if (url.pathname.includes("/aiqz/")) {
-            return caches.match("./aiqz/index.html");
-          }
-          return caches.match("./index.html");
+          if (!fallback) fallback = await caches.match("./index.html");
+          return fallback || Response.error();
         }
       })()
     );
     return;
   }
 
-  // Always fetch fresh from network for dynamic feeds
+  // Always fetch fresh from the network for dynamic feeds
   const isDataFeed =
     url.hostname === "api.allorigins.win" ||
-    url.hostname === "://codetabs.com" ||
+    url.hostname === "api.codetabs.com" ||
     url.hostname === "api.cors.lol" ||
-    (url.hostname === self.location.hostname && url.pathname.endsWith("/videos.json")) ||
+    (url.origin === self.location.origin && url.pathname.endsWith("/videos.json")) ||
     (url.hostname.endsWith("blogspot.com") && url.pathname.startsWith("/feeds/"));
   if (isDataFeed) {
-    event.respondWith(fetch(event.request));
+    event.respondWith(fetch(req, { cache: "no-store" }));
     return;
   }
 
-  // Stale-while-revalidate for images, icons, and static assets
+  // Everything else cross-origin (Tenor GIFs, YouTube thumbnails, Google Fonts,
+  // CDNs): step aside and let the browser handle it. This avoids filling storage
+  // with opaque responses.
+  if (url.origin !== self.location.origin) return;
+
+  // Range requests (audio/video seeking) can't be cached reliably
+  if (req.headers.has("range")) return;
+
+  // Stale-while-revalidate for same-origin images, icons, and static assets
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const fetchPromise = fetch(event.request)
+    (async () => {
+      const cache = await caches.open(CACHE);
+      const cached = await cache.match(req);
+
+      const network = fetch(req)
         .then((response) => {
-          const isValidResponse = response && (response.status === 200 || response.type === "opaque");
-          if (isValidResponse) {
-            const clone = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+          if (response && response.status === 200) {
+            cache.put(req, response.clone());
           }
           return response;
         })
-        .catch(() => cached);
+        .catch(() => null);
 
-      return cached || fetchPromise;
-    })
+      if (cached) {
+        event.waitUntil(network);
+        return cached;
+      }
+      return (await network) || Response.error();
+    })()
   );
 });
