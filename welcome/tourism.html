@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Magic Ticket Across Tamil Nadu | Lokesh &amp; Varsha Video Hub</title>
-  <meta name="description" content="Explore Tamil Nadu's iconic landmarks with siblings Lokesh and Varsha in this 3D animated adventure series." />
-  
-  <!-- Google Fonts -->
+  <title>The Magic Ticket Across Tamil Nadu | #ReimagineTN | Lokesh &amp; Varsha</title>
+  <meta name="description" content="TN AI Video Competition entry (#reimagin etn). One golden ticket, five Tamil Nadu landmarks — Chennai, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. Original AI-animated siblings Lokesh &amp; Varsha." />
+  <link rel="canonical" href="https://randomtyms.github.io/welcome/tourism.html" />
+  <meta property="og:title" content="The Magic Ticket Across Tamil Nadu — #ReimagineTN" />
+  <meta property="og:description" content="54s AI Reel for Tamil Nadu Tourism. Original Chennai siblings. Five landmarks. One ticket." />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -23,11 +26,7 @@
       --text-muted: #94a3b8;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,27 +36,12 @@
       padding-bottom: 4rem;
     }
 
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--primary-hover); }
 
-    a:hover {
-      color: var(--primary-hover);
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: 3.5rem 1rem 2rem;
-    }
+    header { text-align: center; padding: 2.5rem 1rem 1.5rem; }
 
     .badge {
       display: inline-block;
@@ -66,15 +50,17 @@
       color: var(--primary);
       border: 1px solid rgba(245, 158, 11, 0.3);
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      margin: 0.2rem;
     }
 
+    .badge-row { margin-bottom: 1rem; }
+
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 800;
       letter-spacing: -0.025em;
       line-height: 1.2;
@@ -84,14 +70,27 @@
       -webkit-text-fill-color: transparent;
     }
 
-    header p {
+    header .lede {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 650px;
-      margin: 0 auto 1.5rem;
+      font-size: 1.08rem;
+      max-width: 680px;
+      margin: 0 auto 1.25rem;
     }
 
-    /* Hero Spotlight Section */
+    .contest-bar {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      margin: 0 auto 2rem;
+      max-width: 820px;
+      text-align: left;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+    .contest-bar strong { color: var(--text); }
+    .contest-bar .tags { margin-top: 0.4rem; color: var(--primary); font-weight: 700; }
+
     .hero-section {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -118,34 +117,20 @@
       box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
     }
 
-    .video-wrapper iframe {
+    .video-wrapper iframe,
+    .card-video iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       border: none;
     }
 
-    .hero-info h2 {
-      font-size: 1.85rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
+    .hero-info h2 { font-size: 1.85rem; font-weight: 700; margin-bottom: 1rem; color: #fff; }
+    .hero-info p { color: var(--text-muted); margin-bottom: 1.25rem; }
 
-    .hero-info p {
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-    .landmark-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
+    .landmark-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
     .pill {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
@@ -165,30 +150,27 @@
       border-radius: 10px;
       font-weight: 700;
       text-decoration: none;
-      transition: transform 0.15s, background-color 0.15s;
     }
+    .btn-cta:hover { background: var(--primary-hover); color: #0f172a; transform: translateY(-2px); }
 
-    .btn-cta:hover {
-      background: var(--primary-hover);
-      color: #0f172a;
-      transform: translateY(-2px);
-    }
-
-    /* Chapters Grid */
-    .section-title {
-      font-size: 1.6rem;
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 0.7rem 1.35rem;
+      border-radius: 10px;
       font-weight: 700;
-      margin-bottom: 0.5rem;
     }
+    .btn-ghost:hover { background: rgba(245, 158, 11, 0.12); color: #fde68a; }
 
-    .section-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .section-subtitle { color: var(--text-muted); margin-bottom: 2rem; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
       gap: 1.5rem;
     }
 
@@ -201,11 +183,7 @@
       flex-direction: column;
       transition: transform 0.2s, border-color 0.2s;
     }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-    }
+    .card:hover { transform: translateY(-4px); border-color: var(--primary); }
 
     .card-video {
       position: relative;
@@ -217,30 +195,10 @@
       margin-bottom: 1rem;
     }
 
-    .card-video iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+    .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff; }
+    .card-desc { color: var(--text-muted); font-size: 0.85rem; flex-grow: 1; margin-bottom: 1rem; }
+    .fact { color: #fde68a; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.35rem; }
 
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.35rem;
-      color: #fff;
-    }
-
-    .card-desc {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      flex-grow: 1;
-      margin-bottom: 1rem;
-    }
-
-    /* Footer / App Promo */
     .app-banner {
       margin-top: 4rem;
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(245, 158, 11, 0.15));
@@ -249,141 +207,136 @@
       padding: 2.5rem 1.5rem;
       text-align: center;
     }
+    .app-banner h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .app-banner p { color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem; }
 
-    .app-banner h3 {
-      font-size: 1.7rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .app-banner p {
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
       color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
+      font-size: 0.8rem;
     }
 
     @media (max-width: 768px) {
-      .hero-section {
-        grid-template-columns: 1fr;
-        padding: 1.5rem;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
+      .hero-section { grid-template-columns: 1fr; padding: 1.5rem; }
+      header h1 { font-size: 1.85rem; }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <!-- Header -->
     <header>
-      <div class="badge">#reimaginetn • World Tourism Day 2026</div>
+      <div class="badge-row">
+        <span class="badge">#reimagin etn</span>
+        <span class="badge">World Tourism Day 2026</span>
+        <span class="badge">TN AI Video Competition</span>
+      </div>
       <h1>The Magic Ticket Across Tamil Nadu</h1>
-      <p>Join animated siblings Lokesh and Varsha as one glowing golden ticket whisks them through the cultural marvels and living history of Tamil Nadu.</p>
+      <p class="lede">An original Chennai sibling story: one golden ticket, five landmarks — temples, Chola engineering, a heritage railway, and the three seas. Tamil Nadu as a living classroom.</p>
     </header>
 
-    <!-- Main Hero Video -->
+    <div class="contest-bar">
+      <strong>Official contest entry</strong> — AI-generated Instagram Reel, 54 seconds.<br>
+      Tag <strong>@tntourismoffcl</strong> · Hashtag <span class="tags">#reimagin etn</span> · Deadline 31 Oct 2026<br>
+      Characters: Lokesh &amp; Varsha (original, not stock travel AI) · Maker: Ganga Ponnu, Chennai
+    </div>
+
     <section class="hero-section">
       <div class="video-wrapper">
-        <iframe 
-          src="https://www.youtube.com/embed/pHHghhEey3k" 
-          title="The Magic Ticket Across Tamil Nadu - Full Tour" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        <iframe
+          src="https://www.youtube.com/embed/pHHghhEey3k"
+          title="The Magic Ticket Across Tamil Nadu - Full Tour"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
       </div>
       <div class="hero-info">
-        <span class="badge">Hero Video • 58s Loop</span>
+        <span class="badge">Hero Reel · 54s</span>
         <h2>The Complete Journey</h2>
-        <p>A seamless, loopable 3D animated adventure spanning ancient granite vimanas, bustling railway hubs, rolling tea plantations, and the southern edge of India.</p>
-        
+        <p>One loopable 3D adventure: Chennai Central to Kanyakumari. The ticket is the story device — each stamp is a real place a child can name.</p>
+
         <div class="landmark-pills">
           <span class="pill">📍 Chennai Central</span>
           <span class="pill">📍 Madurai Meenakshi</span>
           <span class="pill">📍 Thanjavur Big Temple</span>
-          <span class="pill">📍 Nilgiri Heritage Train</span>
+          <span class="pill">📍 Nilgiri Mountain Railway</span>
           <span class="pill">📍 Kanyakumari</span>
         </div>
 
-        <a href="https://youtube.com/shorts/pHHghhEey3k?si=1X8fPBtvF__wCosa" target="_blank" rel="noopener noreferrer" class="btn-cta">
-          Watch on YouTube Shorts ↗
-        </a>
+        <div class="cta-row">
+          <a class="btn-cta" href="https://youtube.com/shorts/pHHghhEey3k" target="_blank" rel="noopener">Watch on YouTube Shorts ↗</a>
+          <a class="btn-ghost" href="https://www.instagram.com/tntourismoffcl/" target="_blank" rel="noopener">TN Tourism IG ↗</a>
+        </div>
       </div>
     </section>
 
-    <!-- Landmark Chapters Grid -->
     <section>
       <h3 class="section-title">Explore by Landmark</h3>
-      <p class="section-subtitle">Catch every stop of the siblings' mini-adventure in detail:</p>
+      <p class="section-subtitle">Five stops. One ticket. Facts a jury — and a Class 5 kid — can both keep.</p>
 
       <div class="grid">
-        <!-- Chennai -->
         <article class="card">
           <div class="card-video">
-            <iframe 
-              src="https://www.youtube.com/embed/Wg7zG1uzdPo" 
-              title="Chennai Central - The Magic Ticket Hook" 
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/Wg7zG1uzdPo" title="Chennai Central" allowfullscreen></iframe>
           </div>
-          <h4 class="card-title">1. Namma Chennai </h4>
-          <p class="card-desc">Before the appearance of thr magic ticket outside the iconic red-brick terminal.</p>
-          <a href="https://youtube.com/shorts/Wg7zG1uzdPo?si=6yfwWSZa14g8iEbr" target="_blank" rel="noopener noreferrer">Open Short ↗</a>
+          <p class="fact">Gateway city · Southern Railway</p>
+          <h4 class="card-title">1. Chennai Central</h4>
+          <p class="card-desc">The red-brick terminus where the magic ticket appears. Journey starts in namma Chennai — not a generic station.</p>
+          <a href="https://youtube.com/shorts/Wg7zG1uzdPo" target="_blank" rel="noopener">Open Short ↗</a>
         </article>
 
-        <!-- Madurai -->
         <article class="card">
           <div class="card-video">
-            <iframe 
-              src="https://www.youtube.com/embed/gfYXFp83myQ" 
-              title="Madurai Meenakshi Temple" 
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/gfYXFp83myQ" title="Madurai Meenakshi Temple" allowfullscreen></iframe>
           </div>
+          <p class="fact">Meenakshi Amman · Dravidian gopurams</p>
           <h4 class="card-title">2. Madurai</h4>
-          <p class="card-desc">First stop! Looking up in pure wonder at the soaring, intricately sculpted Dravidian gopurams.</p>
-          <a href="https://youtube.com/shorts/gfYXFp83myQ?si=D41manP0PY6e6suW" target="_blank" rel="noopener noreferrer">Open Short ↗</a>
+          <p class="card-desc">First stamp on the ticket. Every tier of the gopuram carries a story — food can wait, says Varsha.</p>
+          <a href="https://youtube.com/shorts/gfYXFp83myQ" target="_blank" rel="noopener">Open Short ↗</a>
         </article>
 
-        <!-- Thanjavur -->
         <article class="card">
           <div class="card-video">
-            <iframe 
-              src="https://www.youtube.com/embed/slLHlV77wto" 
-              title="Thanjavur Brihadisvara Temple" 
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/slLHlV77wto" title="Thanjavur Brihadisvara Temple" allowfullscreen></iframe>
           </div>
+          <p class="fact">Brihadisvara · Raja Raja Chola I · c. 1010 CE</p>
           <h4 class="card-title">3. Thanjavur</h4>
-          <p class="card-desc">Measuring the shadows of the 1,000-year-old Big Temple built by Raja Raja Chola I.</p>
-          <a href="https://youtube.com/shorts/slLHlV77wto?si=kWqdJiHDEdKmnMI2" target="_blank" rel="noopener noreferrer">Open Short ↗</a>
+          <p class="card-desc">The Big Temple. A thousand-year granite vimana. Lokesh tries to measure the shadow — history as science class.</p>
+          <a href="https://youtube.com/shorts/slLHlV77wto" target="_blank" rel="noopener">Open Short ↗</a>
         </article>
 
-        <!-- Kanyakumari -->
         <article class="card">
           <div class="card-video">
-            <iframe 
-              src="https://www.youtube.com/embed/bmX-ssyrg5s" 
-              title="Kanyakumari Triveni Sangam" 
-              allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/pHHghhEey3k" title="Nilgiri Mountain Railway — in hero Reel" allowfullscreen></iframe>
           </div>
-          <h4 class="card-title">4. Kanyakumari</h4>
-          <p class="card-desc">Standing at the southern edge where three oceans meet as the golden sun sets into the horizon.</p>
-          <a href="https://youtube.com/shorts/bmX-ssyrg5s?si=TA2DJSdEidQb9oYC" target="_blank" rel="noopener noreferrer">Open Short ↗</a>
+          <p class="fact">UNESCO World Heritage · toy train</p>
+          <h4 class="card-title">4. Nilgiri</h4>
+          <p class="card-desc">Heritage mountain railway through tea gardens. In the hero Reel until a standalone Short is live — swap this embed when you upload it.</p>
+          <a href="https://youtube.com/shorts/pHHghhEey3k" target="_blank" rel="noopener">See in hero Reel ↗</a>
+        </article>
+
+        <article class="card">
+          <div class="card-video">
+            <iframe src="https://www.youtube.com/embed/bmX-ssyrg5s" title="Kanyakumari" allowfullscreen></iframe>
+          </div>
+          <p class="fact">Land’s end · three seas · Vivekananda Rock</p>
+          <h4 class="card-title">5. Kanyakumari</h4>
+          <p class="card-desc">Southern edge of India. Sunrise, sangam, and the ticket still not “over” — more of Tamil Nadu left to stamp.</p>
+          <a href="https://youtube.com/shorts/bmX-ssyrg5s" target="_blank" rel="noopener">Open Short ↗</a>
         </article>
       </div>
     </section>
 
-    <!-- App / Blog Promo Banner -->
     <section class="app-banner">
-      <h3>Keep Learning with Lokesh &amp; Varsha</h3>
-      <p>Explore free interactive 3D web games, cultural quizzes, and primary school learning materials created for young curious minds.</p>
-      <a href="https://randomtyms.github.io/" target="_blank" rel="noopener noreferrer" class="btn-cta">
-        Visit Interactive Learning Hub 🚀
-      </a>
+      <h3>After the ticket — keep learning</h3>
+      <p>Free bilingual tools for kids and teachers: 3D solar system, quizzes, worksheets. Separate from this contest entry.</p>
+      <a href="https://randomtyms.github.io/" class="btn-cta">Learning hub 🚀</a>
     </section>
-  </div>
 
+    <footer>
+      RandomTyms · Lokesh &amp; Varsha · Chennai · Entry for Tamil Nadu Tourism TN AI Video Competition 2026<br>
+      Not an official TN Tourism site. Created independently for #reimagin etn.
+    </footer>
+  </div>
 </body>
 </html>
