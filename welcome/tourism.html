@@ -232,10 +232,32 @@
       .hero-section { grid-template-columns: 1fr; padding: 1.5rem; }
       header h1 { font-size: 1.85rem; }
     }
-.did-you-know, .ask-child { font-size: .9rem; margin: .5rem 0; padding: .5rem .7rem; border-radius: 8px; }
-.did-you-know { background: #fff7e0; border-left: 4px solid #f5a623; }
-.ask-child { background: #eaf4ff; border-left: 4px solid #3a8dde; }
-.parent-note { margin-top: 1.5rem; padding: .8rem 1rem; background: #f4f4f4; border-radius: 8px; font-size: .95rem; }
+.did-you-know, .ask-child {
+  font-size: .9rem;
+  margin: .6rem 0;
+  padding: .6rem .8rem;
+  border-radius: 8px;
+  line-height: 1.5;
+  color: #e8edf5;
+}
+.did-you-know {
+  background: rgba(245, 166, 35, .15);
+  border-left: 4px solid #f5a623;
+}
+.ask-child {
+  background: rgba(58, 141, 222, .18);
+  border-left: 4px solid #3a8dde;
+}
+.did-you-know strong { color: #ffc766; }
+.ask-child strong { color: #7fbcff; }
+.parent-note {
+  margin-top: 1.5rem;
+  padding: .9rem 1rem;
+  background: rgba(255, 255, 255, .07);
+  border-radius: 8px;
+  font-size: .95rem;
+  color: #e8edf5;
+} 
   </style>
   
 <script type="application/ld+json">
@@ -515,16 +537,27 @@
 </section>
     
     
-    <section class="app-banner">
-      <h3>After the ticket — keep learning</h3>
-      <p>Free bilingual tools for kids and teachers: 3D solar system, quizzes, worksheets. Separate from this contest entry.</p>
-      <a href="https://randomtyms.github.io/" class="btn-cta">Learning hub 🚀</a>
-    </section>
+    <section class="app-banner" itemscope itemtype="https://schema.org">
+  <!-- Hidden metadata giving your hub direct search context aligned with the contest -->
+  <meta itemprop="name" content="RandomTyms Educational Hub">
+  <meta itemprop="description" content="Free Tamil & English bilingual interactive learning apps, STEM worksheets, and AI textbook tools for kids.">
+  
+  <h3>After the ticket — keep learning</h3>
+  <p>
+    Aligned with the competition's digital agenda to transform storytelling through AI, our original characters Lokesh &amp; Varsha power an interactive ecosystem. Discover free bilingual apps, a 3D solar system explorer, and STEM worksheets featured in <em>The Hindu's Education Plus</em>.
+  </p>
+  <a href="https://randomtyms.github.io/" class="btn-cta">Learning hub 🚀</a>
+</section>
 
-    <footer>
-      RandomTyms · Lokesh &amp; Varsha · Chennai · Entry for Tamil Nadu Tourism TN AI Video Competition 2026<br>
-      Not an official TN Tourism site. Created independently for #reimaginetn.
-    </footer>
+<footer itemscope itemtype="https://schema.org">
+  <span itemprop="provider" itemscope itemtype="https://schema.org"><strong itemprop="name">RandomTyms (Ganga Ponnu)</strong></span> · 
+  <span>Lokesh &amp; Varsha</span> · 
+  <span itemprop="sourceOrganization">Chennai</span> · 
+  <strong>Independent Entry for Tamil Nadu Tourism TN AI Video Competition 2026</strong><br>
+  Disclaimer: Not an official TN Tourism site. Created independently to #reimaginetn cultural education through artificial intelligence.
+</footer>
+
+    
   </div>
   <!-- ===== ONE-VIDEO-AT-A-TIME: START ===== -->
 <script>
