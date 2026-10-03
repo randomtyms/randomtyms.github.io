@@ -94,8 +94,18 @@ header .lede{color:var(--text-muted);font-size:1.08rem;max-width:680px;margin:0 
 .app-banner h3{font-size:1.5rem;margin-bottom:.75rem}
 .app-banner p{color:var(--text-muted);max-width:600px;margin:0 auto 1.5rem}
 footer{text-align:center;margin-top:2.5rem;color:var(--text-muted);font-size:.8rem}
+.pill{transition:border-color .2s,color .2s,background-color .2s}
+a.pill{color:var(--text-muted)}
+a.pill:hover{border-color:var(--primary);color:var(--primary);background:rgba(245,158,11,.12)}
+html{scroll-behavior:smooth}
+.card{scroll-margin-top:1.25rem}
+.card:target{border-color:var(--primary);box-shadow:0 0 0 2px rgba(245,158,11,.35)}
+.lang-toggle{position:fixed;top:12px;right:12px;z-index:20;display:flex;background:var(--card-bg);border:1px solid var(--border);border-radius:9999px;padding:3px;box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.lang-toggle button{font:inherit;font-size:.8rem;font-weight:700;border:0;background:transparent;color:var(--text-muted);padding:.35rem .8rem;border-radius:9999px;cursor:pointer}
+.lang-toggle button[aria-pressed="true"]{background:var(--primary);color:#0f172a}
+.lang-toggle button:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
 @media(max-width:768px){.hero-section{grid-template-columns:1fr;padding:1.5rem}header h1{font-size:1.85rem}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 
 <script type="application/ld+json">
@@ -236,6 +246,10 @@ footer{text-align:center;margin-top:2.5rem;color:var(--text-muted);font-size:.8r
 </head>
 <body>
 <main class="container">
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="ta" aria-pressed="false">Tanglish</button>
+  </div>
   <header>
     <div class="badge-row">
       <span class="badge">#reimaginetn</span>
@@ -276,11 +290,11 @@ footer{text-align:center;margin-top:2.5rem;color:var(--text-muted);font-size:.8r
       <h2>The Complete Journey</h2>
       <p>One loopable 3D adventure: Chennai Central to Kanyakumari. The ticket is the story device — each stamp is a real place a child can name.</p>
       <div class="landmark-pills">
-        <span class="pill">📍 Chennai Central</span>
-        <span class="pill">📍 Madurai Meenakshi</span>
-        <span class="pill">📍 Thanjavur Big Temple</span>
-        <span class="pill">📍 Nilgiri Mountain Railway</span>
-        <span class="pill">📍 Kanyakumari</span>
+        <a class="pill" href="#cc">📍 Chennai Central</a>
+        <a class="pill" href="#mad">📍 Madurai Meenakshi</a>
+        <a class="pill" href="#than">📍 Thanjavur Big Temple</a>
+        <a class="pill" href="#nil">📍 Nilgiri Mountain Railway</a>
+        <a class="pill" href="#kan">📍 Kanyakumari</a>
       </div>
       <div class="cta-row">
         <a class="btn-cta" href="https://randomtyms.github.io/">Home 🏠 ↗</a>
@@ -418,6 +432,101 @@ footer{text-align:center;margin-top:2.5rem;color:var(--text-muted);font-size:.8r
     active = { frame: frame, thumb: btn };
     btn.replaceWith(frame);
   });
+</script>
+<script>
+  // English / Tamil toggle. English stays in the HTML (best for SEO); Tamil is swapped in on demand.
+  const TA = {
+    'header h1': 'Tamil Nadu full-ah Magic Ticket: TN AI Video Competition Entry (#reimaginetn)',
+    'header .lede': 'Oru Chennai siblings-oda original kadhai: oru golden ticket, aindhu landmarks — temples, Chola engineering, oru heritage train, moonu kadal. Tamil Nadu-ve oru living classroom.',
+    '.contest-bar': '<strong>Contest entry</strong> — AI-la create panna Instagram Reel, 54 seconds.<br>Tag <strong>@tntourismoffcl</strong> · Hashtag <span class="tags">#reimaginetn</span><br>Characters: Lokesh & Varsha (original, stock travel AI illa) · Maker: <strong>Ganga Ponnu, Chennai</strong>',
+    '.hero-info .badge': 'Main Reel · 54s',
+    '.hero-info h2': 'Muzhu Payanam',
+    '.hero-info > p': 'Oru loop aagura 3D adventure: Chennai Central-la irundhu Kanyakumari varaikum. Ticket thaan kadhaiyoda hero — ovvoru stamp-um oru kuzhandhai peyar solla koodiya nijamaana idam.',
+    '.landmark-pills .pill:nth-child(1)': '📍 Chennai Central',
+    '.landmark-pills .pill:nth-child(2)': '📍 Madurai Meenakshi',
+    '.landmark-pills .pill:nth-child(3)': '📍 Thanjavur Big Temple',
+    '.landmark-pills .pill:nth-child(4)': '📍 Nilgiri Mountain Railway',
+    '.landmark-pills .pill:nth-child(5)': '📍 Kanyakumari',
+    '.cta-row a:nth-child(1)': 'Home 🏠 ↗',
+    '.ig-contest-badge span': 'Contest Submission-a Instagram-la paarunga ↗',
+    '.cta-row a:nth-child(2)': 'Creator-a pathi ↗',
+    '.section-title': 'Landmark-wise Explore pannunga',
+    '.section-subtitle': 'Aindhu stops. Oru ticket. Jury-um, Class 5 kuzhandhaiyum nyabagam vechukka koodiya facts.',
+
+    '#cc .fact': 'Gateway city · Southern Railway',
+    '#cc .card-title': '1. Chennai Central — Payanam Aarambam',
+    '#cc .card-desc': 'Namma AI siblings Lokesh-um Varsha-vum magic ticket-a kandupidikira gateway idhu thaan. Generic railway station-a illama, <em>Namma Chennai</em>-oda red-brick architecture-a appadiye kaatta create pannadhu.',
+    '#cc .did-you-know': '<strong>Theriyuma?</strong> Chennai Central 1873-la open aachu; adhoda red-brick building innaikum city-oda famous landmarks-la onnu.',
+    '#cc .ask-child': '<strong>Ungal kuzhandhaiyidam kelunga:</strong> Andha kaalathula railway stations-a yen grand buildings-a katti irukkanga nu nenaikira?',
+    '#cc > a': 'Namma Chennai Short ↗',
+
+    '#mad .fact': 'Meenakshi Amman · Majestic gopurams',
+    '#mad .card-title': '2. Madurai — Kambeera Gopurams & Marabugal',
+    '#mad .card-desc': 'Mudhal destination stamp, vaanalaavi nikkum Meenakshi Amman Temple-a uyirooda kaattudhu. Gopuram-oda historic layers-a AI environment-la model panni, Madurai street food-a Varsha aarvamaa try pannum scene-ku background-a use pannirukkom.',
+    '#mad .did-you-know': '<strong>Theriyuma?</strong> Intha temple complex-la 14 gopurams irukku; adhula uyaramaana south tower sumaar 170 feet uyaram.',
+    '#mad .ask-child': '<strong>Ungal kuzhandhaiyidam kelunga:</strong> Gopuram sculptures-ku yen ivvalavu colours? Enna kadhaigal kandupidikka mudiyudhu paarunga.',
+    '#mad > a': 'Madurai Short ↗',
+
+    '#than .fact': 'Brihadisvara · Raja Raja Chola I · c. 1010 CE',
+    '#than .card-title': '3. Thanjavur — 1000 Varushathu Engineering Adhisayam',
+    '#than .card-desc': 'Raja Raja Chola I-oda architectural masterpiece-aana Brihadeeswarar Temple-la, kal-ellam onnoda onnu interlock aagura masonry-yum inclined physics-um Lokesh explore pannuran; ancient adhisayam oru interesting modern STEM lesson-a maarudhu.',
+    '#than .did-you-know': '<strong>Theriyuma?</strong> Intha temple UNESCO World Heritage site-aana “Great Living Chola Temples”-oda oru part; adhoda granite tower sumaar 66 metres uyaram.',
+    '#than .ask-child': '<strong>Ungal kuzhandhaiyidam kelunga:</strong> Crane illama perusaa kal-a top-ku eppadi thookki irupaanga? Ramps pathi yosichu paaru.',
+    '#than > a': 'Thanjavur Short ↗',
+
+    '#kan .fact': 'Land’s end · three seas · Vivekananda Rock',
+    '#kan .card-title': '4. Kanyakumari — Moonu Kadal Sandhikkum Idam',
+    '#kan .card-desc': 'Bay of Bengal, Arabian Sea, Indian Ocean moonum sandhikkura southern tip-ku varrom; kadalula Vivekananda Rock Memorial irukku. Sunrise, sunset views-kku romba famous.',
+    '#kan .did-you-know': '<strong>Theriyuma?</strong> Pakkathula 133 feet Thiruvalluvar statue irukku; Thirukkural-oda 133 athigaarangalukku onnu-nu, oru adi.',
+    '#kan .ask-child': '<strong>Ungal kuzhandhaiyidam kelunga:</strong> Unakku theriyura Thirukkural edhu? Adhu enna solli tharudhu?',
+    '#kan > a': 'Kanyakumari Short ↗',
+
+    '#nil .fact': 'UNESCO World Heritage · Behind-the-Scenes Reality',
+    '#nil .card-title': '5. Nilgiri — Cinematic Reality Check',
+    '#nil .card-desc': 'Pachai tea gardens vazhiya poguradhu UNESCO World Heritage steam train payanam, oru jolly lesson-a maarudhu. Amma rail safety pathi seriousa warning kudukkum bodhu, 100 <em>thoppukaranam</em> nu comedy punishment kedaikkudhu; AI namma culture-a eppadi portray pannudhu nu idhu kaattudhu.',
+    '#nil .did-you-know': '<strong>Theriyuma?</strong> Nilgiri Mountain Railway 1908-la open aachu, steep slopes-la yera rack-and-pinion system use pannudhu, 2005-la UNESCO World Heritage site aachu.',
+    '#nil .ask-child': '<strong>Ungal kuzhandhaiyidam kelunga:</strong> Odura train-la irundhu veliya saayavo, track ooram nikkavo yen koodadhu?',
+    '#nil > a': 'Nilgiri After-effects Short ↗',
+
+    '.parent-note': '<strong>Parents & teachers-kku:</strong> Oru short-a serndhu paarunga, “Theriyuma?” fact-a padinga, apparam andha kelviya short chat-a vo drawing activity-a vo try pannunga. Intha aindhu shorts-um indha competition-kaaga create panna original AI-animated stories; idhu official Tamil Nadu Tourism content illa.',
+
+    '.stickers-section h2': 'RandomTyms Official Animated Travel Stickers',
+    '.stickers-section > p': 'Original Tamil Nadu landmark animated art, <strong>RandomTyms</strong> create pannadhu. Edha venumnaalum sticker-a tap pannunga — open, save panni Gboard & WhatsApp-la nera share pannalam!',
+    '.sticker-link:nth-child(1) span': 'Chennai',
+    '.sticker-link:nth-child(2) span': 'Madurai',
+    '.sticker-link:nth-child(3) span': 'Thanjavur',
+    '.sticker-link:nth-child(4) span': 'Nilgiri',
+    '.sticker-link:nth-child(5) span': 'Kanyakumari',
+
+    '.app-banner h2': 'Ticket-ku apparam — Kathukittey irunga',
+    '.app-banner p': 'AI vachu storytelling-a maathura competition-oda digital agenda-oda serndhu, namma original characters Lokesh & Varsha oru interactive learning ecosystem-a run pannuranga. Free bilingual apps, 3D solar system explorer, <em>The Hindu</em> Education Plus-la featured aana STEM worksheets-a discover pannunga.',
+    '.app-banner a': 'Learning hub 🚀',
+    'footer': '<strong>RandomTyms (Ganga Ponnu)</strong> · Lokesh & Varsha · Chennai · <strong>Tamil Nadu Tourism TN AI Video Competition 2026-kaana independent entry</strong><br>Note: Idhu official TN Tourism site illa. Artificial intelligence moolama #reimaginetn cultural education-kaaga independent-a create pannadhu.'
+  };
+
+  function setLang(lang) {
+    Object.keys(TA).forEach(function (sel) {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+      el.innerHTML = lang === 'ta' ? TA[sel] : el.dataset.en;
+    });
+    document.documentElement.lang = lang === 'ta' ? 'ta-Latn' : 'en';
+    document.querySelectorAll('.lang-toggle button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem('rt-lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-toggle button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.lang); });
+  });
+
+  (function () {
+    let lang = new URLSearchParams(location.search).get('lang');
+    if (!lang) { try { lang = localStorage.getItem('rt-lang'); } catch (e) {} }
+    if (lang === 'ta') setLang('ta');
+  })();
 </script>
 </body>
 </html>
