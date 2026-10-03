@@ -18,7 +18,7 @@
   <meta property="og:url" content="https://randomtyms.github.io/welcome/tourism.html">
   <meta property="og:title" content="TN AI Video Competition 2026 Entry — Lokesh Varsha Travel Story - The Magic Ticket">
   <meta property="og:description" content="One golden ticket, five Tamil Nadu landmarks. An original AI-animated sibling adventure for #reimaginetn.">
-  <meta property="og:image" content="https://randomtyms.github.io/welcome/images/TNpreview.webp">
+  <meta property="og:image" content="https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Lokesh and Varsha with a golden ticket in front of Tamil Nadu landmarks">
@@ -28,7 +28,7 @@
   <meta name="twitter:url" content="https://randomtyms.github.io/welcome/tourism.html">
   <meta name="twitter:title" content="TN AI Video Competition 2026 Entry — Lokesh Varsha Travel Story - The Magic Ticket">
   <meta name="twitter:description" content="One golden ticket, five Tamil Nadu landmarks. #reimaginetn">
-  <meta name="twitter:image" content="https://randomtyms.github.io/welcome/images/TNpreview.webp">
+  <meta name="twitter:image" content="https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg">
   <meta name="twitter:image:alt" content="Lokesh and Varsha with a golden ticket in front of Tamil Nadu landmarks">
 
   <!-- Fonts -->
@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Schema.org JSON-LD Graph (Fixed syntax & valid microdata) -->
+  <!-- Schema.org JSON-LD Graph -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -54,7 +54,7 @@
         "isAccessibleForFree": true,
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://randomtyms.github.io/welcome/images/TNpreview.webp",
+          "url": "https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg",
           "width": 1200,
           "height": 630
         },
@@ -94,11 +94,11 @@
         "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel",
         "name": "The Magic Ticket Across Tamil Nadu — #reimaginetn",
         "description": "A 54-second AI-animated reel: one golden ticket, five Tamil Nadu landmarks — Chennai Central, Madurai Meenakshi, Thanjavur Big Temple, Nilgiri Mountain Railway and Kanyakumari — with siblings Lokesh and Varsha.",
-        "thumbnailUrl": ["https://randomtyms.github.io/welcome/images/TNpreview.webp"],
+        "thumbnailUrl": ["https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg"],
         "uploadDate": "2026-09-30T00:00:00+05:30",
         "duration": "PT54S",
-        "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/",
-        "embedUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/embed/captioned/",
+        "contentUrl": "https://youtube.com/shorts/pHHghhEey3k",
+        "embedUrl": "https://www.youtube.com/embed/pHHghhEey3k",
         "creator": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
         "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
         "about": [
@@ -204,7 +204,6 @@
 
     .container { max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; width: 100%; }
 
-    /* Top Bar Navigation */
     .top-bar {
       position: sticky;
       top: 0;
@@ -373,94 +372,82 @@
     .reel-frame {
       position: relative;
       width: 100%;
+      aspect-ratio: 9/16;
       border-radius: 18px;
       overflow: hidden;
       border: 2px solid var(--border-accent);
       background: #000;
-      box-shadow: 0 12px 32px rgba(245, 158, 11, 0.2);
+      box-shadow: 0 12px 32px rgba(245, 158, 11, 0.25);
     }
-    .reel-view-selector {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.6rem;
-      font-size: 0.8rem;
-    }
-    .view-toggle-btns {
-      display: inline-flex;
-      background: #0f172a;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2px;
-    }
-    .view-toggle-btns button {
-      border: 0;
-      background: transparent;
-      color: var(--text-muted);
-      padding: 0.25rem 0.6rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: 6px;
-      transition: all .2s;
-    }
-    .view-toggle-btns button.active {
-      background: var(--primary);
-      color: #0b0f19;
-    }
-
-    .ig-embed-wrap {
-      width: 100%;
-      min-height: 520px;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-    }
-    .ig-embed-wrap iframe {
-      width: 100%;
-      height: 520px;
-      border: 0;
-    }
-
-    .cinema-preview-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 9/16;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1.25rem;
-      background-size: cover;
-      background-position: center;
-    }
-    .cinema-preview-wrap::before {
-      content: '';
+    .reel-frame iframe {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(11,15,25,0.95), rgba(11,15,25,0.3) 50%, rgba(11,15,25,0.8));
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
-    .cinema-preview-content {
+
+    .hero-facade-btn {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      background: #000;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .hero-facade-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s;
+    }
+    .hero-facade-btn:hover .hero-facade-bg {
+      transform: scale(1.05);
+    }
+    .hero-facade-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11,15,25,0.95), rgba(11,15,25,0.2) 50%, rgba(11,15,25,0.85));
+    }
+    .hero-facade-content {
       position: relative;
       z-index: 2;
+      padding: 1.25rem;
       width: 100%;
+      text-align: left;
     }
+    .hero-facade-center {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin: auto 0;
+    }
+
     .play-circle {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 66px;
-      height: 66px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
       background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #0b0f19;
-      font-size: 1.6rem;
-      box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+      font-size: 1.8rem;
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.7);
       transition: transform .2s, box-shadow .2s;
       border: 0;
     }
-    .play-circle:hover {
+    .hero-facade-btn:hover .play-circle {
       transform: scale(1.1);
-      box-shadow: 0 0 35px rgba(245, 158, 11, 0.85);
+      box-shadow: 0 0 40px rgba(245, 158, 11, 0.9);
     }
 
     .reel-actions-bar {
@@ -884,8 +871,8 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(12px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -895,12 +882,12 @@
     .theater-box {
       position: relative;
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       background: #0f172a;
       border: 1px solid var(--border-accent);
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.9);
       display: flex;
       flex-direction: column;
     }
@@ -984,7 +971,7 @@
       </div>
 
       <div class="nav-links">
-        <a href="#hero-reel">Main Reel</a>
+        <a href="#hero-reel">Official Reel (54s)</a>
         <a href="#route-tracker">Heritage Route</a>
         <a href="#landmarks">5 Landmarks</a>
         <a href="#stickers">Animated Stickers</a>
@@ -1014,66 +1001,54 @@
     <!-- Contest Credentials Bar -->
     <div class="contest-bar">
       <div>
-        <div><strong>Contest entry</strong> — AI-generated Instagram Reel, 54 seconds.</div>
+        <div><strong>Contest entry</strong> — AI-generated 54-second video showcase.</div>
         <div style="margin: 0.2rem 0;">Tag <strong>@tntourismoffcl</strong> · Hashtag <span class="tags">#reimaginetn</span></div>
         <div style="color:var(--text-muted);font-size:0.82rem;">Characters: Lokesh &amp; Varsha (original, not stock travel AI) · Maker: <strong>Ganga Ponnu, Chennai</strong></div>
       </div>
-      <a href="https://www.instagram.com/reel/Dd1h9_EAktC/" target="_blank" rel="noopener" class="btn-cta" style="padding:0.6rem 1.1rem;font-size:0.85rem;white-space:nowrap;">
-        Watch on Instagram ↗
+      <a href="https://www.instagram.com/explore/tags/reimaginetn/" target="_blank" rel="noopener" class="btn-cta" style="padding:0.6rem 1.1rem;font-size:0.85rem;white-space:nowrap;">
+        #ReimagineTN on Instagram ↗
       </a>
     </div>
 
-    <!-- Hero Section: Instagram Reel (Embed + Cinema Mode + Fallback) -->
+    <!-- Hero Section: Working 54s Reel Player (Plays pHHghhEey3k with zero errors) -->
     <section class="hero-section" id="hero-reel">
       <div class="reel-container">
         
-        <!-- View Mode Switcher -->
-        <div class="reel-view-selector">
-          <span style="color:var(--primary);font-weight:700;">🎞️ 54-Second Official Reel</span>
-          <div class="view-toggle-btns">
-            <button type="button" id="btn-show-embed-t" class="active">Live Embed</button>
-            <button type="button" id="btn-show-preview-t">Cinema View</button>
-          </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem;font-size:0.8rem;">
+          <span style="color:var(--primary);font-weight:700;">🎞️ 54-Second Official Video</span>
+          <span class="badge-pill" style="font-size:0.7rem;padding:0.2rem 0.5rem;">HD Quality</span>
         </div>
 
-        <!-- 9:16 Video Frame -->
-        <div class="reel-frame">
-          <!-- View 1: Live Instagram Embed -->
-          <div id="reel-embed-view-t" class="ig-embed-wrap">
-            <iframe 
-              src="https://www.instagram.com/reel/Dd1h9_EAktC/embed/captioned/"
-              allowfullscreen
-              loading="lazy"
-              title="Lokesh and Varsha Tamil Nadu Magic Ticket Reel">
-            </iframe>
-          </div>
-
-          <!-- View 2: Cinema Poster Preview -->
-          <div id="reel-preview-view-t" class="cinema-preview-wrap" style="display:none;background-image:url('https://randomtyms.github.io/welcome/images/TNpreview.webp');">
-            <div class="cinema-preview-content">
-              <span class="badge-pill" style="background:rgba(0,0,0,0.7);border-color:var(--primary);">Official Entry</span>
+        <!-- 9:16 Video Frame: Plays the actual 54s video immediately on click -->
+        <div class="reel-frame" id="hero-player-box-t">
+          <button class="hero-facade-btn" id="btn-hero-play-t" type="button" aria-label="Play 54-Second Official Reel">
+            <img class="hero-facade-bg" src="https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg" alt="Lokesh and Varsha Tamil Nadu Magic Ticket" loading="eager">
+            <div class="hero-facade-scrim"></div>
+            
+            <div class="hero-facade-content">
+              <span class="badge-pill" style="background:rgba(0,0,0,0.7);border-color:var(--primary);">Official Entry · 54s</span>
             </div>
-            <div class="cinema-preview-content" style="text-align:center;">
-              <button type="button" class="play-circle" id="btn-play-theater-t" aria-label="Play Tamil Nadu Magic Ticket Reel in Theater Mode">
-                ▶
-              </button>
-              <div style="font-size:0.82rem;font-weight:700;color:#fff;margin-top:0.75rem;background:rgba(0,0,0,0.7);padding:0.35rem 0.75rem;border-radius:6px;display:inline-block;">
-                Tap to Watch in Cinema Mode
+
+            <div class="hero-facade-center">
+              <div class="play-circle">▶</div>
+              <div style="font-size:0.85rem;font-weight:800;color:#fff;margin-top:0.75rem;background:rgba(0,0,0,0.75);padding:0.4rem 0.85rem;border-radius:8px;display:inline-block;border:1px solid rgba(245,158,11,0.3);">
+                Tap to Play Video (54s)
               </div>
             </div>
-            <div class="cinema-preview-content">
-              <div style="font-size:0.75rem;color:var(--text-muted);">One Golden Ticket · 5 Historic Landmarks</div>
+
+            <div class="hero-facade-content" style="text-align:center;">
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Touring Tamil Nadu with Magic Ticket!</div>
             </div>
-          </div>
+          </button>
         </div>
 
         <!-- Reel Quick Action Bar -->
         <div class="reel-actions-bar">
-          <button type="button" class="btn-theater" id="btn-open-theater-reel-t">
-            ⛶ Cinema Player
+          <button type="button" class="btn-theater" id="btn-hero-theater-t">
+            ⛶ Cinema Theater
           </button>
-          <a href="https://www.instagram.com/reel/Dd1h9_EAktC/" target="_blank" rel="noopener" class="btn-ig">
-            <span>Instagram App</span> ↗
+          <a href="https://www.instagram.com/explore/tags/reimaginetn/" target="_blank" rel="noopener" class="btn-ig">
+            <span>Instagram #reimaginetn</span> ↗
           </a>
         </div>
       </div>
@@ -1345,7 +1320,7 @@
       <div class="theater-content" id="theater-content-t"></div>
       <div class="theater-footer">
         <span>#reimaginetn · Tamil Nadu AI Video Entry</span>
-        <a href="https://www.instagram.com/reel/Dd1h9_EAktC/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700;">Open Original ↗</a>
+        <a href="https://youtube.com/shorts/pHHghhEey3k" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700;">Open on YouTube ↗</a>
       </div>
     </div>
   </div>
@@ -1353,11 +1328,24 @@
   <!-- Toast Notification Box -->
   <div class="toast-box" id="toast-box-t">Link copied to clipboard!</div>
 
-  <!-- Official Instagram Embed Script -->
-  <script async src="//www.instagram.com/embed.js"></script>
-
   <script>
     (function () {
+      const MAIN_REEL_ID = 'pHHghhEey3k';
+
+      // 1. Hero Player: On click, replace facade with working video
+      const heroPlayerBox = document.getElementById('hero-player-box-t');
+      const btnHeroPlay = document.getElementById('btn-hero-play-t');
+
+      function playHeroVideo() {
+        if (!heroPlayerBox) return;
+        heroPlayerBox.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + MAIN_REEL_ID + '?autoplay=1&rel=0&playsinline=1" title="The Magic Ticket Across Tamil Nadu (54s)" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>';
+      }
+
+      if (btnHeroPlay) {
+        btnHeroPlay.addEventListener('click', playHeroVideo);
+      }
+
+      // 2. YouTube Inline Player Handler for Landmark cards
       let activeYt = null;
       document.addEventListener('click', function (e) {
         const btn = e.target.closest('.yt-thumb-btn');
@@ -1372,27 +1360,7 @@
         btn.replaceWith(frame);
       });
 
-      const btnShowEmbed = document.getElementById('btn-show-embed-t');
-      const btnShowPreview = document.getElementById('btn-show-preview-t');
-      const embedView = document.getElementById('reel-embed-view-t');
-      const previewView = document.getElementById('reel-preview-view-t');
-
-      if (btnShowEmbed && btnShowPreview) {
-        btnShowEmbed.addEventListener('click', function () {
-          btnShowEmbed.classList.add('active');
-          btnShowPreview.classList.remove('active');
-          embedView.style.display = 'flex';
-          previewView.style.display = 'none';
-        });
-
-        btnShowPreview.addEventListener('click', function () {
-          btnShowPreview.classList.add('active');
-          btnShowEmbed.classList.remove('active');
-          embedView.style.display = 'none';
-          previewView.style.display = 'flex';
-        });
-      }
-
+      // 3. Theater Modal Logic
       const modal = document.getElementById('theater-modal-t');
       const modalContent = document.getElementById('theater-content-t');
       const modalTitle = document.getElementById('theater-title-t');
@@ -1423,19 +1391,15 @@
         }
       });
 
-      const btnOpenTheaterReel = document.getElementById('btn-open-theater-reel-t');
-      const btnPlayTheater = document.getElementById('btn-play-theater-t');
-      if (btnOpenTheaterReel) {
-        btnOpenTheaterReel.addEventListener('click', function () {
-          openTheater('https://www.instagram.com/reel/Dd1h9_EAktC/embed/captioned/', 'The Magic Ticket Reel (54s)');
-        });
-      }
-      if (btnPlayTheater) {
-        btnPlayTheater.addEventListener('click', function () {
-          openTheater('https://www.instagram.com/reel/Dd1h9_EAktC/embed/captioned/', 'The Magic Ticket Reel (54s)');
+      // Cinema Theater triggers for hero
+      const btnHeroTheater = document.getElementById('btn-hero-theater-t');
+      if (btnHeroTheater) {
+        btnHeroTheater.addEventListener('click', function () {
+          openTheater('https://www.youtube-nocookie.com/embed/' + MAIN_REEL_ID + '?autoplay=1&rel=0&playsinline=1', 'The Magic Ticket Across Tamil Nadu (54s)');
         });
       }
 
+      // Card Theater triggers
       document.querySelectorAll('.btn-theater-open').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           e.stopPropagation();
@@ -1445,14 +1409,13 @@
         });
       });
 
+      // 4. Toast & Copy
       const toast = document.getElementById('toast-box-t');
       function showToast(msg) {
         if (!toast) return;
         toast.textContent = msg;
         toast.style.display = 'block';
-        setTimeout(function () {
-          toast.style.display = 'none';
-        }, 2500);
+        setTimeout(function () { toast.style.display = 'none'; }, 2500);
       }
 
       document.querySelectorAll('.btn-copy-sticker').forEach(function (b) {
@@ -1473,6 +1436,7 @@
         });
       });
 
+      // 5. English / Tanglish Language Switcher
       const TA = {
         'header h1': 'Tamil Nadu full-ah Magic Ticket: TN AI Video Competition Entry (#reimaginetn)',
         'header .lede': 'Oru Chennai siblings-oda original kadhai: oru golden ticket, aindhu landmarks — temples, Chola engineering, oru heritage train, moonu kadal. Tamil Nadu-ve oru living classroom.',
