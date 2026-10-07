@@ -61,9 +61,10 @@
         },
         "creator": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
         "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-        "mainEntity": { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel" },
+        "mainEntity": { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel-1" },
         "hasPart": [
-          { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel" },
+          { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel-1" },
+          { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel-2" },
           { "@id": "https://randomtyms.github.io/welcome/tourism.html#video-chennai" },
           { "@id": "https://randomtyms.github.io/welcome/tourism.html#video-madurai" },
           { "@id": "https://randomtyms.github.io/welcome/tourism.html#video-thanjavur" },
@@ -97,14 +98,25 @@
       },
       {
         "@type": "VideoObject",
-        "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel",
-        "name": "The Magic Ticket Across Tamil Nadu — #reimaginetn (Official 54s Reel)",
-        "description": "A 54-second AI-animated reel: one golden ticket, five Tamil Nadu landmarks — Chennai Central, Madurai Meenakshi, Thanjavur Big Temple, Nilgiri Mountain Railway and Kanyakumari — with siblings Lokesh and Varsha.",
+        "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel-1",
+        "name": "Entry 1: The Magic Ticket Across Tamil Nadu — #reimaginetn (54s)",
+        "description": "First official 54s AI-animated entry: golden ticket through 5 Tamil Nadu landmarks with siblings Lokesh and Varsha.",
         "thumbnailUrl": ["https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg"],
         "uploadDate": "2026-09-30T00:00:00+05:30",
         "duration": "PT54S",
-        "contentUrl": "https://youtube.com/shorts/pHHghhEey3k",
+        "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/?stkn=MXQ0bXVuM2N1eTBsMA==",
         "embedUrl": "https://www.youtube-nocookie.com/embed/pHHghhEey3k",
+        "creator": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
+        "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://randomtyms.github.io/welcome/tourism.html#hero-reel-2",
+        "name": "Entry 2: Varsha, idhu India-va illa Switzerland-a? — #reimaginetn",
+        "description": "Second official entry: 3D animated siblings Lokesh & Varsha exploring Kodaikanal Lake, Thirumalai Nayakkar Mahal, Mathoor Aqueduct, New Pamban Bridge, and Arichal Munai.",
+        "thumbnailUrl": ["https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif"],
+        "uploadDate": "2026-10-05T00:00:00+05:30",
+        "contentUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3",
         "creator": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
         "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" }
       },
@@ -852,49 +864,24 @@
       color: var(--text-muted);
       font-size: 0.92rem;
     }
-    .route-steps-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
+    .card-target-pulse {
+      animation: targetPulse 1.6s ease-out forwards;
     }
-    @media (min-width: 640px) {
-      .route-steps-grid { grid-template-columns: repeat(2, 1fr); }
+    @keyframes targetPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.8), 0 0 24px rgba(245, 158, 11, 0.5);
+        border-color: var(--gold-primary);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(245, 158, 11, 0), 0 0 32px rgba(245, 158, 11, 0.6);
+        border-color: var(--gold-light);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+      }
     }
-    @media (min-width: 1024px) {
-      .route-steps-grid { grid-template-columns: repeat(5, 1fr); }
-    }
-    .station-node {
-      background: rgba(7, 11, 20, 0.7);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1.1rem 1rem;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      transition: all 0.25s;
-      position: relative;
-    }
-    .station-node:hover {
-      border-color: var(--gold-primary);
-      transform: translateY(-4px);
-      background: rgba(245, 158, 11, 0.08);
-    }
-    .station-num {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--gold-primary);
-      line-height: 1;
-    }
-    .station-name {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #fff;
-    }
-    .station-tag {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .landmark-card {
+      scroll-margin-top: 85px;
     }
 
     /* Landmarks Section */
@@ -1104,8 +1091,9 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
-    @media (min-width: 640px) { .sticker-row { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 960px) { .sticker-row { grid-template-columns: repeat(5, 1fr); } }
+    @media (min-width: 600px) { .sticker-row { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 860px) { .sticker-row { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 1120px) { .sticker-row { grid-template-columns: repeat(7, 1fr); } }
 
     .sticker-card {
       background: #070b14;
@@ -1355,9 +1343,10 @@
       </a>
 
       <div class="nav-links">
-        <a href="#hero-reel">Official Reel (54s)</a>
+        <a href="#hero-reel">Official Reels (Entry 1 &amp; 2)</a>
         <a href="#route-tracker">Heritage Route</a>
-        <a href="#landmarks">5 Landmarks</a>
+        <a href="#landmarks">Entry 1 Stops</a>
+        <a href="#entry-2-landmarks">Entry 2 Marvels</a>
         <a href="#stickers">Travel Stickers</a>
         <a href="https://randomtyms.github.io/" target="_blank" rel="noopener">Learning Hub ↗</a>
       </div>
@@ -1368,6 +1357,11 @@
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="ta" aria-pressed="false">Tanglish</button>
         </div>
+
+        <!-- Share Header Button -->
+        <button type="button" class="btn-share-head" id="btn-share-page" aria-label="Share this competition page">
+          <span>📤</span> Share
+        </button>
       </div>
     </div>
   </nav>
@@ -1387,17 +1381,34 @@
     <!-- Contest Credentials Bar -->
     <div class="contest-bar">
       <div>
-        <div><strong>Contest entry</strong> — AI-animated 54-second video showcase.</div>
+        <div><strong>2 Official Competition Entries</strong> — AI-animated video showcases for World Tourism Day 2026.</div>
         <div style="margin: 0.2rem 0;">Tag <strong>@tntourismoffcl</strong> · Hashtag <span class="tags">#reimaginetn</span></div>
-        <div style="color:var(--text-muted);font-size:0.84rem;">Characters: Lokesh &amp; Varsha (original, not stock travel AI) · Maker: <strong>Ganga Ponnu, Chennai</strong></div>
+        <div style="color:var(--text-muted);font-size:0.84rem;">Characters: Lokesh &amp; Varsha (original 3D animation) · Maker: <strong>Ganga Ponnu, Chennai</strong></div>
       </div>
-    
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="https://www.instagram.com/reel/Dd1h9_EAktC/?stkn=MXQ0bXVuM2N1eTBsMA==" target="_blank" rel="noopener" class="btn-ig-open" id="btn-contest-ig-1" style="padding:0.6rem 1rem;font-size:0.82rem;">
+          <span>📸</span> Entry 1: Magic Ticket ↗
+        </a>
+        <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" class="btn-ig-open" id="btn-contest-ig-2" style="padding:0.6rem 1rem;font-size:0.82rem;background:linear-gradient(45deg,#0284c7,#2563eb,#7c3aed);">
+          <span>🏔️</span> Entry 2: Swiss or India? ↗
+        </a>
+      </div>
     </div>
 
-    <!-- Hero Section: Flawless Working Reel Showcase -->
+    <!-- Hero Section: Flawless Working Reel Showcase with Entry Switcher -->
     <section class="hero-section" id="hero-reel">
       <!-- 9:16 Authentic Reel Player Frame -->
       <div class="reel-col">
+        <!-- Entry Switcher Pills -->
+        <div class="entry-switcher-tabs" style="display:flex;gap:0.5rem;margin-bottom:0.85rem;width:100%;max-width:360px;">
+          <button type="button" class="btn-entry-tab active" id="tab-entry-1" style="flex:1;padding:0.65rem 0.6rem;border-radius:12px;font-weight:800;font-size:0.82rem;border:1px solid var(--gold-primary);background:var(--gold-primary);color:#070b14;cursor:pointer;transition:all 0.2s;">
+            🎟️ Entry 1 (54s)
+          </button>
+          <button type="button" class="btn-entry-tab" id="tab-entry-2" style="flex:1;padding:0.65rem 0.6rem;border-radius:12px;font-weight:800;font-size:0.82rem;border:1px solid var(--border-subtle);background:rgba(255,255,255,0.06);color:var(--text-muted);cursor:pointer;transition:all 0.2s;">
+            🏔️ Entry 2 (New)
+          </button>
+        </div>
+
         <div class="reel-wrapper">
           <div class="reel-player-frame" id="reel-player-frame">
             
@@ -1408,7 +1419,7 @@
 
             <!-- Instagram Reel Poster Facade (Active by default, clicks to play) -->
             <div class="reel-facade" id="reel-facade">
-              <img class="reel-poster-img" src="https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg" alt="Lokesh and Varsha - Tamil Nadu Magic Ticket Reel" loading="eager">
+              <img class="reel-poster-img" id="hero-poster-img" src="https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg" alt="Lokesh and Varsha - Tamil Nadu Magic Ticket Reel" loading="eager">
               <div class="reel-scrim"></div>
 
               <!-- Top Bar in Reel -->
@@ -1418,23 +1429,23 @@
                   <span class="reel-creator-name">@RandomTyms</span>
                   <span class="reel-verified">✓</span>
                 </div>
-                <div class="reel-duration-badge">⏱ 0:54</div>
+                <div class="reel-duration-badge" id="hero-duration-badge">⏱ 0:54</div>
               </div>
 
               <!-- Center Play Icon -->
               <div class="reel-center-play">
-                <div class="reel-play-btn" id="btn-reel-play-trigger" role="button" aria-label="Play 54s Reel">▶</div>
+                <div class="reel-play-btn" id="btn-reel-play-trigger" role="button" aria-label="Play Reel Video">▶</div>
                 <br>
-                <div class="reel-play-cta-text">Tap to Play Official Reel (54s)</div>
+                <div class="reel-play-cta-text" id="hero-play-cta-text">Tap to Play Entry 1 (54s)</div>
               </div>
 
               <!-- Bottom Details in Reel -->
               <div class="reel-overlay-bottom">
-                <div class="reel-caption-title">The Magic Ticket Across Tamil Nadu</div>
-                <div class="reel-caption-tags">#reimaginetn · @tntourismoffcl · 5 Landmarks</div>
-                <div class="reel-sound-ticker">
+                <div class="reel-caption-title" id="hero-caption-title">The Magic Ticket Across Tamil Nadu</div>
+                <div class="reel-caption-tags" id="hero-caption-tags">#reimaginetn · @tntourismoffcl · 5 Historic Stops</div>
+                <div class="reel-sound-ticker" id="hero-sound-ticker">
                   <span>🎵</span>
-                  <span>Original Audio - Ganga Ponnu · #reimaginetn</span>
+                  <span id="hero-sound-text">Original Audio - Ganga Ponnu · #reimaginetn</span>
                 </div>
               </div>
             </div>
@@ -1443,6 +1454,7 @@
             <div class="reel-overlay-actions">
               <button type="button" class="reel-action-btn" id="reel-like-btn" title="Like this Reel">
                 <span>❤️</span>
+                <span class="reel-action-label" id="reel-like-count">1.9K</span>
               </button>
               <button type="button" class="reel-action-btn" id="reel-share-btn" title="Share Reel">
                 <span>↗️</span>
@@ -1462,8 +1474,8 @@
 
           <!-- Reel Control Actions Bar -->
           <div class="reel-ctrl-bar">
-            <a href="https://www.instagram.com/reel/Dd1h9_EAktC/" target="_blank" rel="noopener" class="btn-ig-open" id="btn-open-ig-reel">
-              <span>📸</span> Open in Instagram ↗
+            <a href="https://www.instagram.com/reel/Dd1h9_EAktC/?stkn=MXQ0bXVuM2N1eTBsMA==" target="_blank" rel="noopener" class="btn-ig-open" id="btn-open-ig-reel">
+              <span>📸</span> Open Entry on Instagram ↗
             </a>
             <button type="button" class="btn-theater-trigger" id="btn-hero-theater">
               <span>⛶</span> Fullscreen Theater
@@ -1473,39 +1485,48 @@
           <!-- Secondary Links Row -->
           <div class="reel-sub-actions">
             <button type="button" class="btn-sub-action" id="btn-replay-reel">↺ Replay Video</button>
+            <button type="button" class="btn-sub-action" id="btn-custom-reel-url">⚙️ Set Custom Reel URL</button>
             <a href="https://youtube.com/shorts/pHHghhEey3k" target="_blank" rel="noopener" class="btn-sub-action">YouTube Shorts ↗</a>
           </div>
         </div>
       </div>
 
       <!-- Hero Information Column -->
-      <div class="hero-info">
-        <span class="badge-pill">Official #ReimagineTN Entry · 54s AI Animation</span>
-        <h2>The Magic Ticket Across Tamil Nadu</h2>
-        <p>Follow dynamic AI sibling duo <strong>Lokesh &amp; Varsha</strong> on an animated 3D heritage loop from Chennai Central down to Kanyakumari. One golden ticket, five iconic historic landmarks, designed for Tamil Nadu Tourism by <strong>Ganga Ponnu</strong>.</p>
+      <div class="hero-info" id="hero-info-column">
+        <span class="badge-pill" id="hero-badge-pill">Official #ReimagineTN Entry #1 · 54s AI Animation</span>
+        <h2 id="hero-title-text">The Magic Ticket Across Tamil Nadu</h2>
+        <p id="hero-desc-text">Follow dynamic AI sibling duo <strong>Lokesh &amp; Varsha</strong> on an animated 3D heritage loop from Chennai Central down to Kanyakumari. One golden ticket, five iconic historic landmarks, designed for Tamil Nadu Tourism by <strong>Ganga Ponnu</strong>.</p>
         
-        <div class="features-list">
+        <div class="features-list" id="hero-features-list">
           <div class="feature-item">
             <div class="feature-icon">🎟️</div>
             <div class="feature-text">
-              <strong>One Golden Ticket Loop</strong>
-              <span>Chennai Central ➔ Madurai ➔ Thanjavur ➔ Nilgiri ➔ Kanyakumari. Every stamp is an authentic cultural treasure.</span>
+              <strong id="feat-1-title">One Golden Ticket Loop</strong>
+              <span id="feat-1-desc">Chennai Central ➔ Madurai ➔ Thanjavur ➔ Nilgiri ➔ Kanyakumari. Every stamp is an authentic cultural treasure.</span>
             </div>
           </div>
           <div class="feature-item">
             <div class="feature-icon">🏛️</div>
             <div class="feature-text">
-              <strong>1000-Year Heritage Meets Modern AI</strong>
-              <span>Custom-crafted character models and regional architectures preserve real historical depth instead of generic stock travel visuals.</span>
+              <strong id="feat-2-title">1000-Year Heritage Meets Modern AI</strong>
+              <span id="feat-2-desc">Custom-crafted character models and regional architectures preserve real historical depth instead of generic stock travel visuals.</span>
             </div>
           </div>
           <div class="feature-item">
             <div class="feature-icon">🎓</div>
             <div class="feature-text">
-              <strong>Living Classroom for Children &amp; Jury</strong>
-              <span>Each stop pairs a 9:16 vertical short with architectural STEM facts and parent-child conversation starters.</span>
+              <strong id="feat-3-title">Living Classroom for Children &amp; Jury</strong>
+              <span id="feat-3-desc">Each stop pairs a 9:16 vertical short with architectural STEM facts and parent-child conversation starters.</span>
             </div>
           </div>
+        </div>
+
+        <div class="landmark-pills" id="hero-landmark-pills">
+          <a class="pill" href="#cc">📍 1. Chennai Central</a>
+          <a class="pill" href="#mad">📍 2. Madurai Meenakshi</a>
+          <a class="pill" href="#than">📍 3. Thanjavur Big Temple</a>
+          <a class="pill" href="#nil">📍 4. Nilgiri Mountain Railway</a>
+          <a class="pill" href="#kan">📍 5. Kanyakumari</a>
         </div>
 
         <div class="cta-row">
@@ -1515,22 +1536,23 @@
       </div>
     </section>
 
-    <!-- Interactive Route Tracker -->
+    <!-- Interactive Route Stops (Interactive Pins Only) -->
     <section class="route-tracker" id="route-tracker">
       <div class="route-header">
         <div>
-          <span style="font-size:0.75rem;font-weight:700;color:var(--gold-primary);text-transform:uppercase;letter-spacing:0.05em;">Interactive Timeline</span>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--gold-primary);text-transform:uppercase;letter-spacing:0.05em;" id="txt-route-kicker">Interactive Route Stops</span>
           <h3 id="txt-route-title">The Magic Heritage Route</h3>
-          <p id="txt-route-desc">5 landmarks · 1 golden ticket · Trace the cinematic loop across Tamil Nadu</p>
+          <p id="txt-route-desc">5 landmarks · 1 golden ticket · Tap any interactive pin to jump directly to its story &amp; video</p>
         </div>
-        <div style="font-size:0.8rem;color:var(--text-muted);">Click any stop to jump directly</div>
-        <div class="landmark-pills">
-          <a class="pill" href="#cc">📍 1. Chennai Central</a>
-          <a class="pill" href="#mad">📍 2. Madurai Meenakshi</a>
-          <a class="pill" href="#than">📍 3. Thanjavur Big Temple</a>
-          <a class="pill" href="#nil">📍 4. Nilgiri Mountain Railway</a>
-          <a class="pill" href="#kan">📍 5. Kanyakumari</a>
-        </div>
+        <div style="font-size:0.8rem;color:var(--text-muted);">Quick Jump</div>
+      </div>
+
+      <div class="landmark-pills" id="route-landmark-pills" style="margin-bottom:0;">
+        <a class="pill" href="#cc">📍 1. Chennai Central</a>
+        <a class="pill" href="#mad">📍 2. Madurai Meenakshi</a>
+        <a class="pill" href="#than">📍 3. Thanjavur Big Temple</a>
+        <a class="pill" href="#nil">📍 4. Nilgiri Mountain Railway</a>
+        <a class="pill" href="#kan">📍 5. Kanyakumari</a>
       </div>
     </section>
 
@@ -1654,6 +1676,105 @@
       </div>
     </section>
 
+    <!-- Entry 2 Showcase: Marvels of Tamil Nadu -->
+    <section id="entry-2-landmarks" style="margin: 4rem 0 2rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+        <div>
+          <span class="badge-pill" style="background:rgba(2,132,199,0.15);border-color:#38bdf8;color:#38bdf8;">Official Submission #2</span>
+          <h2 class="section-title" style="margin-top:0.4rem;">Entry 2: "Varsha, idhu India-va illa Switzerland-a?"</h2>
+          <p class="section-subtitle" style="margin-bottom:0;">5 scenic &amp; architectural marvels reimagined through 3D generative animation with siblings Lokesh and Varsha.</p>
+        </div>
+        <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" class="btn-ig-open" style="background:linear-gradient(45deg,#0284c7,#2563eb,#7c3aed);white-space:nowrap;">
+          <span>📸</span> Watch Entry 2 on Instagram ↗
+        </a>
+      </div>
+
+      <div class="landmarks-grid">
+        <!-- 1. Kodaikanal Lake -->
+        <article class="landmark-card" id="kodai">
+          <div class="card-video" style="aspect-ratio:16/10;max-height:240px;overflow:hidden;background:#0f172a;">
+            <img src="https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif" alt="Kodaikanal Hill and Lake" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+            <span class="video-kicker-overlay">Kodaikanal · Dindigul Hills</span>
+          </div>
+          <div class="card-body">
+            <p class="card-fact-kicker" style="color:#38bdf8;">Hill Station · Western Ghats · 2,285m</p>
+            <h3 class="card-title">1. Kodaikanal Lake &amp; Pine Canopies</h3>
+            <p class="card-desc">The misty star of Dindigul! Framed by lush pine canopies, foggy morning peaks, and serene lake waters where Lokesh wonders if they've stepped into the Swiss Alps.</p>
+            <p class="did-you-know"><strong>Did you know?</strong> Kodaikanal Lake is a star-shaped artificial lake built in 1863, surrounded by unique Shola forests and mist clouds.</p>
+            <p class="ask-child"><strong>Ask your child:</strong> Why does mist form around hill-top lakes early in the morning?</p>
+            <div class="card-footer">
+              <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" style="color:#38bdf8;">Watch in Reel ↗</a>
+              <span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">Entry 2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Thirumalai Nayakkar Mahal -->
+        <article class="landmark-card" id="mahal">
+          <div class="card-video" style="aspect-ratio:16/10;max-height:240px;overflow:hidden;background:#0f172a;">
+            <img src="https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif" alt="Thirumalai Nayakkar Mahal Madurai" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+            <span class="video-kicker-overlay">Nayakkar Mahal · Madurai 1636</span>
+          </div>
+          <div class="card-body">
+            <p class="card-fact-kicker" style="color:#38bdf8;">Indo-Saracenic Architecture · 1636 CE</p>
+            <h3 class="card-title">2. Thirumalai Nayakkar Mahal, Madurai</h3>
+            <p class="card-desc">Built in 1636 CE by King Thirumalai Nayak, this royal palace blends Dravidian and Islamic architecture, world-renowned for its colossal 82-foot foliage stucco pillars.</p>
+            <p class="did-you-know"><strong>Did you know?</strong> The giant circular pillars were engineered with mortar, crushed shells, and egg whites for enduring strength without iron beams.</p>
+            <p class="ask-child"><strong>Ask your child:</strong> How do grand arched ceilings help keep a palace cool in Madurai's warm climate?</p>
+            <div class="card-footer">
+              <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" style="color:#38bdf8;">Watch in Reel ↗</a>
+              <span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">Entry 2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Mathoor Aqueduct -->
+        <article class="landmark-card" id="mathoor">
+          <div class="card-body" style="padding-top:1.8rem;">
+            <p class="card-fact-kicker" style="color:#38bdf8;">Civil Engineering Marvel · Kanyakumari</p>
+            <h3 class="card-title">3. Mathoor Aqueduct (Hanging Trough)</h3>
+            <p class="card-desc">One of Asia's longest and highest aqueducts, built across the Pahrali river with 28 towering piers reaching 115 feet high to transport irrigation water across lush valleys.</p>
+            <p class="did-you-know"><strong>Did you know?</strong> Built in 1966 for drought relief, this massive trough bridge carries thousands of gallons of water purely using gravity!</p>
+            <p class="ask-child"><strong>Ask your child:</strong> How can water travel from one hill to another across a deep valley without a pump?</p>
+            <div class="card-footer">
+              <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" style="color:#38bdf8;">Watch in Reel ↗</a>
+              <span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">Entry 2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. New Pamban Bridge -->
+        <article class="landmark-card" id="pamban">
+          <div class="card-body" style="padding-top:1.8rem;">
+            <p class="card-fact-kicker" style="color:#38bdf8;">Next-Gen Maritime Railway · Rameswaram</p>
+            <h3 class="card-title">4. New Pamban Vertical-Lift Sea Bridge</h3>
+            <p class="card-desc">India's state-of-the-art vertical-lift oceanic railway bridge. Spanning across open turquoise seas, the central navigational span lifts vertically into the sky to let massive ships pass below.</p>
+            <p class="did-you-know"><strong>Did you know?</strong> It is India's very first vertical-lift sea bridge, featuring specialized corrosion-resistant stainless-steel components engineered for intense marine salt winds.</p>
+            <p class="ask-child"><strong>Ask your child:</strong> Would you rather cross the ocean by train on a sea bridge or by boat?</p>
+            <div class="card-footer">
+              <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" style="color:#38bdf8;">Watch in Reel ↗</a>
+              <span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">Entry 2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Arichal Munai, Dhanushkodi -->
+        <article class="landmark-card" id="arichal">
+          <div class="card-body" style="padding-top:1.8rem;">
+            <p class="card-fact-kicker" style="color:#38bdf8;">Subcontinent's Southern Tip · Dhanushkodi</p>
+            <h3 class="card-title">5. Arichal Munai (Dhanushkodi Land's End)</h3>
+            <p class="card-desc">The dramatic coastal point where the calm Bay of Bengal (Penn Kadal) meets the restless waves of the Indian Ocean (Aan Kadal). A breathtaking sand-spit horizon where sky and sea unite.</p>
+            <p class="did-you-know"><strong>Did you know?</strong> Arichal Munai is just 18 miles from Sri Lanka, where the historic Ram Setu (Adam's Bridge) underwater limestone shoals begin.</p>
+            <p class="ask-child"><strong>Ask your child:</strong> Why do the waters on the two sides of Dhanushkodi look different in color and wave strength?</p>
+            <div class="card-footer">
+              <a href="https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3" target="_blank" rel="noopener" style="color:#38bdf8;">Watch in Reel ↗</a>
+              <span style="font-size:0.75rem;color:var(--text-muted);font-weight:700;">Entry 2</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Animated Travel Stickers Section -->
     <section class="stickers-section" id="stickers">
       <span style="font-size:2rem;display:block;margin-bottom:6px;" aria-hidden="true">✨🎟️</span>
@@ -1708,6 +1829,26 @@
           <div class="sticker-actions">
             <button type="button" class="btn-copy-sticker" data-url="https://tenor.com/en-IN/view/kanyakumari-sunrise-randomtyms-gif-1423450974558509015">Copy</button>
             <button type="button" class="btn-wa-sticker" data-text="Check out this Kanyakumari sticker by RandomTyms! https://tenor.com/en-IN/view/kanyakumari-sunrise-randomtyms-gif-1423450974558509015">WA</button>
+          </div>
+        </div>
+
+        <!-- 6. Kodaikanal Hill (Entry 2) -->
+        <div class="sticker-card">
+          <img src="https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif" alt="Kodaikanal Hill Station sticker" loading="lazy">
+          <span>Kodaikanal</span>
+          <div class="sticker-actions">
+            <button type="button" class="btn-copy-sticker" data-url="https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif">Copy</button>
+            <button type="button" class="btn-wa-sticker" data-text="Check out this Kodaikanal Hill sticker by RandomTyms! https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif">WA</button>
+          </div>
+        </div>
+
+        <!-- 7. Thirumalai Nayakkar Mahal (Entry 2) -->
+        <div class="sticker-card">
+          <img src="https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif" alt="Thirumalai Nayakkar Mahal Madurai sticker" loading="lazy">
+          <span>Nayakkar Mahal</span>
+          <div class="sticker-actions">
+            <button type="button" class="btn-copy-sticker" data-url="https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif">Copy</button>
+            <button type="button" class="btn-wa-sticker" data-text="Check out this Thirumalai Nayakkar Mahal sticker by RandomTyms! https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif">WA</button>
           </div>
         </div>
       </div>
@@ -1766,20 +1907,133 @@
       'use strict';
 
       const MAIN_VIDEO_ID = 'pHHghhEey3k';
-      const DEFAULT_IG_TAG_URL = 'https://www.instagram.com/reel/Dd1h9_EAktC/';
+      const ENTRY_1_REEL = 'https://www.instagram.com/reel/Dd1h9_EAktC/?stkn=MXQ0bXVuM2N1eTBsMA==';
+      const ENTRY_2_REEL = 'https://www.instagram.com/reel/DeJzC2_RyVn/?stkn=cXpoeHNqZ2xsMnN3';
+      const DEFAULT_IG_TAG_URL = 'https://www.instagram.com/explore/tags/reimaginetn/';
+
+      const ENTRIES_DATA = {
+        1: {
+          title: 'The Magic Ticket Across Tamil Nadu',
+          duration: '⏱ 0:54',
+          badge: 'Official #ReimagineTN Entry #1 · 54s AI Animation',
+          tags: '#reimaginetn · @tntourismoffcl · 5 Historic Stops',
+          sound: 'Original Audio - Ganga Ponnu · #reimaginetn',
+          playText: 'Tap to Play Entry 1 (54s)',
+          desc: 'Follow dynamic AI sibling duo Lokesh & Varsha on an animated 3D heritage loop from Chennai Central down to Kanyakumari. One golden ticket, five iconic historic landmarks, designed for Tamil Nadu Tourism by Ganga Ponnu.',
+          poster: 'https://i.ytimg.com/vi/pHHghhEey3k/hqdefault.jpg',
+          reelUrl: ENTRY_1_REEL,
+          pillsHtml: '<a class="pill" href="#cc">📍 1. Chennai Central</a><a class="pill" href="#mad">📍 2. Madurai Meenakshi</a><a class="pill" href="#than">📍 3. Thanjavur Big Temple</a><a class="pill" href="#nil">📍 4. Nilgiri Mountain Railway</a><a class="pill" href="#kan">📍 5. Kanyakumari</a>'
+        },
+        2: {
+          title: '"Varsha, idhu India-va illa Switzerland-a?"',
+          duration: '⏱ Reel',
+          badge: 'Official #ReimagineTN Entry #2 · Natural & Architectural Wonders',
+          tags: '#reimaginetn · @tntourismoffcl · 5 Epic Marvels',
+          sound: 'Original Audio - Lokesh & Varsha · Tamil Voiceover',
+          playText: 'Open & Watch Entry 2 on Instagram ↗',
+          desc: 'Join 3D animated siblings Lokesh & Varsha as they marvel at Kodaikanal Lake, Thirumalai Nayakkar Mahal (1636), Mathoor Aqueduct, the New Pamban Vertical-Lift Sea Bridge, and Arichal Munai Dhanushkodi!',
+          poster: 'https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif',
+          reelUrl: ENTRY_2_REEL,
+          pillsHtml: '<a class="pill" href="#kodai">📍 1. Kodaikanal Lake</a><a class="pill" href="#mahal">📍 2. Nayakkar Mahal</a><a class="pill" href="#mathoor">📍 3. Mathoor Aqueduct</a><a class="pill" href="#pamban">📍 4. New Pamban Bridge</a><a class="pill" href="#arichal">📍 5. Arichal Munai</a>'
+        }
+      };
+
+      let activeEntryId = 1;
+      let activeReelUrl = ENTRY_1_REEL;
 
       // 1. Reel Playback Engine
       const reelVideoContainer = document.getElementById('reel-video-container');
       const reelFacade = document.getElementById('reel-facade');
       const btnReelPlayTrigger = document.getElementById('btn-reel-play-trigger');
       const btnReplayReel = document.getElementById('btn-replay-reel');
-      let isHeroPlaying = false;
+      const btnOpenIg = document.getElementById('btn-open-ig-reel');
+
+      function switchEntry(entryId) {
+        activeEntryId = entryId;
+        const data = ENTRIES_DATA[entryId];
+        activeReelUrl = data.reelUrl;
+
+        // update tabs
+        const tab1 = document.getElementById('tab-entry-1');
+        const tab2 = document.getElementById('tab-entry-2');
+        if (tab1 && tab2) {
+          if (entryId === 1) {
+            tab1.style.background = 'var(--gold-primary)';
+            tab1.style.color = '#070b14';
+            tab1.style.borderColor = 'var(--gold-primary)';
+            tab2.style.background = 'rgba(255,255,255,0.06)';
+            tab2.style.color = 'var(--text-muted)';
+            tab2.style.borderColor = 'var(--border-subtle)';
+          } else {
+            tab2.style.background = 'linear-gradient(45deg,#0284c7,#2563eb)';
+            tab2.style.color = '#fff';
+            tab2.style.borderColor = '#38bdf8';
+            tab1.style.background = 'rgba(255,255,255,0.06)';
+            tab1.style.color = 'var(--text-muted)';
+            tab1.style.borderColor = 'var(--border-subtle)';
+          }
+        }
+
+        // update hero text & facade
+        const posterImg = document.getElementById('hero-poster-img');
+        const captionTitle = document.getElementById('hero-caption-title');
+        const captionTags = document.getElementById('hero-caption-tags');
+        const soundText = document.getElementById('hero-sound-text');
+        const durationBadge = document.getElementById('hero-duration-badge');
+        const playCtaText = document.getElementById('hero-play-cta-text');
+        const badgePill = document.getElementById('hero-badge-pill');
+        const titleText = document.getElementById('hero-title-text');
+        const descText = document.getElementById('hero-desc-text');
+        const pillsContainer = document.getElementById('hero-landmark-pills');
+        const routePillsContainer = document.getElementById('route-landmark-pills');
+        const txtRouteTitle = document.getElementById('txt-route-title');
+        const txtRouteDesc = document.getElementById('txt-route-desc');
+        const txtRouteKicker = document.getElementById('txt-route-kicker');
+
+        if (posterImg) posterImg.src = data.poster;
+        if (captionTitle) captionTitle.textContent = data.title;
+        if (captionTags) captionTags.textContent = data.tags;
+        if (soundText) soundText.textContent = data.sound;
+        if (durationBadge) durationBadge.textContent = data.duration;
+        if (playCtaText) playCtaText.textContent = data.playText;
+        if (badgePill) badgePill.textContent = data.badge;
+        if (titleText) titleText.textContent = data.title;
+        if (descText) descText.textContent = data.desc;
+        if (pillsContainer) pillsContainer.innerHTML = data.pillsHtml;
+        if (routePillsContainer) routePillsContainer.innerHTML = data.pillsHtml;
+
+        if (entryId === 1) {
+          if (txtRouteTitle) txtRouteTitle.textContent = 'The Magic Heritage Route (Entry 1)';
+          if (txtRouteDesc) txtRouteDesc.textContent = '5 landmarks · 1 golden ticket · Tap any interactive pin to jump directly to its story & video';
+          if (txtRouteKicker) txtRouteKicker.textContent = 'Interactive Route Stops · Entry 1';
+        } else {
+          if (txtRouteTitle) txtRouteTitle.textContent = 'Natural & Architectural Marvels (Entry 2)';
+          if (txtRouteDesc) txtRouteDesc.textContent = '5 scenic wonders · Kodaikanal to Dhanushkodi · Tap any pin to explore';
+          if (txtRouteKicker) txtRouteKicker.textContent = 'Interactive Route Stops · Entry 2';
+        }
+
+        if (btnOpenIg) btnOpenIg.href = data.reelUrl;
+
+        // Reset video frame so poster is visible
+        if (reelFacade) reelFacade.classList.remove('hidden');
+        if (reelVideoContainer) reelVideoContainer.innerHTML = '';
+        showToast('Switched to Entry ' + entryId + '!');
+      }
+
+      const tab1Btn = document.getElementById('tab-entry-1');
+      const tab2Btn = document.getElementById('tab-entry-2');
+      if (tab1Btn) tab1Btn.addEventListener('click', function () { switchEntry(1); });
+      if (tab2Btn) tab2Btn.addEventListener('click', function () { switchEntry(2); });
 
       function startHeroReel() {
         if (!reelVideoContainer) return;
+        if (activeEntryId === 2) {
+          reelVideoContainer.innerHTML = '<iframe src="https://www.instagram.com/reel/DeJzC2_RyVn/embed/captioned/" title="Entry 2: Varsha, idhu India-va illa Switzerland-a?" allow="autoplay; encrypted-media; clipboard-write; web-share" allowfullscreen style="width:100%;height:100%;border:0;background:#000;"></iframe>';
+          if (reelFacade) reelFacade.classList.add('hidden');
+          return;
+        }
         reelVideoContainer.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + MAIN_VIDEO_ID + '?autoplay=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1" title="The Magic Ticket Across Tamil Nadu (54s Official Reel)" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>';
         if (reelFacade) reelFacade.classList.add('hidden');
-        isHeroPlaying = true;
       }
 
       if (btnReelPlayTrigger) {
@@ -1787,7 +2041,6 @@
       }
       if (reelFacade) {
         reelFacade.addEventListener('click', function (e) {
-          // don't trigger if clicked on child links or action buttons
           if (e.target.closest('.reel-action-btn') || e.target.closest('a')) return;
           startHeroReel();
         });
@@ -1800,7 +2053,6 @@
       }
 
       // 2. Custom Reel Link Management (Persistent in localStorage)
-      let activeReelUrl = DEFAULT_IG_TAG_URL;
       try {
         const savedUrl = localStorage.getItem('rt_custom_reel_url');
         if (savedUrl && savedUrl.trim().startsWith('http')) {
@@ -1809,10 +2061,7 @@
       } catch (e) {}
 
       function updateReelLinks() {
-        const btnOpenIg = document.getElementById('btn-open-ig-reel');
-        const btnContestIg = document.getElementById('btn-contest-ig');
         if (btnOpenIg) btnOpenIg.href = activeReelUrl;
-        if (btnContestIg) btnContestIg.href = activeReelUrl;
       }
       updateReelLinks();
 
@@ -1940,8 +2189,19 @@
       function openTheater(videoId, title) {
         if (!modal || !modalContent) return;
         modalTitle.textContent = title;
-        modalContent.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&playsinline=1&rel=0" title="' + title + '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>';
-        if (modalExtLink) modalExtLink.href = 'https://youtube.com/shorts/' + videoId;
+        if (videoId && videoId.startsWith('http')) {
+          modalContent.innerHTML = '<iframe src="' + videoId + '" title="' + title + '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;background:#000;"></iframe>';
+          if (modalExtLink) {
+            modalExtLink.href = ENTRY_2_REEL;
+            modalExtLink.textContent = 'Open Entry 2 on Instagram ↗';
+          }
+        } else {
+          modalContent.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&playsinline=1&rel=0" title="' + title + '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>';
+          if (modalExtLink) {
+            modalExtLink.href = 'https://youtube.com/shorts/' + videoId;
+            modalExtLink.textContent = 'Open in YouTube ↗';
+          }
+        }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
@@ -1969,14 +2229,22 @@
       const btnHeroTheater = document.getElementById('btn-hero-theater');
       if (btnHeroTheater) {
         btnHeroTheater.addEventListener('click', function () {
-          openTheater(MAIN_VIDEO_ID, 'The Magic Ticket Across Tamil Nadu (54s Official Reel)');
+          if (activeEntryId === 2) {
+            openTheater('https://www.instagram.com/reel/DeJzC2_RyVn/embed/captioned/', 'Entry 2: "Varsha, idhu India-va illa Switzerland-a?"');
+          } else {
+            openTheater(MAIN_VIDEO_ID, 'The Magic Ticket Across Tamil Nadu (54s Official Reel)');
+          }
         });
       }
       const reelTheaterIconBtn = document.getElementById('reel-theater-icon-btn');
       if (reelTheaterIconBtn) {
         reelTheaterIconBtn.addEventListener('click', function (e) {
           e.stopPropagation();
-          openTheater(MAIN_VIDEO_ID, 'The Magic Ticket Across Tamil Nadu (54s Official Reel)');
+          if (activeEntryId === 2) {
+            openTheater('https://www.instagram.com/reel/DeJzC2_RyVn/embed/captioned/', 'Entry 2: "Varsha, idhu India-va illa Switzerland-a?"');
+          } else {
+            openTheater(MAIN_VIDEO_ID, 'The Magic Ticket Across Tamil Nadu (54s Official Reel)');
+          }
         });
       }
 
@@ -1985,6 +2253,26 @@
           e.stopPropagation();
           openTheater(btn.dataset.id, btn.dataset.title || 'Landmark Video');
         });
+      });
+
+      // 6. Interactive Landmark Pin Smooth Jump & Card Pulse
+      document.addEventListener('click', function (e) {
+        const pill = e.target.closest('.pill');
+        if (!pill) return;
+        const href = pill.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          targetEl.classList.remove('card-target-pulse');
+          void targetEl.offsetWidth; // trigger CSS animation reflow
+          targetEl.classList.add('card-target-pulse');
+          setTimeout(function () {
+            targetEl.classList.remove('card-target-pulse');
+          }, 1800);
+        }
       });
 
       // 6. Toast Notification Helper
