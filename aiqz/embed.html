@@ -24,7 +24,6 @@
 </style>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="color-scheme" content="light only">
 <title>RandomTyms AIQZ</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -64,39 +63,21 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);border-bottom:1px 
 .overlay{position:fixed;inset:0;background:rgba(43,46,74,.65);display:flex;align-items:center;justify-content:center;z-index:99;padding:16px}
 .card{background:var(--paper);border:3px dashed var(--gold);border-radius:18px;padding:18px;max-width:460px;width:100%;text-align:center;max-height:90vh;overflow-y:auto;position:relative}
 .close{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);background:#fff;cursor:pointer;font-weight:800}
-.embed-copy{margin-top:12px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px;text-align:left;overflow:hidden}
-.embed-copy textarea{width:100%;font-size:.72em;font-family:monospace;border:1px solid var(--border);border-radius:6px;padding:6px;background:#FFFEF8;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;color:var(--ink)}
-code{background:#fff;border:1px solid var(--border);padding:2px 6px;border-radius:6px;font-size:.78em;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap;display:inline;max-width:100%}
-.info-box{background:#fff;border:2px dashed var(--border);border-radius:12px;padding:12px;text-align:left;font-size:.85em;line-height:1.5;overflow:hidden;word-break:break-word;overflow-wrap:anywhere}
-.example-url{background:#2B2E4A;color:#FBF3E1;border-radius:8px;padding:8px 10px;font-family:monospace;font-size:.7em;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap;line-height:1.4;margin-top:8px;max-width:100%;overflow:hidden}
 .feedback-img{max-height:260px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto;border-radius:12px}
 </style>
 </head>
 <body>
-<header><div class="header-wrap"><div class="brand-title" id="brand-reload" title="Back to topics">RandomTyms <span>AIQZ</span></div><div style="font-size:.7em;opacity:.6">assets fixed • h1 reloads</div></div></header>
+<header><div class="header-wrap"><div class="brand-title" id="brand-reload">RandomTyms <span>AIQZ</span></div><div style="font-size:.7em;opacity:.6">auto-height • h1 reloads</div></div></header>
 <div class="hero">
-<!-- FIXED: LOCAL ASSETS ./assets/ -->
-<img src="./assets/banner.webp" 
-     onerror="this.onerror=null; this.src='https://randomtyms.github.io/aiqz/assets/banner.webp';"
-     alt="Banner" style="max-width:580px;width:100%;height:auto;border-radius:18px;border:2px solid var(--border);display:block;margin:0 auto">
+<img src="./assets/banner.webp" onerror="this.src='https://randomtyms.github.io/aiqz/assets/banner.webp'" alt="Banner" style="max-width:580px;width:100%;height:auto;border-radius:18px;border:2px solid var(--border);display:block;margin:0 auto">
 <h1 id="reload-h1" title="Click to go back to Topics">Topic-wise <span style="color:#C9791A">Quiz</span></h1>
 <p>CSV via <code>?csv=</code> — topics via <code>?topics=</code> — range via <code>?range=</code></p>
 </div>
 <div class="quiz-box" id="setup-box">
-  <div class="badge" id="badge-reload" title="Back to topics">📚 Topics</div>
+  <div class="badge" id="badge-reload">📚 Topics</div>
   <div class="topic-master" id="topic-master"></div>
   <p id="load-status" style="font-weight:700;color:var(--teal);margin:6px 0">Waiting for ?csv=</p>
   <button class="btn btn-mari" id="start-btn" disabled>Waiting for CSV...</button>
-  <div id="no-csv-info" class="info-box" style="display:none;margin-top:12px">
-    <b>No CSV loaded.</b>
-    <div class="example-url">embed.html?csv=https://cdn.jsdelivr.net/gh/randomtyms/randomtyms-worksheets@main/Class%206/class6_science_quiz.csv&topics=All:1-176|Food:1-20|Materials:21-38&range=1-20</div>
-  </div>
-  <div class="embed-copy" id="embed-copy" style="display:none">
-    <div style="font-weight:800;font-size:.85em">🔗 Current URL</div>
-    <textarea id="url-preview" rows="2" readonly onclick="this.select()"></textarea>
-    <div style="font-weight:800;font-size:.85em;margin-top:6px">📦 Iframe</div>
-    <textarea id="iframe-preview" rows="3" readonly onclick="this.select()"></textarea>
-  </div>
 </div>
 <div class="quiz-box" id="quiz-box" style="display:none;">
 <div class="topbar"><span id="progress"></span><span class="score-chip" id="score">Score: 0</span></div>
@@ -105,178 +86,78 @@ code{background:#fff;border:1px solid var(--border);padding:2px 6px;border-radiu
 <div class="options" id="opts"></div>
 <p style="margin-top:14px;font-size:.75em;opacity:.6">Click <b>Topic-wise Quiz</b> title to go back ↩️</p>
 </div>
-
 <div class="overlay" id="feedback-overlay" style="display:none;"><div class="card">
-<!-- FIXED: LOCAL ASSETS -->
-<img id="feedback-img" class="feedback-img" src="./assets/correct.webp" alt="feedback" onerror="this.onerror=null; this.src='https://randomtyms.github.io/aiqz/assets/correct.webp';">
+<img id="feedback-img" class="feedback-img" src="./assets/correct.webp" alt="feedback" onerror="this.src='https://randomtyms.github.io/aiqz/assets/correct.webp'">
 <div id="fb-text" style="font-weight:800;font-size:1.2em;margin:10px 0"></div><button class="btn btn-mari" id="continue-btn">Continue ➜</button></div></div>
-
 <div class="overlay" id="final-overlay" style="display:none;"><div class="card"><button class="close" id="final-close">✕</button>
-<img id="final-img" class="feedback-img" src="./assets/correct.webp" alt="final" onerror="this.onerror=null; this.src='https://randomtyms.github.io/aiqz/assets/correct.webp';">
+<img id="final-img" class="feedback-img" src="./assets/correct.webp" alt="final" onerror="this.src='https://randomtyms.github.io/aiqz/assets/correct.webp'">
 <div id="final-score" style="font-weight:800;font-size:1.25em;margin:10px 0"></div><div id="review" style="max-height:180px;overflow-y:auto;text-align:left;border-top:2px dashed var(--border);padding-top:8px;margin-bottom:10px"></div><button class="btn btn-mari" id="restart-btn">Back to Topics 🔄</button></div></div>
-
 <script>
-const DEFAULT_CSV_URL = "";
-// FIXED PATHS - LOCAL RELATIVE
-const IMG_CORRECT_LOCAL = "./assets/correct.webp";
-const IMG_WRONG_LOCAL = "./assets/wrong.webp";
-const IMG_BANNER_LOCAL = "./assets/banner.webp";
-// Fallback CDN
-const IMG_CORRECT_CDN = "https://randomtyms.github.io/aiqz/assets/correct.webp";
-const IMG_WRONG_CDN = "https://randomtyms.github.io/aiqz/assets/wrong.webp";
-const IMG_BANNER_CDN = "https://randomtyms.github.io/aiqz/assets/banner.webp";
-// Blogger ultimate fallback
-const IMG_CORRECT_BLOG = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png";
-const IMG_WRONG_BLOG = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHOA-KW2g8ysuNUbTHH6_lTgj7QNBgXY6tt19p94F9dVs6ZPU16O8czHv7MjS1_qwZJJRPBmPyOpHgaGxv3TSZrRV6ucB8ajXkUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUez8vi2wQKlI5IWvHHXN0/s1920/1000239625.png";
-
+const IMG_CORRECT_LOCAL="./assets/correct.webp", IMG_WRONG_LOCAL="./assets/wrong.webp";
+const IMG_CORRECT_CDN="https://randomtyms.github.io/aiqz/assets/correct.webp", IMG_WRONG_CDN="https://randomtyms.github.io/aiqz/assets/wrong.webp";
 function setFeedbackImg(isCorrect){
-  let img = document.getElementById('feedback-img');
-  let finalImg = document.getElementById('final-img');
-  let primary = isCorrect ? IMG_CORRECT_LOCAL : IMG_WRONG_LOCAL;
-  let cdn = isCorrect ? IMG_CORRECT_CDN : IMG_WRONG_CDN;
-  let blog = isCorrect ? IMG_CORRECT_BLOG : IMG_WRONG_BLOG;
-  
-  // Try local, then CDN, then blog
-  img.onerror = function(){
-    if(img.src.includes('assets/correct.webp') || img.src.includes('assets/wrong.webp')){
-      img.src = cdn;
-    } else if(img.src === cdn){
-      img.src = blog;
+  let img=document.getElementById('feedback-img'), finalImg=document.getElementById('final-img');
+  let primary=isCorrect?IMG_CORRECT_LOCAL:IMG_WRONG_LOCAL, cdn=isCorrect?IMG_CORRECT_CDN:IMG_WRONG_CDN;
+  img.onerror=function(){ if(img.src.includes('./assets/')) img.src=cdn; }; img.src=primary;
+  if(finalImg){ finalImg.onerror=function(){ if(finalImg.src.includes('./assets/')) finalImg.src=cdn; }; finalImg.src=primary; }
+}
+// AUTO-HEIGHT FOR BLOGGER
+function sendHeight(){
+  try{
+    let h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, 800);
+    // add extra for safety
+    h = h + 20;
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'aiqzHeight', height:h, id:'aiqz-iframe'}, '*');
     }
-  };
-  img.src = primary;
-  
-  // Also set final img same logic
-  if(finalImg){
-    finalImg.onerror = function(){
-      if(finalImg.src.includes('assets/')){
-        finalImg.src = cdn;
-      } else if(finalImg.src === cdn){
-        finalImg.src = blog;
-      }
-    };
-    finalImg.src = primary;
-  }
+  }catch(e){}
 }
+// Send height on load, resize, and every second for 5s
+window.addEventListener('load', ()=>{ sendHeight(); setTimeout(sendHeight, 300); setTimeout(sendHeight, 1000); setTimeout(sendHeight, 2500); });
+setInterval(sendHeight, 1500);
+// Observer for DOM changes
+let ro = new ResizeObserver(sendHeight);
+ro.observe(document.body);
 
-function cleanSearch(){ return window.location.search.replace(/&&+/g,'&'); }
-function getParams(){ return new URLSearchParams(cleanSearch()); }
-function normalizeUrl(u){
-  if(!u) return u;
-  let url=u.trim();
-  try{ url=url.replace(/%2520/g,'%20').replace(/%25206/g,'%206'); }catch(e){}
-  try{ if(url.includes('%25')) url=decodeURIComponent(url); }catch(e){}
-  try{ if(url.includes('%25')) url=decodeURIComponent(url); }catch(e){}
-  if(url.includes('github.com/')&&url.includes('/blob/')){
-    url=url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');
-  }
-  return url;
+function cleanSearch(){return window.location.search.replace(/&&+/g,'&');}
+function getParams(){return new URLSearchParams(cleanSearch());}
+function normalizeUrl(u){if(!u)return u;let url=u.trim();try{url=url.replace(/%2520/g,'%20');}catch(e){}try{if(url.includes('%25'))url=decodeURIComponent(url);}catch(e){}if(url.includes('github.com/')&&url.includes('/blob/')){url=url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');}return url;}
+function getCsvUrl(){let csv=getParams().get('csv');if(!csv)return "";return normalizeUrl(csv);}
+function getRawRangeParam(){let p=getParams();return p.get('range')||p.get('questions')||p.get('qnos')||p.get('q')||"1-x";}
+function parseQNumbersToIndices(rangeStr,total){if(!rangeStr)return[];rangeStr=rangeStr.trim().toLowerCase();if(rangeStr==='1-x'||rangeStr==='all'||rangeStr==='1-*')return Array.from({length:total},(_,i)=>i+1);let indices=new Set();let parts=rangeStr.split(/[,|]/);for(let part of parts){part=part.trim();if(!part)continue;if(part.includes('-')){let[a,b]=part.split('-').map(s=>s.trim());let start=parseInt(a,10);let end=(b==='x'||b==='*')?total:parseInt(b,10);if(isNaN(start)||isNaN(end))continue;start=Math.max(1,start);end=Math.min(total,end);for(let i=start;i<=end;i++)indices.add(i);}else{let n=parseInt(part,10);if(!isNaN(n)&&n>=1&&n<=total)indices.add(n);}}return Array.from(indices).sort((a,b)=>a-b);}
+function indicesToRangeString(indices){if(!indices.length)return"1-x";let sorted=[...indices].sort((a,b)=>a-b);let ranges=[];let start=sorted[0],prev=sorted[0];for(let i=1;i<sorted.length;i++){if(sorted[i]===prev+1){prev=sorted[i];}else{ranges.push(start===prev?`${start}`:`${start}-${prev}`);start=prev=sorted[i];}}ranges.push(start===prev?`${start}`:`${start}-${prev}`);return ranges.join(',');}
+function parseTopicsParam(str){if(!str)return null;try{let d=str;try{if(d.includes('%25'))d=decodeURIComponent(d);}catch(e){}let obj=JSON.parse(d);if(Array.isArray(obj))return obj.map(o=>({label:(o.label||o.name||'').trim(),range:(o.range||'').trim()})).filter(x=>x.label&&x.range);}catch(e){}let sep=str.includes('|')?'|':',';return str.split(sep).map(p=>{p=p.trim();if(!p)return null;let i=p.lastIndexOf(':');if(i==-1)return null;return{label:p.slice(0,i).trim(),range:p.slice(i+1).trim()};}).filter(Boolean);}
+function parseLine(line){let res=[],cur='',q=false;for(let i=0;i<line.length;i++){let c=line[i];if(c=='"'){if(q&&line[i+1]=='"'){cur+='"';i++;}else q=!q;}else if(c==','&&!q){res.push(cur);cur='';}else cur+=c;}res.push(cur);return res.map(s=>s.trim());}
+function parseCSV(text){let lines=text.split(/\r?\n/).filter(l=>l.trim());let out=[],start=0;if(lines[0]&&lines[0].toLowerCase().includes('question'))start=1;for(let k=start;k<lines.length;k++){let p=parseLine(lines[k]);if(p.length<6)continue;if(p.length>6){let cf=p[p.length-1];let opts=p.slice(p.length-5,p.length-1);let qj=p.slice(0,p.length-5).join(', ');p=[qj].concat(opts).concat([cf]);}let cn=parseInt(p[5],10);if(isNaN(cn)||cn<1||cn>4)continue;out.push({q:p[0],options:[p[1],p[2],p[3],p[4]],correct:cn});}return out;}
+function shuffle(a){let b=a.slice();for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+let CSV_URL=getCsvUrl(),master=[],active=[],idx=0,score=0,wait=false,missed=[],selectedRange="1-x",selectedLabel="All Topics",selectedIndices=[];
+const topicMaster=document.getElementById('topic-master'),statusEl=document.getElementById('load-status'),startBtn=document.getElementById('start-btn'),setupBox=document.getElementById('setup-box'),quizBox=document.getElementById('quiz-box'),progressEl=document.getElementById('progress'),scoreEl=document.getElementById('score'),fillEl=document.getElementById('fill'),qText=document.getElementById('q-text'),optsEl=document.getElementById('opts'),fbOverlay=document.getElementById('feedback-overlay'),fbText=document.getElementById('fb-text'),contBtn=document.getElementById('continue-btn'),finalOverlay=document.getElementById('final-overlay'),finalScoreEl=document.getElementById('final-score'),reviewEl=document.getElementById('review'),restartBtn=document.getElementById('restart-btn'),closeBtn=document.getElementById('final-close');
+function sliceByIndices(items,indices){return indices.map(i=>items[i-1]).filter(Boolean);}
+function setActiveButton(range){document.querySelectorAll('.topic-btn').forEach(b=>{b.classList.toggle('active',b.dataset.range===range);});}
+function buildTopicButtons(topicsArr,total){topicMaster.innerHTML='';if(!topicsArr||!topicsArr.length)topicsArr=[{label:'All Topics',range:`1-${total}`}];topicsArr.forEach(t=>{let indices=parseQNumbersToIndices(t.range,total||1000);let count=indices.length;let btn=document.createElement('button');btn.className='topic-btn';btn.dataset.range=t.range;btn.dataset.label=t.label;if(t.range===selectedRange||t.label===selectedLabel)btn.classList.add('active');btn.innerHTML=`<strong>${t.label}</strong><small>Q${t.range} • ${count} Qs</small>`;topicMaster.appendChild(btn);});if(!topicMaster.querySelector('.topic-btn.active')&&topicMaster.firstChild){topicMaster.firstChild.classList.add('active');selectedRange=topicMaster.firstChild.dataset.range;selectedLabel=topicMaster.firstChild.dataset.label;} setTimeout(sendHeight,200);}
+function handleTopicClick(e){let btn=e.target.closest('.topic-btn');if(!btn)return;selectedRange=btn.dataset.range;selectedLabel=btn.dataset.label;selectedIndices=parseQNumbersToIndices(selectedRange,master.length);setActiveButton(selectedRange);if(master.length){statusEl.textContent=`${selectedLabel}: ${selectedIndices.length} questions ready (Q${selectedRange})`;startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${selectedIndices.length} Qs)`;startBtn.disabled=false;} sendHeight();}
+topicMaster.addEventListener('click',handleTopicClick);
+let initParams=getParams(),initRangeRaw=getRawRangeParam(),initLabel=initParams.get('topic')||"",isEmbed=initParams.get('embed')==='1',isAutostart=initParams.get('autostart')==='1'||initParams.get('start')==='1',topicsRaw=initParams.get('topics');
+selectedRange=initRangeRaw;if(initLabel)selectedLabel=initLabel;if(isEmbed)document.body.classList.add('is-embedded');
+async function resolveTopics(total){if(topicsRaw){let parsed=parseTopicsParam(topicsRaw);if(parsed&&parsed.length){buildTopicButtons(parsed,total);return parsed;}}let def=[{label:'All Topics',range:`1-${total}`}];buildTopicButtons(def,total);return def;}
+if(!CSV_URL){statusEl.textContent="Waiting for ?csv= param";statusEl.style.color="#D6553F";startBtn.disabled=true;topicMaster.innerHTML='<div style="grid-column:1/-1;padding:8px;opacity:.6">Add ?csv= to load</div>';}
+else{
+ statusEl.textContent="Loading CSV...";
+ let urlsToTry=[CSV_URL];
+ if(CSV_URL.includes('raw.githubusercontent.com')){let js=CSV_URL.replace('https://raw.githubusercontent.com/','https://cdn.jsdelivr.net/gh/').replace('/main/','@main/');if(!urlsToTry.includes(js))urlsToTry.push(js);}
+ if(CSV_URL.includes('Class%206')||CSV_URL.includes('Class 6')){let f="https://cdn.jsdelivr.net/gh/randomtyms/randomtyms-worksheets@main/Class%206/class6_science_quiz.csv";if(!urlsToTry.includes(f))urlsToTry.push(f);}
+ async function tryFetch(){for(let u of urlsToTry){try{let r=await fetch(u);if(!r.ok)throw new Error('HTTP '+r.status);let t=await r.text();return t;}catch(e){}}throw new Error('All fetch failed');}
+ tryFetch().then(async t=>{master=parseCSV(t);let total=master.length;let topics=await resolveTopics(total);selectedIndices=parseQNumbersToIndices(selectedRange,total);selectedRange=indicesToRangeString(selectedIndices);if(initLabel){let found=topics.find(x=>x.label.toLowerCase()===initLabel.toLowerCase());if(found){selectedRange=found.range;selectedIndices=parseQNumbersToIndices(selectedRange,total);}}setActiveButton(topics.find(x=>x.range===selectedRange)?.range||selectedRange);let a=topics.find(x=>x.range===selectedRange);if(a)selectedLabel=a.label;statusEl.textContent=`${selectedLabel}: ${selectedIndices.length} questions loaded (Q${selectedRange}) • Total ${total}`;statusEl.style.color="var(--teal)";startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${selectedIndices.length} Qs)`;startBtn.disabled=false;sendHeight();if(isAutostart&&isEmbed){startQuiz();}}).catch(err=>{statusEl.textContent="Failed: "+err.message;statusEl.style.color="#D6553F";});
 }
-function getCsvUrl(){ let csv=getParams().get('csv'); if(!csv) return ""; return normalizeUrl(csv); }
-function getRawRangeParam(){ let p=getParams(); return p.get('range')||p.get('questions')||p.get('qnos')||p.get('q')||"1-x"; }
-function parseQNumbersToIndices(rangeStr, total){
-  if(!rangeStr) return [];
-  rangeStr=rangeStr.trim().toLowerCase();
-  if(rangeStr==='1-x'||rangeStr==='all'||rangeStr==='1-*') return Array.from({length:total},(_,i)=>i+1);
-  let indices=new Set(); let parts=rangeStr.split(/[,|]/);
-  for(let part of parts){ part=part.trim(); if(!part) continue;
-    if(part.includes('-')){ let [a,b]=part.split('-').map(s=>s.trim()); let start=parseInt(a,10); let end=(b==='x'||b==='*')?total:parseInt(b,10); if(isNaN(start)||isNaN(end)) continue; start=Math.max(1,start); end=Math.min(total,end); for(let i=start;i<=end;i++) indices.add(i); }
-    else{ let n=parseInt(part,10); if(!isNaN(n)&&n>=1&&n<=total) indices.add(n); }
-  }
-  return Array.from(indices).sort((a,b)=>a-b);
-}
-function indicesToRangeString(indices){ if(!indices.length) return "1-x"; let sorted=[...indices].sort((a,b)=>a-b); let ranges=[]; let start=sorted[0],prev=sorted[0]; for(let i=1;i<sorted.length;i++){ if(sorted[i]===prev+1){ prev=sorted[i]; } else { ranges.push(start===prev?`${start}`:`${start}-${prev}`); start=prev=sorted[i]; } } ranges.push(start===prev?`${start}`:`${start}-${prev}`); return ranges.join(','); }
-function parseTopicsParam(str){ if(!str) return null; try{ let d=str; try{ if(d.includes('%25')) d=decodeURIComponent(d); }catch(e){} let obj=JSON.parse(d); if(Array.isArray(obj)) return obj.map(o=>({label:(o.label||o.name||'').trim(), range:(o.range||'').trim()})).filter(x=>x.label&&x.range); }catch(e){} let sep=str.includes('|')?'|':','; return str.split(sep).map(p=>{ p=p.trim(); if(!p) return null; let i=p.lastIndexOf(':'); if(i==-1) return null; return {label:p.slice(0,i).trim(), range:p.slice(i+1).trim()}; }).filter(Boolean); }
-function parseLine(line){ let res=[],cur='',q=false; for(let i=0;i<line.length;i++){let c=line[i]; if(c=='"'){ if(q&&line[i+1]=='"'){cur+='"';i++;} else q=!q; } else if(c==','&&!q){res.push(cur);cur='';} else cur+=c; } res.push(cur); return res.map(s=>s.trim()); }
-function parseCSV(text){ let lines=text.split(/\r?\n/).filter(l=>l.trim()); let out=[],start=0; if(lines[0]&&lines[0].toLowerCase().includes('question')) start=1; for(let k=start;k<lines.length;k++){ let p=parseLine(lines[k]); if(p.length<6) continue; if(p.length>6){ let cf=p[p.length-1]; let opts=p.slice(p.length-5,p.length-1); let qj=p.slice(0,p.length-5).join(', '); p=[qj].concat(opts).concat([cf]); } let cn=parseInt(p[5],10); if(isNaN(cn)||cn<1||cn>4) continue; out.push({q:p[0],options:[p[1],p[2],p[3],p[4]],correct:cn}); } return out; }
-function shuffle(a){ let b=a.slice(); for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]];} return b; }
-
-let CSV_URL=getCsvUrl(); let master=[],active=[],idx=0,score=0,wait=false,missed=[],selectedRange="1-x",selectedLabel="All Topics",selectedIndices=[];
-
-const topicMaster=document.getElementById('topic-master'), statusEl=document.getElementById('load-status'), startBtn=document.getElementById('start-btn'), urlPreview=document.getElementById('url-preview'), iframePreview=document.getElementById('iframe-preview'), embedCopy=document.getElementById('embed-copy'), noCsvInfo=document.getElementById('no-csv-info');
-const setupBox=document.getElementById('setup-box'), quizBox=document.getElementById('quiz-box'), progressEl=document.getElementById('progress'), scoreEl=document.getElementById('score'), fillEl=document.getElementById('fill'), qText=document.getElementById('q-text'), optsEl=document.getElementById('opts'), fbOverlay=document.getElementById('feedback-overlay'), fbText=document.getElementById('fb-text'), contBtn=document.getElementById('continue-btn'), finalOverlay=document.getElementById('final-overlay'), finalScoreEl=document.getElementById('final-score'), reviewEl=document.getElementById('review'), restartBtn=document.getElementById('restart-btn'), closeBtn=document.getElementById('final-close');
-
-function sliceByIndices(items, indices){ return indices.map(i=>items[i-1]).filter(Boolean); }
-function setActiveButton(range){ document.querySelectorAll('.topic-btn').forEach(b=>{ b.classList.toggle('active', b.dataset.range===range); }); }
-function updateUrlParams(){
-  if(!CSV_URL) return;
-  let params=getParams(); params.set('csv', CSV_URL); params.set('range', selectedRange); params.set('topic', selectedLabel);
-  if(isEmbed) params.set('embed','1'); if(isAutostart) params.set('autostart','1');
-  let newUrl=location.pathname+'?'+params.toString(); history.replaceState(null,'',newUrl);
-  let fullUrl=location.origin+newUrl;
-  if(urlPreview) urlPreview.value=fullUrl;
-  if(iframePreview){ let ip=new URLSearchParams(params.toString()); ip.set('embed','1'); let src=location.origin+location.pathname+'?'+ip.toString(); iframePreview.value=`<iframe src="${src}" width="100%" height="650" frameborder="0" style="border:none; max-width:900px; width:100%; display:block; margin:0 auto;" allowtransparency="true" loading="lazy"></iframe>`; }
-  if(embedCopy) embedCopy.style.display='block';
-}
-function buildTopicButtons(topicsArr, total){
-  currentTopics=topicsArr; topicMaster.innerHTML='';
-  if(!topicsArr||!topicsArr.length) topicsArr=[{label:'All Topics', range:`1-${total}`}];
-  topicsArr.forEach(t=>{ let indices=parseQNumbersToIndices(t.range,total||1000); let count=indices.length; let btn=document.createElement('button'); btn.className='topic-btn'; btn.dataset.range=t.range; btn.dataset.label=t.label; if(t.range===selectedRange||t.label===selectedLabel) btn.classList.add('active'); btn.innerHTML=`<strong>${t.label}</strong><small>Q${t.range} • ${count} Qs</small>`; topicMaster.appendChild(btn); });
-  if(!topicMaster.querySelector('.topic-btn.active')&&topicMaster.firstChild){ topicMaster.firstChild.classList.add('active'); selectedRange=topicMaster.firstChild.dataset.range; selectedLabel=topicMaster.firstChild.dataset.label; }
-}
-function handleTopicClick(e){ let btn=e.target.closest('.topic-btn'); if(!btn) return; selectedRange=btn.dataset.range; selectedLabel=btn.dataset.label; selectedIndices=parseQNumbersToIndices(selectedRange,master.length); setActiveButton(selectedRange); updateUrlParams(); if(master.length){ statusEl.textContent=`${selectedLabel}: ${selectedIndices.length} questions ready (Q${selectedRange})`; startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${selectedIndices.length} Qs)`; startBtn.disabled=false; } }
-topicMaster.addEventListener('click', handleTopicClick);
-
-let initParams=getParams(); let initRangeRaw=getRawRangeParam(); let initLabel=initParams.get('topic')||""; let isEmbed=initParams.get('embed')==='1'; let isAutostart=initParams.get('autostart')==='1'||initParams.get('start')==='1'; let topicsRaw=initParams.get('topics');
-selectedRange=initRangeRaw; if(initLabel) selectedLabel=initLabel; if(isEmbed) document.body.classList.add('is-embedded');
-
-async function resolveTopics(total){ if(topicsRaw){ let parsed=parseTopicsParam(topicsRaw); if(parsed&&parsed.length){ buildTopicButtons(parsed,total); return parsed; } } let def=[{label:'All Topics', range:`1-${total}`}]; buildTopicButtons(def,total); return def; }
-
-if(!CSV_URL){
-  statusEl.textContent="Waiting for ?csv= param — NO default CSV"; statusEl.style.color="#D6553F"; noCsvInfo.style.display='block'; startBtn.disabled=true; topicMaster.innerHTML='<div style="grid-column:1/-1;padding:8px;opacity:.6;font-size:.85em">Add ?csv= to load</div>';
-}else{
-  noCsvInfo.style.display='none'; statusEl.textContent="Loading CSV...";
-  let urlsToTry=[CSV_URL];
-  if(CSV_URL.includes('raw.githubusercontent.com')){ let jsDelivr=CSV_URL.replace('https://raw.githubusercontent.com/','https://cdn.jsdelivr.net/gh/').replace('/main/','@main/'); if(!urlsToTry.includes(jsDelivr)) urlsToTry.push(jsDelivr); }
-  if(CSV_URL.includes('Class%206')||CSV_URL.includes('Class 6')){ let fixed="https://cdn.jsdelivr.net/gh/randomtyms/randomtyms-worksheets@main/Class%206/class6_science_quiz.csv"; if(!urlsToTry.includes(fixed)) urlsToTry.push(fixed); }
-  async function tryFetch(){ for(let u of urlsToTry){ try{ statusEl.textContent="Trying: "+u.slice(0,90); let r=await fetch(u); if(!r.ok) throw new Error('HTTP '+r.status); let t=await r.text(); return t; }catch(e){ statusEl.textContent="Fetch failed, trying fallback..."; } } throw new Error('All fetch failed'); }
-  tryFetch().then(async t=>{ master=parseCSV(t); let total=master.length; if(!total) throw new Error('0 questions'); let topics=await resolveTopics(total); selectedIndices=parseQNumbersToIndices(selectedRange,total); selectedRange=indicesToRangeString(selectedIndices); if(initLabel){ let found=topics.find(x=>x.label.toLowerCase()===initLabel.toLowerCase()); if(found){ selectedRange=found.range; selectedIndices=parseQNumbersToIndices(selectedRange,total); } } setActiveButton(topics.find(x=>x.range===selectedRange)?.range||selectedRange); let activeTopic=topics.find(x=>x.range===selectedRange); if(activeTopic) selectedLabel=activeTopic.label; statusEl.textContent=`${selectedLabel}: ${selectedIndices.length} questions loaded (Q${selectedRange}) • Total ${total}`; statusEl.style.color="var(--teal)"; startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${selectedIndices.length} Qs)`; startBtn.disabled=false; updateUrlParams(); if(isAutostart&&isEmbed){ startQuiz(); } }).catch(err=>{ statusEl.textContent="Failed to load CSV: "+err.message; statusEl.style.color="#D6553F"; });
-}
-
-function startQuiz(){ let sliced=selectedIndices.length?sliceByIndices(master,selectedIndices):master; if(!sliced.length){ alert('No questions in range '+selectedRange); return; } active=shuffle(sliced); idx=0; score=0; missed=[]; setupBox.style.display='none'; quizBox.style.display='block'; render(); }
-function render(){ if(idx>=active.length){ showFinal(); return; } let q=active[idx]; progressEl.textContent=`Question ${idx+1} / ${active.length} (${selectedLabel})`; scoreEl.textContent=`Score: ${score}`; fillEl.style.width=Math.round(idx/active.length*100)+"%"; qText.textContent=q.q; optsEl.innerHTML=''; let letters=['A','B','C','D']; q.options.forEach((opt,i)=>{ let b=document.createElement('button'); b.className='option'; b.dataset.letter=letters[i]; b.textContent=opt; b.onclick=()=>answer(i+1); optsEl.appendChild(b); }); }
-function answer(chosen){
-  if(wait) return; wait=true;
-  let q=active[idx]; let ok=chosen===q.correct;
-  optsEl.querySelectorAll('.option').forEach((b,i)=>{ b.style.pointerEvents='none'; if(i+1===q.correct) b.classList.add('correct'); if(i+1===chosen&&!ok) b.classList.add('wrong'); });
-  if(ok){ 
-    score++; scoreEl.textContent=`Score: ${score}`; 
-    fbText.textContent="Correct! 🎉"; fbText.style.color="#1F8A70";
-    setFeedbackImg(true);
-  } else { 
-    fbText.textContent="Correct: "+q.options[q.correct-1]; fbText.style.color="#D6553F";
-    setFeedbackImg(false);
-    missed.push({q:q.q, chosen:q.options[chosen-1], correct:q.options[q.correct-1]});
-  }
-  fbOverlay.style.display='flex';
-}
-contBtn.onclick=()=>{ fbOverlay.style.display='none'; wait=false; idx++; render(); };
-function showFinal(){
-  quizBox.style.display='none';
-  let pct=Math.round(score/active.length*100);
-  finalScoreEl.textContent=`${selectedLabel}: You scored ${score}/${active.length} (${pct}%)`;
-  if(pct>=80){
-    let img=document.getElementById('final-img');
-    img.src = IMG_CORRECT_LOCAL;
-    img.onerror = function(){ if(img.src.includes('./assets/')) img.src=IMG_CORRECT_CDN; else img.src=IMG_CORRECT_BLOG; };
-  } else {
-    let img=document.getElementById('final-img');
-    img.src = IMG_WRONG_LOCAL;
-    img.onerror = function(){ if(img.src.includes('./assets/')) img.src=IMG_WRONG_CDN; else img.src=IMG_WRONG_BLOG; };
-  }
-  if(missed.length===0){ reviewEl.innerHTML="<p style='text-align:center;color:#1F8A70;font-weight:700'>🎉 100% — All Correct!</p>"; }
-  else { let h=`<div style='font-weight:700;text-align:center;margin-bottom:6px'>Mistakes (${missed.length})</div>`; missed.forEach(m=>{ h+=`<div style='background:#fff;border:1.5px solid #E6D9B8;border-radius:8px;padding:8px;margin-bottom:6px;font-size:.85em'><div style='font-weight:700;word-break:break-word'>${m.q}</div><div style='color:#D6553F'>Your: ${m.chosen}</div><div style='color:#1F8A70'>Correct: ${m.correct}</div></div>`; }); reviewEl.innerHTML=h; }
-  finalOverlay.style.display='flex';
-}
-function reloadTopics(){
-  if(!master.length) return;
-  finalOverlay.style.display='none'; fbOverlay.style.display='none'; quizBox.style.display='none'; setupBox.style.display='block';
-  statusEl.textContent=`${selectedLabel}: ${selectedIndices.length} questions ready (Q${selectedRange}) • Total ${master.length}`;
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-document.getElementById('reload-h1').addEventListener('click', reloadTopics);
-document.getElementById('brand-reload').addEventListener('click', reloadTopics);
-document.getElementById('badge-reload').addEventListener('click', reloadTopics);
+function startQuiz(){let sliced=selectedIndices.length?sliceByIndices(master,selectedIndices):master;if(!sliced.length){alert('No questions in '+selectedRange);return;}active=shuffle(sliced);idx=0;score=0;missed=[];setupBox.style.display='none';quizBox.style.display='block';render();sendHeight();}
+function render(){if(idx>=active.length){showFinal();return;}let q=active[idx];progressEl.textContent=`Question ${idx+1} / ${active.length} (${selectedLabel})`;scoreEl.textContent=`Score: ${score}`;fillEl.style.width=Math.round(idx/active.length*100)+"%";qText.textContent=q.q;optsEl.innerHTML='';let letters=['A','B','C','D'];q.options.forEach((opt,i)=>{let b=document.createElement('button');b.className='option';b.dataset.letter=letters[i];b.textContent=opt;b.onclick=()=>answer(i+1);optsEl.appendChild(b);});sendHeight();}
+function answer(chosen){if(wait)return;wait=true;let q=active[idx];let ok=chosen===q.correct;optsEl.querySelectorAll('.option').forEach((b,i)=>{b.style.pointerEvents='none';if(i+1===q.correct)b.classList.add('correct');if(i+1===chosen&&!ok)b.classList.add('wrong');});if(ok){score++;scoreEl.textContent=`Score: ${score}`;fbText.textContent="Correct! 🎉";fbText.style.color="#1F8A70";setFeedbackImg(true);}else{fbText.textContent="Correct: "+q.options[q.correct-1];fbText.style.color="#D6553F";setFeedbackImg(false);missed.push({q:q.q,chosen:q.options[chosen-1],correct:q.options[q.correct-1]});}fbOverlay.style.display='flex';sendHeight();}
+contBtn.onclick=()=>{fbOverlay.style.display='none';wait=false;idx++;render();};
+function showFinal(){quizBox.style.display='none';let pct=Math.round(score/active.length*100);finalScoreEl.textContent=`${selectedLabel}: You scored ${score}/${active.length} (${pct}%)`;if(missed.length===0){reviewEl.innerHTML="<p style='text-align:center;color:#1F8A70;font-weight:700'>🎉 100% — All Correct!</p>";}else{let h=`<div style='font-weight:700;text-align:center;margin-bottom:6px'>Mistakes (${missed.length})</div>`;missed.forEach(m=>{h+=`<div style='background:#fff;border:1.5px solid #E6D9B8;border-radius:8px;padding:8px;margin-bottom:6px;font-size:.85em'><div style='font-weight:700'>${m.q}</div><div style='color:#D6553F'>Your: ${m.chosen}</div><div style='color:#1F8A70'>Correct: ${m.correct}</div></div>`;});reviewEl.innerHTML=h;}finalOverlay.style.display='flex';sendHeight();}
+function reloadTopics(){if(!master.length)return;finalOverlay.style.display='none';fbOverlay.style.display='none';quizBox.style.display='none';setupBox.style.display='block';statusEl.textContent=`${selectedLabel}: ${selectedIndices.length} questions ready (Q${selectedRange}) • Total ${master.length}`;window.scrollTo({top:0,behavior:'smooth'});setTimeout(sendHeight,100);}
+document.getElementById('reload-h1').addEventListener('click',reloadTopics);
+document.getElementById('brand-reload').addEventListener('click',reloadTopics);
+document.getElementById('badge-reload').addEventListener('click',reloadTopics);
 startBtn.onclick=startQuiz;
 restartBtn.onclick=reloadTopics;
 closeBtn.onclick=reloadTopics;
