@@ -24,7 +24,7 @@
 </style>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Class 6 Science Quiz – Topic Wise | RandomTyms Embed</title>
+<title>RandomTyms AIQZ – Universal Embed</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--paper:#FBF3E1;--ink:#2B2E4A;--gold:#C9932F;--mari:#F5A623;--mari-d:#C9791A;--teal:#1F8A70;--teal-d:#166350;--terra:#D6553F;--border:#E6D9B8}
@@ -40,7 +40,7 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 .hero p{max-width:700px;margin:0 auto 10px;color:rgba(43,46,74,.8);font-size:.9em}
 .quiz-box{background:var(--paper);border:3px dashed var(--gold);width:94%;max-width:960px;margin:12px auto;padding:18px 20px;border-radius:20px;text-align:center;box-shadow:0 5px 0 rgba(201,147,47,.15)}
 .badge{display:inline-block;background:var(--teal);color:#fff;font-family:'Baloo 2',cursive;font-weight:700;border-radius:999px;padding:3px 12px;font-size:.78em;margin-bottom:6px}
-.topic-master{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 14px;padding:12px;background:#fff;border:2px solid var(--border);border-radius:14px}
+.topic-master{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 14px;padding:12px;background:#fff;border:2px solid var(--border);border-radius:14px;min-height:60px}
 .topic-btn{border:2px solid var(--border);background:#fff;border-radius:10px;padding:8px 10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82em;cursor:pointer;text-align:left;line-height:1.25;transition:all .15s}
 .topic-btn:hover{border-color:var(--mari);background:#FFF8EA}
 .topic-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -63,44 +63,41 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 .overlay{position:fixed;inset:0;background:rgba(43,46,74,.65);display:flex;align-items:center;justify-content:center;z-index:99;padding:16px}
 .card{background:var(--paper);border:3px dashed var(--gold);border-radius:18px;padding:18px;max-width:460px;width:100%;text-align:center;max-height:90vh;overflow-y:auto;position:relative}
 .close{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);background:#fff;cursor:pointer;font-weight:800}
+.embed-copy{margin-top:12px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px;text-align:left}
+.embed-copy textarea{width:100%;font-size:.72em;font-family:monospace;border:1px solid var(--border);border-radius:6px;padding:6px;background:#FFFEF8;resize:vertical}
 </style>
 </head>
 <body>
-<header><div class="header-wrap"><div class="brand-title">RandomTyms <span>AIQZ</span></div><div style="font-size:.75em;opacity:.7">embed.html</div></div></header>
+<header><div class="header-wrap"><div class="brand-title">RandomTyms <span>AIQZ</span></div><div style="font-size:.75em;opacity:.7" id="csv-badge">embed.html</div></div></header>
 <div class="hero">
 <img id="hero-banner" src="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/banner.webp" 
      onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png'"
      alt="RandomTyms Lokesh and Varsha" style="max-width:580px;width:100%;height:auto;border-radius:18px;border:2px solid var(--border);box-shadow:0 4px 12px rgba(201,147,47,.15)">
-<h1>Class 6 Science <span>Topic-wise Quiz</span></h1>
-<p>Pick a topic below — URL updates automatically (?range=) and quiz loads only that slice from the master CSV.</p>
+<h1 id="page-title">Topic-wise <span>Quiz</span></h1>
+<p id="page-desc">Pick a topic below — URL updates automatically (?range=) and quiz loads only that slice. Works with any ?csv=</p>
 </div>
 
 <div class="quiz-box" id="setup-box">
-<!-- MASTER DIV - Topic Buttons -->
-<!-- ================================
- TEMPLATE: Complete Questions - Topic Selector
- - Wrapped in comment so you can enable later
- - Modify labels, ranges, and IDs inside
-
-
-<div class="topic-wrapper">
-  <div class="badge">📚 Complete Questions · All Topics</div>
-
-  <div class="topic-master" id="topic-master">
-    
-    <button class="topic-btn active" data-range="1-x" data-label="All Topics"><strong>Z Topics</strong></button>
-    <button class="topic-btn" data-range="1-y" data-label="Food & Nutrition"><strong>1. Food & Nutrition</strong></button>
-    <button class="topic-btn" data-range="y-x" data-label="Mass & Structure"><strong>Z. Mass & Structure</strong></button>
-    
+  <!-- MASTER DIV - NOW ACTIVE (was commented before) -->
+  <div class="topic-wrapper">
+    <div class="badge" id="badge-top">📚 Complete Questions · All Topics</div>
+    <div class="topic-master" id="topic-master">
+      <!-- Populated via JS from ?topics= param -->
+    </div>
     <p id="load-status" style="font-weight:700;color:var(--teal);margin:6px 0">Loading master CSV...</p>
     <button class="btn btn-mari" id="start-btn" disabled>Loading... ⏳</button>
-    <p style="font-size:.75em;opacity:.6;margin-top:8px;word-break:break-all" id="url-preview"></p>
-
+    
+    <div class="embed-copy" id="embed-copy" style="display:none">
+      <div style="font-weight:800;font-size:.85em;margin-bottom:4px">🔗 Current URL</div>
+      <textarea id="url-preview" rows="2" readonly onclick="this.select()"></textarea>
+      <div style="height:6px"></div>
+      <div style="font-weight:800;font-size:.85em;margin-bottom:4px">📦 Iframe for selected topic (copy paste)</div>
+      <textarea id="iframe-preview" rows="3" readonly onclick="this.select()"></textarea>
+    </div>
+    <p style="font-size:.7em;opacity:.5;margin-top:8px">Param: <code>?topics=Label:1-20|Label2:21-40</code> or <code>?topicsUrl=.../topics.json</code></p>
   </div>
 </div>
 
-================================= END TEMPLATE ================================ -->
-<!-- MASTER DIV - Topic Buttons -->
 <div class="quiz-box" id="quiz-box" style="display:none;">
 <div class="topbar"><span id="progress">Q 1 / 10</span><span class="score-chip" id="score">Score: 0</span></div>
 <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
@@ -126,35 +123,51 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 <div id="final-score" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:1.25em;margin-bottom:8px"></div><div id="review" style="max-height:180px;overflow-y:auto;text-align:left;border-top:2px dashed var(--border);padding-top:8px;margin-bottom:10px"></div><button class="btn btn-mari" id="restart-btn">Back to Topics 🔄</button></div></div>
 
 <script>
+/* UNIVERSAL CSV + TOPICS FOR IFRAME */
 let DEFAULT_CSV_URL = "";
 
 function normalizeUrl(u){
   if(!u) return u;
-  let url=u.trim();
-  // fix unencoded spaces first
-  url = url.replace(/ /g, '%20');
+  let url=u.trim().replace(/ /g,'%20');
   if(url.includes('github.com/')&&url.includes('/blob/')){
-    url = url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');
+    url=url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');
   }
-  // If url still has double-encoded %2520 -> decode once
-  try { 
-    // decode only if it contains %25
-    if(url.includes('%25')) url = decodeURIComponent(url);
-  } catch(e){}
+  try{ if(url.includes('%25')) url=decodeURIComponent(url); }catch(e){}
   return url;
 }
-function getCsvUrlFromParams(){
+function getCsvUrl(){
   let params=new URLSearchParams(location.search);
-  let csvParam=params.get('csv');
-  if(csvParam){
-    try { csvParam = decodeURIComponent(csvParam); } catch(e){}
-    // csvParam might itself be double-encoded (Class%25206) -> decode again if needed
-    try { if(csvParam.includes('%25')) csvParam = decodeURIComponent(csvParam); } catch(e){}
-    return normalizeUrl(csvParam);
+  let csv=params.get('csv');
+  if(csv){
+    try{ csv=decodeURIComponent(csv); }catch(e){}
+    try{ if(csv.includes('%25')) csv=decodeURIComponent(csv); }catch(e){}
+    return normalizeUrl(csv);
   }
   return DEFAULT_CSV_URL;
 }
-let CSV_URL = getCsvUrlFromParams();
+function parseTopicsParam(str){
+  if(!str) return null;
+  str=str.trim();
+  try{
+    let d=str;
+    try{ if(d.includes('%25')) d=decodeURIComponent(d); }catch(e){}
+    let obj=JSON.parse(d);
+    if(Array.isArray(obj)) return obj.map(o=>({label:(o.label||o.name||'').trim(), range:(o.range||'').trim()})).filter(x=>x.label&&x.range);
+  }catch(e){}
+  let sep = str.includes('|') ? '|' : ',';
+  let parts=str.split(sep);
+  let out=[];
+  for(let p of parts){
+    p=p.trim(); if(!p) continue;
+    let i=p.lastIndexOf(':');
+    if(i>-1){
+      let label=p.slice(0,i).trim();
+      let range=p.slice(i+1).trim();
+      if(label && range) out.push({label, range});
+    }
+  }
+  return out.length?out:null;
+}
 function parseLine(line){
   let res=[],cur='',q=false;
   for(let i=0;i<line.length;i++){let c=line[i]; if(c=='"'){ if(q&&line[i+1]=='"'){cur+='"';i++;} else q=!q; } else if(c==','&&!q){res.push(cur);cur='';} else cur+=c; }
@@ -163,8 +176,10 @@ function parseLine(line){
 function parseCSV(text){
   let lines=text.split(/\r?\n/).filter(l=>l.trim());
   let out=[];
-  for(let l of lines){
-    let p=parseLine(l);
+  let start=0;
+  if(lines[0] && lines[0].toLowerCase().includes('question')) start=1;
+  for(let k=start;k<lines.length;k++){
+    let p=parseLine(lines[k]);
     if(p.length<6) continue;
     if(p.length>6){ let cf=p[p.length-1]; let opts=p.slice(p.length-5,p.length-1); let qj=p.slice(0,p.length-5).join(', '); p=[qj].concat(opts).concat([cf]); }
     let cn=parseInt(p[5],10); if(isNaN(cn)||cn<1||cn>4) continue;
@@ -174,44 +189,77 @@ function parseCSV(text){
 }
 function shuffle(a){ let b=a.slice(); for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]];} return b; }
 
-let master=[],active=[],idx=0,score=0,wait=false,missed=[],selectedRange="1-176",selectedLabel="All Topics";
+let CSV_URL = getCsvUrl();
+let master=[],active=[],idx=0,score=0,wait=false,missed=[],selectedRange="1-x",selectedLabel="All Topics", currentTopics=[];
 const IMG_WRONG="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/wrong.webp";
-const IMG_WRONG_FB="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHOA-KW2g8ysuNUbTHH6_lTgj7QNBgXY6tt19p94F9dVs6ZPU16O8czHv7MjS1_qwZJJRPBmPyOpHgaGxv3TSZrRV6ucB8ajXkUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUez8vi2wQKlI5IWvHHXN0/s1920/1000239625.png";
+const IMG_WRONG_FB="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHOA-KW2g8ysuNUbTHH6_lTgj7QNBgXY6tt19p94F9dVs6ZPU16O8czHv7MjS1_qwZJJRPBmPyOpHgaGxv3TSZrRV6ucB8ajXkUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUez8vi2wQKlI5IWvHHXN0/s1920/1000239625.png";
 const IMG_CORRECT="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/correct.webp";
 const IMG_CORRECT_FB="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png";
 
-const topicMaster=document.getElementById('topic-master'), statusEl=document.getElementById('load-status'), startBtn=document.getElementById('start-btn'), urlPreview=document.getElementById('url-preview');
+const topicMaster=document.getElementById('topic-master'), statusEl=document.getElementById('load-status'), startBtn=document.getElementById('start-btn'), urlPreview=document.getElementById('url-preview'), iframePreview=document.getElementById('iframe-preview'), embedCopy=document.getElementById('embed-copy');
 const setupBox=document.getElementById('setup-box'), quizBox=document.getElementById('quiz-box');
 const progressEl=document.getElementById('progress'), scoreEl=document.getElementById('score'), fillEl=document.getElementById('fill'), qText=document.getElementById('q-text'), optsEl=document.getElementById('opts');
 const fbOverlay=document.getElementById('feedback-overlay'), fbText=document.getElementById('fb-text'), contBtn=document.getElementById('continue-btn'), fbImg=document.getElementById('feedback-img'), fbBanner=document.getElementById('feedback-banner');
 const finalOverlay=document.getElementById('final-overlay'), finalScoreEl=document.getElementById('final-score'), reviewEl=document.getElementById('review'), restartBtn=document.getElementById('restart-btn'), closeBtn=document.getElementById('final-close'), finalImg=document.getElementById('final-img'), finalBanner=document.getElementById('final-banner');
 
+function parseRange(rangeStr, total){
+  if(!rangeStr) return [1,total];
+  rangeStr=rangeStr.toLowerCase().trim();
+  if(rangeStr==='1-x' || rangeStr==='all' || rangeStr==='1-*') return [1,total];
+  let m=rangeStr.match(/^(\d+)\s*-\s*(\d+|x|\*)$/);
+  if(!m) return [1,total];
+  let s=parseInt(m[1],10);
+  let e=(m[2]==='x'||m[2]==='*')?total:parseInt(m[2],10);
+  return [Math.max(1,s), Math.min(total,e)];
+}
+function sliceByRange(items, rangeStr){
+  if(!items.length) return items;
+  let [s,e]=parseRange(rangeStr, items.length);
+  return items.slice(s-1,e);
+}
+function setActiveButton(range){
+  document.querySelectorAll('.topic-btn').forEach(b=>{ b.classList.toggle('active', b.dataset.range===range); });
+}
 function updateUrlParams(){
   let params=new URLSearchParams(location.search);
   params.set('csv', CSV_URL);
   params.set('range', selectedRange);
   params.set('topic', selectedLabel);
-  // preserve embed/autostart if they were present
   if(isEmbed) params.set('embed','1');
   if(isAutostart) params.set('autostart','1');
   let newUrl = location.pathname + '?' + params.toString();
   history.replaceState(null,'',newUrl);
-  if(urlPreview) urlPreview.textContent = location.origin + newUrl;
+  let fullUrl = location.origin + newUrl;
+  if(urlPreview) urlPreview.value = fullUrl;
+  if(iframePreview){
+    let ip=new URLSearchParams(params.toString());
+    ip.set('embed','1');
+    let src = location.origin + location.pathname + '?' + ip.toString();
+    iframePreview.value = `<iframe src="${src}" width="100%" height="650" frameborder="0" style="border:none; max-width:900px; width:100%; display:block; margin:0 auto;" allowtransparency="true" loading="lazy"></iframe>`;
+  }
+  if(embedCopy) embedCopy.style.display='block';
 }
-
-function setActiveButton(range){
-  document.querySelectorAll('.topic-btn').forEach(b=>{
-    b.classList.toggle('active', b.dataset.range===range);
+function buildTopicButtons(topicsArr, total){
+  currentTopics=topicsArr;
+  topicMaster.innerHTML='';
+  if(!topicsArr.length) topicsArr=[{label:'All Topics', range:`1-${total||'x'}`}];
+  topicsArr.forEach(t=>{
+    let [s,e]=parseRange(t.range, total||1000);
+    let count=e-s+1;
+    let btn=document.createElement('button');
+    btn.className='topic-btn';
+    if(t.range===selectedRange || t.label===selectedLabel) btn.classList.add('active');
+    btn.dataset.range=t.range;
+    btn.dataset.label=t.label;
+    btn.innerHTML=`<strong>${t.label}</strong><small>Q${s}-${e>=1000?'end':e} • ${count} Qs</small>`;
+    topicMaster.appendChild(btn);
   });
+  if(!topicMaster.querySelector('.topic-btn.active') && topicMaster.firstChild){
+    topicMaster.firstChild.classList.add('active');
+    selectedRange=topicMaster.firstChild.dataset.range;
+    selectedLabel=topicMaster.firstChild.dataset.label;
+  }
 }
-
-function sliceByRange(items, rangeStr){
-  if(!rangeStr) return items;
-  let [s,e]=rangeStr.split('-').map(n=>parseInt(n,10));
-  if(isNaN(s)||isNaN(e)) return items;
-  return items.slice(s-1, e);
-}
-
 function handleTopicClick(e){
   let btn=e.target.closest('.topic-btn');
   if(!btn) return;
@@ -226,32 +274,73 @@ function handleTopicClick(e){
     startBtn.disabled=false;
   }
 }
-
 topicMaster.addEventListener('click', handleTopicClick);
 
-// Initial load - handle embed, autostart, range, topic, csv
 let initParams=new URLSearchParams(location.search);
-let initRange=initParams.get('range') || "1-176";
+let initRange=initParams.get('range') || "1-x";
 selectedRange=initRange;
 let initLabel=initParams.get('topic') || "All Topics";
 selectedLabel=initLabel;
 let isEmbed = initParams.get('embed')==='1' || initParams.get('embed')==='true';
 let isAutostart = initParams.get('autostart')==='1' || initParams.get('start')==='1';
+let topicsRaw = initParams.get('topics');
+let topicsUrlRaw = initParams.get('topicsUrl') || initParams.get('topics_url');
+if(initParams.get('title')) document.getElementById('page-title').innerHTML=initParams.get('title');
 if(isEmbed){ document.body.classList.add('is-embedded'); }
-setActiveButton(selectedRange);
 
-fetch(normalizeUrl(CSV_URL)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); }).then(t=>{
-  master=parseCSV(t);
-  let sliced=sliceByRange(master, selectedRange);
-  statusEl.textContent = `${selectedLabel}: ${sliced.length} questions loaded (Q${selectedRange})`;
-  startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${sliced.length} Qs)`;
-  startBtn.disabled=false;
-  updateUrlParams();
-  if(isAutostart){ startQuiz(); }
-}).catch(err=>{
-  statusEl.textContent="Failed to load CSV: "+err.message;
+async function resolveTopics(total){
+  if(topicsRaw){
+    let parsed=parseTopicsParam(topicsRaw);
+    if(parsed){ buildTopicButtons(parsed, total); return; }
+  }
+  if(topicsUrlRaw){
+    try{
+      let r=await fetch(normalizeUrl(topicsUrlRaw));
+      if(r.ok){
+        let j=await r.json();
+        let norm=j.map(o=>({label:o.label||o.name, range:o.range})).filter(x=>x.label&&x.range);
+        if(norm.length){ buildTopicButtons(norm,total); return; }
+      }
+    }catch(e){}
+  }
+  // fallback auto + all
+  let def=[{label:'All Topics', range:`1-${total}`}];
+  if(total>10){
+    let chunk=10;
+    for(let s=1;s<=total;s+=chunk){
+      let e=Math.min(s+chunk-1,total);
+      def.push({label:`Q${s}-${e}`, range:`${s}-${e}`});
+    }
+  }
+  buildTopicButtons(def,total);
+}
+
+if(!CSV_URL){
+  statusEl.textContent="Add ?csv=YOUR_CSV_URL — Ex: ?csv=...&topics=Food:1-10|Materials:11-20&range=1-10";
   statusEl.style.color="#D6553F";
-});
+  document.getElementById('csv-badge').textContent="missing ?csv=";
+  topicMaster.innerHTML='<div style="grid-column:1/-1;font-size:.85em;text-align:left;background:#FFF8EA;padding:8px;border-radius:8px">No CSV. Use:<br><code>?csv=URL&topics=Label:1-10|Label2:11-20&range=1-10&embed=1&autostart=1</code></div>';
+}else{
+  document.getElementById('csv-badge').textContent=CSV_URL.split('/').pop().slice(0,30);
+  fetch(normalizeUrl(CSV_URL)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); }).then(async t=>{
+    master=parseCSV(t);
+    let total=master.length;
+    await resolveTopics(total);
+    if(selectedRange==='1-x') selectedRange=`1-${total}`;
+    let matched=currentTopics.find(x=>x.range===initRange);
+    if(matched) selectedLabel=matched.label;
+    setActiveButton(selectedRange);
+    let sliced=sliceByRange(master, selectedRange);
+    statusEl.textContent = `${selectedLabel}: ${sliced.length} questions loaded (Q${selectedRange}) • Total ${total}`;
+    startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${sliced.length} Qs)`;
+    startBtn.disabled=false;
+    updateUrlParams();
+    if(isAutostart){ startQuiz(); }
+  }).catch(err=>{
+    statusEl.textContent="Failed to load CSV: "+err.message;
+    statusEl.style.color="#D6553F";
+  });
+}
 
 function startQuiz(){
   let sliced=sliceByRange(master, selectedRange);
