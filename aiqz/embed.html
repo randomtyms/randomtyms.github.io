@@ -24,12 +24,14 @@
 </style>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light only">
 <title>RandomTyms AIQZ – Universal Embed</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#FBF3E1;--ink:#2B2E4A;--gold:#C9932F;--mari:#F5A623;--mari-d:#C9791A;--teal:#1F8A70;--teal-d:#166350;--terra:#D6553F;--border:#E6D9B8}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Nunito',sans-serif;padding-bottom:30px}
-body.is-embedded{background:transparent!important;padding-bottom:0!important}
+:root{color-scheme: light; --paper:#FBF3E1;--ink:#2B2E4A;--gold:#C9932F;--mari:#F5A623;--mari-d:#C9791A;--teal:#1F8A70;--terra:#D6553F;--border:#E6D9B8}
+*{box-sizing:border-box}html,body{background:var(--paper)!important;color:var(--ink)}
+body{margin:0;font-family:'Nunito',sans-serif;padding-bottom:30px;overflow-x:hidden}
+body.is-embedded{background:var(--paper)!important;padding-bottom:0!important}
 body.is-embedded header,body.is-embedded .hero{display:none!important}
 body.is-embedded .quiz-box{margin:6px auto!important;width:100%!important;max-width:100%!important;box-shadow:none!important}
 header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:blur(4px);border-bottom:1px solid var(--border);padding:10px 16px;z-index:10}
@@ -38,10 +40,10 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 .hero{text-align:center;max-width:960px;margin:12px auto 8px;padding:0 16px}
 .hero h1{font-family:'Baloo 2',cursive;font-weight:800;font-size:clamp(1.3em,3vw,2em);margin:8px 0 4px}h1 span{color:var(--mari-d)}
 .hero p{max-width:700px;margin:0 auto 10px;color:rgba(43,46,74,.8);font-size:.9em}
-.quiz-box{background:var(--paper);border:3px dashed var(--gold);width:94%;max-width:960px;margin:12px auto;padding:18px 20px;border-radius:20px;text-align:center;box-shadow:0 5px 0 rgba(201,147,47,.15)}
+.quiz-box{background:var(--paper);border:3px dashed var(--gold);width:94%;max-width:960px;margin:12px auto;padding:18px 20px;border-radius:20px;text-align:center;box-shadow:0 5px 0 rgba(201,147,47,.15);overflow:hidden}
 .badge{display:inline-block;background:var(--teal);color:#fff;font-family:'Baloo 2',cursive;font-weight:700;border-radius:999px;padding:3px 12px;font-size:.78em;margin-bottom:6px}
 .topic-master{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:12px 0 14px;padding:12px;background:#fff;border:2px solid var(--border);border-radius:14px;min-height:60px}
-.topic-btn{border:2px solid var(--border);background:#fff;border-radius:10px;padding:8px 10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82em;cursor:pointer;text-align:left;line-height:1.25;transition:all .15s}
+.topic-btn{border:2px solid var(--border);background:#fff;border-radius:10px;padding:8px 10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82em;cursor:pointer;text-align:left;line-height:1.25;transition:all .15s;color:var(--ink);overflow:hidden}
 .topic-btn:hover{border-color:var(--mari);background:#FFF8EA}
 .topic-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 .topic-btn small{display:block;font-weight:600;opacity:.7;font-size:.75em;margin-top:2px}
@@ -53,120 +55,150 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 .score-chip{background:var(--teal);color:#fff;border-radius:999px;padding:4px 12px;font-size:.8em}
 .progress-track{height:8px;background:#EFE3C4;border-radius:999px;overflow:hidden;margin-bottom:14px}
 .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--mari),var(--teal));transition:width .3s}
-.question{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.35em;text-align:left;margin-bottom:12px;line-height:1.35}
+.question{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.35em;text-align:left;margin-bottom:12px;line-height:1.35;word-wrap:break-word;overflow-wrap:anywhere}
 .options{display:grid;gap:8px}
 @media(min-width:700px){.options{grid-template-columns:1fr 1fr}}
-.option{display:flex;gap:10px;align-items:center;padding:10px 14px;border:2px solid var(--border);border-radius:10px;background:#fff;cursor:pointer;font-weight:600;text-align:left;min-height:48px}
+.option{display:flex;gap:10px;align-items:center;padding:10px 14px;border:2px solid var(--border);border-radius:10px;background:#fff;cursor:pointer;font-weight:600;text-align:left;min-height:48px;color:var(--ink);word-break:break-word}
 .option::before{content:attr(data-letter);width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);background:var(--paper);display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:800;flex:0 0 auto}
 .option:hover{border-color:var(--mari);background:#FFF8EA}
 .option.correct{background:#E4F5EC;border-color:var(--teal)}.option.wrong{background:#FBE6E1;border-color:var(--terra)}
 .overlay{position:fixed;inset:0;background:rgba(43,46,74,.65);display:flex;align-items:center;justify-content:center;z-index:99;padding:16px}
 .card{background:var(--paper);border:3px dashed var(--gold);border-radius:18px;padding:18px;max-width:460px;width:100%;text-align:center;max-height:90vh;overflow-y:auto;position:relative}
 .close{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);background:#fff;cursor:pointer;font-weight:800}
-.embed-copy{margin-top:12px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px;text-align:left}
-.embed-copy textarea{width:100%;font-size:.72em;font-family:monospace;border:1px solid var(--border);border-radius:6px;padding:6px;background:#FFFEF8;resize:vertical}
+.embed-copy{margin-top:12px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px;text-align:left;overflow:hidden}
+.embed-copy textarea{width:100%;font-size:.72em;font-family:monospace;border:1px solid var(--border);border-radius:6px;padding:6px;background:#FFFEF8;resize:vertical;color:var(--ink);word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap}
+/* FIX FOR URL OVERFLOW */
+code{font-family:monospace;background:#fff;border:1px solid var(--border);padding:2px 6px;border-radius:6px;font-size:.78em;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap;display:inline;max-width:100%}
+.info-box{background:#fff;border:2px dashed var(--border);border-radius:12px;padding:12px;text-align:left;font-size:.9em;line-height:1.5;overflow:hidden;word-break:break-word;overflow-wrap:anywhere}
+.info-box code{display:inline-block;max-width:100%;margin:2px 0}
+.example-url{background:#2B2E4A;color:#FBF3E1;border-radius:8px;padding:8px 10px;font-family:monospace;font-size:.75em;word-break:break-all;overflow-wrap:anywhere;white-space:pre-wrap;line-height:1.4;margin-top:8px;overflow:hidden;max-width:100%}
 </style>
 </head>
 <body>
-<header><div class="header-wrap"><div class="brand-title">RandomTyms <span>AIQZ</span></div><div style="font-size:.75em;opacity:.7" id="csv-badge">embed.html</div></div></header>
+<header><div class="header-wrap"><div class="brand-title">RandomTyms <span>AIQZ</span></div><div style="font-size:.75em;opacity:.7">embed.html • param-driven</div></div></header>
 <div class="hero">
-<img id="hero-banner" src="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/banner.webp" 
+<img src="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/banner.webp" 
      onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png'"
-     alt="RandomTyms Lokesh and Varsha" style="max-width:580px;width:100%;height:auto;border-radius:18px;border:2px solid var(--border);box-shadow:0 4px 12px rgba(201,147,47,.15)">
-<h1 id="page-title">Topic-wise <span>Quiz</span></h1>
-<p id="page-desc">Pick a topic below — URL updates automatically (?range=) and quiz loads only that slice. Works with any ?csv=</p>
+     alt="Banner" style="max-width:580px;width:100%;height:auto;border-radius:18px;border:2px solid var(--border);">
+<h1>Topic-wise <span>Quiz</span></h1>
+<p>Q numbers → Range auto-generated. Works with any <code>?csv=</code></p>
 </div>
 
 <div class="quiz-box" id="setup-box">
-  <!-- MASTER DIV - NOW ACTIVE (was commented before) -->
-  <div class="topic-wrapper">
-    <div class="badge" id="badge-top">📚 Complete Questions · All Topics</div>
-    <div class="topic-master" id="topic-master">
-      <!-- Populated via JS from ?topics= param -->
-    </div>
-    <p id="load-status" style="font-weight:700;color:var(--teal);margin:6px 0">Loading master CSV...</p>
-    <button class="btn btn-mari" id="start-btn" disabled>Loading... ⏳</button>
-    
-    <div class="embed-copy" id="embed-copy" style="display:none">
-      <div style="font-weight:800;font-size:.85em;margin-bottom:4px">🔗 Current URL</div>
-      <textarea id="url-preview" rows="2" readonly onclick="this.select()"></textarea>
-      <div style="height:6px"></div>
-      <div style="font-weight:800;font-size:.85em;margin-bottom:4px">📦 Iframe for selected topic (copy paste)</div>
-      <textarea id="iframe-preview" rows="3" readonly onclick="this.select()"></textarea>
-    </div>
-    <p style="font-size:.7em;opacity:.5;margin-top:8px">Param: <code>?topics=Label:1-20|Label2:21-40</code> or <code>?topicsUrl=.../topics.json</code></p>
+  <div class="badge" id="badge-top">📚 Topics</div>
+  <div class="topic-master" id="topic-master"></div>
+  <p id="load-status" style="font-weight:700;color:var(--teal);margin:6px 0;word-break:break-word">Waiting for ?csv=</p>
+  <button class="btn btn-mari" id="start-btn" disabled>Waiting for CSV...</button>
+  
+  <div id="no-csv-info" class="info-box" style="display:none;margin-top:12px">
+    <b>No CSV loaded.</b> This file is param-driven.<br><br>
+    <b>Required:</b> <code>?csv=YOUR_CSV_URL</code><br><br>
+    <b>Optional:</b><br>
+    <code>&topics=Label1:1-20|Label2:21-40</code> → populates master div<br>
+    <code>&range=1-20</code> → slice (Q numbers generate range)<br>
+    <code>&topic=Label1</code> → label<br>
+    <code>&embed=1&autostart=1</code> → iframe auto-start<br><br>
+    <b>Example Class 6:</b>
+    <div class="example-url">embed.html?csv=https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/Class%206/class6_science_quiz.csv&topics=All:1-176|Food:1-20|Materials:21-38&range=1-20&embed=1&autostart=1</div>
+  </div>
+
+  <div class="embed-copy" id="embed-copy" style="display:none">
+    <div style="font-weight:800;font-size:.85em;margin-bottom:4px">🔗 Current URL</div>
+    <textarea id="url-preview" rows="2" readonly onclick="this.select()"></textarea>
+    <div style="height:6px"></div>
+    <div style="font-weight:800;font-size:.85em;margin-bottom:4px">📦 Iframe</div>
+    <textarea id="iframe-preview" rows="3" readonly onclick="this.select()"></textarea>
   </div>
 </div>
 
 <div class="quiz-box" id="quiz-box" style="display:none;">
-<div class="topbar"><span id="progress">Q 1 / 10</span><span class="score-chip" id="score">Score: 0</span></div>
+<div class="topbar"><span id="progress"></span><span class="score-chip" id="score">Score: 0</span></div>
 <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
 <div class="question" id="q-text"></div>
 <div class="options" id="opts"></div>
 </div>
 
 <div class="overlay" id="feedback-overlay" style="display:none;"><div class="card">
-<div style="position:relative;display:inline-block;margin:0 auto 10px;max-width:100%">
-<img id="feedback-img" src="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/correct.webp"
-     onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png'"
-     alt="feedback" style="display:block;max-height:260px;width:auto;max-width:100%;object-fit:contain;margin:0 auto">
-<div id="feedback-banner" style="position:absolute;top:15%;left:22%;right:24%;height:12%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#D6553F;font-family:'Baloo 2',cursive;font-weight:800;line-height:1.15"></div>
-</div>
+<img src="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/correct.webp" style="display:block;max-height:200px;width:auto;margin:0 auto 10px">
 <div id="fb-text" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:1.2em;margin-bottom:10px"></div><button class="btn btn-mari" id="continue-btn">Continue ➜</button></div></div>
 <div class="overlay" id="final-overlay" style="display:none;"><div class="card"><button class="close" id="final-close">✕</button>
-<div style="position:relative;display:inline-block;margin:0 auto 10px;max-width:100%">
-<img id="final-img" src="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/correct.webp"
-     onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png'"
-     alt="final" style="display:block;max-height:260px;width:auto;max-width:100%;margin:0 auto">
-<div id="final-banner" style="position:absolute;top:15%;left:22%;right:24%;height:12%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#D6553F;font-family:'Baloo 2',cursive;font-weight:800"></div>
-</div>
 <div id="final-score" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:1.25em;margin-bottom:8px"></div><div id="review" style="max-height:180px;overflow-y:auto;text-align:left;border-top:2px dashed var(--border);padding-top:8px;margin-bottom:10px"></div><button class="btn btn-mari" id="restart-btn">Back to Topics 🔄</button></div></div>
 
 <script>
-/* UNIVERSAL CSV + TOPICS FOR IFRAME */
-let DEFAULT_CSV_URL = "";
+const DEFAULT_CSV_URL = "";
 
+function cleanSearch(){ return window.location.search.replace(/&&+/g,'&').replace(/\?&/, '?').replace(/\?\s+/,'?'); }
+function getParams(){ return new URLSearchParams(cleanSearch()); }
 function normalizeUrl(u){
   if(!u) return u;
   let url=u.trim().replace(/ /g,'%20');
-  if(url.includes('github.com/')&&url.includes('/blob/')){
-    url=url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');
-  }
+  if(url.includes('github.com/')&&url.includes('/blob/')) url=url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');
   try{ if(url.includes('%25')) url=decodeURIComponent(url); }catch(e){}
   return url;
 }
 function getCsvUrl(){
-  let params=new URLSearchParams(location.search);
-  let csv=params.get('csv');
-  if(csv){
-    try{ csv=decodeURIComponent(csv); }catch(e){}
-    try{ if(csv.includes('%25')) csv=decodeURIComponent(csv); }catch(e){}
-    return normalizeUrl(csv);
+  let csv = getParams().get('csv');
+  if(!csv) return "";
+  try{ csv=decodeURIComponent(csv); }catch(e){}
+  try{ if(csv.includes('%25')) csv=decodeURIComponent(csv); }catch(e){}
+  return normalizeUrl(csv);
+}
+function getRawRangeParam(){
+  let p=getParams();
+  return p.get('range') || p.get('questions') || p.get('qnos') || p.get('q') || p.get('qno') || "1-x";
+}
+function parseQNumbersToIndices(rangeStr, total){
+  if(!rangeStr) return [];
+  rangeStr=rangeStr.trim().toLowerCase();
+  if(rangeStr==='1-x' || rangeStr==='all' || rangeStr==='1-*') {
+    return Array.from({length:total}, (_,i)=>i+1);
   }
-  return DEFAULT_CSV_URL;
+  let indices=new Set();
+  let parts = rangeStr.split(/[,|]/);
+  for(let part of parts){
+    part=part.trim(); if(!part) continue;
+    if(part.includes('-')){
+      let [a,b]=part.split('-').map(s=>s.trim());
+      let start=parseInt(a,10);
+      let end=(b==='x'||b==='*')?total:parseInt(b,10);
+      if(isNaN(start)||isNaN(end)) continue;
+      start=Math.max(1,start); end=Math.min(total,end);
+      for(let i=start;i<=end;i++) indices.add(i);
+    }else{
+      let n=parseInt(part,10);
+      if(!isNaN(n) && n>=1 && n<=total) indices.add(n);
+    }
+  }
+  return Array.from(indices).sort((a,b)=>a-b);
+}
+function indicesToRangeString(indices){
+  if(!indices.length) return "1-x";
+  if(indices.length===1) return `${indices[0]}`;
+  let sorted=[...indices].sort((a,b)=>a-b);
+  let ranges=[]; let start=sorted[0], prev=sorted[0];
+  for(let i=1;i<sorted.length;i++){
+    if(sorted[i]===prev+1){ prev=sorted[i]; }
+    else {
+      ranges.push(start===prev ? `${start}` : `${start}-${prev}`);
+      start=prev=sorted[i];
+    }
+  }
+  ranges.push(start===prev ? `${start}` : `${start}-${prev}`);
+  return ranges.join(',');
 }
 function parseTopicsParam(str){
   if(!str) return null;
-  str=str.trim();
   try{
-    let d=str;
-    try{ if(d.includes('%25')) d=decodeURIComponent(d); }catch(e){}
+    let d=str; try{ if(d.includes('%25')) d=decodeURIComponent(d); }catch(e){}
     let obj=JSON.parse(d);
-    if(Array.isArray(obj)) return obj.map(o=>({label:(o.label||o.name||'').trim(), range:(o.range||'').trim()})).filter(x=>x.label&&x.range);
+    if(Array.isArray(obj)) return obj.map(o=>({label:(o.label||o.name||'').trim(), range:(o.range||o.q||'').trim()})).filter(x=>x.label&&x.range);
   }catch(e){}
   let sep = str.includes('|') ? '|' : ',';
-  let parts=str.split(sep);
-  let out=[];
-  for(let p of parts){
-    p=p.trim(); if(!p) continue;
-    let i=p.lastIndexOf(':');
-    if(i>-1){
-      let label=p.slice(0,i).trim();
-      let range=p.slice(i+1).trim();
-      if(label && range) out.push({label, range});
-    }
-  }
-  return out.length?out:null;
+  return str.split(sep).map(p=>{
+    p=p.trim(); if(!p) return null;
+    let i=p.lastIndexOf(':'); if(i==-1) return null;
+    return {label:p.slice(0,i).trim(), range:p.slice(i+1).trim()};
+  }).filter(Boolean);
 }
 function parseLine(line){
   let res=[],cur='',q=false;
@@ -175,8 +207,7 @@ function parseLine(line){
 }
 function parseCSV(text){
   let lines=text.split(/\r?\n/).filter(l=>l.trim());
-  let out=[];
-  let start=0;
+  let out=[], start=0;
   if(lines[0] && lines[0].toLowerCase().includes('question')) start=1;
   for(let k=start;k<lines.length;k++){
     let p=parseLine(lines[k]);
@@ -190,38 +221,24 @@ function parseCSV(text){
 function shuffle(a){ let b=a.slice(); for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]];} return b; }
 
 let CSV_URL = getCsvUrl();
-let master=[],active=[],idx=0,score=0,wait=false,missed=[],selectedRange="1-x",selectedLabel="All Topics", currentTopics=[];
-const IMG_WRONG="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/wrong.webp";
-const IMG_WRONG_FB="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHOA-KW2g8ysuNUbTHH6_lTgj7QNBgXY6tt19p94F9dVs6ZPU16O8czHv7MjS1_qwZJJRPBmPyOpHgaGxv3TSZrRV6ucB8ajXkUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUGRawAEQczObL5j0NYw7x8SC_MirQjTcvF0egpXxwxXHeP6Jgk_yo9xyO6KXbR0za1d6fXUez8vi2wQKlI5IWvHHXN0/s1920/1000239625.png";
-const IMG_CORRECT="https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/assets/correct.webp";
-const IMG_CORRECT_FB="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYqmmXNTl42Ctra6TCGYVBaGMXXc-LqssnCG346uV5c_25YKB_7-ejcqkjBRrzZzaa9xI21xu34qEiwCK4QaTREDJ6pt1Iir8v_6buj4PElllKNd-yjQbG2YpBT_6HuhZkZpq-3j9_rM4IPzC3L2re8wAlMzqm3lczskTZ1DOM0IdpShuqAULycjrMhzg/s1536/1000233281.png";
+let master=[],active=[],idx=0,score=0,wait=false,missed=[],selectedRange="1-x",selectedLabel="All Topics", currentTopics=[], selectedIndices=[];
 
-const topicMaster=document.getElementById('topic-master'), statusEl=document.getElementById('load-status'), startBtn=document.getElementById('start-btn'), urlPreview=document.getElementById('url-preview'), iframePreview=document.getElementById('iframe-preview'), embedCopy=document.getElementById('embed-copy');
+const topicMaster=document.getElementById('topic-master'), statusEl=document.getElementById('load-status'), startBtn=document.getElementById('start-btn'), urlPreview=document.getElementById('url-preview'), iframePreview=document.getElementById('iframe-preview'), embedCopy=document.getElementById('embed-copy'), noCsvInfo=document.getElementById('no-csv-info');
 const setupBox=document.getElementById('setup-box'), quizBox=document.getElementById('quiz-box');
 const progressEl=document.getElementById('progress'), scoreEl=document.getElementById('score'), fillEl=document.getElementById('fill'), qText=document.getElementById('q-text'), optsEl=document.getElementById('opts');
-const fbOverlay=document.getElementById('feedback-overlay'), fbText=document.getElementById('fb-text'), contBtn=document.getElementById('continue-btn'), fbImg=document.getElementById('feedback-img'), fbBanner=document.getElementById('feedback-banner');
-const finalOverlay=document.getElementById('final-overlay'), finalScoreEl=document.getElementById('final-score'), reviewEl=document.getElementById('review'), restartBtn=document.getElementById('restart-btn'), closeBtn=document.getElementById('final-close'), finalImg=document.getElementById('final-img'), finalBanner=document.getElementById('final-banner');
+const fbOverlay=document.getElementById('feedback-overlay'), fbText=document.getElementById('fb-text'), contBtn=document.getElementById('continue-btn');
+const finalOverlay=document.getElementById('final-overlay'), finalScoreEl=document.getElementById('final-score'), reviewEl=document.getElementById('review'), restartBtn=document.getElementById('restart-btn'), closeBtn=document.getElementById('final-close');
 
-function parseRange(rangeStr, total){
-  if(!rangeStr) return [1,total];
-  rangeStr=rangeStr.toLowerCase().trim();
-  if(rangeStr==='1-x' || rangeStr==='all' || rangeStr==='1-*') return [1,total];
-  let m=rangeStr.match(/^(\d+)\s*-\s*(\d+|x|\*)$/);
-  if(!m) return [1,total];
-  let s=parseInt(m[1],10);
-  let e=(m[2]==='x'||m[2]==='*')?total:parseInt(m[2],10);
-  return [Math.max(1,s), Math.min(total,e)];
-}
-function sliceByRange(items, rangeStr){
-  if(!items.length) return items;
-  let [s,e]=parseRange(rangeStr, items.length);
-  return items.slice(s-1,e);
+function sliceByIndices(items, indices){
+  if(!indices.length) return items;
+  return indices.map(i=>items[i-1]).filter(Boolean);
 }
 function setActiveButton(range){
   document.querySelectorAll('.topic-btn').forEach(b=>{ b.classList.toggle('active', b.dataset.range===range); });
 }
 function updateUrlParams(){
-  let params=new URLSearchParams(location.search);
+  if(!CSV_URL) return;
+  let params=getParams();
   params.set('csv', CSV_URL);
   params.set('range', selectedRange);
   params.set('topic', selectedLabel);
@@ -232,8 +249,7 @@ function updateUrlParams(){
   let fullUrl = location.origin + newUrl;
   if(urlPreview) urlPreview.value = fullUrl;
   if(iframePreview){
-    let ip=new URLSearchParams(params.toString());
-    ip.set('embed','1');
+    let ip=new URLSearchParams(params.toString()); ip.set('embed','1');
     let src = location.origin + location.pathname + '?' + ip.toString();
     iframePreview.value = `<iframe src="${src}" width="100%" height="650" frameborder="0" style="border:none; max-width:900px; width:100%; display:block; margin:0 auto;" allowtransparency="true" loading="lazy"></iframe>`;
   }
@@ -242,16 +258,19 @@ function updateUrlParams(){
 function buildTopicButtons(topicsArr, total){
   currentTopics=topicsArr;
   topicMaster.innerHTML='';
-  if(!topicsArr.length) topicsArr=[{label:'All Topics', range:`1-${total||'x'}`}];
+  if(!topicsArr || !topicsArr.length){
+    topicsArr=[{label:'All Topics', range:`1-${total||'x'}`}];
+  }
   topicsArr.forEach(t=>{
-    let [s,e]=parseRange(t.range, total||1000);
-    let count=e-s+1;
+    let indices=parseQNumbersToIndices(t.range, total||1000);
+    let count=indices.length;
+    let displayRange = t.range.includes(',') ? t.range : `${indices[0]}-${indices[indices.length-1]}`;
+    if(count===0) displayRange=t.range;
     let btn=document.createElement('button');
     btn.className='topic-btn';
     if(t.range===selectedRange || t.label===selectedLabel) btn.classList.add('active');
-    btn.dataset.range=t.range;
-    btn.dataset.label=t.label;
-    btn.innerHTML=`<strong>${t.label}</strong><small>Q${s}-${e>=1000?'end':e} • ${count} Qs</small>`;
+    btn.dataset.range=t.range; btn.dataset.label=t.label;
+    btn.innerHTML=`<strong>${t.label}</strong><small>Q${displayRange} • ${count} Qs</small>`;
     topicMaster.appendChild(btn);
   });
   if(!topicMaster.querySelector('.topic-btn.active') && topicMaster.firstChild){
@@ -261,81 +280,80 @@ function buildTopicButtons(topicsArr, total){
   }
 }
 function handleTopicClick(e){
-  let btn=e.target.closest('.topic-btn');
-  if(!btn) return;
-  selectedRange=btn.dataset.range;
-  selectedLabel=btn.dataset.label;
-  setActiveButton(selectedRange);
-  updateUrlParams();
+  let btn=e.target.closest('.topic-btn'); if(!btn) return;
+  selectedRange=btn.dataset.range; selectedLabel=btn.dataset.label;
+  selectedIndices=parseQNumbersToIndices(selectedRange, master.length);
+  setActiveButton(selectedRange); updateUrlParams();
   if(master.length){
-    let sliced=sliceByRange(master, selectedRange);
-    statusEl.textContent = `${selectedLabel}: ${sliced.length} questions ready (Q${selectedRange})`;
-    startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${sliced.length} Qs)`;
-    startBtn.disabled=false;
+    statusEl.textContent = `${selectedLabel}: ${selectedIndices.length} questions ready (Q${selectedRange})`;
+    startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${selectedIndices.length} Qs)`; startBtn.disabled=false;
   }
 }
 topicMaster.addEventListener('click', handleTopicClick);
 
-let initParams=new URLSearchParams(location.search);
-let initRange=initParams.get('range') || "1-x";
-selectedRange=initRange;
-let initLabel=initParams.get('topic') || "All Topics";
-selectedLabel=initLabel;
+let initParams=getParams();
+let initRangeRaw=getRawRangeParam();
+let initLabel=initParams.get('topic') || "";
 let isEmbed = initParams.get('embed')==='1' || initParams.get('embed')==='true';
 let isAutostart = initParams.get('autostart')==='1' || initParams.get('start')==='1';
 let topicsRaw = initParams.get('topics');
 let topicsUrlRaw = initParams.get('topicsUrl') || initParams.get('topics_url');
-if(initParams.get('title')) document.getElementById('page-title').innerHTML=initParams.get('title');
-if(isEmbed){ document.body.classList.add('is-embedded'); }
+
+selectedRange=initRangeRaw;
+if(initLabel) selectedLabel=initLabel;
+if(isEmbed) document.body.classList.add('is-embedded');
 
 async function resolveTopics(total){
   if(topicsRaw){
     let parsed=parseTopicsParam(topicsRaw);
-    if(parsed){ buildTopicButtons(parsed, total); return; }
+    if(parsed && parsed.length){ buildTopicButtons(parsed, total); return parsed; }
   }
   if(topicsUrlRaw){
     try{
       let r=await fetch(normalizeUrl(topicsUrlRaw));
       if(r.ok){
         let j=await r.json();
-        let norm=j.map(o=>({label:o.label||o.name, range:o.range})).filter(x=>x.label&&x.range);
-        if(norm.length){ buildTopicButtons(norm,total); return; }
+        let norm=j.map(o=>({label:o.label||o.name, range:o.range||o.q||''})).filter(x=>x.label&&x.range);
+        if(norm.length){ buildTopicButtons(norm,total); return norm; }
       }
     }catch(e){}
   }
-  // fallback auto + all
   let def=[{label:'All Topics', range:`1-${total}`}];
-  if(total>10){
-    let chunk=10;
-    for(let s=1;s<=total;s+=chunk){
-      let e=Math.min(s+chunk-1,total);
-      def.push({label:`Q${s}-${e}`, range:`${s}-${e}`});
-    }
-  }
-  buildTopicButtons(def,total);
+  buildTopicButtons(def,total); return def;
 }
 
 if(!CSV_URL){
-  statusEl.textContent="Add ?csv=YOUR_CSV_URL — Ex: ?csv=...&topics=Food:1-10|Materials:11-20&range=1-10";
+  statusEl.textContent="Waiting for ?csv= param";
   statusEl.style.color="#D6553F";
-  document.getElementById('csv-badge').textContent="missing ?csv=";
-  topicMaster.innerHTML='<div style="grid-column:1/-1;font-size:.85em;text-align:left;background:#FFF8EA;padding:8px;border-radius:8px">No CSV. Use:<br><code>?csv=URL&topics=Label:1-10|Label2:11-20&range=1-10&embed=1&autostart=1</code></div>';
+  noCsvInfo.style.display='block';
+  startBtn.disabled=true;
+  topicMaster.innerHTML='<div style="grid-column:1/-1;padding:8px;opacity:.6;font-size:.85em">Add ?csv= to load topics</div>';
 }else{
-  document.getElementById('csv-badge').textContent=CSV_URL.split('/').pop().slice(0,30);
+  noCsvInfo.style.display='none';
   fetch(normalizeUrl(CSV_URL)).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); }).then(async t=>{
     master=parseCSV(t);
     let total=master.length;
-    await resolveTopics(total);
-    if(selectedRange==='1-x') selectedRange=`1-${total}`;
-    let matched=currentTopics.find(x=>x.range===initRange);
-    if(matched) selectedLabel=matched.label;
-    setActiveButton(selectedRange);
-    let sliced=sliceByRange(master, selectedRange);
-    statusEl.textContent = `${selectedLabel}: ${sliced.length} questions loaded (Q${selectedRange}) • Total ${total}`;
-    startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${sliced.length} Qs)`;
-    startBtn.disabled=false;
+    if(!total) throw new Error('0 questions');
+    let topics = await resolveTopics(total);
+    selectedIndices=parseQNumbersToIndices(selectedRange, total);
+    selectedRange = indicesToRangeString(selectedIndices);
+    if(initLabel){
+      let found = topics.find(x=>x.label.toLowerCase()===initLabel.toLowerCase());
+      if(found){
+        selectedRange=found.range;
+        selectedIndices=parseQNumbersToIndices(selectedRange, total);
+      }
+    }
+    setActiveButton(topics.find(x=>x.range===selectedRange)?.range || selectedRange);
+    let activeTopic = currentTopics.find(x=>x.range===selectedRange) || currentTopics.find(x=>x.label===selectedLabel);
+    if(activeTopic) selectedLabel=activeTopic.label;
+    else if(!selectedLabel) selectedLabel=currentTopics[0]?.label||"All Topics";
+
+    statusEl.textContent = `${selectedLabel}: ${selectedIndices.length} questions loaded (Q${selectedRange}) • Total ${total}`;
+    statusEl.style.color="var(--teal)";
+    startBtn.textContent=`Start ${selectedLabel} Quiz 🚀 (${selectedIndices.length} Qs)`; startBtn.disabled=false;
     updateUrlParams();
-    if(isAutostart){ startQuiz(); }
+    if(isAutostart && isEmbed){ startQuiz(); }
   }).catch(err=>{
     statusEl.textContent="Failed to load CSV: "+err.message;
     statusEl.style.color="#D6553F";
@@ -343,7 +361,8 @@ if(!CSV_URL){
 }
 
 function startQuiz(){
-  let sliced=sliceByRange(master, selectedRange);
+  let sliced = selectedIndices.length ? sliceByIndices(master, selectedIndices) : master;
+  if(!sliced.length){ alert('No questions in range '+selectedRange); return; }
   active=shuffle(sliced); idx=0; score=0; missed=[];
   setupBox.style.display='none'; quizBox.style.display='block'; render();
 }
@@ -364,18 +383,8 @@ function answer(chosen){
   if(wait) return; wait=true;
   let q=active[idx]; let ok=chosen===q.correct;
   optsEl.querySelectorAll('.option').forEach((b,i)=>{ b.style.pointerEvents='none'; if(i+1===q.correct) b.classList.add('correct'); if(i+1===chosen&&!ok) b.classList.add('wrong'); });
-  if(ok){ 
-    score++; scoreEl.textContent=`Score: ${score}`; 
-    fbText.textContent="Correct! 🎉"; fbText.style.color="#1F8A70"; 
-    fbBanner.textContent="Correct! 🎉"; 
-    if(fbImg){ fbImg.src=IMG_CORRECT; fbImg.onerror=()=>fbImg.src=IMG_CORRECT_FB; }
-  }
-  else { 
-    fbText.textContent="Correct: "+q.options[q.correct-1]; fbText.style.color="#D6553F"; 
-    fbBanner.textContent="Oops!";
-    if(fbImg){ fbImg.src=IMG_WRONG; fbImg.onerror=()=>fbImg.src=IMG_WRONG_FB; }
-    missed.push({q:q.q, chosen:q.options[chosen-1], correct:q.options[q.correct-1], raw:q}); 
-  }
+  if(ok){ score++; scoreEl.textContent=`Score: ${score}`; fbText.textContent="Correct! 🎉"; fbText.style.color="#1F8A70"; }
+  else { fbText.textContent="Correct: "+q.options[q.correct-1]; fbText.style.color="#D6553F"; missed.push({q:q.q, chosen:q.options[chosen-1], correct:q.options[q.correct-1]}); }
   fbOverlay.style.display='flex';
 }
 contBtn.onclick=()=>{ fbOverlay.style.display='none'; wait=false; idx++; render(); };
@@ -383,17 +392,10 @@ function showFinal(){
   quizBox.style.display='none';
   let pct=Math.round(score/active.length*100);
   finalScoreEl.textContent=`${selectedLabel}: You scored ${score}/${active.length} (${pct}%)`;
-  if(pct>=80){
-    if(finalImg){ finalImg.src=IMG_CORRECT; finalImg.onerror=()=>finalImg.src=IMG_CORRECT_FB; }
-    if(finalBanner) finalBanner.textContent="Congrats!";
-  } else {
-    if(finalImg){ finalImg.src=IMG_WRONG; finalImg.onerror=()=>finalImg.src=IMG_WRONG_FB; }
-    if(finalBanner) finalBanner.textContent="Keep practicing!";
-  }
   if(missed.length===0){ reviewEl.innerHTML="<p style='text-align:center;color:#1F8A70;font-weight:700'>🎉 100% — All Correct!</p>"; }
   else {
     let h=`<div style='font-weight:700;text-align:center;margin-bottom:6px'>Mistakes (${missed.length})</div>`;
-    missed.forEach(m=>{ h+=`<div style='background:#fff;border:1.5px solid #E6D9B8;border-radius:8px;padding:8px;margin-bottom:6px;font-size:.85em'><div style='font-weight:700'>${m.q}</div><div style='color:#D6553F'>Your: ${m.chosen}</div><div style='color:#1F8A70'>Correct: ${m.correct}</div></div>`; });
+    missed.forEach(m=>{ h+=`<div style='background:#fff;border:1.5px solid #E6D9B8;border-radius:8px;padding:8px;margin-bottom:6px;font-size:.85em'><div style='font-weight:700;word-break:break-word'>${m.q}</div><div style='color:#D6553F'>Your: ${m.chosen}</div><div style='color:#1F8A70'>Correct: ${m.correct}</div></div>`; });
     reviewEl.innerHTML=h;
   }
   finalOverlay.style.display='flex';
