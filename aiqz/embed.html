@@ -77,7 +77,29 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 
 <div class="quiz-box" id="setup-box">
 <!-- MASTER DIV - Topic Buttons -->
+<!-- ================================
+ TEMPLATE: Complete Questions - Topic Selector
+ - Wrapped in comment so you can enable later
+ - Modify labels, ranges, and IDs inside
 
+
+<div class="topic-wrapper">
+  <div class="badge">📚 Complete Questions · All Topics</div>
+
+  <div class="topic-master" id="topic-master">
+    
+    <button class="topic-btn active" data-range="1-x" data-label="All Topics"><strong>Z Topics</strong></button>
+    <button class="topic-btn" data-range="1-y" data-label="Food & Nutrition"><strong>1. Food & Nutrition</strong></button>
+    <button class="topic-btn" data-range="y-x" data-label="Mass & Structure"><strong>Z. Mass & Structure</strong></button>
+    
+    <p id="load-status" style="font-weight:700;color:var(--teal);margin:6px 0">Loading master CSV...</p>
+    <button class="btn btn-mari" id="start-btn" disabled>Loading... ⏳</button>
+    <p style="font-size:.75em;opacity:.6;margin-top:8px;word-break:break-all" id="url-preview"></p>
+
+  </div>
+</div>
+
+================================= END TEMPLATE ================================ -->
 <!-- MASTER DIV - Topic Buttons -->
 <div class="quiz-box" id="quiz-box" style="display:none;">
 <div class="topbar"><span id="progress">Q 1 / 10</span><span class="score-chip" id="score">Score: 0</span></div>
@@ -104,7 +126,7 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 <div id="final-score" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:1.25em;margin-bottom:8px"></div><div id="review" style="max-height:180px;overflow-y:auto;text-align:left;border-top:2px dashed var(--border);padding-top:8px;margin-bottom:10px"></div><button class="btn btn-mari" id="restart-btn">Back to Topics 🔄</button></div></div>
 
 <script>
-let DEFAULT_CSV_URL = "https://raw.githubusercontent.com/randomtyms/randomtyms-worksheets/main/Class%206/class6_science_quiz.csv";
+let DEFAULT_CSV_URL = "";
 
 function normalizeUrl(u){
   if(!u) return u;
