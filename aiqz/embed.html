@@ -1,1 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Class 6 Science Quiz | RandomTyms</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBF3E1;--ink:#2B2E4A;--gold:#C9932F;--mari:#F5A623;--mari-d:#C9791A;--teal:#1F8A70;--terra:#D6553F;--border:#E6D9B8}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Nunito',sans-serif;padding-bottom:40px}
+header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:blur(4px);border-bottom:1px solid var(--border);padding:10px 16px}
+.header-wrap{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.brand-title{font-family:'Baloo 2',cursive;font-weight:800}
+.brand-title span{color:var(--mari)}
+.hero{text-align:center;max-width:900px;margin:16px auto 8px;padding:0 16px}
+.hero-img{max-width:580px;width:100%;border-radius:18px;border:2px solid var(--border)}
+h1{font-family:'Baloo 2',cursive;font-weight:800;font-size:2em;margin:14px 0 6px}h1 span{color:var(--mari-d)}
+.subtitle{max-width:680px;margin:0 auto 16px;color:rgba(43,46,74,.8)}
+.quiz-box{background:var(--paper);border:3px dashed var(--gold);width:94%;max-width:860px;margin:16px auto;padding:24px 28px;border-radius:24px;text-align:center;box-shadow:0 6px 0 rgba(201,147,47,.18)}
+.badge{display:inline-block;background:var(--teal);color:#fff;font-family:'Baloo 2',cursive;font-weight:700;border-radius:999px;padding:4px 14px;margin-bottom:8px;font-size:.8em}
+.quiz-title{font-family:'Baloo 2',cursive;font-weight:800;font-size:1.7em;margin:0 0 6px}
+.hint{opacity:.85;margin-bottom:16px}
+.btn{background:var(--mari);color:#fff;border:none;padding:12px 24px;border-radius:999px;font-size:1.15em;font-weight:800;font-family:'Baloo 2',cursive;cursor:pointer;box-shadow:0 3px 0 var(--mari-d)}
+.btn:disabled{background:#E0DACB;color:#9a927a;box-shadow:none;cursor:not-allowed}
+.btn-teal{background:var(--teal);box-shadow:0 3px 0 #166350}
+.btn-outline{background:#fff;color:var(--mari);border:2px solid var(--mari);box-shadow:none}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:700}
+.score-chip{background:var(--teal);color:#fff;border-radius:999px;padding:4px 14px;font-size:.85em}
+.progress-track{width:100%;height:8px;background:#EFE3C4;border-radius:999px;overflow:hidden;margin-bottom:16px}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--mari),var(--teal));transition:width .3s}
+.question{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.5em;text-align:left;margin:0 0 16px;line-height:1.35}
+.options{display:grid;gap:10px}
+@media(min-width:680px){.options{grid-template-columns:1fr 1fr}}
+.option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:2px solid var(--border);border-radius:12px;background:#fff;cursor:pointer;text-align:left;font-weight:600;min-height:52px}
+.option::before{content:attr(data-letter);width:30px;height:30px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:800;flex:0 0 auto}
+.option:hover{background:#FFF8EA;border-color:var(--mari)}
+.option.correct{background:#E4F5EC;border-color:var(--teal)}.option.wrong{background:#FBE6E1;border-color:var(--terra)}
+.overlay{position:fixed;inset:0;background:rgba(43,46,74,.65);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px}
+.overlay-card{position:relative;background:var(--paper);border:3px dashed var(--gold);border-radius:20px;padding:20px;max-width:480px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.close-btn{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid var(--gold);cursor:pointer;font-weight:800}
+.final-score{font-family:'Baloo 2',cursive;font-size:1.3em;font-weight:700;margin-bottom:10px}
+.review{max-height:180px;overflow-y:auto;text-align:left;border-top:2px dashed var(--border);padding-top:10px;margin-bottom:14px}
+.review-item{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;margin-bottom:6px;font-size:.85em}
+</style>
+</head>
+<body>
+<header><div class="header-wrap"><div class="brand-title">RandomTyms <span>Quiz Hub</span></div></div></header>
+<div class="hero">
+<img class="hero-img" src="assets/banner.webp" onerror="this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTdfIS9EtelAluBmKXDA0d8BgYd9l1-Wx_HSEhGXvrqQ-3JnpoRpoxQ76QNxajH2eZyA3msoLb4hBbv2X3v1vo4AfNwnoaey5GJZkXmYXA4ci1x9vsY9i3_dJDOcb3xMwjwnoSw4DW7rXIkHh6NL3LQsSy8dV8cq9Wrt08J8HB2QExxBuMx13kaO8mWyc/w640-h426/1000239767.png'" alt="banner">
+<h1>Class 6 Science <span>Full Syllabus Quiz</span></h1>
+<p class="subtitle">Loaded automatically from your uploaded CSV link. Students only need to click Start.</p>
+</div>
 
+<div class="quiz-box" id="upload-box">
+<div class="badge">📚 Class 6 · 176 Questions</div>
+<h2 class="quiz-title">Ready to start?</h2>
+<p class="hint" id="load-status">Loading quiz from URL...</p>
+<button class="btn" id="start-btn" disabled>Loading Quiz... ⏳</button>
+</div>
+
+<div class="quiz-box" id="quiz-box" style="display:none;">
+<div class="topbar"><span id="progress">Q 1/176</span><span class="score-chip" id="score">Score: 0</span></div>
+<div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+<div class="question" id="question"></div>
+<div class="options" id="options"></div>
+</div>
+
+<div class="overlay" id="feedback-overlay" style="display:none;">
+<div class="overlay-card">
+<div id="feedback-text" style="font-family:'Baloo 2',cursive;font-weight:800;font-size:1.3em;margin-bottom:12px;"></div>
+<button class="btn" id="continue-btn">Continue ➜</button>
+</div>
+</div>
+
+<div class="overlay" id="final-overlay" style="display:none;">
+<div class="overlay-card">
+<button class="close-btn" id="final-close">✕</button>
+<div class="final-score" id="final-score"></div>
+<div class="review" id="review"></div>
+<div style="display:flex;flex-direction:column;gap:8px;">
+<button class="btn btn-teal" id="retake-missed" style="display:none;">Retake Missed 🔁</button>
+<button class="btn" id="restart-btn">Try Again 🔄</button>
+</div>
+</div>
+</div>
+
+<script>
+// CONFIGURE YOUR CSV URL HERE - supports GitHub blob auto-conversion
+const DEFAULT_CSV_URL = "";
+
+function normalizeUrl(raw){
+  let url=raw.trim();
+  if(url.includes('docs.google.com/spreadsheets/d/')){
+    let m=url.match(/\/d\/([a-zA-Z0-9-_]+)/);
+    if(m){ let gid=url.match(/[?&#]gid=([0-9]+)/); return 'https://docs.google.com/spreadsheets/d/'+m[1]+'/export?format=csv'+(gid?'&gid='+gid[1]:'');}
+  }
+  if(url.includes('github.com/') && url.includes('/blob/')){
+    return url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/');
+  }
+  return url;
+}
+function parseLine(line){
+  let res=[],cur='',q=false;
+  for(let i=0;i<line.length;i++){
+    let c=line[i];
+    if(c=='"'){ if(q&&line[i+1]=='"'){cur+='"';i++;} else q=!q; }
+    else if(c==','&&!q){res.push(cur);cur='';} else cur+=c;
+  }
+  res.push(cur); return res.map(s=>s.trim());
+}
+function parseCSV(text){
+  let lines=text.split(/\r?\n/).filter(l=>l.trim());
+  let out=[];
+  for(let li=0;li<lines.length;li++){
+    let p=parseLine(lines[li]);
+    if(p.length<6) continue;
+    if(p.length>6){ let cf=p[p.length-1]; let opts=p.slice(p.length-5,p.length-1); let qj=p.slice(0,p.length-5).join(', '); p=[qj].concat(opts).concat([cf]); }
+    let cn=parseInt(p[5],10); if(isNaN(cn)||cn<1||cn>4) continue;
+    out.push({q:p[0],options:[p[1],p[2],p[3],p[4]],correct:cn});
+  }
+  return out;
+}
+function shuffle(a){ let b=a.slice(); for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]];} return b; }
+
+let master=[],active=[],idx=0,score=0,wait=false,missed=[];
+const startBtn=document.getElementById('start-btn'), statusEl=document.getElementById('load-status');
+const uploadBox=document.getElementById('upload-box'), quizBox=document.getElementById('quiz-box');
+const progressEl=document.getElementById('progress'), scoreEl=document.getElementById('score'), fillEl=document.getElementById('progress-fill');
+const qEl=document.getElementById('question'), optsEl=document.getElementById('options');
+const feedbackOverlay=document.getElementById('feedback-overlay'), feedbackText=document.getElementById('feedback-text'), contBtn=document.getElementById('continue-btn');
+const finalOverlay=document.getElementById('final-overlay'), finalScoreEl=document.getElementById('final-score'), reviewEl=document.getElementById('review');
+const retakeBtn=document.getElementById('retake-missed'), restartBtn=document.getElementById('restart-btn'), closeBtn=document.getElementById('final-close');
+
+// Determine CSV URL: ?csv= param overrides default
+let params=new URLSearchParams(location.search);
+let csvUrl=params.get('csv') || DEFAULT_CSV_URL;
+let fetchUrl=normalizeUrl(csvUrl);
+
+statusEl.textContent="Loading from: "+fetchUrl;
+fetch(fetchUrl).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); }).then(t=>{
+  master=parseCSV(t);
+  if(master.length===0) throw new Error('No valid questions found');
+  statusEl.textContent= master.length+" questions loaded — ready to start!";
+  startBtn.textContent="Start Class 6 Quiz 🚀 ("+master.length+" Qs)";
+  startBtn.disabled=false;
+}).catch(e=>{
+  statusEl.textContent="Failed to load from URL: "+e.message+" — check CORS / link.";
+  statusEl.style.color="#D6553F";
+});
+
+function start(){
+  active=shuffle(master); idx=0; score=0; missed=[];
+  uploadBox.style.display='none'; finalOverlay.style.display='none'; quizBox.style.display='block'; render();
+}
+function render(){
+  if(idx>=active.length){ showFinal(); return; }
+  let q=active[idx];
+  progressEl.textContent="Question "+(idx+1)+" / "+active.length;
+  scoreEl.textContent="Score: "+score;
+  fillEl.style.width=Math.round(idx/active.length*100)+"%";
+  qEl.textContent=q.q; optsEl.innerHTML='';
+  let letters=['A','B','C','D'];
+  q.options.forEach((opt,i)=>{
+    let b=document.createElement('button'); b.className='option'; b.dataset.letter=letters[i]; b.textContent=opt;
+    b.onclick=()=>answer(i+1); optsEl.appendChild(b);
+  });
+}
+function answer(chosen){
+  if(wait) return; wait=true;
+  let q=active[idx]; let ok=chosen===q.correct;
+  let btns=optsEl.querySelectorAll('.option');
+  btns.forEach((b,i)=>{ b.style.pointerEvents='none'; if(i+1===q.correct) b.classList.add('correct'); if(i+1===chosen&&!ok) b.classList.add('wrong'); });
+  if(ok){ score++; scoreEl.textContent="Score: "+score; feedbackText.textContent="Correct! 🎉"; feedbackText.style.color="#1F8A70"; }
+  else { feedbackText.textContent="Correct: "+q.options[q.correct-1]; feedbackText.style.color="#D6553F"; missed.push({raw:q, chosen:q.options[chosen-1], correct:q.options[q.correct-1], q:q.q}); }
+  feedbackOverlay.style.display='flex';
+}
+contBtn.onclick=()=>{ feedbackOverlay.style.display='none'; wait=false; idx++; render(); };
+
+function showFinal(){
+  quizBox.style.display='none';
+  let pct=Math.round(score/active.length*100);
+  finalScoreEl.textContent="You scored "+score+" / "+active.length+" ("+pct+"%)";
+  if(missed.length===0){ reviewEl.innerHTML="<p style='text-align:center;color:#1F8A70;font-weight:700'>🎉 100% — All Correct!</p>"; retakeBtn.style.display='none'; }
+  else {
+    let h="<div style='font-weight:700;text-align:center;margin-bottom:6px'>Review Mistakes ("+missed.length+")</div>";
+    missed.forEach(m=>{ h+="<div class='review-item'><div style='font-weight:700'>"+m.q+"</div><div style='color:#D6553F'>Your: "+m.chosen+"</div><div style='color:#1F8A70'>Correct: "+m.correct+"</div></div>"; });
+    reviewEl.innerHTML=h; retakeBtn.style.display='block';
+  }
+  finalOverlay.style.display='flex';
+}
+startBtn.onclick=start;
+retakeBtn.onclick=()=>{ active=shuffle(missed.map(m=>m.raw)); idx=0; score=0; missed=[]; finalOverlay.style.display='none'; quizBox.style.display='block'; render(); };
+restartBtn.onclick=()=>{ finalOverlay.style.display='none'; uploadBox.style.display='block'; };
+closeBtn.onclick=()=>{ finalOverlay.style.display='none'; uploadBox.style.display='block'; };
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</html>
