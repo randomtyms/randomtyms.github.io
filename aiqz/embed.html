@@ -76,7 +76,11 @@ header{position:sticky;top:0;background:rgba(251,243,225,.96);backdrop-filter:bl
 </div>
 
 <div class="quiz-box" id="setup-box">
-
+<div>
+<p id="load-status" style="font-weight:700;color:var(--teal);margin:6px 0">Loading master CSV...</p>
+<button class="btn btn-mari" id="start-btn" disabled>Loading... ⏳</button>
+<p style="font-size:.75em;opacity:.6;margin-top:8px;word-break:break-all" id="url-preview"></p>
+</div>
 <div class="quiz-box" id="quiz-box" style="display:none;">
 <div class="topbar"><span id="progress">Q 1 / 10</span><span class="score-chip" id="score">Score: 0</span></div>
 <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
