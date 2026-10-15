@@ -8,6 +8,7 @@
   <meta name="keywords" content="TN AI Video Competition 2026, reimaginetn, tntourismoffcl, Tamil Nadu Tourism, World Tourism Day 2026, The Magic Ticket, Lokesh and Varsha, RandomTyms, Ganga Ponnu, Chennai Central, Madurai Meenakshi, Thanjavur, Nilgiri Mountain Railway, Kanyakumari, Kodaikanal, Pamban Bridge, Arichal Munai" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="Ganga Ponnu" />
+  <link rel="canonical" href="https://randomtyms.github.io/welcome/tourism.html" />
   <meta property="og:title" content="TN AI Video Competition 2026 — The Magic Ticket" />
   <meta property="og:description" content="RandomTyms entry for the Tamil Nadu Tourism TN AI Video Competition 2026. Three Instagram films. Ten Tamil Nadu places. #reimaginetn @tntourismoffcl." />
   <meta property="og:type" content="website" />
@@ -166,9 +167,9 @@
     <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"WebPage","name":"TN AI Video Competition 2026 — The Magic Ticket","description":"RandomTyms entry for the Tamil Nadu Tourism TN AI Video Competition 2026. Three Instagram films. Ten Tamil Nadu places. #reimaginetn @tntourismoffcl.","keywords":"TN AI Video Competition 2026, reimaginetn, Tamil Nadu Tourism, World Tourism Day 2026, The Magic Ticket, Lokesh and Varsha"},
-    {"@type":"VideoObject","name":"The Magic Ticket — TN Tourism AI Video Competition 2026","description":"#reimaginetn film from Chennai Central to Kanyakumari.","uploadDate":"2026-09-28","duration":"PT54S","contentUrl":"https://www.instagram.com/reel/Dd1h9_EAktC/","thumbnailUrl":"https://randomtyms.github.io/welcome/images/Hero1.webp"},
-    {"@type":"VideoObject","name":"India-va Switzerland-a? — TN Tourism AI Video Competition 2026","description":"#reimaginetn film from Kodaikanal Lake to Arichal Munai.","uploadDate":"2026-10-05","contentUrl":"https://www.instagram.com/reel/DeJzC2_RyVn/","thumbnailUrl":"https://randomtyms.github.io/welcome/images/Hero2.webp"},
-    {"@type":"VideoObject","name":"Staying Safe on Our Travels — TN Tourism AI Video Competition 2026","description":"Behind the scenes for #reimaginetn. Safety near platforms, tracks, lakes, and the sea.","uploadDate":"2026-10-01","contentUrl":"https://www.instagram.com/reel/Dd22gtVJImx/","thumbnailUrl":"https://randomtyms.github.io/welcome/images/BTS.webp"}
+    {"@type":"VideoObject","name":"The Magic Ticket — TN Tourism AI Video Competition 2026","description":"#reimaginetn film from Chennai Central to Kanyakumari.","uploadDate":"2026-09-28","duration":"PT54S","embedUrl":"https://www.instagram.com/reel/Dd1h9_EAktC/","thumbnailUrl":"https://randomtyms.github.io/welcome/images/Hero1.webp"},
+    {"@type":"VideoObject","name":"India-va Switzerland-a? — TN Tourism AI Video Competition 2026","description":"#reimaginetn film from Kodaikanal Lake to Arichal Munai.","uploadDate":"2026-10-05","duration":"PT35S","embedUrl":"https://www.instagram.com/reel/DeJzC2_RyVn/","thumbnailUrl":"https://randomtyms.github.io/welcome/images/Hero2.webp"},
+    {"@type":"VideoObject","name":"Staying Safe on Our Travels — TN Tourism AI Video Competition 2026","description":"Behind the scenes for #reimaginetn. Safety near platforms, tracks, lakes, and the sea.","uploadDate":"2026-10-01","duration":"PT37S","embedUrl":"https://www.instagram.com/reel/Dd22gtVJImx/","thumbnailUrl":"https://randomtyms.github.io/welcome/images/BTS.webp"}
   ]}
   </script>
 </head>
@@ -176,7 +177,7 @@
   <div class="wrap">
     <header>
       <a class="brand" href="#top">
-        <img src="../icon-192.png" alt="RandomTyms Logo" class="brand-logo" width="36" height="36">
+        <img src="https://randomtyms.github.io/icon-192.png" alt="RandomTyms Logo" class="brand-logo" width="36" height="36">
         <span>RandomTyms<small>Lokesh & Varsha</small></span>
       </a>
       <div class="langs" role="group" aria-label="Language">
@@ -454,7 +455,7 @@
       link.rel = "noopener noreferrer";
       const img = document.createElement("img");
       img.src = reel.poster;
-      img.alt = "";
+      img.alt = reel.title.en + "RandomTyms - TN Tourism AI Reel";
       const veil = document.createElement("span");
       veil.className = "veil";
       const play = document.createElement("span");
@@ -464,7 +465,7 @@
       dot.textContent = "▶";
       const label = document.createElement("span");
       label.setAttribute("data-en", "Play the Instagram Reel");
-      label.setAttribute("data-ta", "Instagram Reel play pannunga");
+      label.setAttribute("data-ta", "Instagram Reel play பண்ணுங்க");
       label.textContent = "Play the Instagram Reel";
       play.append(dot, label);
       link.append(img, veil, play);
