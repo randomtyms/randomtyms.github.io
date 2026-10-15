@@ -52,6 +52,13 @@
       width: 2.25rem; height: 2.25rem; display: grid; place-items: center;
       border-radius: 0.5rem; background: var(--ink); color: var(--paper); font-size: 0.85rem;
     }
+    .brand-logo {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  object-fit: contain;
+  display: block;
+    }
     .brand small { display: block; font-weight: 500; color: var(--muted); font-size: 0.75rem; }
     .langs { display: flex; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 0.2rem; }
     .langs button {
@@ -139,7 +146,7 @@
   <div class="wrap">
     <header>
       <a class="brand" href="#top">
-        <span class="mark">RT</span>
+        <img src="../icon-192.png" alt="RandomTyms Logo" class="brand-logo" width="36" height="36">
         <span>RandomTyms<small>Lokesh & Varsha</small></span>
       </a>
       <div class="langs" role="group" aria-label="Language">
