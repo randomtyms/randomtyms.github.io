@@ -58,11 +58,11 @@
       border-radius: 0.5rem; background: var(--ink); color: var(--paper); font-size: 0.85rem;
     }
     .brand-logo {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.5rem;
-  object-fit: contain;
-  display: block;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.5rem;
+      object-fit: contain;
+      display: block;
     }
     .brand small { display: block; font-weight: 500; color: var(--muted); font-size: 0.75rem; }
     .langs { display: flex; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 0.2rem; }
@@ -76,32 +76,32 @@
     h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-top: 0.75rem; }
     h2 { font-size: 1.9rem; }
     .magic-ticket-title {
-  text-align: center;
-  font-family: Fraunces, Georgia, serif;
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 640;
-  color: var(--brass);
-  margin: 1.25rem auto 1rem;
-  letter-spacing: 0.02em;
-  text-shadow: 
-    0 0 12px rgba(140, 90, 36, 0.35),
-    0 0 24px rgba(220, 160, 60, 0.25);
-  animation: ticketGlow 3s ease-in-out infinite alternate;
-}
+      text-align: center;
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 640;
+      color: var(--brass);
+      margin: 1.25rem auto 1rem;
+      letter-spacing: 0.02em;
+      text-shadow: 
+        0 0 12px rgba(140, 90, 36, 0.35),
+        0 0 24px rgba(220, 160, 60, 0.25);
+      animation: ticketGlow 3s ease-in-out infinite alternate;
+    }
 
-@keyframes ticketGlow {
-  from {
-    text-shadow: 
-      0 0 10px rgba(140, 90, 36, 0.3),
-      0 0 20px rgba(220, 160, 60, 0.2);
-  }
-  to {
-    text-shadow: 
-      0 0 16px rgba(140, 90, 36, 0.55),
-      0 0 32px rgba(220, 160, 60, 0.4),
-      0 0 44px rgba(243, 230, 212, 0.6);
-  }
-}
+    @keyframes ticketGlow {
+      from {
+        text-shadow: 
+          0 0 10px rgba(140, 90, 36, 0.3),
+          0 0 20px rgba(220, 160, 60, 0.2);
+      }
+      to {
+        text-shadow: 
+          0 0 16px rgba(140, 90, 36, 0.55),
+          0 0 32px rgba(220, 160, 60, 0.4),
+          0 0 44px rgba(243, 230, 212, 0.6);
+      }
+    }
     .lede { max-width: 40rem; font-size: 1.125rem; }
     .jump a { font-weight: 600; }
     .reels { display: grid; gap: 2rem; }
@@ -148,9 +148,24 @@
     .share { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 1rem; }
     .share .solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
     footer { border-top: 1px solid var(--line); text-align: center; color: var(--muted); padding: 2rem 1rem; }
+    
+    /* Styling for the separate original BTS Section */
+    .bts-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1.35rem;
+    }
+    .bts-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
     @media (min-width: 800px) {
       .reels { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
       .reel { width: auto; }
+      .bts-grid { grid-template-columns: 1fr 2fr; align-items: center; }
       .brand small { display: block; }
     }
     @media (max-width: 799px) { .brand small { display: none; } }
@@ -164,7 +179,7 @@
     a.poster .play { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 1.25rem; font-weight: 600; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75); }
     .headline { font-family: Fraunces, Georgia, serif; color: var(--brass); font-size: 1.15rem; margin: 0.35rem 0 0; }
   </style>
-    <script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -173,11 +188,12 @@
       "@id": "https://randomtyms.github.io/welcome/tourism.html",
       "url": "https://randomtyms.github.io/welcome/tourism.html",
       "name": "TN Tourism AI Video Competition 2026 — The Magic Ticket | #ReimagineTN",
-      "description": "Official RandomTyms 3-film submission trilogy for the Tamil Nadu Tourism #ReimagineTN AI video competition on Instagram. Following Lokesh and Varsha across ten travel locations with regional Tanglish storytelling.",
+      "description": "Official RandomTyms submission trilogy (3 Heroes including new video) and additional content for the Tamil Nadu Tourism #ReimagineTN AI video competition on Instagram.",
       "keywords": "reimaginetn instagram, TN AI Video Competition 2026, Tamil Nadu Tourism, World Tourism Day 2026, RandomTyms, Lokesh and Varsha, Tanglish travel reel, AI video contest, Tamil Nadu tourist places",
       "mainEntity": [
         { "@id": "https://www.instagram.com/reel/Dd1h9_EAktC/" },
         { "@id": "https://www.instagram.com/reel/DeJzC2_RyVn/" },
+        { "@id": "https://www.instagram.com/reel/Demh75np0NR/" },
         { "@id": "https://www.instagram.com/reel/Dd22gtVJImx/" }
       ]
     },
@@ -192,44 +208,7 @@
       "uploadDate": "2026-09-28T08:00:00+05:30",
       "duration": "PT54S",
       "embedUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/",
-      "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/",
-      "hasPart": [
-        {
-          "@type": "Clip",
-          "name": "Stop 1: Chennai Central Railway Station",
-          "startOffset": 0,
-          "endOffset": 10,
-          "url": "https://www.instagram.com/reel/Dd1h9_EAktC/?t=0"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 2: Madurai Meenakshi Amman Temple",
-          "startOffset": 11,
-          "endOffset": 21,
-          "url": "https://www.instagram.com/reel/Dd1h9_EAktC/?t=11"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 3: Thanjavur Brihadisvara Temple",
-          "startOffset": 22,
-          "endOffset": 32,
-          "url": "https://www.instagram.com/reel/Dd1h9_EAktC/?t=22"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 4: Nilgiri Mountain Railway (Ooty)",
-          "startOffset": 33,
-          "endOffset": 43,
-          "url": "https://www.instagram.com/reel/Dd1h9_EAktC/?t=33"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 5: Kanyakumari Triveni Sangam",
-          "startOffset": 44,
-          "endOffset": 54,
-          "url": "https://www.instagram.com/reel/Dd1h9_EAktC/?t=44"
-        }
-      ]
+      "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/"
     },
     {
       "@type": "VideoObject",
@@ -242,73 +221,33 @@
       "uploadDate": "2026-10-05T08:00:00+05:30",
       "duration": "PT35S",
       "embedUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/",
-      "contentUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/",
-      "hasPart": [
-        {
-          "@type": "Clip",
-          "name": "Stop 1: Kodaikanal Lake Misty Hills",
-          "startOffset": 0,
-          "endOffset": 7,
-          "url": "https://www.instagram.com/reel/DeJzC2_RyVn/?t=0"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 2: Thirumalai Nayakkar Mahal",
-          "startOffset": 8,
-          "endOffset": 14,
-          "url": "https://www.instagram.com/reel/DeJzC2_RyVn/?t=8"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 3: Mathur Aqueduct Bridge",
-          "startOffset": 15,
-          "endOffset": 21,
-          "url": "https://www.instagram.com/reel/DeJzC2_RyVn/?t=15"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 4: Pamban Sea Bridge Crossing",
-          "startOffset": 22,
-          "endOffset": 28,
-          "url": "https://www.instagram.com/reel/DeJzC2_RyVn/?t=22"
-        },
-        {
-          "@type": "Clip",
-          "name": "Stop 5: Arichal Munai Coastal Drive",
-          "startOffset": 29,
-          "endOffset": 35,
-          "url": "https://www.instagram.com/reel/DeJzC2_RyVn/?t=29"
-        }
-      ]
+      "contentUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/"
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.instagram.com/reel/Demh75np0NR/",
+      "name": "Film 3 — #ReimagineTN AI Video Competition",
+      "description": "New Hero 3 video entry by RandomTyms for the Tamil Nadu Tourism #ReimagineTN competition.",
+      "thumbnailUrl": [
+        "https://randomtyms.github.io/welcome/images/Hero3.webp"
+      ],
+      "uploadDate": "2026-10-10T08:00:00+05:30",
+      "duration": "PT37S",
+      "embedUrl": "https://www.instagram.com/reel/Demh75np0NR/",
+      "contentUrl": "https://www.instagram.com/reel/Demh75np0NR/"
     },
     {
       "@type": "VideoObject",
       "@id": "https://www.instagram.com/reel/Dd22gtVJImx/",
-      "name": "Staying Safe on Our Travels: Film 3 Correction — #ReimagineTN AI Video Competition",
-      "description": "The crucial correction film by RandomTyms for the Tamil Nadu Tourism contest. Addressing generative AI safety anomalies on public transit, detailing an educational reality check regarding the Nilgiri Mountain Railway scene.",
+      "name": "Original Behind the Scenes — #ReimagineTN",
+      "description": "The original behind-the-scenes companion film by RandomTyms for the #ReimagineTN AI video competition.",
       "thumbnailUrl": [
         "https://randomtyms.github.io/welcome/images/BTS.webp"
       ],
       "uploadDate": "2026-10-01T08:00:00+05:30",
       "duration": "PT37S",
       "embedUrl": "https://www.instagram.com/reel/Dd22gtVJImx/",
-      "contentUrl": "https://www.instagram.com/reel/Dd22gtVJImx/",
-      "hasPart": [
-        {
-          "@type": "Clip",
-          "name": "Nilgiri Toy Train AI Glitch Breakdown",
-          "startOffset": 0,
-          "endOffset": 15,
-          "url": "https://www.instagram.com/reel/Dd22gtVJImx/?t=0"
-        },
-        {
-          "@type": "Clip",
-          "name": "Amma Traditional Reality Check and Thoppukaranam Lesson",
-          "startOffset": 16,
-          "endOffset": 37,
-          "url": "https://www.instagram.com/reel/Dd22gtVJImx/?t=16"
-        }
-      ]
+      "contentUrl": "https://www.instagram.com/reel/Dd22gtVJImx/"
     }
   ]
 }
@@ -334,23 +273,47 @@
       <p class="magic-ticket-title"> ✨The Magic Ticket✨</p>
       <p class="lede" data-en="Lokesh and Varsha are off on an amazing adventure across Tamil Nadu with a magical ticket! Three films, ten incredible places, and one special discovery at every stop." data-ta="Lokesh-um Varsha-vum Magic ticket-oda Tamil Nadu full-a explore பண்ணக் கிளம்பிட்டாங்க! 3 films, 10 amazing places. ஒவ்வொரு stop-layum, அந்த place-oda oru special secret-a discover பண்றாங்க.">Lokesh and Varsha are off on an amazing adventure across Tamil Nadu with a magical ticket! Three films, ten incredible places, and one special discovery at every stop.</p>
       <p class="muted" data-en="RandomTyms entry for the Tamil Nadu Tourism TN AI Video Competition 2026." data-ta="RandomTyms பயணம். TamilNadu Tourism AI Video Competition 2026.">RandomTyms Entry for the Tamil Nadu Tourism TN AI Video Competition 2026.</p>
-      <p class="jump"><a href="#reels">Watch the films</a> · <a href="#stops">Discover what they loved</a></p>
+      <p class="jump"><a href="#reels">Watch the Three Films</a> · <a href="#bts-section">Original BTS Video</a> · <a href="#stops">Discover what they loved</a></p>
     </section>
-    <p style="display:none;">
-  RandomTyms official submission for the Tamil Nadu Tourism #ReimagineTN AI video competition on Instagram. 
-  Featuring Lokesh and Varsha across ten locations, including the Nilgiri Mountain Railway correction video, 
-  combining generative AI tools with regional Tanglish storytelling.
-</p>
+    
+    <!-- Three Heroes Row (Hero 1, Hero 2, Hero 3 = New Video) -->
     <section id="reels">
-      <h2 data-en="Three films. One magical journey!" data-ta="3 films. 1 magic journey!">Three films. One magical journey!</h2>
+      <h2 data-en="The Three Competition Films" data-ta="The Three Competition Films">The Three Competition Films</h2>
       <p class="muted" data-en="Tap a picture. The film opens on Instagram and plays there — not in the broken frame Instagram shows on other websites." data-ta="Picture-a tap pannunga. Film Instagram-la open aagi, anga play aagum.">Tap a picture. The film opens on Instagram and plays there — not in the broken frame Instagram shows on other websites.</p>
       <div class="reels" id="reel-row" style="margin-top: 1.25rem"></div>
-      <div class="share">
-        <span class="muted" data-en="Share your favourite places with family and friends!" data-ta="உங்களுக்கு பிடிச்ச place-a family and friends-கூட share பண்ணுங்க.">Share with Friends 🙋🙋‍♀️!</span>
-        <button class="solid" type="button" id="share">Share It</button>
-        <button type="button" id="wa">WhatsApp It</button>
+    </section>
+
+    <!-- Separate Section for the Original BTS Video -->
+    <section id="bts-section" class="bts-section">
+      <p class="kicker">Behind the Scenes · Production Insights</p>
+      <h2 data-en="Original Behind the Scenes" data-ta="Original Behind the Scenes">Original Behind the Scenes</h2>
+      <p class="muted" data-en="Explore the original safety and correction companion video behind Lokesh and Varsha's journey." data-ta="Lokesh-um Varsha-vum journey-oda original safety and correction companion video-வை இங்கே பார்க்கலாம்.">Explore the original safety and correction companion video behind Lokesh and Varsha's journey.</p>
+      
+      <div class="bts-grid">
+        <div class="reel" id="bts-custom">
+          <a class="poster" href="https://www.instagram.com/reel/Dd22gtVJImx/" target="_blank" rel="noopener noreferrer">
+            <img src="https://randomtyms.github.io/welcome/images/BTS.webp" alt="Original Behind the Scenes RandomTyms TN Tourism">
+            <span class="veil"></span>
+            <span class="play">
+              <span class="dot">▶</span>
+              <span data-en="Play the Instagram Reel" data-ta="Instagram Reel play பண்ணுங்க">Play the Instagram Reel</span>
+            </span>
+          </a>
+          <a class="ig" href="https://www.instagram.com/reel/Dd22gtVJImx/" target="_blank" rel="noopener noreferrer">Open on Instagram</a>
+        </div>
+        <div>
+          <h3 style="font-family: Fraunces, Georgia, serif; font-size: 1.5rem; color: var(--brass); margin-bottom: 0.75rem;" data-en="Staying Safe on Our Travels" data-ta="Staying Safe on Our Travels">Staying Safe on Our Travels</h3>
+          <p class="muted" data-en="Adventure is exciting, but safety comes first! What should children remember near railway platforms, train tracks, lakes and the sea? Watch this special video to find out." data-ta="Adventure செம்ம thrilling தான், ஆனா safety first! Railway platforms, tracks, lakes and கடல் பக்கத்துல kids என்ன rules follow பண்ணனும்? இந்த video-ல பார்க்கலாம்.">Adventure is exciting, but safety comes first! What should children remember near railway platforms, train tracks, lakes and the sea? Watch this special video to find out.</p>
+        </div>
       </div>
     </section>
+
+    <div class="share" style="margin-top: 2rem;">
+      <span class="muted" data-en="Share your favourite places with family and friends!" data-ta="உங்களுக்கு பிடிச்ச place-a family and friends-கூட share பண்ணுங்க.">Share with Friends 🙋🙋‍♀️!</span>
+      <button class="solid" type="button" id="share">Share It</button>
+      <button type="button" id="wa">WhatsApp It</button>
+    </div>
+
     <div class="perforation" aria-hidden="true"></div>
     <nav class="pills" id="pills" aria-label="Stops"></nav>
     <section id="stops" style="padding: 2.5rem 0 3rem">
@@ -368,220 +331,222 @@
   </footer>
   <script>
     const pack = {
-  "landmarks": [
-    {
-      "id": "chennai",
-      "route": 1,
-      "name": "Chennai Central",
-      "gif": "https://media.tenor.com/w-uH3AgmeioAAAAM/chennai-chennai-express.gif",
-      "alt": "Animated Chennai Central railway station",
-      "headline": {
-        "en": "The Railway Adventure Begins!",
-        "ta": "நம்ம Railway Adventure Start ஆகுது!"
-      },
-      "story": {
-        "en": "Lokesh stopped to admire the famous red-brick building.\n\n“Wow! So many trains!” he exclaimed.\n\nChennai Central is one of India's best-known railway stations. Trains from here connect Chennai with many other places.\n\nLokesh held up his glowing ticket. “Varsha, where are we going next? The magic ticket is ready!”",
-        "ta": "லோகேஷ் அந்த iconic red-brick building-ஐ பார்த்து wow-னு நின்னு ரசிச்சான்.\n\n“செம்மயா இருக்கு! எவ்ளோ trains!”-னு சொன்னான்.\n\nChennai Central India-வோட ரொம்ப famous-ஆன railway station. இங்கிருந்து trains நம்ம ஊரை பல places-ஓட connect பண்ணுது.\n\nலோகேஷ் அவனோட glowing magic ticket-ஐ தூக்கிக் காட்டினான். “வர்ஷா, next stop எங்க? Magic ticket ready ஆயிடுச்சு!”"
-      }
-    },
-    {
-      "id": "madurai",
-      "route": 1,
-      "name": "Madurai Meenakshi Amman Temple",
-      "gif": "https://media.tenor.com/YbZS5CgANyAAAAAM/madurai-meenakshi.gif",
-      "alt": "Animated Madurai Meenakshi temple gopuram",
-      "headline": {
-        "en": "Colourful Towers, Countless Stories!",
-        "ta": "Colourful Towers, எண்ணற்ற Stories!"
-      },
-      "story": {
-        "en": "Varsha couldn't take her eyes off the towering gopurams!\n\n“Did you know this temple has 14 gopurams?” she asked. “The southern tower is about 170 feet tall!”\n\nLokesh began counting the colourful sculptures.\n\n“Are you going to count every single one?” Varsha teased.\n\n“Of course!” said Lokesh. “I'll only need... a few days!”",
-        "ta": "வர்ஷாவால அந்த grand gopurams-ஐ விட்டு கண்ணை எடுக்க முடியல!\n\n“இந்த temple-ல மொத்தம் 14 gopurams இருக்கு தெரியுமா?”-னு கேட்டா. “அதுல southern tower மட்டும் சுமார் 170 feet tall!”\n\nலோகேஷ் அந்த colourful sculptures-ஐ count பண்ண start பண்ணினான்.\n\n“எல்லாத்தையும் count பண்ணப் போறியா, detective?”-னு வர்ஷா கலாய்ச்சா.\n\n“பின்ன என்ன!”-னு லோகேஷ் சொன்னான். “கொஞ்சம் time குடுத்தா... few days-ல முடிச்சிடுவேன்!”"
-      }
-    },
-    {
-      "id": "thanjavur",
-      "route": 1,
-      "name": "Thanjavur Big Temple",
-      "gif": "https://media.tenor.com/HcpM1wgfZu8AAAAM/hindu-temple.gif",
-      "alt": "Animated Thanjavur Brihadisvara Temple",
-      "headline": {
-        "en": "A Giant Tower Made of Stone!",
-        "ta": "Stone-ல கட்டின Giant Temple Tower!"
-      },
-      "story": {
-        "en": "Lokesh and Varsha tilted their heads back to see the top of the enormous temple tower.\n\n“This temple was built by the great Chola king Raja Raja Chola I and completed around 1010 CE,” Varsha explained.\n\n“The main tower is about 66 metres tall!”\n\nLokesh stared in amazement. “How did people lift such huge stones so high without modern cranes?”\n\n“That's what makes ancient engineering so fascinating!” said Varsha.",
-        "ta": "ரெண்டு பேரும் தலையை மேல தூக்கிப் பார்த்து neck pain-னே வந்துடுச்சு, அவ்ளோ பெரிய tower!\n\n“இந்த temple-ஐ great Chola king Raja Raja Chola I கட்டினாரு, around 1010 CE-ல complete ஆச்சு,”-னு வர்ஷா explain பண்ணா.\n\n“Main vimana tower சுமார் 66 metres tall!”\n\nலோகேஷ் ஆச்சரியமா பார்த்தான். “Cranes இல்லாத அந்த காலத்துல இவ்ளோ heavy stones-ஐ எப்படி மேல ஏத்தினாங்க?”\n\n“அது தான் ancient engineering-ஓட super magic!”-னு சொன்னா வர்ஷா."
-      }
-    },
-    {
-      "id": "nilgiri",
-      "route": 1,
-      "name": "Nilgiri Mountain Railway",
-      "gif": "https://media.tenor.com/ooqJSBeW13IAAAAM/train-railway.gif",
-      "alt": "Animated Nilgiri mountain train",
-      "headline": {
-        "en": "The Train That Climbs Mountains!",
-        "ta": "மலை மேல Climb பண்ற Toy Train!"
-      },
-      "story": {
-        "en": "Chug-chug! The little train wound its way up the green hills.\n\n“Wait a minute!” said Lokesh. “How does a train climb such steep slopes?”\n\nVarsha smiled. “On steep sections, this railway uses a special rack-and-pinion system. A toothed wheel on the train grips a toothed rail to help it climb!”\n\n“So it's a mountain-climbing train!” Lokesh cheered.\n\n“Exactly! And this railway is part of a UNESCO World Heritage Site.”",
-        "ta": "Chug-chug! சின்ன blue train பச்சை பசேல்-னு இருக்குற மலை மேல அழகா போச்சு.\n\n“ஒரு நிமிஷம்!”-னு லோகேஷ் சொன்னான். “இவ்ளோ steep-ஆன hills-ல train எப்படி slide ஆகாம ஏறுது?”\n\nவர்ஷா smile பண்ணிட்டு சொன்னா: “Steep sections-ல special rack-and-pinion system use பண்றாங்க. Train-ஓட toothed wheel track-ல இருக்குற toothed rail-ஓட grip ஆகி climb பண்ண help பண்ணும்!”\n\n“அப்போ இது real mountain-climbing train!”-னு லோகேஷ் excite ஆனான்.\n\n“Correct! இது UNESCO World Heritage Site-ஓட ஒரு part கூட.”"
-      }
-    },
-    {
-      "id": "kanyakumari",
-      "route": 1,
-      "name": "Kanyakumari",
-      "gif": "https://media.tenor.com/Mkq8jvEsKIwAAAAM/thirukkural-thiruvalluvar.gif",
-      "alt": "Animated Thiruvalluvar statue at Kanyakumari",
-      "headline": {
-        "en": "133 Feet of Tamil Pride!",
-        "ta": "133 Feet-ல தமிழ் பெருமை!"
-      },
-      "story": {
-        "en": "The sea breeze blew through their hair as Varsha pointed towards the towering Thiruvalluvar Statue.\n\n“Lokesh, the statue and its pedestal together are 133 feet tall!”\n\n“Why 133?” he asked.\n\n“Because the Thirukkural, the famous work of Tamil wisdom, has 133 chapters!” Varsha explained.\n\nLokesh looked out towards the sea. “So this statue celebrates Tamil literature, too!”\n\n“That's right,” said Varsha. “A place can teach us history, geography and culture all at once!”",
-        "ta": "கடல் காத்து face-ல அடிக்க, வர்ஷா அந்த grand திருவள்ளுவர் Statue-ஐ point பண்ணா.\n\n“லோகேஷ், statue and pedestal ரெண்டும் சேர்த்து 133 feet tall!”\n\n“அது என்ன 133 feet?”-னு அவன் கேட்டான்.\n\n“ஏன்னா திருக்குறள்-ல மொத்தம் 133 chapters இருக்கு!”-னு வர்ஷா explain பண்ணா.\n\nலோகேஷ் மூணு கடலும் சேர்ற இடத்தை பார்த்தான். “அப்போ இந்த statue தமிழ் literature-ஓட பெருமையை celebrate பண்ணுது!”\n\n“ஆமா!”-னு வர்ஷா சொன்னா. “ஒரு place நம்மளுக்கு history, geography, culture எல்லாத்தையும் சேர்த்து கத்துக் கொடுக்கும்!”"
-      }
-    },
-    {
-      "id": "kodaikanal",
-      "route": 2,
-      "name": "Kodaikanal Lake",
-      "gif": "https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif",
-      "alt": "Animated Kodaikanal hill and lake",
-      "headline": {
-        "en": "Varsha, Is This India or Switzerland?",
-        "ta": "வர்ஷா, இது India-வா இல்ல Switzerland-ஆ?"
-      },
-      "story": {
-        "en": "Mist floated over the green hills. A beautiful star-shaped lake sparkled below.\n\n“Are we still in Tamil Nadu?” Lokesh asked. “This looks like a fairy-tale place!”\n\nVarsha laughed. “Yes! And here's a surprise. This lake isn't natural. It was created by people in 1863!”\n\n“Someone made a star-shaped lake?” Lokesh gasped.\n\n“That's right! Human planning and nature can create something beautiful together.”\n\nLokesh spotted the boats. “Can we stay here a little longer, please?”",
-        "ta": "Hills மேல cool mist, கீழ sparkle ஆகுற star-shaped lake — லோகேஷுக்கு ஒரு fairy-tale spot மாதிரி தெரிஞ்சது!\n\n“நம்ம இன்னும் தமிழ்நாடு-ல தான் இருக்கோமா?”-னு கேட்டான்.\n\nவர்ஷா சிரிச்சா. “ஆமா! ஒரு surprise என்ன தெரியுமா? இந்த lake natural இல்ல, 1863-ல create பண்ணின man-made lake!”\n\n“Star shape-ல lake build பண்ணாங்களா?”-னு லோகேஷ் shock ஆனான்.\n\n“Yes! Human planning-உம் nature-உம் சேர்ந்த awesome magic இது.”\n\nலோகேஷ் boats-ஐ பார்த்துட்டு, “இங்க இன்னும் கொஞ்சம் extra time இருக்கலாமா, please?”-னு கேட்டான்."
-      }
-    },
-    {
-      "id": "mahal",
-      "route": 2,
-      "name": "Thirumalai Nayakkar Mahal",
-      "gif": "https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif",
-      "alt": "Animated Thirumalai Nayakkar Mahal",
-      "headline": {
-        "en": "Pillars Bigger Than Your Imagination!",
-        "ta": "Imagination-ஐ விட பெரிய Giant Pillars!"
-      },
-      "story": {
-        "en": "The moment they stepped inside the palace, Lokesh looked up in amazement.\n\n“Varsha, these pillars are HUGE!”\n\n“This palace was built by King Thirumalai Nayak in 1636,” Varsha explained. “Some of its massive pillars are about 20 metres tall!”\n\nLokesh stood beside one and looked at his own height.\n\n“Hmm... I may need a few more birthdays to catch up!”\n\nVarsha burst out laughing.",
-        "ta": "Palace-க்குள்ள enter ஆனதும், லோகேஷ் மேல பார்த்து totally stunned ஆயிட்டான்.\n\n“வர்ஷா, இந்த pillars எவ்ளோ HUGE-ஆ இருக்கு!”\n\n“இந்த palace-ஐ 1636-ல King Thirumalai Nayak கட்டினாரு,”-னு வர்ஷா explain பண்ணா. “சில massive pillars almost 20 metres tall!”\n\nலோகேஷ் ஒரு pillar பக்கத்துல போய் நின்னு அவன் height-ஐ compare பண்ணினான்.\n\n“Hmm... இந்த height touch பண்ண எனக்கு இன்னும் நிறைய birthdays தேவைப்படும் போல!”\n\nவர்ஷா செம்மயா சிரிச்சா."
-      }
-    },
-    {
-      "id": "mathoor",
-      "route": 2,
-      "name": "Mathoor Aqueduct",
-      "gif": "https://media.tenor.com/7Q-hlmfAbo4AAAAM/bridge-tamil-nadu.gif",
-      "alt": "Animated Mathoor aqueduct",
-      "headline": {
-        "en": "Water Walking Across the Sky!",
-        "ta": "Sky-ல நடந்து போற Water!"
-      },
-      "story": {
-        "en": "Lokesh stared at a long water channel high above a green valley.\n\n“Varsha! Is the water really flowing up there?”\n\n“Yes!” she replied. “This aqueduct carries water across a valley. Gravity helps the water flow along the channel.”\n\n“So the water gets its own bridge?” Lokesh asked.\n\n“Exactly! It's a clever example of engineering.”\n\nLokesh peered down at the valley. “Now that's what I call a sky-high waterway!”",
-        "ta": "பச்சை பசேல்-னு இருக்குற valley மேல நீளமா போகக் கூடிய channel-ஐ பார்த்து லோகேஷ் surprise ஆனான்.\n\n“வர்ஷா! நிஜமாவே water அவ்ளோ height-ல flow ஆகுதா?”\n\n“ஆமா!”-னு சொன்னா. “இந்த aqueduct valley-க்கு மேல water-ஐ carry பண்ணுது. Gravity use பண்ணி தான் water smooth-ஆ travel பண்ணுது.”\n\n“அப்போ water-க்குனே ஒரு bridge-ஆ?”-னு லோகேஷ் கேட்டான்.\n\n“Exactly! Smart engineering-ஓட best example இது.”\n\nலோகேஷ் கீழ valley-ஐ பார்த்துட்டு, “இது தான் real sky-high waterway!”-னு சொன்னான்."
-      }
-    },
-    {
-      "id": "pamban",
-      "route": 2,
-      "name": "Pamban Bridge",
-      "gif": "https://media.tenor.com/T4YA6zWUsS0AAAAM/pamban-bridge.gif",
-      "alt": "Animated new Pamban vertical-lift bridge",
-      "headline": {
-        "en": "A Bridge That Can Lift!",
-        "ta": "Lift ஆகுற ஒரு Transformer Bridge!"
-      },
-      "story": {
-        "en": "A railway bridge stretched across the blue sea.\n\n“Look carefully, Lokesh,” said Varsha. “The new Pamban railway bridge has a special middle section that can lift upwards to let ships pass.”\n\nLokesh's eyes widened.\n\n“The BRIDGE can move? That's like a real-life transformer!”\n\n“It's clever engineering,” Varsha replied. “The bridge helps trains cross the sea while making room for ships when needed.”\n\nLokesh watched the waves. “What an amazing place to build a railway!”",
-        "ta": "நீலக்கடல் மேல நீளமா ஒரு railway bridge connect ஆகியிருந்துச்சு.\n\n“நல்லா பாரு, லோகேஷ்,”-னு வர்ஷா சொன்னா. “இந்த new Pamban railway bridge-ஓட middle part lift ஆகி, ships cross ஆக வழி விடும்!”\n\nலோகேஷ் eyes open ஆகி shock ஆனான்.\n\n“Bridge-ஏ move ஆகுமா? இது அப்படியே real-life transformer மாதிரி!”\n\n“Super engineering இது,”-னு வர்ஷா explain பண்ணா. “Trains கடலை cross பண்ண help பண்ணுது, தேவைப்பட்டா ships-க்கும் route தருது.”\n\nலோகேஷ் waves-ஐ ரசிச்சுட்டே, “என்ன ஒரு amazing spot-ல railway கட்டிருக்காங்க!”-னு amaze ஆனான்."
-      }
-    },
-    {
-      "id": "arichal",
-      "route": 2,
-      "name": "Arichal Munai",
-      "gif": "https://media.tenor.com/eJa3bCBw4dAAAAAM/bridge-tamil-nadu.gif",
-      "alt": "Animated Dhanushkodi and Arichal Munai coast",
-      "headline": {
-        "en": "Where the Land Meets the Sea!",
-        "ta": "Land-உம் Sea-உம் Meet பண்ற Point!"
-      },
-      "story": {
-        "en": "The sea breeze swept across Arichal Munai near Dhanushkodi. Blue water stretched out on both sides.\n\n“Varsha, what's that story about a bridge leading towards Sri Lanka?” Lokesh asked.\n\nVarsha explained, “This region is connected with the legend of Ram Setu in the Ramayana tradition. The story tells how Rama's army built a bridge towards Lanka.”\n\n“Can we see the bridge?” Lokesh asked.\n\n“What we can see today is a chain of shallow areas and shoals in the sea, often associated with that legend. The ancient story and the geographical features are two things we should understand carefully.”\n\nLokesh gazed at the horizon.\n\n“Every place has a story, doesn't it?”\n\nVarsha smiled. “Yes! Travelling isn't just about seeing new places. It's about discovering their stories, too.”",
-        "ta": "தனுஷ்கோடி பக்கத்துல இருக்குற அரிச்சல் முனை-ல sea breeze ஜில்லுனு இருந்துச்சு. ரெண்டு side-லேயும் blue sea!\n\n“வர்ஷா, இலங்கை-க்கு போற அந்த bridge story என்ன?”-னு லோகேஷ் கேட்டான்.\n\nவர்ஷா explain பண்ணா, “இந்த place ராமர் பாலம் legend-ஓட associate ஆகுது. ராமரோட army இலங்கை போக bridge build பண்ணதா story சொல்லுது.”\n\n“நம்ம அந்த bridge-ஐ பார்க்க முடியுமா?”-னு அவன் கேட்டான்.\n\n“இப்போ நம்ம பார்க்கக் கூடியது கடல்-ல இருக்குற natural shoal formations. Story-ஐயும் geography-ஐயும் நம்ம clarify-ஆ புரிஞ்சுக்கணும்.”\n\nலோகேஷ் horizon-ஐ பார்த்தான். “எல்லா place-க்கும் ஒரு story இருக்கு இல்ல?”\n\nவர்ஷா smile பண்ணிட்டு, “Yes! Travel-னா வெறும் place பாக்குறது மட்டும் இல்ல, அதோட history and stories-ஐ learn பண்றது தான்!”-னு சொன்னா."
-      }
-    }
-  ],
-  "reels": [
-    {
-      "id": "hero-1",
-      "shortcode": "Dd1h9_EAktC",
-      "permalink": "https://www.instagram.com/reel/Dd1h9_EAktC/",
-      "poster": "https://randomtyms.github.io/welcome/images/Hero1.webp",
-      "kicker": {
-        "en": "Hero 1",
-        "ta": "Hero 1"
-      },
-      "title": {
-        "en": "The Magic Ticket",
-        "ta": "Magic Ticket கிடைச்சிருக்கு"
-      },
-      "blurb": {
-        "en": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!",
-        "ta": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. ஒரு magical ticket. ஐந்து stops. 54 seconds of pure தமிழ்நாடு adventure!"
-      }
-    },
-    {
-      "id": "hero-2",
-      "shortcode": "DeJzC2_RyVn",
-      "permalink": "https://www.instagram.com/reel/DeJzC2_RyVn/",
-      "poster": "https://randomtyms.github.io/welcome/images/Hero2.webp",
-      "kicker": {
-        "en": "Hero 2",
-        "ta": "Hero 2"
-      },
-      "title": {
-        "en": "Is This TamilNadu or Switzerland?",
-        "ta": "இது தமிழ்நாடா இல்ல Switzerland-ஆ?"
-      },
-      "blurb": {
-        "en": "Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, a railway bridge over the sea — what an adventure!",
-        "ta": "கொடைக்கானல் Lake, நாயக்கர் Mahal, Mathoor Aqueduct, பாம்பன் Bridge, Arichal முனை. Misty hills, grand palace, ஆகாயத்துல water bridge, sea மேல railway track — என்ன ஒரு Awesome adventure!"
-      }
-    },
-    {
-      "id": "bts",
-      "shortcode": "Dd22gtVJImx",
-      "permalink": "https://www.instagram.com/reel/Dd22gtVJImx/",
-      "poster": "https://randomtyms.github.io/welcome/images/BTS.webp",
-      "kicker": {
-        "en": "Behind the Scenes",
-        "ta": "Travel Vlog-ku பின்கதை"
-      },
-      "title": {
-        "en": "Staying Safe on Our Travels",
-        "ta": "Travels-ல Child Safety முக்கியம்"
-      },
-      "blurb": {
-        "en": "Adventure is exciting, but safety comes first! What should children remember near railway platforms, train tracks, lakes and the sea? Let's find out in this special behind-the-scenes film.",
-        "ta": "Adventure செம்ம thrilling தான், ஆனா safety first! Railway platforms, tracks, lakes and கடல் பக்கத்துல kids என்ன rules follow பண்ணனும்? இந்த behind-the-scenes video-ல பார்க்கலாம்."
-      }
-    }
-  ]
-};
- const reelRow = document.getElementById("reel-row");
+      "landmarks": [
+        {
+          "id": "chennai",
+          "route": 1,
+          "name": "Chennai Central",
+          "gif": "https://media.tenor.com/w-uH3AgmeioAAAAM/chennai-chennai-express.gif",
+          "alt": "Animated Chennai Central railway station",
+          "headline": {
+            "en": "The Railway Adventure Begins!",
+            "ta": "நம்ம Railway Adventure Start ஆகுது!"
+          },
+          "story": {
+            "en": "Lokesh stopped to admire the famous red-brick building.\n\n“Wow! So many trains!” he exclaimed.\n\nChennai Central is one of India's best-known railway stations. Trains from here connect Chennai with many other places.\n\nLokesh held up his glowing ticket. “Varsha, where are we going next? The magic ticket is ready!”",
+            "ta": "லோகேஷ் அந்த iconic red-brick building-ஐ பார்த்து wow-னு நின்னு ரசிச்சான்.\n\n“செம்மயா இருக்கு! எவ்ளோ trains!”-னு சொன்னான்.\n\nChennai Central India-வோட ரொம்ப famous-ஆன railway station. இங்கிருந்து trains நம்ம ஊரை பல places-ஓட connect பண்ணுது.\n\nலோகேஷ் அவனோட glowing magic ticket-ஐ தூக்கிக் காட்டினான். “வர்ஷா, next stop எங்க? Magic ticket ready ஆயிடுச்சு!”"
+          }
+        },
+        {
+          "id": "madurai",
+          "route": 1,
+          "name": "Madurai Meenakshi Amman Temple",
+          "gif": "https://media.tenor.com/YbZS5CgANyAAAAAM/madurai-meenakshi.gif",
+          "alt": "Animated Madurai Meenakshi temple gopuram",
+          "headline": {
+            "en": "Colourful Towers, Countless Stories!",
+            "ta": "Colourful Towers, எண்ணற்ற Stories!"
+          },
+          "story": {
+            "en": "Varsha couldn't take her eyes off the towering gopurams!\n\n“Did you know this temple has 14 gopurams?” she asked. “The southern tower is about 170 feet tall!”\n\nLokesh began counting the colourful sculptures.\n\n“Are you going to count every single one?” Varsha teased.\n\n“Of course!” said Lokesh. “I'll only need... a few days!”",
+            "ta": "வர்ஷாவால அந்த grand gopurams-ஐ விட்டு கண்ணை எடுக்க முடியல!\n\n“இந்த temple-ல மொத்தம் 14 gopurams இருக்கு தெரியுமா?”-னு கேட்டா. “அதுல southern tower மட்டும் சுமார் 170 feet tall!”\n\nலோகேஷ் அந்த colourful sculptures-ஐ count பண்ண start பண்ணினான்.\n\n“எல்லாத்தையும் count பண்ணப் போறியா, detective?”-னு வர்ஷா கலாய்ச்சா.\n\n“பின்ன என்ன!”-னு லோகேஷ் சொன்னான். “கொஞ்சம் time குடுத்தா... few days-ல முடிச்சிடுவேன்!”"
+          }
+        },
+        {
+          "id": "thanjavur",
+          "route": 1,
+          "name": "Thanjavur Big Temple",
+          "gif": "https://media.tenor.com/HcpM1wgfZu8AAAAM/hindu-temple.gif",
+          "alt": "Animated Thanjavur Brihadisvara Temple",
+          "headline": {
+            "en": "A Giant Tower Made of Stone!",
+            "ta": "Stone-ல கட்டின Giant Temple Tower!"
+          },
+          "story": {
+            "en": "Lokesh and Varsha tilted their heads back to see the top of the enormous temple tower.\n\n“This temple was built by the great Chola king Raja Raja Chola I and completed around 1010 CE,” Varsha explained.\n\n“The main tower is about 66 metres tall!”\n\nLokesh stared in amazement. “How did people lift such huge stones so high without modern cranes?”\n\n“That's what makes ancient engineering so fascinating!” said Varsha.",
+            "ta": "ரெண்டு பேரும் தலையை மேல தூக்கிப் பார்த்து neck pain-னே வந்துடுச்சு, அவ்ளோ பெரிய tower!\n\n“இந்த temple-ஐ great Chola king Raja Raja Chola I கட்டினாரு, around 1010 CE-ல complete ஆச்சு,”-னு வர்ஷா explain பண்ணா.\n\n“Main vimana tower சுமார் 66 metres tall!”\n\nலோகேஷ் ஆச்சரியமா பார்த்தான். “Cranes இல்லாத அந்த காலத்துல இவ்ளோ heavy stones-ஐ எப்படி மேல ஏத்தினாங்க?”\n\n“அது தான் ancient engineering-ஓட super magic!”-னு சொன்னா வர்ஷா."
+          }
+        },
+        {
+          "id": "nilgiri",
+          "route": 1,
+          "name": "Nilgiri Mountain Railway",
+          "gif": "https://media.tenor.com/ooqJSBeW13IAAAAM/train-railway.gif",
+          "alt": "Animated Nilgiri mountain train",
+          "headline": {
+            "en": "The Train That Climbs Mountains!",
+            "ta": "மலை மேல Climb பண்ற Toy Train!"
+          },
+          "story": {
+            "en": "Chug-chug! The little train wound its way up the green hills.\n\n“Wait a minute!” said Lokesh. “How does a train climb such steep slopes?”\n\nVarsha smiled. “On steep sections, this railway uses a special rack-and-pinion system. A toothed wheel on the train grips a toothed rail to help it climb!”\n\n“So it's a mountain-climbing train!” Lokesh cheered.\n\n“Exactly! And this railway is part of a UNESCO World Heritage Site.”",
+            "ta": "Chug-chug! சின்ன blue train பச்சை பசேல்-னு இருக்குற மலை மேல அழகா போச்சு.\n\n“ஒரு நிமிஷம்!”-னு லோகேஷ் சொன்னான். “இவ்ளோ steep-ஆன hills-ல train எப்படி slide ஆகாம ஏறுது?”\n\nவர்ஷா smile பண்ணிட்டு சொன்னா: “Steep sections-ல special rack-and-pinion system use பண்றாங்க. Train-ஓட toothed wheel track-ல இருக்குற toothed rail-ஓட grip ஆகி climb பண்ண help பண்ணும்!”\n\n“அப்போ இது real mountain-climbing train!”-னு லோகேஷ் excite ஆனான்.\n\n“Correct! இது UNESCO World Heritage Site-ஓட ஒரு part கூட.”"
+          }
+        },
+        {
+          "id": "kanyakumari",
+          "route": 1,
+          "name": "Kanyakumari",
+          "gif": "https://media.tenor.com/Mkq8jvEsKIwAAAAM/thirukkural-thiruvalluvar.gif",
+          "alt": "Animated Thiruvalluvar statue at Kanyakumari",
+          "headline": {
+            "en": "133 Feet of Tamil Pride!",
+            "ta": "133 Feet-ல தமிழ் பெருமை!"
+          },
+          "story": {
+            "en": "The sea breeze blew through their hair as Varsha pointed towards the towering Thiruvalluvar Statue.\n\n“Lokesh, the statue and its pedestal together are 133 feet tall!”\n\n“Why 133?” he asked.\n\n“Because the Thirukkural, the famous work of Tamil wisdom, has 133 chapters!” Varsha explained.\n\nLokesh looked out towards the sea. “So this statue celebrates Tamil literature, too!”\n\n“That's right,” said Varsha. “A place can teach us history, geography and culture all at once!”",
+            "ta": "கடல் காத்து face-ல அடிக்க, வர்ஷா அந்த grand திருவள்ளுவர் Statue-ஐ point பண்ணா.\n\n“லோகேஷ், statue and pedestal ரெண்டும் சேர்த்து 133 feet tall!”\n\n“அது என்ன 133 feet?”-னு அவன் கேட்டான்.\n\n“ஏன்னா திருக்குறள்-ல மொத்தம் 133 chapters இருக்கு!”-னு வர்ஷா explain பண்ணா.\n\nலோகேஷ் மூணு கடலும் சேர்ற இடத்தை பார்த்தான். “அப்போ இந்த statue தமிழ் literature-ஓட பெருமையை celebrate பண்ணுது!”\n\n“ஆமா!”-னு வர்ஷா சொன்னா. “ஒரு place நம்மளுக்கு history, geography, culture எல்லாத்தையும் சேர்த்து கத்துக் கொடுக்கும்!”"
+          }
+        },
+        {
+          "id": "kodaikanal",
+          "route": 2,
+          "name": "Kodaikanal Lake",
+          "gif": "https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif",
+          "alt": "Animated Kodaikanal hill and lake",
+          "headline": {
+            "en": "Varsha, Is This India or Switzerland?",
+            "ta": "வர்ஷா, இது India-வா இல்ல Switzerland-ஆ?"
+          },
+          "story": {
+            "en": "Mist floated over the green hills. A beautiful star-shaped lake sparkled below.\n\n“Are we still in Tamil Nadu?” Lokesh asked. “This looks like a fairy-tale place!”\n\nVarsha laughed. “Yes! And here's a surprise. This lake isn't natural. It was created by people in 1863!”\n\n“Someone made a star-shaped lake?” Lokesh gasped.\n\n“That's right! Human planning and nature can create something beautiful together.”\n\nLokesh spotted the boats. “Can we stay here a little longer, please?”",
+            "ta": "Hills மேல cool mist, கீழ sparkle ஆகுற star-shaped lake — லோகேஷுக்கு ஒரு fairy-tale spot மாதிரி தெரிஞ்சது!\n\n“நம்ம இன்னும் தமிழ்நாடு-ல தான் இருக்கோமா?”-னு கேட்டான்.\n\nவர்ஷா சிரிச்சா. “ஆமா! ஒரு surprise என்ன தெரியுமா? இந்த lake natural இல்ல, 1863-ல create பண்ணின man-made lake!”\n\n“Star shape-ல lake build பண்ணாங்களா?”-னு லோகேஷ் shock ஆனான்.\n\n“Yes! Human planning-உம் nature-உம் சேர்ந்த awesome magic இது.”\n\nலோகேஷ் boats-ஐ பார்த்துட்டு, “இங்க இன்னும் கொஞ்சம் extra time இருக்கலாமா, please?”-னு கேட்டான்."
+          }
+        },
+        {
+          "id": "mahal",
+          "route": 2,
+          "name": "Thirumalai Nayakkar Mahal",
+          "gif": "https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif",
+          "alt": "Animated Thirumalai Nayakkar Mahal",
+          "headline": {
+            "en": "Pillars Bigger Than Your Imagination!",
+            "ta": "Imagination-ஐ விட பெரிய Giant Pillars!"
+          },
+          "story": {
+            "en": "The moment they stepped inside the palace, Lokesh looked up in amazement.\n\n“Varsha, these pillars are HUGE!”\n\n“This palace was built by King Thirumalai Nayak in 1636,” Varsha explained. “Some of its massive pillars are about 20 metres tall!”\n\nLokesh stood beside one and looked at his own height.\n\n“Hmm... I may need a few more birthdays to catch up!”\n\nVarsha burst out laughing.",
+            "ta": "Palace-க்குள்ள enter ஆனதும், லோகேஷ் மேல பார்த்து totally stunned ஆயிட்டான்.\n\n“வர்ஷா, இந்த pillars எவ்ளோ HUGE-ஆ இருக்கு!”\n\n“இந்த palace-ஐ 1636-ல King Thirumalai Nayak கட்டினாரு,”-னு வர்ஷா explain பண்ணா. “சில massive pillars almost 20 metres tall!”\n\nலோகேஷ் ஒரு pillar பக்கத்துல போய் நின்னு அவன் height-ஐ compare பண்ணினான்.\n\n“Hmm... இந்த height touch பண்ண எனக்கு இன்னும் நிறைய birthdays தேவைப்படும் போல!”\n\nவர்ஷா செம்மயா சிரிச்சா."
+          }
+        },
+        {
+          "id": "mathoor",
+          "route": 2,
+          "name": "Mathoor Aqueduct",
+          "gif": "https://media.tenor.com/7Q-hlmfAbo4AAAAM/bridge-tamil-nadu.gif",
+          "alt": "Animated Mathoor aqueduct",
+          "headline": {
+            "en": "Water Walking Across the Sky!",
+            "ta": "Sky-ல நடந்து போற Water!"
+          },
+          "story": {
+            "en": "Lokesh stared at a long water channel high above a green valley.\n\n“Varsha! Is the water really flowing up there?”\n\n“Yes!” she replied. “This aqueduct carries water across a valley. Gravity helps the water flow along the channel.”\n\n“So the water gets its own bridge?” Lokesh asked.\n\n“Exactly! It's a clever example of engineering.”\n\nLokesh peered down at the valley. “Now that's what I call a sky-high waterway!”",
+            "ta": "பச்சை பசேல்-னு இருக்குற valley மேல நீளமா போகக் கூடிய channel-ஐ பார்த்து லோகேஷ் surprise ஆனான்.\n\n“வர்ஷா! நிஜமாவே water அவ்ளோ height-ல flow ஆகுதா?”\n\n“ஆமா!”-னு சொன்னா. “இந்த aqueduct valley-க்கு மேல water-ஐ carry பண்ணுது. Gravity use பண்ணி தான் water smooth-ஆ travel பண்ணுது.”\n\n“அப்போ water-க்குனே ஒரு bridge-ஆ?”-னு லோகேஷ் கேட்டான்.\n\n“Exactly! Smart engineering-ஓட best example இது.”\n\nலோகேஷ் கீழ valley-ஐ பார்த்துட்டு, “இது தான் real sky-high waterway!”-னு சொன்னான்."
+          }
+        },
+        {
+          "id": "pamban",
+          "route": 2,
+          "name": "Pamban Bridge",
+          "gif": "https://media.tenor.com/T4YA6zWUsS0AAAAM/pamban-bridge.gif",
+          "alt": "Animated new Pamban vertical-lift bridge",
+          "headline": {
+            "en": "A Bridge That Can Lift!",
+            "ta": "Lift ஆகுற ஒரு Transformer Bridge!"
+          },
+          "story": {
+            "en": "A railway bridge stretched across the blue sea.\n\n“Look carefully, Lokesh,” said Varsha. “The new Pamban railway bridge has a special middle section that can lift upwards to let ships pass.”\n\nLokesh's eyes widened.\n\n“The BRIDGE can move? That's like a real-life transformer!”\n\n“It's clever engineering,” Varsha replied. “The bridge helps trains cross the sea while making room for ships when needed.”\n\nLokesh watched the waves. “What an amazing place to build a railway!”",
+            "ta": "நீலக்கடல் மேல நீளமா ஒரு railway bridge connect ஆகியிருந்துச்சு.\n\n“நல்லா பாரு, லோகேஷ்,”-னு வர்ஷா சொன்னா. “இந்த new Pamban railway bridge-ஓட middle part lift ஆகி, ships cross ஆக வழி விடும்!”\n\nலோகேஷ் eyes open ஆகி shock ஆனான்.\n\n“Bridge-ஏ move ஆகுமா? இது அப்படியே real-life transformer மாதிரி!”\n\n“Super engineering இது,”-னு வர்ஷா explain பண்ணா. “Trains கடலை cross பண்ண help பண்ணுது, தேவைப்பட்டா ships-க்கும் route தருது.”\n\nலோகேஷ் waves-ஐ ரசிச்சுட்டே, “என்ன ஒரு amazing spot-ல railway கட்டிருக்காங்க!”-னு amaze ஆனான்."
+          }
+        },
+        {
+          "id": "arichal",
+          "route": 2,
+          "name": "Arichal Munai",
+          "gif": "https://media.tenor.com/eJa3bCBw4dAAAAAM/bridge-tamil-nadu.gif",
+          "alt": "Animated Dhanushkodi and Arichal Munai coast",
+          "headline": {
+            "en": "Where the Land Meets the Sea!",
+            "ta": "Land-உம் Sea-உம் Meet பண்ற Point!"
+          },
+          "story": {
+            "en": "The sea breeze swept across Arichal Munai near Dhanushkodi. Blue water stretched out on both sides.\n\n“Varsha, what's that story about a bridge leading towards Sri Lanka?” Lokesh asked.\n\nVarsha explained, “This region is connected with the legend of Ram Setu in the Ramayana tradition. The story tells how Rama's army built a bridge towards Lanka.”\n\n“Can we see the bridge?” Lokesh asked.\n\n“What we can see today is a chain of shallow areas and shoals in the sea, often associated with that legend. The ancient story and the geographical features are two things we should understand carefully.”\n\nLokesh gazed at the horizon.\n\n“Every place has a story, doesn't it?”\n\nVarsha smiled. “Yes! Travelling isn't just about seeing new places. It's about discovering their stories, too.”",
+            "ta": "தனுஷ்கோடி பக்கத்துல இருக்குற அரிச்சல் முனை-ல sea breeze ஜில்லுனு இருந்துச்சு. ரெண்டு side-லேயும் blue sea!\n\n“வர்ஷா, இலங்கை-க்கு போற அந்த bridge story என்ன?”-னு லோகேஷ் கேட்டான்.\n\nவர்ஷா explain பண்ணா, “இந்த place ராமர் பாலம் legend-ஓட associate ஆகுது. ராமரோட army இலங்கை போக bridge build பண்ணதா story சொல்லுது.”\n\n“நம்ம அந்த bridge-ஐ பார்க்க முடியுமா?”-னு அவன் கேட்டான்.\n\n“இப்போ நம்ம பார்க்கக் கூடியது கடல்-ல இருக்குற natural shoal formations. Story-ஐயும் geography-ஐயும் நம்ம clarify-ஆ புரிஞ்சுக்கணும்.”\n\nலோகேஷ் horizon-ஐ பார்த்தான். “எல்லா place-க்கும் ஒரு story இருக்கு இல்ல?”\n\nவர்ஷா smile பண்ணிட்டு, “Yes! Travel-னா வெறும் place பாக்குறது மட்டும் இல்ல, அதோட history and stories-ஐ learn பண்றது தான்!”-னு சொன்னா."
+          }
+        }
+      ],
+      "reels": [
+        {
+          "id": "hero-1",
+          "shortcode": "Dd1h9_EAktC",
+          "permalink": "https://www.instagram.com/reel/Dd1h9_EAktC/",
+          "poster": "https://randomtyms.github.io/welcome/images/Hero1.webp",
+          "kicker": {
+            "en": "Hero 1",
+            "ta": "Hero 1"
+          },
+          "title": {
+            "en": "The Magic Ticket",
+            "ta": "Magic Ticket கிடைச்சிருக்கு"
+          },
+          "blurb": {
+            "en": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!",
+            "ta": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. ஒரு magical ticket. ஐந்து stops. 54 seconds of pure தமிழ்நாடு adventure!"
+          }
+        },
+        {
+          "id": "hero-2",
+          "shortcode": "DeJzC2_RyVn",
+          "permalink": "https://www.instagram.com/reel/DeJzC2_RyVn/",
+          "poster": "https://randomtyms.github.io/welcome/images/Hero2.webp",
+          "kicker": {
+            "en": "Hero 2",
+            "ta": "Hero 2"
+          },
+          "title": {
+            "en": "Is This TamilNadu or Switzerland?",
+            "ta": "இது தமிழ்நாடா இல்ல Switzerland-ஆ?"
+          },
+          "blurb": {
+            "en": "Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, a railway bridge over the sea — what an adventure!",
+            "ta": "கொடைக்கானல் Lake, நாயக்கர் Mahal, Mathoor Aqueduct, பாம்பன் Bridge, Arichal முனை. Misty hills, grand palace, ஆகாயத்துல water bridge, sea மேல railway track — என்ன ஒரு Awesome adventure!"
+          }
+        },
+        {
+          "id": "hero-3",
+          "shortcode": "Demh75np0NR",
+          "permalink": "https://www.instagram.com/reel/Demh75np0NR/",
+          "poster": "https://randomtyms.github.io/welcome/images/Hero3.webp",
+          "kicker": {
+            "en": "Hero 3",
+            "ta": "Hero 3"
+          },
+          "title": {
+            "en": "New Competition Film",
+            "ta": "New Competition Film"
+          },
+          "blurb": {
+            "en": "Behind the scenes insights and creative workflows for the #ReimagineTN AI video competition.",
+            "ta": "#ReimagineTN AI video competition-க்கான behind the scenes insights and creative workflows."
+          }
+        }
+      ]
+    };
+
+    const reelRow = document.getElementById("reel-row");
     pack.reels.forEach(function (reel) {
       const article = document.createElement("article");
       article.className = "reel";
-      article.id = reel.id;
+      
+article.id = reel.id;
       const kick = document.createElement("p");
       kick.className = "kicker";
       kick.textContent = reel.kicker.en;
@@ -601,7 +566,7 @@
       link.rel = "noopener noreferrer";
       const img = document.createElement("img");
       img.src = reel.poster;
-      img.alt = reel.title.en + "RandomTyms - TN Tourism AI Reel";
+      img.alt = reel.title.en + " RandomTyms - TN Tourism AI Reel";
       const veil = document.createElement("span");
       veil.className = "veil";
       const play = document.createElement("span");
