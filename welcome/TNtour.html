@@ -56,11 +56,7 @@
     }
     .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; font-weight: 700; }
     .brand-logo {
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 0.5rem;
-      object-fit: contain;
-      display: block;
+      width: 2.25rem; height: 2.25rem; border-radius: 0.5rem; object-fit: contain; display: block;
     }
     .brand small { display: block; font-weight: 500; color: var(--muted); font-size: 0.75rem; }
     .langs { display: flex; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 0.2rem; }
@@ -95,10 +91,6 @@
     .reels { display: grid; gap: 2rem; }
     .reel { width: auto; }
     .reels::-webkit-scrollbar, .pills::-webkit-scrollbar { display: none; }
-    .frame {
-      margin-top: 0.75rem; aspect-ratio: 9 / 16; border-radius: 1.35rem; overflow: hidden;
-      border: 1px solid var(--line); background: var(--ink);
-    }
     .dot {
       width: 4rem; height: 4rem; border-radius: 999px; background: var(--brass);
       display: grid; place-items: center; font-size: 1.3rem;
@@ -293,16 +285,28 @@
           "gif": "https://media.tenor.com/w-uH3AgmeioAAAAM/chennai-chennai-express.gif",
           "alt": "Animated Chennai Central railway station",
           "headline": { "en": "Choo-choo! Welcome aboard!", "ta": "Choo-choo! Welcome aboard!" },
-          "story": "Look at this bright red castle! It isn't a palace for kings—it’s a giant house for fast trains. Grab your bags and jump in!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> Millions of happy travelers start their vacation right here!",
+          "story": {
+            "en": "Look at this bright red castle! It isn't a palace for kings—it’s a giant house for fast trains. Grab your bags and jump in!",
+            "ta": "இந்த bright red castle-ஐ பாருங்க! இது ராஜாவோட palace இல்ல—fast trains-களுக்கான giant house. Bags-ஐ எடுத்துக்கிட்டு jump பண்ணுங்க!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> Millions of happy travelers start their vacation right here!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> கோடி கணக்கான happy travelers தங்களுடைய vacation-ஐ இங்கிருந்துதான் start பண்றாங்க!"
+          },
           "quiz": {
-            "question": "What color is this giant train castle?",
+            "question": {
+              "en": "What color is this giant train castle?",
+              "ta": "இந்த giant train castle என்ன colorல இருக்கு?"
+            },
             "options": [
               { "text": "Bright Blue 🟦", "correct": false },
               { "text": "Bright Red 🟥", "correct": true },
               { "text": "Neon Green 🟩", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Chennai Central features India's oldest railway station clock, and Chennai is renowned as the historic 'Chess Capital of India' with a 100+ year-old chess legacy! ♟️"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Chennai Central features India's oldest railway station clock, and Chennai is renowned as the historic 'Chess Capital of India' with a 100+ year-old chess legacy! ♟️",
+              "ta": "💡 <strong>Did you know?</strong> Chennai Central-ல India-வோட oldest railway station clock இருக்கு, மேலும் சென்னை 'Chess Capital of India'ன்னு பெருமையா அழைக்கப்படுது! ♟️"
+            }
           }
         },
         {
@@ -312,16 +316,28 @@
           "gif": "https://media.tenor.com/YbZS5CgANyAAAAAM/madurai-meenakshi.gif",
           "alt": "Animated Madurai Meenakshi temple gopuram",
           "headline": { "en": "A giant rainbow tower!", "ta": "A giant rainbow tower!" },
-          "story": "Can you spot the tiny statues? There are thousands of colorful gods, goddesses, and animals dancing high up in the sky!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> It smells like sweet jasmine flowers and yummy temple food!",
+          "story": {
+            "en": "Can you spot the tiny statues? There are thousands of colorful gods, goddesses, and animals dancing high up in the sky!",
+            "ta": "அந்த tiny statues-ஐ பார்க்க முடியுதா? வானத்துல உயரமாக colorful gods, goddesses மற்றும் animals தசைகள் மாதிரி dance பண்ற மாதிரி இருக்கு!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> It smells like sweet jasmine flowers and yummy temple food!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> இங்க Malli poo (jasmine) scent-உம் yummy temple food smell-உம் செம்மயா இருக்கும்!"
+          },
           "quiz": {
-            "question": "What can you see dancing all over the tall towers?",
+            "question": {
+              "en": "What can you see dancing all over the tall towers?",
+              "ta": "Tall towers மேல என்ன dance பண்றதை பார்க்கலாம்?"
+            },
             "options": [
               { "text": "Thousands of colorful statues 🎨", "correct": true },
               { "text": "Flying cars 🚗", "correct": false },
               { "text": "Giant pizza slices 🍕", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Madurai is called the 'City That Never Sleeps' because its vibrant street markets stay active all night long serving piping-hot idlis! 🌙"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Madurai is called the 'City That Never Sleeps' because its vibrant street markets stay active all night long serving piping-hot idlis! 🌙",
+              "ta": "💡 <strong>Did you know?</strong> Madurai-க்கு 'City That Never Sleeps'ன்னு பேரு, ஏன்னா இங்க night முழுதும் சூடான idli கிடைக்கும்! 🌙"
+            }
           }
         },
         {
@@ -330,17 +346,29 @@
           "name": "Thanjavur Big Temple",
           "gif": "https://media.tenor.com/HcpM1wgfZu8AAAAM/hindu-temple.gif",
           "alt": "Animated Thanjavur Brihadisvara Temple",
-          "headline": { "en": "Built with giant rock Lego blocks!", "ta": "Built with giant rock Lego blocks!" },
-          "story": "A thousand years ago, strong elephants lifted a super heavy stone to the top of this giant tower!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> No cement was used to stick the rocks together—it's like a real-life giant puzzle!",
+          "headline": { "en": "Built with giant rock Lego blocks!", "ta": "Giant rock Lego blocks-ல கட்டின temple!" },
+          "story": {
+            "en": "A thousand years ago, strong elephants lifted a super heavy stone to the top of this giant tower!",
+            "ta": "1000 வருஷங்களுக்கு முன்பு, strong ஆன elephants தான் இந்த giant tower-க்கு super heavy stone-ஐ தூக்கி வச்சது!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> No cement was used to stick the rocks together—it's like a real-life giant puzzle!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> இந்த rocks-ஐ ஒட்ட வைக்க cement யூஸ் பண்ணவே இல்ல—இது ஒரு real-life giant puzzle மாதிரி!"
+          },
           "quiz": {
-            "question": "How was the giant rock lifted to the top 1,000 years ago?",
+            "question": {
+              "en": "How was the giant rock lifted to the top 1,000 years ago?",
+              "ta": "1000 வருஷத்துக்கு முன்பு அந்த giant rock-ஐ மேலே தூக்கினது யாரு?"
+            },
             "options": [
               { "text": "Big strong elephants! 🐘", "correct": true },
               { "text": "Space rockets 🚀", "correct": false },
               { "text": "Giant helicopters 🚁", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Thanjavur is famous for crafting unique wobbly dolls (Thanjavur Thalaiyatti Bommai) that balance perfectly and never fall over no matter how hard you push them! 🪆"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Thanjavur is famous for crafting unique wobbly dolls (Thanjavur Thalaiyatti Bommai) that balance perfectly and never fall over no matter how hard you push them! 🪆",
+              "ta": "💡 <strong>Did you know?</strong> Thanjavur-ல கீழ விழுந்தாலும் திரும்ப எழும்புற famous 'Thanjavur Thalaiyatti Bommai' செய்றாங்க! 🪆"
+            }
           }
         },
         {
@@ -349,17 +377,29 @@
           "name": "Nilgiri Mountain Railway",
           "gif": "https://media.tenor.com/ooqJSBeW13IAAAAM/train-railway.gif",
           "alt": "Animated Nilgiri mountain train",
-          "headline": { "en": "Riding through the clouds!", "ta": "Riding through the clouds!" },
-          "story": "Chug-chug-chug! This cute blue toy train climbs up green mountains and goes right through soft clouds and dark tunnels!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> Keep your eyes open to spot playful monkeys hanging out in the trees outside your window!",
+          "headline": { "en": "Riding through the clouds!", "ta": "Clouds-க்கு நடுவுல ஒரு ride!" },
+          "story": {
+            "en": "Chug-chug-chug! This cute blue toy train climbs up green mountains and goes right through soft clouds and dark tunnels!",
+            "ta": "Chug-chug-chug! இந்த cute blue toy train பச்சை மலைகள்ல ஏறி, soft clouds மற்றும் dark tunnels வழியா போகுது!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> Keep your eyes open to spot playful monkeys hanging out in the trees outside your window!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> Window-க்கு வெளியே மரங்கள்ல குறும்பு பண்ற monkeys-ஐ பார்க்கலாம்!"
+          },
           "quiz": {
-            "question": "What cute animal might you spot peeking at you from the trees?",
+            "question": {
+              "en": "What cute animal might you spot peeking at you from the trees?",
+              "ta": "மரங்கள்ல இருந்து உங்களை பார்க்கிற cute animal எது?"
+            },
             "options": [
               { "text": "Penguins 🐧", "correct": false },
               { "text": "Monkeys 🐒", "correct": true },
               { "text": "Polar bears 🐻‍❄️", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> The Ooty Toy Train is among the slowest trains in India, moving at roughly 10 km/h—meaning you could literally jog right alongside it! 🐢🚆"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> The Ooty Toy Train is among the slowest trains in India, moving at roughly 10 km/h—meaning you could literally jog right alongside it! 🐢🚆",
+              "ta": "💡 <strong>Did you know?</strong> Ooty Toy Train தான் India-வோட slowest train, இது மணிக்கு 10 km speed-ல தான் போகும்! 🐢🚆"
+            }
           }
         },
         {
@@ -368,17 +408,29 @@
           "name": "Kanyakumari",
           "gif": "https://media.tenor.com/Mkq8jvEsKIwAAAAM/thirukkural-thiruvalluvar.gif",
           "alt": "Animated Thiruvalluvar statue at Kanyakumari",
-          "headline": { "en": "A giant stone poet standing in the ocean!", "ta": "A giant stone poet standing in the ocean!" },
-          "story": "This stone statue is taller than a 13-story building and stands right in the middle of the sea!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> It is so strong that even fierce ocean storms and heavy waves can't knock it over!",
+          "headline": { "en": "A giant stone poet standing in the ocean!", "ta": "Ocean-ல நிற்கிற giant stone poet!" },
+          "story": {
+            "en": "This stone statue is taller than a 13-story building and stands right in the middle of the sea!",
+            "ta": "இந்த stone statue 13-story building-ஐ விட ரொம்ப tall ஆனதா கடலுக்கு நடுவுல நிக்குது!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> It is so strong that even fierce ocean storms and heavy waves can't knock it over!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> இது எவ்ளோ strong-ானா storm வந்தாலும் அசையாம நிக்கும்!"
+          },
           "quiz": {
-            "question": "How tall is this giant stone poet standing in the sea?",
+            "question": {
+              "en": "How tall is this giant stone poet standing in the sea?",
+              "ta": "கடல்ல நிக்கிற இந்த giant stone poet எவ்ளோ height?"
+            },
             "options": [
               { "text": "Taller than a 13-story building! 🏢", "correct": true },
               { "text": "As tall as a tiny flower 🌻", "correct": false },
               { "text": "As tall as a bicycle 🚲", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Kanyakumari is the only spot in India where you can watch the sun rise out of the ocean in the morning and set into the ocean at night from the exact same place! 🌅"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Kanyakumari is the only spot in India where you can watch the sun rise out of the ocean in the morning and set into the ocean at night from the exact same place! 🌅",
+              "ta": "💡 <strong>Did you know?</strong> Kanyakumari-ல தான் ஒரே இடத்துல இருந்து sunrise மற்றும் sunset ரெண்டையும் பார்க்க முடியும்! 🌅"
+            }
           }
         },
         {
@@ -387,17 +439,29 @@
           "name": "Kodaikanal Lake",
           "gif": "https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif",
           "alt": "Animated Kodaikanal hill and lake",
-          "headline": { "en": "A lake shaped like a giant star!", "ta": "A lake shaped like a giant star!" },
-          "story": "Deep up in the cool mountains, there is a giant lake that looks just like a star when seen from the sky!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> You can rent a little wooden rowboat and paddle right through the center of the star!",
+          "headline": { "en": "A lake shaped like a giant star!", "ta": "Giant star shape-ல ஒரு lake!" },
+          "story": {
+            "en": "Deep up in the cool mountains, there is a giant lake that looks just like a star when seen from the sky!",
+            "ta": "Cool ஆன mountains-ல, sky-ல இருந்து பார்த்தா star மாதிரி இருக்கிற giant lake இருக்கு!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> You can rent a little wooden rowboat and paddle right through the center of the star!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> நீங்க ஒரு wooden rowboat எடுத்து அந்த star-ன் நடுவுல paddle பண்ணலாம்!"
+          },
           "quiz": {
-            "question": "What sky shape does this cool mountain lake look like?",
+            "question": {
+              "en": "What sky shape does this cool mountain lake look like?",
+              "ta": "இந்த mountain lake பாக்க என்ன shape-ல இருக்கு?"
+            },
             "options": [
               { "text": "A giant star ⭐", "correct": true },
               { "text": "A square box 📦", "correct": false },
               { "text": "A happy heart ❤️", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Kodaikanal is home to the legendary Kurinji flowers, which blossom only once every 12 full years to turn entire mountain slopes purple! 🪻"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Kodaikanal is home to the legendary Kurinji flowers, which blossom only once every 12 full years to turn entire mountain slopes purple! 🪻",
+              "ta": "💡 <strong>Did you know?</strong> 12 வருஷத்துக்கு ஒருமுறை பூக்கிற Kurinji flowers Kodaikanal-ல இருக்கு! 🪻"
+            }
           }
         },
         {
@@ -406,17 +470,29 @@
           "name": "Thirumalai Nayakkar Mahal",
           "gif": "https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif",
           "alt": "Animated Thirumalai Nayakkar Mahal",
-          "headline": { "en": "Fat pillars fit for giant dinosaurs!", "ta": "Fat pillars fit for giant dinosaurs!" },
-          "story": "This grand palace has gigantic white pillars so wide that it takes 5 kids holding hands just to hug one!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> Kings used to sit here and watch secret light-and-sound shows under the glowing stars!",
+          "headline": { "en": "Fat pillars fit for giant dinosaurs!", "ta": "Giant dinosaurs-க்கு ஏற்ற big pillars!" },
+          "story": {
+            "en": "This grand palace has gigantic white pillars so wide that it takes 5 kids holding hands just to hug one!",
+            "ta": "இந்த grand palace-ல இருக்கிற white pillars ரொம்ப wide ஆனது, 5 kids கைக கோர்த்து பிடித்தால் தான் சுற்ற முடியும்!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> Kings used to sit here and watch secret light-and-sound shows under the glowing stars!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> Kings இங்க உட்கார்ந்து stars கீழ light-and-sound shows பார்ப்பாங்க!"
+          },
           "quiz": {
-            "question": "How many kids holding hands does it take to hug one giant pillar?",
+            "question": {
+              "en": "How many kids holding hands does it take to hug one giant pillar?",
+              "ta": "ஒரு giant pillar-ஐ hug பண்ண எத்தனை kids கைக கோர்க்கனும்?"
+            },
             "options": [
               { "text": "1 kid", "correct": false },
               { "text": "5 kids! 🖐️", "correct": true },
               { "text": "100 kids", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> The palace roof was built using millions of egg whites mixed with lime mortar to give the pillars a smooth, mirror-like polish that endured centuries! 🥚🏰"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> The palace roof was built using millions of egg whites mixed with lime mortar to give the pillars a smooth, mirror-like polish that endured centuries! 🥚🏰",
+              "ta": "💡 <strong>Did you know?</strong> இந்த pillars-க்கு smooth polish தர egg whites மற்றும் lime mortar மிக்ஸ் பண்ணி கட்டினாங்க! 🥚🏰"
+            }
           }
         },
         {
@@ -425,17 +501,29 @@
           "name": "Mathoor Aqueduct",
           "gif": "https://media.tenor.com/7Q-hlmfAbo4AAAAM/bridge-tamil-nadu.gif",
           "alt": "Animated Mathoor aqueduct",
-          "headline": { "en": "A giant water bridge in the trees!", "ta": "A giant water bridge in the trees!" },
-          "story": "Imagine a giant bridge built specifically to carry a flowing river through the air above lush green forests!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> You can walk along the top edge way up high, soaring higher than a flying bird!",
+          "headline": { "en": "A giant water bridge in the trees!", "ta": "Trees-க்கு நடுவுல ஒரு giant water bridge!" },
+          "story": {
+            "en": "Imagine a giant bridge built specifically to carry a flowing river through the air above lush green forests!",
+            "ta": "Green forests-க்கு மேலே air-ல ஒரு river-ஐ carry பண்ணின giant bridge-ஐ கற்பனை பண்ணுங்க!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> You can walk along the top edge way up high, soaring higher than a flying bird!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> பறக்கிற bird-ஐ விட உயரமாக நீங்க இந்த bridge மேல நடக்கலாம்!"
+          },
           "quiz": {
-            "question": "What flows over this super tall bridge in the trees?",
+            "question": {
+              "en": "What flows over this super tall bridge in the trees?",
+              "ta": "இந்த super tall bridge மேல என்ன flow ஆகுது?"
+            },
             "options": [
               { "text": "A river of water 💧", "correct": true },
               { "text": "Yummy melted chocolate 🍫", "correct": false },
               { "text": "A track for roller skates 🛼", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> The water rushing across this bridge originates in the Western Ghats and is pure enough to nourish miles of coconut and banana plantations across the valley! 🥥"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> The water rushing across this bridge originates in the Western Ghats and is pure enough to nourish miles of coconut and banana plantations across the valley! 🥥",
+              "ta": "💡 <strong>Did you know?</strong> இந்த bridge-ல ஓடுற water Western Ghats-ல இருந்து வருது, இது valley-ல இருக்கிற plants-க்கு உதவுது! 🥥"
+            }
           }
         },
         {
@@ -444,17 +532,29 @@
           "name": "Pamban Bridge",
           "gif": "https://media.tenor.com/T4YA6zWUsS0AAAAM/pamban-bridge.gif",
           "alt": "Animated new Pamban vertical-lift bridge",
-          "headline": { "en": "A train walking on water!", "ta": "A train walking on water!" },
-          "story": "Watch out! The train is riding right on a narrow track built straight over the blue ocean!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> The middle of the bridge lifts up like giant metal wings to let massive ships sail through!",
+          "headline": { "en": "A train walking on water!", "ta": "Water மேல நடக்கிற train!" },
+          "story": {
+            "en": "Watch out! The train is riding right on a narrow track built straight over the blue ocean!",
+            "ta": "Watch out! Blue ocean-க்கு மேலே கட்டப்பட்ட narrow track-ல train போகுது!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> The middle of the bridge lifts up like giant metal wings to let massive ships sail through!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> Ships போகும்போது bridge-ன் மிடில் பகுதி giant wings மாதிரி தூக்கும்!"
+          },
           "quiz": {
-            "question": "What does the middle of the bridge do when a big ship comes?",
+            "question": {
+              "en": "What does the middle of the bridge do when a big ship comes?",
+              "ta": "Big ship வரும்போது bridge-ன் நடுப்பகுதி என்ன செய்யும்?"
+            },
             "options": [
               { "text": "It lifts up like giant wings! 🦅", "correct": true },
               { "text": "It turns into a slide 🛝", "correct": false },
               { "text": "It hides underwater 🌊", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Pamban Bridge is constructed in one of the most salty, corrosive marine environments on Earth—second only to the Dead Sea! 🧂🌊"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Pamban Bridge is constructed in one of the most salty, corrosive marine environments on Earth—second only to the Dead Sea! 🧂🌊",
+              "ta": "💡 <strong>Did you know?</strong> Pamban Bridge ரொம்ப salty ஆன marine environment-ல இருக்கு! 🧂🌊"
+            }
           }
         },
         {
@@ -463,17 +563,29 @@
           "name": "Arichal Munai",
           "gif": "https://media.tenor.com/eJa3bCBw4dAAAAAM/bridge-tamil-nadu.gif",
           "alt": "Animated Dhanushkodi and Arichal Munai coast",
-          "headline": { "en": "Where two oceans high-five!", "ta": "Where two oceans high-five!" },
-          "story": "Stand on the sandy beach and watch blue waves from two different seas crash together!",
-          "funFact": "🌟 <strong>Wild Fun Fact:</strong> You can explore old, magical town ruins buried right beneath the shifting ocean sands!",
+          "headline": { "en": "Where two oceans high-five!", "ta": "Two oceans high-five பண்ற இடம்!" },
+          "story": {
+            "en": "Stand on the sandy beach and watch blue waves from two different seas crash together!",
+            "ta": "Sandy beachல நின்னு ரெண்டு different seas-ஓட waves எப்படி meet ஆகுதுன்னு பாருங்க!"
+          },
+          "funFact": {
+            "en": "🌟 <strong>Wild Fun Fact:</strong> You can explore old, magical town ruins buried right beneath the shifting ocean sands!",
+            "ta": "🌟 <strong>Wild Fun Fact:</strong> Ocean sands-க்கு கீழே புதைந்திருக்கிற old town ruins-ஐ explore பண்ணலாம்!"
+          },
           "quiz": {
-            "question": "What high-fives each other on the beach here?",
+            "question": {
+              "en": "What high-fives each other on the beach here?",
+              "ta": "இந்த beachல ஒன்னோடொன்னு high-five பண்றது என்ன?"
+            },
             "options": [
               { "text": "Two ocean waves 🌊", "correct": true },
               { "text": "Two giant robots 🤖", "correct": false },
               { "text": "Two flying dragons 🐉", "correct": false }
             ],
-            "fact": "💡 <strong>Did you know?</strong> Satellite photos from space reveal an underwater trail of shoals stretching from here toward Sri Lanka, famously known in legend as Ram Setu! 🛰️"
+            "fact": {
+              "en": "💡 <strong>Did you know?</strong> Satellite photos from space reveal an underwater trail of shoals stretching from here toward Sri Lanka, famously known in legend as Ram Setu! 🛰️",
+              "ta": "💡 <strong>Did you know?</strong> Spaceல இருந்து எடுத்த satellite photos-ல Ram Setu trail-ஐ பார்க்க முடியும்! 🛰️"
+            }
           }
         }
       ],
@@ -526,9 +638,14 @@
       kick.className = "kicker";
       kick.textContent = reel.kicker.en;
       const title = document.createElement("h3");
+      title.className = "reel-title";
+      title.dataset.en = reel.title.en;
+      title.dataset.ta = reel.title.ta;
       title.textContent = reel.title.en;
       const blurb = document.createElement("p");
-      blurb.className = "muted";
+      blurb.className = "muted reel-blurb";
+      blurb.dataset.en = reel.blurb.en;
+      blurb.dataset.ta = reel.blurb.ta;
       blurb.textContent = reel.blurb.en;
       const link = document.createElement("a");
       link.className = "poster";
@@ -546,6 +663,8 @@
       dot.className = "dot";
       dot.textContent = "▶";
       const label = document.createElement("span");
+      label.dataset.en = "Play the Instagram Reel";
+      label.dataset.ta = "Instagram Reel play பண்ணுங்க";
       label.textContent = "Play the Instagram Reel";
       play.append(dot, label);
       link.append(img, veil, play);
@@ -554,6 +673,8 @@
       open.href = reel.permalink;
       open.target = "_blank";
       open.rel = "noopener noreferrer";
+      open.dataset.en = "Open on Instagram";
+      open.dataset.ta = "Instagram-ல் திறக்கவும்";
       open.textContent = "Open on Instagram";
       article.append(kick, title, blurb, link, open);
       reelRow.appendChild(article);
@@ -603,21 +724,30 @@
 
       const headline = document.createElement("p");
       headline.className = "headline";
+      headline.dataset.en = item.headline.en;
+      headline.dataset.ta = item.headline.ta;
       headline.textContent = item.headline.en;
 
       const storyP = document.createElement("p");
-      storyP.textContent = item.story;
+      storyP.dataset.en = item.story.en;
+      storyP.dataset.ta = item.story.ta;
+      storyP.textContent = item.story.en;
 
       const funFactDiv = document.createElement("div");
       funFactDiv.className = "fun-fact-box";
-      funFactDiv.innerHTML = item.funFact;
+      funFactDiv.dataset.en = item.funFact.en;
+      funFactDiv.dataset.ta = item.funFact.ta;
+      funFactDiv.innerHTML = item.funFact.en;
 
       // Quiz Container Generation
       const quizDiv = document.createElement("div");
       quizDiv.className = "quiz-box";
 
       const qTitle = document.createElement("strong");
-      qTitle.textContent = "🎮 Kids Mini-Quiz: " + item.quiz.question;
+      qTitle.className = "quiz-question-title";
+      qTitle.dataset.en = "🎮 Kids Mini-Quiz: " + item.quiz.question.en;
+      qTitle.dataset.ta = "🎮 Kids Mini-Quiz: " + item.quiz.question.ta;
+      qTitle.textContent = "🎮 Kids Mini-Quiz: " + item.quiz.question.en;
       quizDiv.appendChild(qTitle);
 
       const optionsDiv = document.createElement("div");
@@ -632,7 +762,6 @@
         optBtn.className = "quiz-btn";
         optBtn.textContent = opt.text;
         optBtn.onclick = function() {
-          // Disable all buttons in this quiz block
           Array.from(optionsDiv.children).forEach(b => {
             b.disabled = true;
             if(b.textContent === opt.text && opt.correct) {
@@ -640,16 +769,20 @@
             } else if(b.textContent === opt.text && !opt.correct) {
               b.classList.add("incorrect");
             } else {
-              // highlight the correct one if they picked wrong
               const matchedOpt = item.quiz.options.find(o => o.text === b.textContent);
               if(matchedOpt && matchedOpt.correct) b.classList.add("correct");
             }
           });
+          const currentLang = document.documentElement.lang === "ta-Latn" ? "ta" : "en";
+          const badgeText = currentLang === "ta" ? "🎉 Correct! உனக்கு ஒரு Explorer Badge கிடைச்சிருக்கு! 🏅<br><br>" : "🎉 Correct! You earned an Explorer Badge! 🏅<br><br>";
+          const wrongText = currentLang === "ta" ? "❌ பரவாயில்லை! இதையும் தெரிஞ்சுகோங்க:<br><br>" : "❌ Not quite! But look at this:<br><br>";
+          const factString = item.quiz.fact[currentLang];
+
           if(opt.correct) {
-            feedbackP.innerHTML = "🎉 Correct! You earned an Explorer Badge! 🏅<br><br>" + item.quiz.fact;
+            feedbackP.innerHTML = badgeText + factString;
             feedbackP.style.color = "var(--success)";
           } else {
-            feedbackP.innerHTML = "❌ Not quite! But look at this:<br><br>" + item.quiz.fact;
+            feedbackP.innerHTML = wrongText + factString;
             feedbackP.style.color = "#b91c1c";
           }
         };
@@ -672,10 +805,24 @@
       document.documentElement.lang = next === "ta" ? "ta-Latn" : "en";
       document.getElementById("en").setAttribute("aria-pressed", String(next === "en"));
       document.getElementById("ta").setAttribute("aria-pressed", String(next === "ta"));
+      
+      document.querySelectorAll("[data-en]").forEach(function (node) {
+        if(node.dataset[next]) {
+          if(node.classList.contains("fun-fact-box")) {
+            node.innerHTML = node.dataset[next];
+          } else if(node.classList.contains("quiz-question-title")) {
+            node.textContent = node.dataset[next];
+          } else {
+            node.textContent = node.dataset[next];
+          }
+        }
+      });
+
       const share = document.getElementById("share");
       if (!share.dataset.copied) share.textContent = next === "ta" ? "Share பண்ணுங்க" : "Share the adventure";
       try { localStorage.setItem("rt-lang", next); } catch (e) {}
     }
+
     document.getElementById("en").onclick = function () { apply("en"); };
     document.getElementById("ta").onclick = function () { apply("ta"); };
     apply(lang);
