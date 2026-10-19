@@ -304,7 +304,9 @@
         <div class="reel" id="bts-custom" style="padding: 1rem;">
           <div class="video-wrapper" style="margin: 0 0 1rem 0;">
             <iframe 
-              src="https://www.youtube.com/embed/EpkBdpwrp_U" 
+              id="player-bts"
+              class="yt-player"
+              src="https://www.youtube.com/embed/EpkBdpwrp_U?enablejsapi=1" 
               title="Staying Safe on Our Travels - BTS" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowfullscreen>
@@ -338,6 +340,7 @@
     <p data-en="Lokesh and Varsha. Three films. Ten stops. Endless discoveries." data-ta="Lokesh and Varsha. 3 films. 10 stops. Endless discoveries.">Lokesh and Varsha. Three films. Ten stops. Endless discoveries.</p>
     <p>TN Tourism AI Video Competition 2026 · #reimaginetn · @tntourismoffcl</p>
   </footer>
+
   <script>
     const pack = {
       "landmarks": [
@@ -711,12 +714,14 @@
       blurb.dataset.ta = reel.blurb.ta;
       blurb.textContent = reel.blurb.en;
 
-      // Embed YouTube Short player inside 9:16 responsive container
+      // Embed YouTube Short player with enablejsapi parameter
       const wrapper = document.createElement("div");
       wrapper.className = "video-wrapper";
       
       const iframe = document.createElement("iframe");
-      iframe.src = "https://www.youtube.com/embed/" + reel.ytId;
+      iframe.id = "player-" + reel.id;
+      iframe.className = "yt-player";
+      iframe.src = "https://www.youtube.com/embed/" + reel.ytId + "?enablejsapi=1";
       iframe.title = reel.title.en + " - RandomTyms";
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       iframe.allowFullscreen = true;
@@ -795,7 +800,6 @@
       funFactDiv.dataset.ta = item.funFact.ta;
       funFactDiv.innerHTML = item.funFact.en;
 
-      // Quiz Container Generation
       const quizDiv = document.createElement("div");
       quizDiv.className = "quiz-box";
 
@@ -904,6 +908,36 @@
     document.getElementById("wa").onclick = function () {
       window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(journeyText()), "_blank", "noopener,noreferrer");
     };
+  </script>
+
+  <!-- YouTube IFrame API: Synchronized Playback Controller -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    let players = [];
+
+    // Automatically called by the YouTube API once loaded
+    function onYouTubeIframeAPIReady() {
+      const iframes = document.querySelectorAll(".yt-player");
+      iframes.forEach((iframe) => {
+        const player = new YT.Player(iframe.id, {
+          events: {
+            onStateChange: (event) => onPlayerStateChange(event, player)
+          }
+        });
+        players.push(player);
+      });
+    }
+
+    // Auto-pause all other videos when one starts playing
+    function onPlayerStateChange(event, currentPlayer) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        players.forEach((p) => {
+          if (p !== currentPlayer && typeof p.pauseVideo === "function") {
+            p.pauseVideo();
+          }
+        });
+      }
+    }
   </script>
 </body>
 </html>
