@@ -89,13 +89,51 @@
     .lede { max-width: 40rem; font-size: 1.125rem; }
     .jump a { font-weight: 600; }
     .reels { display: grid; gap: 2rem; }
-    .reel { width: auto; }
-    .reels::-webkit-scrollbar, .pills::-webkit-scrollbar { display: none; }
-    .dot {
-      width: 4rem; height: 4rem; border-radius: 999px; background: var(--brass);
-      display: grid; place-items: center; font-size: 1.3rem;
+    .reel { 
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1.35rem;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
     }
-    .ig { display: inline-flex; align-items: center; margin-top: 0.6rem; color: var(--brass); font-weight: 600; text-decoration: none; }
+    .reels::-webkit-scrollbar, .pills::-webkit-scrollbar { display: none; }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #000;
+      margin: 1rem 0;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .ig-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+      color: #ffffff !important;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      margin-top: auto;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(220, 39, 67, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .ig-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(220, 39, 67, 0.45);
+    }
     .perforation {
       height: 1.25rem; margin-top: 1.5rem;
       background-image: radial-gradient(circle, var(--paper) 0.42rem, transparent 0.45rem);
@@ -119,7 +157,6 @@
     article.stop .pad { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; flex-grow: 1; }
     .muted { color: var(--muted); }
     
-    /* Interactive Card Elements styling */
     .fun-fact-box {
       background: #fdf8e2;
       border: 1px dashed #f59e0b;
@@ -134,11 +171,7 @@
       border-radius: 0.75rem;
       margin-top: auto;
     }
-    .quiz-options {
-      display: grid;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
-    }
+    .quiz-options { display: grid; gap: 0.4rem; margin-top: 0.5rem; }
     .quiz-btn {
       text-align: left;
       background: #ffffff;
@@ -153,11 +186,7 @@
     .quiz-btn:hover { background: #e2e8f0; }
     .quiz-btn.correct { background: #dcfce7; border-color: var(--success); color: var(--success); font-weight: 700; }
     .quiz-btn.incorrect { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
-    .quiz-feedback {
-      margin-top: 0.6rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
+    .quiz-feedback { margin-top: 0.6rem; font-size: 0.875rem; font-weight: 600; }
 
     .share { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 1rem; }
     .share .solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
@@ -169,18 +198,16 @@
     .bts-grid { display: grid; gap: 2rem; margin-top: 1.5rem; }
     @media (min-width: 800px) {
       .reels { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
-      .bts-grid { grid-template-columns: 1fr 2fr; align-items: center; }
+      .bts-grid { grid-template-columns: 340px 1fr; align-items: start; }
       .brand small { display: block; }
     }
     @media (max-width: 799px) { .brand small { display: none; } }
     @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 1100px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
-    a.poster { position: relative; display: block; aspect-ratio: 9 / 16; overflow: hidden; border-radius: 1.35rem; border: 1px solid var(--line); color: var(--paper); text-decoration: none; background: var(--soft); }
-    a.poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    a.poster .veil { position: absolute; inset: auto 0 0 0; height: 42%; background: linear-gradient(to top, rgba(28, 25, 20, 0.78), transparent); }
-    a.poster .play { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 1.25rem; font-weight: 600; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75); }
     .headline { font-family: Fraunces, Georgia, serif; color: var(--brass); font-size: 1.15rem; margin: 0; }
   </style>
+
+  <!-- Google VideoObject Structured Data -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -192,11 +219,47 @@
       "name": "TN Tourism AI Video Competition 2026 — The Magic Ticket | #ReimagineTN",
       "description": "Official RandomTyms submission trilogy showcasing Keezhadi, AI Bharatanatyam, Kanchipuram silk, and Tamil Nadu's heritage for the #ReimagineTN competition.",
       "keywords": "reimaginetn, TN AI Video Competition 2026, Tamil Nadu Tourism, RandomTyms, Lokesh and Varsha",
-      "mainEntity": [
-        { "@id": "https://www.instagram.com/reel/Dd1h9_EAktC/" },
-        { "@id": "https://www.instagram.com/reel/DeJzC2_RyVn/" },
-        { "@id": "https://www.instagram.com/reel/Demh75np0NR/" },
-        { "@id": "https://www.instagram.com/reel/Dd22gtVJImx/" }
+      "hasPart": [
+        {
+          "@type": "VideoObject",
+          "@id": "https://www.youtube.com/shorts/pHHghhEey3k",
+          "name": "The Magic Ticket — Hero 1",
+          "description": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!",
+          "thumbnailUrl": "https://img.youtube.com/vi/pHHghhEey3k/hqdefault.jpg",
+          "uploadDate": "2026-10-15T08:00:00+05:30",
+          "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/",
+          "embedUrl": "https://www.youtube.com/embed/pHHghhEey3k"
+        },
+        {
+          "@type": "VideoObject",
+          "@id": "https://www.youtube.com/shorts/JEJZYTItjdQ",
+          "name": "Is This TamilNadu or Switzerland? — Hero 2",
+          "description": "Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, and a railway bridge over the sea.",
+          "thumbnailUrl": "https://img.youtube.com/vi/JEJZYTItjdQ/hqdefault.jpg",
+          "uploadDate": "2026-10-15T08:00:00+05:30",
+          "contentUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/",
+          "embedUrl": "https://www.youtube.com/embed/JEJZYTItjdQ"
+        },
+        {
+          "@type": "VideoObject",
+          "@id": "https://www.youtube.com/shorts/FjMc8FtFsz4",
+          "name": "Heritage Meets Innovation — Hero 3",
+          "description": "Keezhadi Ancient Discoveries, AI Bharatanatyam, Kanchipuram Silk Circuits, and Eco-Conservation. Blending ancient tradition with futuristic AI storytelling.",
+          "thumbnailUrl": "https://img.youtube.com/vi/FjMc8FtFsz4/hqdefault.jpg",
+          "uploadDate": "2026-10-15T08:00:00+05:30",
+          "contentUrl": "https://www.instagram.com/reel/Demh75np0NR/",
+          "embedUrl": "https://www.youtube.com/embed/FjMc8FtFsz4"
+        },
+        {
+          "@type": "VideoObject",
+          "@id": "https://www.youtube.com/shorts/EpkBdpwrp_U",
+          "name": "Original Behind the Scenes: Staying Safe on Our Travels",
+          "description": "Companion safety and correction video highlighting travel safety rules near railway tracks, lakes, and the ocean.",
+          "thumbnailUrl": "https://img.youtube.com/vi/EpkBdpwrp_U/hqdefault.jpg",
+          "uploadDate": "2026-10-15T08:00:00+05:30",
+          "contentUrl": "https://www.instagram.com/reel/Dd22gtVJImx/",
+          "embedUrl": "https://www.youtube.com/embed/EpkBdpwrp_U"
+        }
       ]
     }
   ]
@@ -206,7 +269,7 @@
 <body>
   <div class="wrap">
     <header>
-      <a class="brand" href="#top">
+      <a class="brand" href="https://randomtyms.github.io/">
         <img src="https://randomtyms.github.io/icon-192.png" alt="RandomTyms Logo" class="brand-logo" width="36" height="36">
         <span>RandomTyms<small>Lokesh & Varsha</small></span>
       </a>
@@ -228,7 +291,7 @@
     
     <section id="reels">
       <h2 data-en="The AI Adventure Archives" data-ta="The AI Adventure Archives">The AI Adventure Archives</h2>
-      <p class="muted" data-en="Experience the official trilogy highlighting Tamil Nadu's heritage, modern landscapes, and AI innovation." data-ta="Tamil Nadu-வோட heritage, modern landscapes மற்றும் AI innovation-ஐ காட்டும் official trilogy-ஐ கண்டுகளியுங்கள்.">Experience the official trilogy highlighting Tamil Nadu's heritage, modern landscapes, and AI innovation.</p>
+      <p class="muted" data-en="Experience the official trilogy highlighting Tamil Nadu's heritage, modern landscapes, and AI innovation. Watch below and support our entry on Instagram!" data-ta="Tamil Nadu-வோட heritage, modern landscapes மற்றும் AI innovation-ஐ காட்டும் official trilogy-ஐ கீழே பார்த்துட்டு, Instagram-ல vote பண்ணி support பண்ணுங்க!">Experience the official trilogy highlighting Tamil Nadu's heritage, modern landscapes, and AI innovation. Watch below and support our entry on Instagram!</p>
       <div class="reels" id="reel-row" style="margin-top: 1.25rem"></div>
     </section>
 
@@ -238,16 +301,16 @@
       <p class="muted" data-en="Explore the original safety and correction companion video behind Lokesh and Varsha's journey." data-ta="Lokesh-um Varsha-vum journey-oda original safety and correction companion video-வை இங்கே பார்க்கலாம்.">Explore the original safety and correction companion video behind Lokesh and Varsha's journey.</p>
       
       <div class="bts-grid">
-        <div class="reel" id="bts-custom">
-          <a class="poster" href="https://www.instagram.com/reel/Dd22gtVJImx/" target="_blank" rel="noopener noreferrer">
-            <img src="https://randomtyms.github.io/welcome/images/BTS.webp" alt="Original Behind the Scenes RandomTyms TN Tourism">
-            <span class="veil"></span>
-            <span class="play">
-              <span class="dot">▶</span>
-              <span data-en="Play the Instagram Reel" data-ta="Instagram Reel play பண்ணுங்க">Play the Instagram Reel</span>
-            </span>
-          </a>
-          <a class="ig" href="https://www.instagram.com/reel/Dd22gtVJImx/" target="_blank" rel="noopener noreferrer">Open on Instagram</a>
+        <div class="reel" id="bts-custom" style="padding: 1rem;">
+          <div class="video-wrapper" style="margin: 0 0 1rem 0;">
+            <iframe 
+              src="https://www.youtube.com/embed/EpkBdpwrp_U" 
+              title="Staying Safe on Our Travels - BTS" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <a class="ig-btn" href="https://www.instagram.com/reel/Dd22gtVJImx/" target="_blank" rel="noopener noreferrer" data-en="❤️ Support BTS on Instagram" data-ta="❤️ Instagram-ல் Support பண்ணுங்க">❤️ Support BTS on Instagram</a>
         </div>
         <div>
           <h3 style="font-family: Fraunces, Georgia, serif; font-size: 1.5rem; color: var(--brass); margin-bottom: 0.75rem;" data-en="Staying Safe on Our Travels" data-ta="Staying Safe on Our Travels">Staying Safe on Our Travels</h3>
@@ -592,9 +655,8 @@
       "reels": [
         {
           "id": "hero-1",
-          "shortcode": "Dd1h9_EAktC",
+          "ytId": "pHHghhEey3k",
           "permalink": "https://www.instagram.com/reel/Dd1h9_EAktC/",
-          "poster": "https://randomtyms.github.io/welcome/images/Hero1.webp",
           "kicker": { "en": "Hero 1", "ta": "Hero 1" },
           "title": { "en": "The Magic Ticket", "ta": "Magic Ticket கிடைச்சிருக்கு" },
           "blurb": {
@@ -604,9 +666,8 @@
         },
         {
           "id": "hero-2",
-          "shortcode": "DeJzC2_RyVn",
+          "ytId": "JEJZYTItjdQ",
           "permalink": "https://www.instagram.com/reel/DeJzC2_RyVn/",
-          "poster": "https://randomtyms.github.io/welcome/images/Hero2.webp",
           "kicker": { "en": "Hero 2", "ta": "Hero 2" },
           "title": { "en": "Is This TamilNadu or Switzerland?", "ta": "இது தமிழ்நாடா இல்ல Switzerland-ஆ?" },
           "blurb": {
@@ -616,9 +677,8 @@
         },
         {
           "id": "hero-3",
-          "shortcode": "Demh75np0NR",
+          "ytId": "FjMc8FtFsz4",
           "permalink": "https://www.instagram.com/reel/Demh75np0NR/",
-          "poster": "https://randomtyms.github.io/welcome/images/Hero3.webp",
           "kicker": { "en": "Hero 3", "ta": "Hero 3" },
           "title": { "en": "Heritage Meets Innovation", "ta": "Heritage Meets Innovation" },
           "blurb": {
@@ -634,49 +694,45 @@
       const article = document.createElement("article");
       article.className = "reel";
       article.id = reel.id;
+
       const kick = document.createElement("p");
       kick.className = "kicker";
       kick.textContent = reel.kicker.en;
+
       const title = document.createElement("h3");
       title.className = "reel-title";
       title.dataset.en = reel.title.en;
       title.dataset.ta = reel.title.ta;
       title.textContent = reel.title.en;
+
       const blurb = document.createElement("p");
       blurb.className = "muted reel-blurb";
       blurb.dataset.en = reel.blurb.en;
       blurb.dataset.ta = reel.blurb.ta;
       blurb.textContent = reel.blurb.en;
-      const link = document.createElement("a");
-      link.className = "poster";
-      link.href = reel.permalink;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      const img = document.createElement("img");
-      img.src = reel.poster;
-      img.alt = reel.title.en + " RandomTyms - TN Tourism AI Reel";
-      const veil = document.createElement("span");
-      veil.className = "veil";
-      const play = document.createElement("span");
-      play.className = "play";
-      const dot = document.createElement("span");
-      dot.className = "dot";
-      dot.textContent = "▶";
-      const label = document.createElement("span");
-      label.dataset.en = "Play the Instagram Reel";
-      label.dataset.ta = "Instagram Reel play பண்ணுங்க";
-      label.textContent = "Play the Instagram Reel";
-      play.append(dot, label);
-      link.append(img, veil, play);
+
+      // Embed YouTube Short player inside 9:16 responsive container
+      const wrapper = document.createElement("div");
+      wrapper.className = "video-wrapper";
+      
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube.com/embed/" + reel.ytId;
+      iframe.title = reel.title.en + " - RandomTyms";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      wrapper.appendChild(iframe);
+
+      // Support & Vote on Instagram Button
       const open = document.createElement("a");
-      open.className = "ig";
+      open.className = "ig-btn";
       open.href = reel.permalink;
       open.target = "_blank";
       open.rel = "noopener noreferrer";
-      open.dataset.en = "Open on Instagram";
-      open.dataset.ta = "Instagram-ல் திறக்கவும்";
-      open.textContent = "Open on Instagram";
-      article.append(kick, title, blurb, link, open);
+      open.dataset.en = "❤️ Vote on Instagram";
+      open.dataset.ta = "❤️ Instagram-ல் Vote பண்ணுங்க";
+      open.textContent = "❤️ Vote on Instagram";
+
+      article.append(kick, title, blurb, wrapper, open);
       reelRow.appendChild(article);
     });
 
