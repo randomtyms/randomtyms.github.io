@@ -696,22 +696,24 @@
       "name": "RandomTyms — Lokesh & Varsha",
       "description": "Tanglish stories, science, English and digital safety with Lokesh & Varsha. One mom, one phone.",
       "inLanguage": "en",
-      "isPartOf": { "@id": "https://randomtyms.github.io/#hubsite" },
-      "about": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-      "mainEntity": { "@id": "https://lokeshvarsha.blogspot.com/#lokeshvarshaseries" },
-      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
-      "primaryImageOfPage": { "@id": "https://lokeshvarsha.blogspot.com/#logo" },
-      "subjectOf": { "@id": "https://lokeshvarsha.blogspot.com/#hindu-article" }
+      "isPartOf": { "@id": "https://randomtyms.github.io/#website" },
+      "about": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "mainEntity": { "@id": "https://randomtyms.github.io/#lokeshvarshaseries" },
+      "author": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "primaryImageOfPage": { "@id": "https://randomtyms.github.io/#logo" },
+      "subjectOf": { "@id": "https://randomtyms.github.io/#hindu-article" }
     },
     {
       "@type": "WebSite",
-      "@id": "https://randomtyms.github.io/#hubsite",
+      "@id": "https://randomtyms.github.io/#website",
       "url": "https://randomtyms.github.io/",
       "name": "RandomTyms Hub",
       "alternateName": "RandomTyms: Home of Lokesh & Varsha",
+      "inLanguage": "en",
       "sameAs": "https://lokeshvarsha.blogspot.com/",
-      "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" }
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "author": { "@id": "https://randomtyms.github.io/#gangaponnu" }
     },
     {
       "@type": "SoftwareApplication",
@@ -720,26 +722,78 @@
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any (Progressive Web App)",
       "url": "https://randomtyms.github.io/",
-      "publisher": { "@id": "https://lokeshvarsha.blogspot.com/#randomtyms" },
-      "author": { "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "author": { "@id": "https://randomtyms.github.io/#gangaponnu" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
     },
     {
       "@type": "EducationalOrganization",
-      "@id": "https://lokeshvarsha.blogspot.com/#randomtyms",
+      "@id": "https://randomtyms.github.io/#randomtyms",
       "name": "RandomTyms",
       "url": "https://randomtyms.github.io/",
+      "logo": { "@id": "https://randomtyms.github.io/#logo" },
+      "image": { "@id": "https://randomtyms.github.io/#logo" },
+      "founder": { "@id": "https://randomtyms.github.io/#gangaponnu" },
       "sameAs": [
-        "https://youtube.com",
+        "https://youtube.com/@randomtyms",
+        "https://www.instagram.com/randomtyms",
+        "https://x.com/RandomTyms",
+        "https://substack.com/@randomtyms",
+        "https://www.facebook.com/randomtyms",
+        "https://about.me/randomtyms",
         "https://lokeshvarsha.blogspot.com/"
       ]
     },
     {
       "@type": "Person",
-      "@id": "https://lokeshvarsha.blogspot.com/#gangaponnu",
+      "@id": "https://randomtyms.github.io/#gangaponnu",
       "name": "Ganga Ponnu",
       "jobTitle": "Creator & Solo Founder",
-      "sameAs": "https://x.com"
+      "url": "https://randomtyms.github.io/",
+      "worksFor": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "sameAs": [
+        "https://www.linkedin.com/in/gangaponnu"
+      ]
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://randomtyms.github.io/#lokeshvarshaseries",
+      "name": "RandomTyms",
+      "alternateName": "Lokesh and Varsha (RandomTyms)",
+      "description": "An educational 3D animated series in Tanglish featuring AI-animated Tamil sibling characters Lokesh and Varsha, teaching science, English, and digital safety.",
+      "creator": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "mentions": [
+        { "@id": "https://randomtyms.github.io/#varsha" },
+        { "@id": "https://randomtyms.github.io/#lokesh" }
+      ]
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://randomtyms.github.io/#lokesh",
+      "name": "Lokesh",
+      "description": "Fictional animated character in the RandomTyms series."
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://randomtyms.github.io/#varsha",
+      "name": "Varsha",
+      "description": "Fictional animated character in the RandomTyms series."
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://randomtyms.github.io/#logo",
+      "url": "https://randomtyms.github.io/logo.webp",
+      "contentUrl": "https://randomtyms.github.io/logo.webp",
+      "caption": "RandomTyms logo"
+    },
+    {
+      "@type": "NewsArticle",
+      "@id": "https://randomtyms.github.io/#hindu-article",
+      "url": "https://www.thehindu.com/education/ai-is-helping-independent-creators-build-education-in-local-languages/article71197805.ece",
+      "name": "AI is helping independent creators build education in local languages",
+      "publisher": { "@type": "Organization", "name": "The Hindu" },
+      "about": { "@id": "https://randomtyms.github.io/#gangaponnu" }
     }
   ]
 }
