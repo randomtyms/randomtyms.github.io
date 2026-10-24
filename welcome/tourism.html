@@ -145,43 +145,31 @@
       padding: 0.75rem 0; border-bottom: 1px solid var(--line);
       background: color-mix(in srgb, var(--paper) 95%, transparent); backdrop-filter: blur(8px);
     }
-    .pills a {
-  padding: 0.2rem;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
-.pill-thumb {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-.pills a:hover {
-  transform: scale(1.1);
-  border-color: var(--brass);
-  transition: transform 0.15s ease;
-}
     .share button {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--ink);
-  text-decoration: none;
-  padding: 0.55rem 0.9rem;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-}
+      flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.4rem;
+      border-radius: 999px; border: 1px solid var(--line); background: var(--card);
+      color: var(--ink); text-decoration: none; padding: 0.55rem 0.9rem; font-weight: 600; font-family: inherit;
+      cursor: pointer;
+    }
+    .pills a {
+      flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.5rem;
+      border-radius: 999px; border: 1px solid var(--line); background: var(--card);
+      color: var(--ink); text-decoration: none; padding: 0.3rem 0.85rem 0.3rem 0.35rem;
+      font-weight: 600; font-size: 0.875rem; font-family: inherit;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .pills a:hover {
+      transform: scale(1.05);
+      border-color: var(--brass);
+    }
+    .pill-thumb {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
     .pills .label { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; align-self: center; }
     .grid { display: grid; gap: 1.25rem; margin-top: 1.5rem; }
     article.stop { border: 1px solid var(--line); background: var(--card); border-radius: 1.35rem; overflow: hidden; scroll-margin-top: 8.5rem; display: flex; flex-direction: column; }
@@ -862,22 +850,24 @@
     pack.landmarks.forEach(function (item, index) {
       const n = index < 5 ? index + 1 : index - 4;
       if (index === 5) addLabel("Hero 2");
-const pill = document.createElement("a");
-pill.href = "#" + item.id;
-pill.title = n + ". " + item.name; // Browser tooltip showing the name
-pill.setAttribute("aria-label", n + ". " + item.name);
+   
+      const pill = document.createElement("a");
+      pill.href = "#" + item.id;
+      pill.title = n + ". " + item.name;
 
-// Use the existing GIF from the code!
-const thumb = document.createElement("img");
-thumb.src = item.gif;
-thumb.alt = item.name;
-thumb.className = "pill-thumb";
-thumb.loading = "lazy";
+      const thumb = document.createElement("img");
+      thumb.src = item.gif;
+      thumb.alt = "";
+      thumb.className = "pill-thumb";
+      thumb.loading = "lazy";
 
-pill.appendChild(thumb);
-pills.appendChild(pill);
+      const span = document.createElement("span");
+      span.textContent = n + " " + item.name.split(" ")[0];
 
+      pill.append(thumb, span);
+      pills.appendChild(pill);
 
+      
       const el = document.createElement("article");
       el.className = "stop";
       el.id = item.id;
