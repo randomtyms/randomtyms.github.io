@@ -145,11 +145,31 @@
       padding: 0.75rem 0; border-bottom: 1px solid var(--line);
       background: color-mix(in srgb, var(--paper) 95%, transparent); backdrop-filter: blur(8px);
     }
-    .pills a, .share button {
+    .share button {
       flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.4rem;
       border-radius: 999px; border: 1px solid var(--line); background: var(--card);
       color: var(--ink); text-decoration: none; padding: 0.55rem 0.9rem; font-weight: 600; font-family: inherit;
+      cursor: pointer;
     }
+    .pills a {
+      flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.5rem;
+      border-radius: 999px; border: 1px solid var(--line); background: var(--card);
+      color: var(--ink); text-decoration: none; padding: 0.3rem 0.85rem 0.3rem 0.35rem;
+      font-weight: 600; font-size: 0.875rem; font-family: inherit;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .pills a:hover {
+      transform: scale(1.05);
+      border-color: var(--brass);
+    }
+    .pill-thumb {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
     .pills .label { color: var(--muted); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; align-self: center; }
     .grid { display: grid; gap: 1.25rem; margin-top: 1.5rem; }
     article.stop { border: 1px solid var(--line); background: var(--card); border-radius: 1.35rem; overflow: hidden; scroll-margin-top: 8.5rem; display: flex; flex-direction: column; }
@@ -208,63 +228,159 @@
   </style>
 
   <!-- Google VideoObject Structured Data -->
-  <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://randomtyms.github.io/welcome/tourism.html",
+      "@id": "https://randomtyms.github.io/welcome/tourism.html#webpage",
       "url": "https://randomtyms.github.io/welcome/tourism.html",
-      "name": "TN Tourism AI Video Competition 2026 — The Magic Ticket | #ReimagineTN",
-      "description": "Official RandomTyms submission trilogy showcasing Keezhadi, AI Bharatanatyam, Kanchipuram silk, and Tamil Nadu's heritage for the #ReimagineTN competition.",
+      "name": "TN Tourism AI Video Competition 2026 — The Magic Ticket | #reimaginetn",
+      "description": "The official RandomTyms multi-film submission trilogy for the Tamil Nadu Tourism AI Video Competition. Experience a 10-stop interactive AI journey with Lokesh & Varsha.",
+      "abstract": "Includes interactive educational travel quizzes and safety guides for 10 historical destinations across Tamil Nadu.",
       "keywords": "reimaginetn, TN AI Video Competition 2026, Tamil Nadu Tourism, RandomTyms, Lokesh and Varsha",
-      "hasPart": [
-        {
-          "@type": "VideoObject",
-          "@id": "https://www.youtube.com/shorts/pHHghhEey3k",
-          "name": "The Magic Ticket — Hero 1",
-          "description": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!",
-          "thumbnailUrl": "https://img.youtube.com/vi/pHHghhEey3k/hqdefault.jpg",
-          "uploadDate": "2026-10-15T08:00:00+05:30",
-          "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/",
-          "embedUrl": "https://www.youtube.com/embed/pHHghhEey3k"
+      "inLanguage": "en-IN",
+      "interactivityType": "mixed",
+      "isPartOf": { "@id": "https://randomtyms.github.io/#website" },
+      "author": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" },
+      "about": {
+        "@type": "Event",
+        "name": "Tamil Nadu Tourism AI Video Competition 2026",
+        "alternateName": "#reimaginetn",
+        "description": "Create an AI-generated Reel of up to 60 seconds showcasing the landmarks of Tamil Nadu.",
+        "endDate": "2026-10-31",
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "location": {
+          "@type": "VirtualLocation",
+          "url": "https://www.instagram.com/tntourismoffcl/"
         },
-        {
-          "@type": "VideoObject",
-          "@id": "https://www.youtube.com/shorts/JEJZYTItjdQ",
-          "name": "Is This TamilNadu or Switzerland? — Hero 2",
-          "description": "Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, and a railway bridge over the sea.",
-          "thumbnailUrl": "https://img.youtube.com/vi/JEJZYTItjdQ/hqdefault.jpg",
-          "uploadDate": "2026-10-15T08:00:00+05:30",
-          "contentUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/",
-          "embedUrl": "https://www.youtube.com/embed/JEJZYTItjdQ"
-        },
-        {
-          "@type": "VideoObject",
-          "@id": "https://www.youtube.com/shorts/FjMc8FtFsz4",
-          "name": "Heritage Meets Innovation — Hero 3",
-          "description": "Keezhadi Ancient Discoveries, AI Bharatanatyam, Kanchipuram Silk Circuits, and Eco-Conservation. Blending ancient tradition with futuristic AI storytelling.",
-          "thumbnailUrl": "https://img.youtube.com/vi/FjMc8FtFsz4/hqdefault.jpg",
-          "uploadDate": "2026-10-15T08:00:00+05:30",
-          "contentUrl": "https://www.instagram.com/reel/Demh75np0NR/",
-          "embedUrl": "https://www.youtube.com/embed/FjMc8FtFsz4"
-        },
-        {
-          "@type": "VideoObject",
-          "@id": "https://www.youtube.com/shorts/EpkBdpwrp_U",
-          "name": "Original Behind the Scenes: Staying Safe on Our Travels",
-          "description": "Companion safety and correction video highlighting travel safety rules near railway tracks, lakes, and the ocean.",
-          "thumbnailUrl": "https://img.youtube.com/vi/EpkBdpwrp_U/hqdefault.jpg",
-          "uploadDate": "2026-10-15T08:00:00+05:30",
-          "contentUrl": "https://www.instagram.com/reel/Dd22gtVJImx/",
-          "embedUrl": "https://www.youtube.com/embed/EpkBdpwrp_U"
+        "organizer": {
+          "@type": "GovernmentOrganization",
+          "name": "Tamil Nadu Tourism",
+          "sameAs": "https://www.instagram.com/tntourismoffcl/"
         }
+      },
+      "video": [
+        { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero1" },
+        { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero2" },
+        { "@id": "https://randomtyms.github.io/welcome/tourism.html#hero3" },
+        { "@id": "https://randomtyms.github.io/welcome/tourism.html#bts-safety" }
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://randomtyms.github.io/#website",
+      "url": "https://randomtyms.github.io/",
+      "name": "RandomTyms",
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" }
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://randomtyms.github.io/#randomtyms",
+      "name": "RandomTyms",
+      "url": "https://randomtyms.github.io/",
+      "founder": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "sameAs": [
+        "https://youtube.com/@randomtyms",
+        "https://www.instagram.com/randomtyms",
+        "https://x.com/RandomTyms",
+        "https://substack.com/@randomtyms",
+        "https://www.facebook.com/randomtyms",
+        "https://www.microsoft.com/en-in/p/randomtyms/9mw2xqb7wqbk",
+        "https://about.me/randomtyms"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://randomtyms.github.io/#gangaponnu",
+      "name": "Ganga Ponnu",
+      "url": "https://randomtyms.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/gangaponnu"
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://randomtyms.github.io/welcome/tourism.html#hero1",
+      "name": "The Magic Ticket — Hero 1",
+      "description": "Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!",
+      "url": "https://www.youtube.com/shorts/pHHghhEey3k",
+      "contentUrl": "https://www.instagram.com/reel/Dd1h9_EAktC/",
+      "thumbnailUrl": "https://i.pinimg.com/1200x/75/31/0e/75310ecef34ac7c377a2010b84e4c6a9.jpg",
+      "embedUrl": "https://www.youtube.com/embed/pHHghhEey3k",
+      "sameAs": "https://www.instagram.com/reel/Dd1h9_EAktC/",
+      "uploadDate": "2026-09-28T21:11:42+05:30",
+      "potentialAction": {
+        "@type": "WatchAction",
+        "target": "https://www.instagram.com/reel/Dd1h9_EAktC/"
+      },
+      "isPartOf": { "@id": "https://randomtyms.github.io/welcome/tourism.html#webpage" },
+      "creator": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://randomtyms.github.io/welcome/tourism.html#hero2",
+      "name": "Is This TamilNadu or Switzerland? — Hero 2",
+      "description": "Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, and a railway bridge over the sea.",
+      "url": "https://www.youtube.com/shorts/JEJZYTItjdQ",
+      "contentUrl": "https://www.instagram.com/reel/DeJzC2_RyVn/",
+      "thumbnailUrl": "https://i.pinimg.com/1200x/f9/65/04/f96504f810f1b9c3e31ced3bfec2add1.jpg",
+      "embedUrl": "https://www.youtube.com/embed/JEJZYTItjdQ",
+      "sameAs": "https://www.instagram.com/reel/DeJzC2_RyVn/",
+      "uploadDate": "2026-10-06T18:05:43+05:30",
+      "potentialAction": {
+        "@type": "WatchAction",
+        "target": "https://www.instagram.com/reel/DeJzC2_RyVn/"
+      },
+      "isPartOf": { "@id": "https://randomtyms.github.io/welcome/tourism.html#webpage" },
+      "creator": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://randomtyms.github.io/welcome/tourism.html#hero3",
+      "name": "Heritage Meets Innovation — Hero 3",
+      "description": "Keezhadi Ancient Discoveries, AI Bharatanatyam, Kanchipuram Silk Circuits, and Eco-Conservation. Blending ancient tradition with futuristic AI storytelling.",
+      "url": "https://www.youtube.com/shorts/FjMc8FtFsz4",
+      "contentUrl": "https://www.instagram.com/reel/Demh75np0NR/",
+      "thumbnailUrl": "https://i.pinimg.com/1200x/18/86/ac/1886ac8d07e0dbf2390f3b3c371dfd99.jpg",
+      "embedUrl": "https://www.youtube.com/embed/FjMc8FtFsz4",
+      "sameAs": "https://www.instagram.com/reel/Demh75np0NR/",
+      "uploadDate": "2026-10-17T21:54:12+05:30",
+      "potentialAction": {
+        "@type": "WatchAction",
+        "target": "https://www.instagram.com/reel/Demh75np0NR/"
+      },
+      "isPartOf": { "@id": "https://randomtyms.github.io/welcome/tourism.html#webpage" },
+      "creator": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://randomtyms.github.io/welcome/tourism.html#bts-safety",
+      "name": "Original Behind the Scenes: Staying Safe on Our Travels",
+      "description": "Companion safety and correction video highlighting travel safety rules near railway tracks, lakes, and the ocean.",
+      "url": "https://www.youtube.com/shorts/EpkBdpwrp_U",
+      "contentUrl": "https://www.instagram.com/reel/Dd22gtVJImx/",
+      "thumbnailUrl": "https://i.pinimg.com/1200x/d9/36/d5/d936d5c4217e7a365352174c439ca675.jpg",
+      "embedUrl": "https://www.youtube.com/embed/EpkBdpwrp_U",
+      "sameAs": "https://www.instagram.com/reel/Dd22gtVJImx/",
+      "uploadDate": "2026-09-29T09:30:26+05:30",
+      "potentialAction": {
+        "@type": "WatchAction",
+        "target": "https://www.instagram.com/reel/Dd22gtVJImx/"
+      },
+      "isPartOf": { "@id": "https://randomtyms.github.io/welcome/tourism.html#webpage" },
+      "creator": { "@id": "https://randomtyms.github.io/#gangaponnu" },
+      "publisher": { "@id": "https://randomtyms.github.io/#randomtyms" }
     }
   ]
 }
-  </script>
+</script>
+
 </head>
 <body>
   <div class="wrap">
@@ -292,7 +408,47 @@
     <section id="reels">
       <h2 data-en="The AI Adventure Archives" data-ta="The AI Adventure Archives">The AI Adventure Archives</h2>
       <p class="muted" data-en="Experience the official trilogy highlighting Tamil Nadu's heritage, modern landscapes, and AI innovation. Watch below and support our entry on Instagram!" data-ta="Tamil Nadu-வோட heritage, modern landscapes மற்றும் AI innovation-ஐ காட்டும் official trilogy-ஐ கீழே பார்த்துட்டு, Instagram-ல vote பண்ணி support பண்ணுங்க!">Experience the official trilogy highlighting Tamil Nadu's heritage, modern landscapes, and AI innovation. Watch below and support our entry on Instagram!</p>
-      <div class="reels" id="reel-row" style="margin-top: 1.25rem"></div>
+      <div class="reels" id="reel-row" style="margin-top: 1.25rem">
+        <article class="reel" id="hero-1">
+          <p class="kicker">Hero 1</p>
+          <h3 class="reel-title" data-en="The Magic Ticket" data-ta="Magic Ticket கிடைச்சிருக்கு">The Magic Ticket</h3>
+          <p class="muted reel-blurb" data-en="Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!" data-ta="Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. ஒரு magical ticket. ஐந்து stops. 54 seconds of pure தமிழ்நாடு adventure!">Chennai Central, Madurai, Thanjavur, Nilgiri Mountain Railway, Kanyakumari. One magical ticket. Five stops. Fifty-four seconds of Tamil Nadu adventure!</p>
+          <div class="video-wrapper">
+            <iframe id="player-hero-1" class="yt-player" loading="lazy"
+              src="https://www.youtube.com/embed/pHHghhEey3k?enablejsapi=1"
+              title="The Magic Ticket - RandomTyms"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <a class="ig-btn" href="https://www.instagram.com/reel/Dd1h9_EAktC/" target="_blank" rel="noopener noreferrer" data-en="❤️ Vote on Instagram" data-ta="❤️ Instagram-ல் Vote பண்ணுங்க">❤️ Vote on Instagram</a>
+        </article>
+        <article class="reel" id="hero-2">
+          <p class="kicker">Hero 2</p>
+          <h3 class="reel-title" data-en="Is This TamilNadu or Switzerland?" data-ta="இது தமிழ்நாடா இல்ல Switzerland-ஆ?">Is This TamilNadu or Switzerland?</h3>
+          <p class="muted reel-blurb" data-en="Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, a railway bridge over the sea — what an adventure!" data-ta="கொடைக்கானல் Lake, நாயக்கர் Mahal, Mathoor Aqueduct, பாம்பன் Bridge, Arichal முனை. Misty hills, grand palace, ஆகாயத்துல water bridge, sea மேல railway track — என்ன ஒரு Awesome adventure!">Kodaikanal Lake, Nayakkar Mahal, Mathoor Aqueduct, Pamban Bridge, Arichal Munai. Misty hills, a grand palace, water flowing high above a valley, a railway bridge over the sea — what an adventure!</p>
+          <div class="video-wrapper">
+            <iframe id="player-hero-2" class="yt-player" loading="lazy"
+              src="https://www.youtube.com/embed/JEJZYTItjdQ?enablejsapi=1"
+              title="Is This TamilNadu or Switzerland? - RandomTyms"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <a class="ig-btn" href="https://www.instagram.com/reel/DeJzC2_RyVn/" target="_blank" rel="noopener noreferrer" data-en="❤️ Vote on Instagram" data-ta="❤️ Instagram-ல் Vote பண்ணுங்க">❤️ Vote on Instagram</a>
+        </article>
+        <article class="reel" id="hero-3">
+          <p class="kicker">Hero 3</p>
+          <h3 class="reel-title" data-en="Heritage Meets Innovation" data-ta="Heritage Meets Innovation">Heritage Meets Innovation</h3>
+          <p class="muted reel-blurb" data-en="Keezhadi Ancient Discoveries, AI Bharatanatyam, Kanchipuram Silk Circuits, and Eco-Conservation. Watch Lokesh and Varsha blend ancient tradition with futuristic AI storytelling!" data-ta="கீழடி Discoveries, AI பரதநாட்டியம், காஞ்சிபுரம் Silk Circuits மற்றும் சுற்றுச்சூழல் -Conservation. Lokesh மற்றும் Varsha-வோட கலக்கல் AI Adventure பாருங்க!">Keezhadi Ancient Discoveries, AI Bharatanatyam, Kanchipuram Silk Circuits, and Eco-Conservation. Watch Lokesh and Varsha blend ancient tradition with futuristic AI storytelling!</p>
+          <div class="video-wrapper">
+            <iframe id="player-hero-3" class="yt-player" loading="lazy"
+              src="https://www.youtube.com/embed/FjMc8FtFsz4?enablejsapi=1"
+              title="Heritage Meets Innovation - RandomTyms"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <a class="ig-btn" href="https://www.instagram.com/reel/Demh75np0NR/" target="_blank" rel="noopener noreferrer" data-en="❤️ Vote on Instagram" data-ta="❤️ Instagram-ல் Vote பண்ணுங்க">❤️ Vote on Instagram</a>
+        </article>
+      </div>
     </section>
 
     <section id="bts-section" class="bts-section">
@@ -306,6 +462,7 @@
             <iframe 
               id="player-bts"
               class="yt-player"
+              loading="lazy"
               src="https://www.youtube.com/embed/EpkBdpwrp_U?enablejsapi=1" 
               title="Staying Safe on Our Travels - BTS" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -332,7 +489,148 @@
     <section id="stops" style="padding: 2.5rem 0 3rem">
       <h2 data-en="What Did They Love?" data-ta="லோகேஷ் வர்ஷாக்கு ரொம்ப பிடிச்ச இடம் எது?">What Did They Love?</h2>
       <p class="muted" data-en="Tap a place above to discover what made it special to Lokesh and Varsha. Complete the mini-quizzes to earn badges!" data-ta="மேல irukkura place-a tap பண்ணுங்க. Mini-quizzes play பண்ணி badges collect பண்ணுங்க!">Tap a place above to discover what made it special to Lokesh and Varsha. Every stop has a fascinating story and fun quiz!</p>
-      <div class="grid" id="cards"></div>
+      <div class="grid" id="cards">
+        <article class="stop" id="chennai">
+          <img src="https://media.tenor.com/w-uH3AgmeioAAAAC/chennai-chennai-express.gif" alt="Animated Chennai Central railway station" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 1 · 01</p>
+            <h3>Chennai Central</h3>
+            <p class="headline" data-en="Choo-choo! Welcome aboard!" data-ta="Choo-choo! Welcome aboard!">Choo-choo! Welcome aboard!</p>
+            <p data-en="Look at this bright red castle! It isn&#x27;t a palace for kings—it’s a giant house for fast trains. Grab your bags and jump in!" data-ta="இந்த bright red castle-ஐ பாருங்க! இது ராஜாவோட palace இல்ல—fast trains-களுக்கான giant house. Bags-ஐ எடுத்துக்கிட்டு jump பண்ணுங்க!">Look at this bright red castle! It isn't a palace for kings—it’s a giant house for fast trains. Grab your bags and jump in!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Millions of happy travelers start their vacation right here!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; கோடி கணக்கான happy travelers தங்களுடைய vacation-ஐ இங்கிருந்துதான் start பண்றாங்க!">🌟 <strong>Wild Fun Fact:</strong> Millions of happy travelers start their vacation right here!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What color is this giant train castle?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>Bright Blue 🟦</button><button type="button" class="quiz-btn" disabled>Bright Red 🟥</button><button type="button" class="quiz-btn" disabled>Neon Green 🟩</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="madurai">
+          <img src="https://media.tenor.com/YbZS5CgANyAAAAAC/madurai-meenakshi.gif" alt="Animated Madurai Meenakshi temple gopuram" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 1 · 02</p>
+            <h3>Madurai Meenakshi Amman Temple</h3>
+            <p class="headline" data-en="A giant rainbow tower!" data-ta="A giant rainbow tower!">A giant rainbow tower!</p>
+            <p data-en="Can you spot the tiny statues? There are thousands of colorful gods, goddesses, and animals dancing high up in the sky!" data-ta="அந்த tiny statues-ஐ பார்க்க முடியுதா? வானத்துல உயரமாக colorful gods, goddesses மற்றும் animals தசைகள் மாதிரி dance பண்ற மாதிரி இருக்கு!">Can you spot the tiny statues? There are thousands of colorful gods, goddesses, and animals dancing high up in the sky!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; It smells like sweet jasmine flowers and yummy temple food!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; இங்க Malli poo (jasmine) scent-உம் yummy temple food smell-உம் செம்மயா இருக்கும்!">🌟 <strong>Wild Fun Fact:</strong> It smells like sweet jasmine flowers and yummy temple food!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What can you see dancing all over the tall towers?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>Thousands of colorful statues 🎨</button><button type="button" class="quiz-btn" disabled>Flying cars 🚗</button><button type="button" class="quiz-btn" disabled>Giant pizza slices 🍕</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="thanjavur">
+          <img src="https://media.tenor.com/HcpM1wgfZu8AAAAC/hindu-temple.gif" alt="Animated Thanjavur Brihadisvara Temple" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 1 · 03</p>
+            <h3>Thanjavur Big Temple</h3>
+            <p class="headline" data-en="Built with giant rock Lego blocks!" data-ta="Giant rock Lego blocks-ல கட்டின temple!">Built with giant rock Lego blocks!</p>
+            <p data-en="A thousand years ago, strong elephants lifted a super heavy stone to the top of this giant tower!" data-ta="1000 வருஷங்களுக்கு முன்பு, strong ஆன elephants தான் இந்த giant tower-க்கு super heavy stone-ஐ தூக்கி வச்சது!">A thousand years ago, strong elephants lifted a super heavy stone to the top of this giant tower!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; No cement was used to stick the rocks together—it&#x27;s like a real-life giant puzzle!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; இந்த rocks-ஐ ஒட்ட வைக்க cement யூஸ் பண்ணவே இல்ல—இது ஒரு real-life giant puzzle மாதிரி!">🌟 <strong>Wild Fun Fact:</strong> No cement was used to stick the rocks together—it's like a real-life giant puzzle!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: How was the giant rock lifted to the top 1,000 years ago?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>Big strong elephants! 🐘</button><button type="button" class="quiz-btn" disabled>Space rockets 🚀</button><button type="button" class="quiz-btn" disabled>Giant helicopters 🚁</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="nilgiri">
+          <img src="https://media.tenor.com/ooqJSBeW13IAAAAC/train-railway.gif" alt="Animated Nilgiri mountain train" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 1 · 04</p>
+            <h3>Nilgiri Mountain Railway</h3>
+            <p class="headline" data-en="Riding through the clouds!" data-ta="Clouds-க்கு நடுவுல ஒரு ride!">Riding through the clouds!</p>
+            <p data-en="Chug-chug-chug! This cute blue toy train climbs up green mountains and goes right through soft clouds and dark tunnels!" data-ta="Chug-chug-chug! இந்த cute blue toy train பச்சை மலைகள்ல ஏறி, soft clouds மற்றும் dark tunnels வழியா போகுது!">Chug-chug-chug! This cute blue toy train climbs up green mountains and goes right through soft clouds and dark tunnels!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Keep your eyes open to spot playful monkeys hanging out in the trees outside your window!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Window-க்கு வெளியே மரங்கள்ல குறும்பு பண்ற monkeys-ஐ பார்க்கலாம்!">🌟 <strong>Wild Fun Fact:</strong> Keep your eyes open to spot playful monkeys hanging out in the trees outside your window!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What cute animal might you spot peeking at you from the trees?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>Penguins 🐧</button><button type="button" class="quiz-btn" disabled>Monkeys 🐒</button><button type="button" class="quiz-btn" disabled>Polar bears 🐻‍❄️</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="kanyakumari">
+          <img src="https://media.tenor.com/Mkq8jvEsKIwAAAAC/thirukkural-thiruvalluvar.gif" alt="Animated Thiruvalluvar statue at Kanyakumari" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 1 · 05</p>
+            <h3>Kanyakumari</h3>
+            <p class="headline" data-en="A giant stone poet standing in the ocean!" data-ta="Ocean-ல நிற்கிற giant stone poet!">A giant stone poet standing in the ocean!</p>
+            <p data-en="This stone statue is taller than a 13-story building and stands right in the middle of the sea!" data-ta="இந்த stone statue 13-story building-ஐ விட ரொம்ப tall ஆனதா கடலுக்கு நடுவுல நிக்குது!">This stone statue is taller than a 13-story building and stands right in the middle of the sea!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; It is so strong that even fierce ocean storms and heavy waves can&#x27;t knock it over!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; இது எவ்ளோ strong-ானா storm வந்தாலும் அசையாம நிக்கும்!">🌟 <strong>Wild Fun Fact:</strong> It is so strong that even fierce ocean storms and heavy waves can't knock it over!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: How tall is this giant stone poet standing in the sea?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>Taller than a 13-story building! 🏢</button><button type="button" class="quiz-btn" disabled>As tall as a tiny flower 🌻</button><button type="button" class="quiz-btn" disabled>As tall as a bicycle 🚲</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="kodaikanal">
+          <img src="https://media.tenor.com/pHdKlxbyQOoAAAAC/kodaikanal-hill.gif" alt="Animated Kodaikanal hill and lake" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 2 · 01</p>
+            <h3>Kodaikanal Lake</h3>
+            <p class="headline" data-en="A lake shaped like a giant star!" data-ta="Giant star shape-ல ஒரு lake!">A lake shaped like a giant star!</p>
+            <p data-en="Deep up in the cool mountains, there is a giant lake that looks just like a star when seen from the sky!" data-ta="Cool ஆன mountains-ல, sky-ல இருந்து பார்த்தா star மாதிரி இருக்கிற giant lake இருக்கு!">Deep up in the cool mountains, there is a giant lake that looks just like a star when seen from the sky!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; You can rent a little wooden rowboat and paddle right through the center of the star!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; நீங்க ஒரு wooden rowboat எடுத்து அந்த star-ன் நடுவுல paddle பண்ணலாம்!">🌟 <strong>Wild Fun Fact:</strong> You can rent a little wooden rowboat and paddle right through the center of the star!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What sky shape does this cool mountain lake look like?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>A giant star ⭐</button><button type="button" class="quiz-btn" disabled>A square box 📦</button><button type="button" class="quiz-btn" disabled>A happy heart ❤️</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="mahal">
+          <img src="https://media.tenor.com/yMrKiFMLLscAAAAC/mahal-tamil-nadu.gif" alt="Animated Thirumalai Nayakkar Mahal" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 2 · 02</p>
+            <h3>Thirumalai Nayakkar Mahal</h3>
+            <p class="headline" data-en="Fat pillars fit for giant dinosaurs!" data-ta="Giant dinosaurs-க்கு ஏற்ற big pillars!">Fat pillars fit for giant dinosaurs!</p>
+            <p data-en="This grand palace has gigantic white pillars so wide that it takes 5 kids holding hands just to hug one!" data-ta="இந்த grand palace-ல இருக்கிற white pillars ரொம்ப wide ஆனது, 5 kids கைக கோர்த்து பிடித்தால் தான் சுற்ற முடியும்!">This grand palace has gigantic white pillars so wide that it takes 5 kids holding hands just to hug one!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Kings used to sit here and watch secret light-and-sound shows under the glowing stars!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Kings இங்க உட்கார்ந்து stars கீழ light-and-sound shows பார்ப்பாங்க!">🌟 <strong>Wild Fun Fact:</strong> Kings used to sit here and watch secret light-and-sound shows under the glowing stars!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: How many kids holding hands does it take to hug one giant pillar?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>1 kid</button><button type="button" class="quiz-btn" disabled>5 kids! 🖐️</button><button type="button" class="quiz-btn" disabled>100 kids</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="mathoor">
+          <img src="https://media.tenor.com/7Q-hlmfAbo4AAAAC/bridge-tamil-nadu.gif" alt="Animated Mathoor aqueduct" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 2 · 03</p>
+            <h3>Mathoor Aqueduct</h3>
+            <p class="headline" data-en="A giant water bridge in the trees!" data-ta="Trees-க்கு நடுவுல ஒரு giant water bridge!">A giant water bridge in the trees!</p>
+            <p data-en="Imagine a giant bridge built specifically to carry a flowing river through the air above lush green forests!" data-ta="Green forests-க்கு மேலே air-ல ஒரு river-ஐ carry பண்ணின giant bridge-ஐ கற்பனை பண்ணுங்க!">Imagine a giant bridge built specifically to carry a flowing river through the air above lush green forests!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; You can walk along the top edge way up high, soaring higher than a flying bird!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; பறக்கிற bird-ஐ விட உயரமாக நீங்க இந்த bridge மேல நடக்கலாம்!">🌟 <strong>Wild Fun Fact:</strong> You can walk along the top edge way up high, soaring higher than a flying bird!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What flows over this super tall bridge in the trees?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>A river of water 💧</button><button type="button" class="quiz-btn" disabled>Yummy melted chocolate 🍫</button><button type="button" class="quiz-btn" disabled>A track for roller skates 🛼</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="pamban">
+          <img src="https://media.tenor.com/T4YA6zWUsS0AAAAC/pamban-bridge.gif" alt="Animated new Pamban vertical-lift bridge" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 2 · 04</p>
+            <h3>Pamban Bridge</h3>
+            <p class="headline" data-en="A train walking on water!" data-ta="Water மேல நடக்கிற train!">A train walking on water!</p>
+            <p data-en="Watch out! The train is riding right on a narrow track built straight over the blue ocean!" data-ta="Watch out! Blue ocean-க்கு மேலே கட்டப்பட்ட narrow track-ல train போகுது!">Watch out! The train is riding right on a narrow track built straight over the blue ocean!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; The middle of the bridge lifts up like giant metal wings to let massive ships sail through!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Ships போகும்போது bridge-ன் மிடில் பகுதி giant wings மாதிரி தூக்கும்!">🌟 <strong>Wild Fun Fact:</strong> The middle of the bridge lifts up like giant metal wings to let massive ships sail through!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What does the middle of the bridge do when a big ship comes?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>It lifts up like giant wings! 🦅</button><button type="button" class="quiz-btn" disabled>It turns into a slide 🛝</button><button type="button" class="quiz-btn" disabled>It hides underwater 🌊</button></div>
+            </div>
+          </div>
+        </article>
+        <article class="stop" id="arichal">
+          <img src="https://media.tenor.com/eJa3bCBw4dAAAAAC/bridge-tamil-nadu.gif" alt="Animated Dhanushkodi and Arichal Munai coast" loading="lazy">
+          <div class="pad">
+            <p class="kicker">Hero 2 · 05</p>
+            <h3>Arichal Munai</h3>
+            <p class="headline" data-en="Where two oceans high-five!" data-ta="Two oceans high-five பண்ற இடம்!">Where two oceans high-five!</p>
+            <p data-en="Stand on the sandy beach and watch blue waves from two different seas crash together!" data-ta="Sandy beachல நின்னு ரெண்டு different seas-ஓட waves எப்படி meet ஆகுதுன்னு பாருங்க!">Stand on the sandy beach and watch blue waves from two different seas crash together!</p>
+            <div class="fun-fact-box" data-en="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; You can explore old, magical town ruins buried right beneath the shifting ocean sands!" data-ta="🌟 &lt;strong&gt;Wild Fun Fact:&lt;/strong&gt; Ocean sands-க்கு கீழே புதைந்திருக்கிற old town ruins-ஐ explore பண்ணலாம்!">🌟 <strong>Wild Fun Fact:</strong> You can explore old, magical town ruins buried right beneath the shifting ocean sands!</div>
+            <div class="quiz-box">
+              <strong class="quiz-question-title">🎮 Kids Mini-Quiz: What high-fives each other on the beach here?</strong>
+              <div class="quiz-options"><button type="button" class="quiz-btn" disabled>Two ocean waves 🌊</button><button type="button" class="quiz-btn" disabled>Two giant robots 🤖</button><button type="button" class="quiz-btn" disabled>Two flying dragons 🐉</button></div>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
   <footer>
@@ -348,7 +646,7 @@
           "id": "chennai",
           "route": 1,
           "name": "Chennai Central",
-          "gif": "https://media.tenor.com/w-uH3AgmeioAAAAM/chennai-chennai-express.gif",
+          "gif": "https://media.tenor.com/w-uH3AgmeioAAAAC/chennai-chennai-express.gif",
           "alt": "Animated Chennai Central railway station",
           "headline": { "en": "Choo-choo! Welcome aboard!", "ta": "Choo-choo! Welcome aboard!" },
           "story": {
@@ -379,7 +677,7 @@
           "id": "madurai",
           "route": 1,
           "name": "Madurai Meenakshi Amman Temple",
-          "gif": "https://media.tenor.com/YbZS5CgANyAAAAAM/madurai-meenakshi.gif",
+          "gif": "https://media.tenor.com/YbZS5CgANyAAAAAC/madurai-meenakshi.gif",
           "alt": "Animated Madurai Meenakshi temple gopuram",
           "headline": { "en": "A giant rainbow tower!", "ta": "A giant rainbow tower!" },
           "story": {
@@ -410,7 +708,7 @@
           "id": "thanjavur",
           "route": 1,
           "name": "Thanjavur Big Temple",
-          "gif": "https://media.tenor.com/HcpM1wgfZu8AAAAM/hindu-temple.gif",
+          "gif": "https://media.tenor.com/HcpM1wgfZu8AAAAC/hindu-temple.gif",
           "alt": "Animated Thanjavur Brihadisvara Temple",
           "headline": { "en": "Built with giant rock Lego blocks!", "ta": "Giant rock Lego blocks-ல கட்டின temple!" },
           "story": {
@@ -441,7 +739,7 @@
           "id": "nilgiri",
           "route": 1,
           "name": "Nilgiri Mountain Railway",
-          "gif": "https://media.tenor.com/ooqJSBeW13IAAAAM/train-railway.gif",
+          "gif": "https://media.tenor.com/ooqJSBeW13IAAAAC/train-railway.gif",
           "alt": "Animated Nilgiri mountain train",
           "headline": { "en": "Riding through the clouds!", "ta": "Clouds-க்கு நடுவுல ஒரு ride!" },
           "story": {
@@ -472,7 +770,7 @@
           "id": "kanyakumari",
           "route": 1,
           "name": "Kanyakumari",
-          "gif": "https://media.tenor.com/Mkq8jvEsKIwAAAAM/thirukkural-thiruvalluvar.gif",
+          "gif": "https://media.tenor.com/Mkq8jvEsKIwAAAAC/thirukkural-thiruvalluvar.gif",
           "alt": "Animated Thiruvalluvar statue at Kanyakumari",
           "headline": { "en": "A giant stone poet standing in the ocean!", "ta": "Ocean-ல நிற்கிற giant stone poet!" },
           "story": {
@@ -503,7 +801,7 @@
           "id": "kodaikanal",
           "route": 2,
           "name": "Kodaikanal Lake",
-          "gif": "https://media.tenor.com/pHdKlxbyQOoAAAAM/kodaikanal-hill.gif",
+          "gif": "https://media.tenor.com/pHdKlxbyQOoAAAAC/kodaikanal-hill.gif",
           "alt": "Animated Kodaikanal hill and lake",
           "headline": { "en": "A lake shaped like a giant star!", "ta": "Giant star shape-ல ஒரு lake!" },
           "story": {
@@ -534,7 +832,7 @@
           "id": "mahal",
           "route": 2,
           "name": "Thirumalai Nayakkar Mahal",
-          "gif": "https://media.tenor.com/yMrKiFMLLscAAAAM/mahal-tamil-nadu.gif",
+          "gif": "https://media.tenor.com/yMrKiFMLLscAAAAC/mahal-tamil-nadu.gif",
           "alt": "Animated Thirumalai Nayakkar Mahal",
           "headline": { "en": "Fat pillars fit for giant dinosaurs!", "ta": "Giant dinosaurs-க்கு ஏற்ற big pillars!" },
           "story": {
@@ -565,7 +863,7 @@
           "id": "mathoor",
           "route": 2,
           "name": "Mathoor Aqueduct",
-          "gif": "https://media.tenor.com/7Q-hlmfAbo4AAAAM/bridge-tamil-nadu.gif",
+          "gif": "https://media.tenor.com/7Q-hlmfAbo4AAAAC/bridge-tamil-nadu.gif",
           "alt": "Animated Mathoor aqueduct",
           "headline": { "en": "A giant water bridge in the trees!", "ta": "Trees-க்கு நடுவுல ஒரு giant water bridge!" },
           "story": {
@@ -596,7 +894,7 @@
           "id": "pamban",
           "route": 2,
           "name": "Pamban Bridge",
-          "gif": "https://media.tenor.com/T4YA6zWUsS0AAAAM/pamban-bridge.gif",
+          "gif": "https://media.tenor.com/T4YA6zWUsS0AAAAC/pamban-bridge.gif",
           "alt": "Animated new Pamban vertical-lift bridge",
           "headline": { "en": "A train walking on water!", "ta": "Water மேல நடக்கிற train!" },
           "story": {
@@ -627,7 +925,7 @@
           "id": "arichal",
           "route": 2,
           "name": "Arichal Munai",
-          "gif": "https://media.tenor.com/eJa3bCBw4dAAAAAM/bridge-tamil-nadu.gif",
+          "gif": "https://media.tenor.com/eJa3bCBw4dAAAAAC/bridge-tamil-nadu.gif",
           "alt": "Animated Dhanushkodi and Arichal Munai coast",
           "headline": { "en": "Where two oceans high-five!", "ta": "Two oceans high-five பண்ற இடம்!" },
           "story": {
@@ -693,7 +991,8 @@
     };
 
     const reelRow = document.getElementById("reel-row");
-    pack.reels.forEach(function (reel) {
+    // Video blocks are already in the HTML for crawlers; build them in JS only as a fallback
+    (reelRow.children.length ? [] : pack.reels).forEach(function (reel) {
       const article = document.createElement("article");
       article.className = "reel";
       article.id = reel.id;
@@ -721,6 +1020,7 @@
       const iframe = document.createElement("iframe");
       iframe.id = "player-" + reel.id;
       iframe.className = "yt-player";
+      iframe.loading = "lazy";
       iframe.src = "https://www.youtube.com/embed/" + reel.ytId + "?enablejsapi=1";
       iframe.title = reel.title.en + " - RandomTyms";
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
@@ -750,15 +1050,29 @@
     }
     addLabel("Hero 1");
     const cards = document.getElementById("cards");
+    cards.innerHTML = ""; // static copy exists for crawlers; replace with the interactive quiz cards
 
     pack.landmarks.forEach(function (item, index) {
       const n = index < 5 ? index + 1 : index - 4;
       if (index === 5) addLabel("Hero 2");
+   
       const pill = document.createElement("a");
       pill.href = "#" + item.id;
-      pill.textContent = n + " " + item.name;
+      pill.title = n + ". " + item.name;
+
+      const thumb = document.createElement("img");
+      thumb.src = item.gif;
+      thumb.alt = "";
+      thumb.className = "pill-thumb";
+      thumb.loading = "lazy";
+
+      const span = document.createElement("span");
+      span.textContent = n + " " + item.name.split(" ")[0];
+
+      pill.append(thumb, span);
       pills.appendChild(pill);
 
+      
       const el = document.createElement("article");
       el.className = "stop";
       el.id = item.id;
