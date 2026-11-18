@@ -1950,6 +1950,41 @@
       "lessonUrl": "https://lokeshvarsha.blogspot.com/",
       "questions": [
         {
+          "id": "DD11-Q000",
+          "question": "Who are you?",
+          "question_en": "Who are you?",
+          "question_ta": "நீங்கள் யார்?",
+          "match_phrases": [
+            "who are you",
+            "who are u",
+            "who r u",
+            "who is this",
+            "who are lokesh and varsha",
+            "what is your name",
+            "tell me about yourself",
+            "who made you",
+            "who created you",
+            "who is varsha",
+            "who is lokesh",
+            "who is krishna"
+          ],
+          "answer": "We are Lokesh and Varsha! We are friendly guides created by Ganga Ponnu (RandomTyms) in Chennai. Varsha is the thoughtful elder sister (Akka), and Lokesh is the playful younger brother (Thambi). We're here to help you stay safe online.",
+          "answer_en": "We are Lokesh and Varsha! We are friendly guides created by Ganga Ponnu (RandomTyms) in Chennai. Varsha is the thoughtful elder sister (Akka), and Lokesh is the playful younger brother (Thambi). We're here to help you stay safe online.",
+          "answer_ta": "நாங்கள் லோகேஷ் மற்றும் வர்ஷா! சென்னையில் கங்கா பொன்னு (RandomTyms) உருவாக்கிய நட்பு வழிகாட்டிகள். வர்ஷா அக்கா, லோகேஷ் தம்பி. இணையத்தில் பாதுகாப்பாக இருக்க உதவுகிறோம்.",
+          "speaker": "varsha",
+          "keywords": [
+            "who",
+            "are",
+            "you",
+            "lokesh",
+            "varsha"
+          ],
+          "source": "react-port",
+          "status": "approved"
+        }
+      ]
+    },
+        {
           "id": "DD11-Q001",
           "question": "Am I good?",
           "question_en": "Am I good?",
@@ -3123,6 +3158,63 @@
             "தவறான video காட்டினார்"
           ],
           "source": "generated",
+          "status": "approved"
+        },
+        {
+          "id": "DD12-Q018",
+          "question": "Someone is hurting me",
+          "question_en": "Someone is hurting me",
+          "question_ta": "யாரோ என்னை துன்புறுத்துகிறார்கள்",
+          "match_phrases": [
+            "someone is hurting me",
+            "hurting me",
+            "hurt me",
+            "hitting me",
+            "beating me",
+            "someone is hitting me",
+            "abuse",
+            "abusing me",
+            "abused"
+          ],
+          "answer": "I'm so sorry. It's not your fault. You did right telling me. Tell a trusted adult right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
+          "answer_en": "I'm so sorry. It's not your fault. You did right telling me. Tell a trusted adult right now. If you feel unsafe, call Childline 1098 anytime - it's free.",
+          "answer_ta": "வருந்துகிறேன். இது உன் தவறு இல்லை. உடனே நம்பிக்கையான பெரியவரிடம் சொல். பாதுகாப்பில்லை என்றால் 1098-க்கு அழை. இது இலவசம்.",
+          "speaker": "varsha",
+          "keywords": [
+            "hurt",
+            "hurting",
+            "hitting",
+            "beating",
+            "abuse"
+          ],
+          "source": "safety-patch",
+          "status": "approved"
+        },
+        {
+          "id": "DD12-Q019",
+          "question": "Someone is blackmailing or threatening me",
+          "question_en": "Someone is blackmailing or threatening me",
+          "question_ta": "யாரோ என்னை மிரட்டுகிறார்கள்",
+          "match_phrases": [
+            "blackmail",
+            "blackmailing me",
+            "threatening me",
+            "threatened me",
+            "scaring me",
+            "someone scaring me",
+            "forcing me"
+          ],
+          "answer": "Don't reply. Don't send anything they ask for. Take a screenshot if you can and show a trusted adult right away. Block that person. Call Childline 1098 for help.",
+          "answer_en": "Don't reply. Don't send anything they ask for. Take a screenshot if you can and show a trusted adult right away. Block that person. Call Childline 1098 for help.",
+          "answer_ta": "பதில் அனுப்பாதே. அவர்கள் கேட்பதை அனுப்பாதே. Screenshot எடுத்து பெரியவரிடம் காட்டு. Block செய். 1098 உதவும்.",
+          "speaker": "lokesh",
+          "keywords": [
+            "blackmail",
+            "threatening",
+            "scaring",
+            "forcing"
+          ],
+          "source": "safety-patch",
           "status": "approved"
         }
       ]
