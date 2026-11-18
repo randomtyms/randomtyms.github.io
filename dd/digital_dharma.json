@@ -1981,9 +1981,7 @@
           ],
           "source": "react-port",
           "status": "approved"
-        }
-      ]
-    },
+        },
         {
           "id": "DD11-Q001",
           "question": "Am I good?",
