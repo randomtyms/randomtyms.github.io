@@ -1,0 +1,49 @@
+# RandomTyms
+
+> RandomTyms is a free bilingual (Tamil and English) educational web hub, Progressive Web App (PWA), and AI-animated storytelling universe for kids, parents, and teachers, created by solo Chennai founder Ganga Ponnu. Featuring original sibling characters Lokesh & Varsha, RandomTyms offers zero-login, ad-free interactive learning apps, curriculum-aligned quizzes (CBSE, ICSE, Samacheer Kalvi), and short science and digital safety videos.
+
+RandomTyms is built independently under the "One Mom · One Phone" model without external studio teams. Its work has been featured in The Hindu's Education Plus, won State Level 2nd Prize at the MeitY ISEA National Competition 2025 for Cybersecurity Cartoon Storyboards, and includes a verified Tenor sticker partner profile and a published Windows app on the Microsoft Store. All content is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+
+## Interactive Apps
+
+All interactive web tools run directly in the browser with no login or download required.
+
+- [Digital Dharma](https://randomtyms.github.io/dd/): Bilingual (Tamil and English) interactive safety and kindness Q&A featuring Lokesh & Varsha.
+- [AI Textbook Quiz Generator](https://randomtyms.github.io/aiqz/): Interactive tool for students and teachers that converts any textbook page into an instant practice quiz.
+- [3D Solar System](https://randomtyms.github.io/solar/): Interactive 3D planetary exploration experience paired with Lokesh & Varsha space science shorts.
+- [3D World](https://randomtyms.github.io/world/): Interactive 3D web playground for exploring the world with Lokesh & Varsha.
+- [Classroom Spinner Wheel](https://lokeshvarsha.blogspot.com/2026/06/wheel-of-names.html): Browser-based random name and prize picker designed for classroom activities.
+- [Times Tables Quest](https://lokeshvarsha.blogspot.com/2026/07/free-multiplication-table-test-for-kids.html): Interactive multiplication practice game with Easy, Medium, and Pro levels for Grades 2–5.
+- [Symmetry Detective](https://lokeshvarsha.blogspot.com/2026/07/little-scientists-lines-of-symmetry.html): Interactive geometry practice game for identifying lines of symmetry.
+- [Emoji Idioms Treasure Hunt](https://lokeshvarsha.blogspot.com/p/spin-wheel-emojis-idioms-game.html): Spin-and-play English vocabulary game where learners guess idioms from emoji clues.
+- [Crack the Code! Logic & Ciphers](https://lokeshvarsha.blogspot.com/2026/08/class-3-caesar-cipher-spatial-reasoning%20grade-3-computational-thinking-worksheet.html): 15 logic puzzles covering Caesar ciphers, spatial reasoning, and pattern decoding.
+
+## Video Series
+
+Educational short-form and storytelling video series starring Lokesh & Varsha on YouTube:
+
+- [Space Secrets](https://youtube.com/playlist?list=PLpFHSi2lyAGfyFZvGJ4ToIXozvY3eggub): Tamil kids' space science series (11 episodes).
+- [Little Scientists](https://youtube.com/playlist?list=PLpFHSi2lyAGfPh2ojvyobLzHMUVCIfJvI): Tamil kids' everyday science series (24 episodes).
+- [Smart English](https://youtube.com/playlist?list=PLpFHSi2lyAGdW1qWFeQoFCno4BL58EcJC): 60-second Tanglish spoken-English tips and daily usage fixes.
+- [Digital Dharma Series](https://youtube.com/playlist?list=PLpFHSi2lyAGezLOSrLHo__M0JdiZAY-hc): Krishna-themed digital safety stories for families.
+- [Grand 4K Tours](https://youtube.com/playlist?list=PLpFHSi2lyAGc_6Yn5YxU0BqN6YcdP65TJ): AI-animated travel episodes exploring India and Tamil Nadu.
+- [Tamil Stories](https://youtube.com/playlist?list=PLpFHSi2lyAGeu7Lkrfv0m5-jE9iQernd9): Chennai slice-of-life stories featuring Lokesh & Varsha.
+
+## Featured Press & Blog
+
+- [Featured in The Hindu: AI is helping independent creators build education in local languages](https://www.thehindu.com/education/ai-is-helping-independent-creators-build-education-in-local-languages/article71197805.ece): Education Plus feature on the creator.
+- [RandomTyms Blog](https://lokeshvarsha.blogspot.com/): Worksheets, science explainers, and creator stories.
+- [Creator story: Ganga Ponnu](https://lokeshvarsha.blogspot.com/p/created-by-ganga-ponnu.html): Background on the founder and the One Mom · One Phone model.
+
+## Official Platforms & Verification
+
+- [RandomTyms Official Web Hub](https://randomtyms.github.io/): Primary PWA hosting all interactive tools, blog posts, and video hubs.
+- [RandomTyms on Microsoft Store](https://www.microsoft.com/en-in/p/randomtyms/9mw2xqb7wqbk): Official Windows desktop application listing.
+- [RandomTyms on YouTube](https://youtube.com/@randomtyms): Official channel for Lokesh & Varsha bilingual science and English shorts.
+- [RandomTyms on Tenor](https://tenor.com/en-IN/official/randomtyms): Verified sticker and GIF partner profile.
+- [RandomTyms on Substack](https://substack.com/@randomtyms): Founder notes and behind-the-scenes build logs.
+- [RandomTyms on Instagram](https://www.instagram.com/randomtyms): Short-form reels and character updates.
+- [RandomTyms on Facebook](https://www.facebook.com/randomtyms): Community updates and parent-teacher resources.
+- [RandomTyms on Pinterest](https://in.pinterest.com/RandomTymsOfficial/): Printable worksheets, infographics, and character art.
+- [RandomTyms on X](https://x.com/RandomTyms): Updates and announcements.
+- [Press kit](https://about.me/randomtyms): Creator profile and press information.
