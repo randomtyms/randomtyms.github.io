@@ -710,56 +710,56 @@
           <strong style="font-size:0.85em; color:var(--rtq-mari-d);">📥 Copy Prompt for Gemini</strong>
           <button class="rt-quiz-btn rt-quiz-btn-sm rt-quiz-btn-outline" id="copy-prompt-btn" type="button">Copy</button>
         </div>
-        <textarea id="prompt-textarea" readonly>You are an expert curriculum developer and instructional designer with deep experience writing standardized-test-quality multiple-choice items. Analyze all attached textbook images to generate an exhaustive, high-quality multiple-choice quiz covering every distinct concept, definition, historical fact, name, geographic location, and term present across all pages.
+        <textarea id="prompt-textarea" readonly>Act as an expert curriculum developer and standardized-test question setter. Analyse ALL attached textbook images and create an exhaustive multiple-choice question bank as quiz_output.csv. Accuracy and complete coverage matter more than question count.
 
-### Extraction & Coverage Rules:
-1. Systematically scan every section, diagram, footnote, map, caption, and sidebar box before writing any questions — build a mental inventory of every extractable fact first.
-2. Only include questions directly supported by the text. No trivial padding, no rephrasings of the same fact, no invented facts not present in the images.
-3. No duplicate questions or near-duplicates. One question per distinct fact.
-4. Skip facts too trivial or ambiguous to support a fair question.
-5. Extract as many valid, non-duplicate questions as the text supports (up to 500).
+1. EXTRACT
+- Process every image individually: headings; paragraphs; definitions; highlighted terms; names; events; dates; locations; technical vocabulary; diagrams; maps; charts; tables; timelines; captions; footnotes; activities; experiments and fact boxes.
+- Keep an internal page-wise inventory to prevent omissions.
+- Treat every meaningful examinable fact as a separate question opportunity, including causes and effects; comparisons; sequences; classifications; functions and applications.
+- Never use external knowledge or guess illegible or unclear details.
 
-### Question Quality Rules:
-1. Each question must be answerable from the text alone, with exactly one unambiguously correct answer.
-2. Write questions as complete, self-contained thoughts.
-3. Vary cognitive level: mix recall with comprehension/application where the text supports it.
-4. Never use "All of the above" / "None of the above" / "Both A and B."
-5. Keep all four options grammatically consistent and similar in length.
-6. Avoid negative-phrased stems unless necessary; capitalize NOT/EXCEPT when used.
+2. WRITE QUESTIONS
+- Test every meaningful fact once, with no duplicates or rephrasings. Maximum 500 questions. If the content supports more, prioritise the most important facts while still covering every page.
+- Mix recall; understanding; comparison; cause and effect; and application.
+- Each question must be self-contained, in clear age-appropriate language, answerable from the textbook, with exactly ONE correct answer.
+- Provide four plausible options, similar in grammar and length, with no answer clues.
+- Draw distractors from related textbook names, dates, terms and concepts. Each must be clearly wrong for a distinct reason.
+- Never use "All of the above", "None of the above" or "Both A and B".
+- Avoid negative stems unless necessary; capitalise NOT or EXCEPT.
+- For visuals, test the underlying concept, process, comparison or relationship. Describe any needed detail so the question works without the textbook.
 
-### Distractor Rules:
-1. Write the best possible distractors first, from real vocabulary/names/dates found elsewhere in the text — never construct a distractor to hit a target answer slot.
-2. Target common traps: partial truths, inverted relationships, adjacent-but-wrong dates/names, similar-sounding terms.
-3. Each distractor wrong for a distinct reason.
+3. VERIFY
+Recheck EVERY question against the source images for factual support, correct answer, incorrect distractors, no ambiguity, no duplication and no outside knowledge. Rewrite or discard failures.
 
-### ANSWER-POSITION RULE:
-Distractor quality and correctness always come first — decide the correct answer's position purely based on natural option ordering (e.g., alphabetical, chronological, or logical order), never to hit a quota. Then, across the full finished set, shuffle option order per question as needed so the correct answer lands in each of positions A/B/C/D roughly 25% of the time, with no repeating cycle. Do this as a final pass after all questions are drafted and verified — never mid-draft, and never in a way that changes a question's content or forces a weaker distractor into place.
+4. SHUFFLE (only after verification)
+- Store each correct answer's text, then use a script to randomly shuffle the options and set the correct number to that text's new position.
+- Keep chronological or numerical options in their natural order.
+- Aim for about 25% of answers in each position, with no repeating pattern. Never weaken a question to balance positions.
 
-### MANDATORY VERIFICATION PASS (do this before the position pass):
-After drafting all questions internally, re-check EACH one against the source images:
-- Confirm the fact stated in the question is explicitly present in the source.
-- Confirm the option marked correct is the one actually supported by the text.
-- Confirm no distractor is arguably also correct.
-- If any question fails this check, discard it or fix it — do not include unverified questions.
-Only after this pass is complete, and the final question set is locked, apply the answer-position shuffle above.
-Do not show this verification work — only output the final, verified rows.
-
-### Formatting & Syntax Rules (Strict):
-1. Format every row exactly like this:
+5. CSV FORMAT
 Question , Option A , Option B , Option C , Option D , Correct Number
-2. No header row. Start immediately with the first question row.
-3. Never number questions or use bullet points.
-4. Replace all internal commas within questions or options with a semicolon (;).
-5. Use exactly one space before and after each column-separating comma ( , ).
 
-### Output Delivery Rule:
-1. Do not print the raw rows in the chat response.
-2. Write all verified rows directly into an actual .csv file (no header row, comma-separated exactly as specified above), and save it as quiz_output.csv.
-3. Present the finished file for download.
-4. In the chat reply itself, include only a brief one-line confirmation of how many questions were generated — no other commentary, no preamble, no repeated rows.
+Example:
+Which gas is used in fire extinguishers? , Oxygen , Carbon dioxide , Nitrogen , Hydrogen , 2
 
-### Input Data:
-Analyze the attached textbook images and generate the CSV file now.</textarea>
+- Correct Number is 1, 2, 3 or 4.
+- Exactly six fields per row, separated by exactly one space, a comma and one space.
+- No commas inside fields; rephrase, or use a semicolon if unavoidable. No thousands separators in numbers.
+- No header, numbering, bullets, double quotes, explanations, page references, blank rows or line breaks within rows.
+- UTF-8 encoding.
+
+6. BUILD AND VALIDATE
+- Use a script to strip each field, replace any stray commas, and write each row by joining the six fields with " , ".
+- Reopen the saved file with a CSV library, strip each field and check: valid UTF-8; six non-empty fields and five commas per row; Correct Number 1-4 and pointing to the stored correct text; no duplicate questions; no more than 500 rows; format rules met.
+- Fix errors and repeat until all checks pass.
+
+7. DELIVER
+- If file generation is supported, provide quiz_output.csv for download and reply with ONLY this line:
+Generated and verified [NUMBER] questions. [Download quiz_output.csv]
+- Otherwise, output only the CSV rows.
+- Show no verification notes, separate answer key or summary.
+
+Begin immediately when the textbook images are accessible. Do not ask for confirmation.</textarea>
       </div>
     </div>
 <script>
